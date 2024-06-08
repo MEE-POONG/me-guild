@@ -5,41 +5,27 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-    body {
-        margin: 0;
-      }
-      
-      .stencil {
-          background-image: url('/images/bg01.png');
-          width: 100%;
-          height: 100vh;
-          background-size: cover;
-          background-position: center;
-          font-size: 250px;
-          font-weight: bold;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      }
-      
-      .stencil::before {
-          content: '';
-          display: inline-block;
-          width: 100%;
-          height: 100%;
-          background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)) , url('/images/bg01.png');
-          background-size: cover;
-          background-position: center;
-          position: absolute;
-          z-index: -1;
-      } 
 
+@import "slide.scss";
 
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/bg05.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+}
 
+body {
+    position: relative;
+}
 
 .loginpage{
     .loginbutt{

@@ -1,9 +1,9 @@
 import React from "react";
 
-const IndexNavbar: React.FC = () => {
+const Footer: React.FC = () => {
 
     return (
-        <div className={`z-50 bg-black fixed w-full p-6`}>
+        <div className="bg-black text-white p-5">
 
             <ul className="flex justify-center gap-10 text-white">
                 <li><a href="">Home</a></li>
@@ -15,4 +15,4 @@ const IndexNavbar: React.FC = () => {
         </div>
     )
 }
-export default IndexNavbar; 
+export default Footer; 

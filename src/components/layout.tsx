@@ -1,5 +1,6 @@
 import { Prompt } from 'next/font/google'
 import IndexNavbar from './IndexNavbar'
+import Footer from './Footer'
 
 const promt = Prompt({
     weight: '400',
@@ -14,11 +15,12 @@ export default function Layout({
 
 
     return (
-        <section className={promt.className}>
+        <div className={promt.className}>
             <IndexNavbar/>
-            <div className="py-12">
+            <div className="py-24">
                 {children}
             </div>
-        </section>
+            <Footer/>
+        </div>
     )
 }
