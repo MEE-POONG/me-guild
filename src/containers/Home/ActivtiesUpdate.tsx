@@ -1,6 +1,6 @@
 const ActivityUpdate: React.FC = () => {
     return (
-        <section className="bg-black w-full mt-12">
+        <section className="bg-gray-900 w-full mt-12">
             <div className="container mx-auto text-gray-100 px-10 py-16">
                 <div className=" flex justify-between items-end mb-3 text-2xl">
                     Activity

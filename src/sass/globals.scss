@@ -19,12 +19,13 @@ body::before {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: blur(10px);
+    filter: blur(8px);
     z-index: -1;
 }
 
 body {
     position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .loginpage{

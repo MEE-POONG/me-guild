@@ -4,7 +4,7 @@ const GuildRecomend: React.FC = () => {
     return (
         <section className="py-12">
             <div className="container mx-auto px-10">
-                <p className="text-xl font-bold flex items-end justify-between">Guild Recomend
+                <p className="text-xl font-bold flex items-end justify-between text-white">Guild Recomend
                     <a href="" className="text-sm">All {'>>'}</a>
                 </p>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-5 gap-3">

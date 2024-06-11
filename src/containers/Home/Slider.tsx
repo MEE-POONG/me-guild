@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 
-const SimpleSlider: React.FC = () => {
+const HomeSlider: React.FC = () => {
     const settings = {
         dots: false,
         infinite: true,
@@ -12,20 +12,22 @@ const SimpleSlider: React.FC = () => {
         cssEase: "linear"
     };
     return (
-        <div className="slider-container" style={{ maxWidth: "100%", margin: "0 auto" }}>
-            <Slider {...settings}>
-                <div className="slide">
-                    <img src="/images/bg01.webp" alt="" className="" />
-                </div>
-                <div className="slide">
-                    <img src="/images/bg05.webp" alt="" className="" />
-                </div>
-                <div className="slide">
-                    <img src="/images/bg04.webp" alt="" className="" />
-                </div>
-            </Slider>
+        <div className="slidestyle">
+            <div className="slider-container">
+                <Slider {...settings} className="slide">
+                    <div className="slide ">
+                        <img src="/images/bg01.webp" alt="" className="" />
+                    </div>
+                    <div className="slide">
+                        <img src="/images/bg05.webp" alt="" className="" />
+                    </div>
+                    <div className="slide">
+                        <img src="/images/bg04.webp" alt="" className="" />
+                    </div>
+                </Slider>
+            </div>
         </div>
     );
 }
 
-export default SimpleSlider;
+export default HomeSlider;

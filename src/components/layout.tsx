@@ -17,7 +17,7 @@ export default function Layout({
     return (
         <div className={promt.className}>
             <IndexNavbar/>
-            <div className="py-24">
+            <div className="py-20">
                 {children}
             </div>
             <Footer/>
