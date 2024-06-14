@@ -3,15 +3,10 @@ import React from "react";
 const Footer: React.FC = () => {
 
     return (
-        <div className="bg-black text-white p-5">
-
-            <ul className="flex justify-center gap-10 text-white">
-                <li><a href="">Home</a></li>
-                <li><a href="">Activity</a></li>
-                <li><a href="">Guild</a></li>
-                <li><a href="">About Me Guild</a></li>
-            </ul>
-
+        <div className="bg-black text-white p-3 fixed bottom-0 w-full text-center">
+            <p className="text-xs md:text-sm">© 2024 Community of Guild. All Rights Reserved | Design by
+                <a href="" className="ml-2">MPT Technology</a>
+            </p>
         </div>
     )
 }

@@ -1,14 +1,19 @@
+import Link from "next/link";
+
 const NewsUpdate: React.FC = () => {
     return (
 
         <section className="mt-12">
             <div className="container mx-auto px-10">
-                <p className="text-2xl font-bold py-3 text-gray-200">News</p>
-                <div className="flex flex-wrap -m-4">
+                <p className="text-xl font-bold flex items-end justify-between text-gray-500 hover:text-gray-800">
+                    News
+                    <a href="" className="text-sm">All {'>>'}</a>
+                </p>
+                <div className="flex flex-wrap -m-3 mt-3">
                     {/* strt card */}
-                    <div className="p-4 md:w-1/4">
-                        <div className="h-full border-2 border-gray-200 border-opacity-60 bg-white rounded-lg overflow-hidden">
-                            <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/images/bg01.png" alt="blog" />
+                    <div className="p-4 md:w-1/2 lg:w-1/4 ">
+                        <div className="h-full border-2 border-gray-200 border-opacity-60 bg-white rounded-lg overflow-hidden drop-shadow-lg hover:scale-95">
+                            <img className="lg:h-48 md:h-36 w-full object-cover object-center " src="/images/bg01.png" alt="blog" />
                             <div className="p-6">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">NEWS </h2>
                                 <h1 className="title-font text-lg font-medium text-gray-900 mb-3">The Catalyzer</h1>

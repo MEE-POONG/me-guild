@@ -1,5 +1,5 @@
 import { Prompt } from 'next/font/google'
-import IndexNavbar from './IndexNavbar'
+import Navbar from './Navbar'
 import Footer from './Footer'
 
 const promt = Prompt({
@@ -16,8 +16,8 @@ export default function Layout({
 
     return (
         <div className={promt.className}>
-            <IndexNavbar/>
-            <div className="py-20">
+            <Navbar/>
+            <div className="py-16 md:py-24">
                 {children}
             </div>
             <Footer/>
