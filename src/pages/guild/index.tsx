@@ -14,6 +14,9 @@ const GuildPage: React.FC = () => {
                         alt=""
                     />
                 </div>
+                <div className="max-w-4xl container mx-auto mt-5 px-4">
+                    <Link href=''>Createb Guild</Link>
+                </div>
                 <GuildList/>
                 <PeopleList/>
             </section>

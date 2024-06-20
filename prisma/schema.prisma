@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model CheckOnlineDB {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model ConditionGameMatchDB {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model CreditPointDB {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model GameCategoryDB {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @db.Date
+  createdBy String
+  deleteBy  String
+  title     String
+  updatedAt DateTime @db.Date
+  updatedBy String
+}
+
+model GameMatchDB {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model GameOnlineDB {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @db.Date
+  createdBy String
+  deleteBy  String
+  game_name String
+  updatedAt DateTime @db.Date
+  updatedBy String
+}
+
+model GameTypeDB {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  categoryId String   @db.ObjectId
+  createdAt  DateTime @db.Date
+  createdBy  String
+  deleteBy   String
+  title      String
+  updatedAt  DateTime @db.Date
+  updatedBy  String
+}
+
+model GameTypeGame {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @db.Date
+  createdBy String?
+  deleteBy  String
+  gameId    String   @db.ObjectId
+  typeId    String   @db.ObjectId
+  updatedAt DateTime @db.Date
+  updatedBy String
+}
+
+model PointHistoryDB {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model RankGameDB {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model UserDB {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  email   Json?  @unique
+  /// Field referred in an index, but found no data to define the type.
+  user_id Json?  @unique
+}
+
+model UserGameRank {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}

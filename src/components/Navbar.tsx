@@ -6,7 +6,7 @@ import useScroll from "./useScroll";
 const navItems = [
     { href: "/", label: "HOME" },
     { href: "/guild", label: "GUILD & PEOPLE" },
-    { href: "/activity", label: "ACTIVITY" },
+    { href: "/activity", label: "ACTIVITY & GAMES" },
     { href: "/news", label: "NEWS" },
     { href: "/contact", label: "CONTACT" },
 ];
