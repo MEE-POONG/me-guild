@@ -12,7 +12,7 @@ const SliderActivity: React.FC = () => {
         cssEase: "linear"
     };
     return (
-        <div className="container mx-auto max-w-4xl md:h-[360px] overflow-hidden shadow-xl border rounded-lg">
+        <div className="container mx-auto  md:h-[360px] overflow-hidden shadow-xl border rounded-lg">
             <div className="">
                 <Slider {...settings} className="w-full h-full object-cover">
                     <div className="slide ">

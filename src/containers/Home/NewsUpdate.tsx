@@ -4,7 +4,7 @@ const NewsUpdate: React.FC = () => {
     return (
 
         <section className="mt-12">
-            <div className="container mx-auto px-10">
+            <div className="container mx-auto ">
                 <p className="text-xl font-bold flex items-end justify-between text-gray-500 hover:text-gray-800">
                     News
                     <a href="" className="text-sm">All {'>>'}</a>

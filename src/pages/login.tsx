@@ -1,12 +1,9 @@
 import Link from "next/link";
-import BackgroundImageDiv from "./BackgroundImageDiv ";
 
-const LoginPage: React.FC = () => {
-    // const imageUrl = "https://i1.wp.com/wallpaperaccess.com/full/2970445.jpg";
+const LoginPage: React.FC = (props) => {
 
     return (
         <div className="flex justify-center h-lvh loginpage" >
-            {/* <BackgroundImageDiv imageUrl={imageUrl} heightClass="h-screen relative" /> */}
             <img src="/images/bg01.webp"
                 className="absolute w-full h-full object-cover lg:object-fit"
                 alt="" />

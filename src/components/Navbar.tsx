@@ -8,6 +8,7 @@ const navItems = [
     { href: "/guild", label: "GUILD & PEOPLE" },
     { href: "/activity", label: "ACTIVITY & GAMES" },
     { href: "/news", label: "NEWS" },
+    {href:"/market", label:"MARKET"},
     { href: "/contact", label: "CONTACT" },
 ];
 
@@ -21,8 +22,8 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className={`z-50 fixed w-full transition-all duration-150 ${scrollY > 50 ? 'bg-white shadow-lg text-gray-500' : 'bg-transparent text-gray-500 '}`}>
-            <div className="max-w-7xl mx-auto px-5 md:px-10">
+        <nav className={`z-50 fixed w-full transition-all duration-150 ${scrollY > 50 ? 'bg-white shadow-lg text-gray-500' : 'bg-white/75 text-gray-500 '}`}>
+            <div className="max-w-4xl mx-auto px-5 md:px-10">
                 <div className="flex justify-between items-center py-4">
                     <div className="flex items-center space-x-7">
                         <Link href="/">
@@ -31,7 +32,7 @@ const Navbar: React.FC = () => {
                             </p>
                         </Link>
                     </div>
-                    <div className="hidden md:flex space-x-1">
+                    <div className="hidden lg:flex space-x-1">
                         {navItems.map((item) => (
                             <Link key={item.href} href={item.href}>
                                 <p className={`py-3 px-2 ${router.pathname === item.href ? 'text-teal-600 border-b-4 border-teal-600 font-semibold' : 'font-semibold hover:text-teal-600 transition duration-300'}`}>
@@ -40,7 +41,7 @@ const Navbar: React.FC = () => {
                             </Link>
                         ))}
                     </div>
-                    <div className="md:hidden flex items-center">
+                    <div className="lg:hidden flex items-center">
                         <button className="outline-none mobile-menu-button" onClick={toggleMenu}>
                             {isOpen ? (
                                 <svg
@@ -71,7 +72,7 @@ const Navbar: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className={`md:hidden h-screen pl-3 ${isOpen ? "block bg-white " : "hidden "}`}>
+            <div className={`lg:hidden h-screen pl-9 ${isOpen ? "block bg-white " : "hidden "}`}>
                 {navItems.map((item) => (
                     <Link key={item.href} href={item.href}>
                         <p className={`block text-sm px-2 py-4 ${router.pathname === item.href ? 'text-teal-600 font-semibold' : 'text-gray-500 hover:bg-gray-200 transition duration-300'}`}>

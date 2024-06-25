@@ -1,7 +1,7 @@
 const ActivityUpdate: React.FC = () => {
     return (
         <section className="bg-gray-900 w-full mt-12">
-            <div className="container mx-auto text-gray-100 px-10 py-16">
+            <div className="container mx-auto text-gray-100  py-16">
                 <p className="text-xl font-bold flex items-end justify-between text-gray-200 hover:text-gray-800">
                     Activity
                     <a href="" className="text-sm">All {'>>'}</a>

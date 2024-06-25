@@ -3,7 +3,7 @@ import Layout from "@/components/layout"
 const ReadNews: React.FC = (props) => {
     return (
         <Layout>
-            <div className="max-w-4xl container mx-auto px-4">
+            <div className=" container mx-auto px-4">
                 <div>
                     <p className="text-lg mb-3 font-black">The 100 greatest video games of all time, ranked by experts</p>
                     <div className="border-t-4 border-purple-500 text-sm md:text-base">

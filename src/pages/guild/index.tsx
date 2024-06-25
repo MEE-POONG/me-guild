@@ -4,7 +4,7 @@ import PeopleList from "@/containers/Guild/PeopleList";
 import Link from "next/link";
 import React from "react"
 
-const GuildPage: React.FC = () => {
+const GuildPage: React.FC = (props) => {
     return (
         <Layout>
             <section className="">
@@ -14,8 +14,8 @@ const GuildPage: React.FC = () => {
                         alt=""
                     />
                 </div>
-                <div className="max-w-4xl container mx-auto mt-5 px-4">
-                    <Link href=''>Createb Guild</Link>
+                <div className=" container mx-auto mt-5 px-4">
+                    <Link href='/createGuild'>Createb Guild</Link>
                 </div>
                 <GuildList/>
                 <PeopleList/>
