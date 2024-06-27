@@ -8,7 +8,7 @@ const navItems = [
     { href: "/guild", label: "GUILD & PEOPLE" },
     { href: "/activity", label: "ACTIVITY & GAMES" },
     { href: "/news", label: "NEWS" },
-    {href:"/market", label:"MARKET"},
+    {href:"/marketplace", label:"MARKET"},
     { href: "/contact", label: "CONTACT" },
 ];
 
