@@ -9,7 +9,7 @@ const PeopleList: React.FC = () => {
                 <p className="text-gray-200 mb-3">Top People</p>
                 <div>
                     <Link href='' className="flex items-center bg-gray-50 rounded-md space-x-2 md:w-72 p-3 mx-auto mb-5 relative">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Guild-logo-01_.png"
+                        <img src="https://genshin.global/wp-content/uploads/2023/06/kirara-dendro-avatar-profile-genshin-impact.webp"
                             className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
                             alt="" />
                         <div >
@@ -21,7 +21,7 @@ const PeopleList: React.FC = () => {
                     </Link>
                     <div className="mx-auto flex justify-center gap-5">
                         <Link href='' className="md:flex items-center bg-gray-50 rounded-md space-x-2 p-2 relative">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Guild-logo-01_.png"
+                            <img src="https://act-webstatic.hoyoverse.com/upload/contentweb/2022/06/29/80c603323013d50fba419fe48b049a85_1179446160895359895.png"
                                 className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
                                 alt="" />
                             <div>
@@ -32,7 +32,7 @@ const PeopleList: React.FC = () => {
                             </div>
                         </Link>
                         <Link href='' className="md:flex items-center bg-gray-50 rounded-md space-x-2 p-2 relative">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Guild-logo-01_.png"
+                            <img src="https://m.media-amazon.com/images/I/81qE67fZAdL.jpg"
                                 className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
                                 alt="" />
                             <div>

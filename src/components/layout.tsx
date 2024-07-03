@@ -16,11 +16,11 @@ export default function Layout({
 
     return (
         <div className={promt.className}>
-            <Navbar/>
-            <div className="py-16 md:py-24">
+            <Navbar />
+            <div className="py-16 md:py-24 ">
                 {children}
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }
