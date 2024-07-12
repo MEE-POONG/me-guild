@@ -7,80 +7,170 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model CheckOnlineDB {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+model UserDB {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  user_id       String          @unique
+  username      String
+  email         String          @unique
+  password      String
+  createdAt     DateTime        @default(now())
+  createdBy     String?
+  updatedAt     DateTime        @updatedAt
+  updatedBy     String
+  deleteBy      String
+  gameMatchDB   GameMatchDB[]
+  userGameRank  UserGameRank[]
+  creditPointDB CreditPointDB[]
 }
 
-model ConditionGameMatchDB {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+model CheckOnlineDB {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  user_id         String
+  checkIn         DateTime  @default(now())
+  checkOut        DateTime?
+  totalOnlineTime Int       @default(0)
+  createdAt       DateTime  @default(now())
+  createdBy       String?
+  updatedAt       DateTime  @updatedAt
+  updatedBy       String
+  deleteBy        String
 }
 
 model CreditPointDB {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-}
-
-model GameCategoryDB {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @db.Date
-  createdBy String
-  deleteBy  String
-  title     String
-  updatedAt DateTime @db.Date
-  updatedBy String
-}
-
-model GameMatchDB {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-}
-
-model GameOnlineDB {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @db.Date
-  createdBy String
-  deleteBy  String
-  game_name String
-  updatedAt DateTime @db.Date
-  updatedBy String
-}
-
-model GameTypeDB {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  categoryId String   @db.ObjectId
-  createdAt  DateTime @db.Date
-  createdBy  String
-  deleteBy   String
-  title      String
-  updatedAt  DateTime @db.Date
-  updatedBy  String
-}
-
-model GameTypeGame {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @db.Date
-  createdBy String?
-  deleteBy  String
-  gameId    String   @db.ObjectId
-  typeId    String   @db.ObjectId
-  updatedAt DateTime @db.Date
-  updatedBy String
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userDB      UserDB   @relation(fields: [userId], references: [id])
+  userId      String   @db.ObjectId
+  points      Int      @default(0)
+  totalPoints Int
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String
+  deleteBy    String
 }
 
 model PointHistoryDB {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  discord_id  String
+  points      Int
+  description String
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String
+  deleteBy    String
+}
+
+model GameOnlineDB {
+  id                   String                 @id @default(auto()) @map("_id") @db.ObjectId
+  game_name            String
+  createdAt            DateTime               @default(now())
+  createdBy            String?
+  updatedAt            DateTime               @updatedAt
+  updatedBy            String?
+  deleteBy             String?
+  conditionGameMatchDB ConditionGameMatchDB[]
+  rankGame             RankGameDB[]
+  gameMatchDB          GameMatchDB[]
+  userGameRank         UserGameRank[]
+  gameTypeGame         GameTypeGame[]
+}
+
+model GameCategoryDB {
+  id        String       @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  createdAt DateTime     @default(now())
+  createdBy String?
+  updatedAt DateTime     @updatedAt
+  updatedBy String
+  deleteBy  String
+  gameTypes GameTypeDB[]
+}
+
+model GameTypeDB {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  createdAt      DateTime       @default(now())
+  createdBy      String?
+  updatedAt      DateTime       @updatedAt
+  updatedBy      String
+  deleteBy       String
+  categoryId     String         @db.ObjectId
+  gameCategoryDB GameCategoryDB @relation(fields: [categoryId], references: [id])
+  gameTypeGame   GameTypeGame[]
+}
+
+model GameTypeGame {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  gameId       String       @db.ObjectId
+  typeId       String       @db.ObjectId
+  createdAt    DateTime     @default(now())
+  createdBy    String?
+  updatedAt    DateTime     @updatedAt
+  updatedBy    String
+  deleteBy     String
+  gameOnlineDB GameOnlineDB @relation(fields: [gameId], references: [id])
+  gameTypeDB   GameTypeDB   @relation(fields: [typeId], references: [id])
+}
+
+model GameMatchDB {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  user         UserDB       @relation(fields: [userId], references: [id])
+  userId       String       @db.ObjectId
+  gameOnlineDB GameOnlineDB @relation(fields: [gameId], references: [id])
+  gameId       String       @db.ObjectId
+  rank         Boolean
+  rankGameDB   RankGameDB?  @relation(fields: [selectRankID], references: [id])
+  selectRankID String?      @db.ObjectId
+  members      String[]
+  createdAt    DateTime     @default(now())
+  createdBy    String?
+  updatedAt    DateTime     @updatedAt
+  updatedBy    String
+  deleteBy     String
+}
+
+model ConditionGameMatchDB {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  gameId       String       @db.ObjectId
+  gameOnlineDB GameOnlineDB @relation(fields: [gameId], references: [id])
+  maxParty     Int
+  matchRank    Boolean
+  limitNumber  Int          @default(0)
+  createdAt    DateTime     @default(now())
+  createdBy    String?
+  updatedAt    DateTime     @updatedAt
+  updatedBy    String
+  deleteBy     String
 }
 
 model RankGameDB {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-}
-
-model UserDB {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  /// Field referred in an index, but found no data to define the type.
-  email   Json?  @unique
-  /// Field referred in an index, but found no data to define the type.
-  user_id Json?  @unique
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  nameRank     String
+  number       Int
+  gameId       String         @db.ObjectId
+  gameOnlineDB GameOnlineDB   @relation(fields: [gameId], references: [id])
+  gameMatchDB  GameMatchDB[]
+  createdAt    DateTime       @default(now())
+  createdBy    String?
+  updatedAt    DateTime       @updatedAt
+  updatedBy    String
+  deleteBy     String
+  userGameRank UserGameRank[]
 }
 
 model UserGameRank {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  gameOnlineDB GameOnlineDB @relation(fields: [gameId], references: [id])
+  gameId       String       @db.ObjectId
+  UserDB       UserDB       @relation(fields: [userId], references: [id])
+  userId       String       @db.ObjectId
+  rankGameDB   RankGameDB?  @relation(fields: [rankGameId], references: [id])
+  rankGameId   String?      @db.ObjectId
+  invitation   Boolean
+  createdAt    DateTime     @default(now())
+  createdBy    String?
+  updatedAt    DateTime     @updatedAt
+  updatedBy    String
+  deleteBy     String
 }

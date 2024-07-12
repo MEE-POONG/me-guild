@@ -5,9 +5,40 @@ const GuildList: React.FC = () => {
     return (
         <div className="container mx-auto px-4  ">
             <h2 className="text-4xl mt-10 font-bold text-gray-700 drop-shadow-md">Guild Hall</h2>
-            <div className="bg-gray-900 p-5 rounded shadow-md mt-2">
-                <p className="text-gray-200 mb-3">Top Guild</p>
-                <div>
+            <div className="mt-2 grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <Link href='' className="flex items-center border p-2 hover:bg-gray-100">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
+                        className="w-24 h-24"
+                        alt="" />
+                    <div>
+                        <p className="text-lg font-bold">Guild Name</p>
+                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
+                        <p className="text-sm font-bold text-teal-600">ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
+                    </div>
+                </Link>
+                <Link href='' className="flex items-center border p-2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
+                        className="w-24 h-24"
+                        alt="" />
+                    <div>
+                        <p className="text-lg font-bold">Guild Name</p>
+                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
+                        <p>ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
+                    </div>
+                </Link>
+                <Link href='' className="flex items-center border p-2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
+                        className="w-24 h-24"
+                        alt="" />
+                    <div>
+                        <p className="text-lg font-bold">Guild Name</p>
+                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
+                        <p>ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
+                    </div>
+                </Link>
+
+
+                {/* <div>
                     <Link href='' className="flex items-center bg-gray-50 rounded-md space-x-2 md:w-72 p-3 mx-auto mb-5 relative">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Guild-logo-01_.png"
                             className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
@@ -100,7 +131,7 @@ const GuildList: React.FC = () => {
 
                         </tbody>
                     </table>
-                </div>
+                </div> */}
             </div>
         </div>
     )

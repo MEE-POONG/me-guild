@@ -16,12 +16,12 @@ const LoginPage: React.FC = (props) => {
 
                 <div className="text-center my-8">
                     <button className="loginbutt">
-                        <Link href="/indexLogin">Login</Link>
+                        <Link href="/regis">Login</Link>
                     </button>
                 </div>
 
                 <p className="text-sm">Don’t have an account yet?
-                    <a href="" className="text-blue-600 ml-2">Sign up</a>
+                    <Link href="/regis" className="text-blue-600 ml-2">Sign up</Link>
                 </p>
             </div>
         </div>

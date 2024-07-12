@@ -2,14 +2,16 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import useScroll from "./useScroll";
+import { FaUserCircle } from "react-icons/fa";
 
 const navItems = [
     { href: "/", label: "HOME" },
     { href: "/guild", label: "GUILD & PEOPLE" },
     { href: "/activity", label: "ACTIVITY & GAMES" },
     { href: "/news", label: "NEWS" },
-    // {href:"/marketplace", label:"MARKET"},
+    // { href: "/marketplace", label: "MARKET" },
     { href: "/contact", label: "CONTACT" },
+    { href: "/login", label: "LOGIN"},
 ];
 
 const Navbar: React.FC = () => {

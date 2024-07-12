@@ -7,7 +7,7 @@ const PeopleList: React.FC = () => {
             <h2 className="text-4xl mt-10 font-bold text-gray-700 drop-shadow-md">Poppular</h2>
             <div className="bg-gray-900 p-5 rounded shadow-md mt-2">
                 <p className="text-gray-200 mb-3">Top People</p>
-                <div>
+                {/* <div>
                     <Link href='' className="flex items-center bg-gray-50 rounded-md space-x-2 md:w-72 p-3 mx-auto mb-5 relative">
                         <img src="https://genshin.global/wp-content/uploads/2023/06/kirara-dendro-avatar-profile-genshin-impact.webp"
                             className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
@@ -100,7 +100,7 @@ const PeopleList: React.FC = () => {
 
                         </tbody>
                     </table>
-                </div>
+                </div> */}
             </div>
 
         </div>
