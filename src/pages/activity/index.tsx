@@ -11,8 +11,8 @@ const ActivityPage: React.FC = (props) => {
                 <SliderActivity />
                 {/* <div className="bg-white w-full h-[1px] container mx-auto my-12"></div> */}
                 <div className="mt-10">
-                    <GameMatching/>
-                    <NewActivityUpdate/>
+                    <NewActivityUpdate />
+                    <GameMatching />
                 </div>
             </section>
         </Layout>

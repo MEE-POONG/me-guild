@@ -6,8 +6,8 @@ const RegisterPage: React.FC = (props) => {
         <div className="loginpage" >
             <div className="background-image p-5 md:p-10">
                 <div className="container mx-auto mt-40">
-                    <form className="mt-3 bg-white/50 p-5 rounded-lg md:w-[450px] mx-auto">
-                        <p className="text-center mb-4 font-extrabold text-amber-400 text-2xl">REGISTER</p>
+                    <form className="mt-3 bg-white/60 p-5 rounded-lg md:w-[450px] mx-auto">
+                        <p className="text-center mb-4 font-extrabold text-amber-400 text-4xl drop-shadow">REGISTER</p>
                         <p className="text-sm font-thin text-gray-600 mt-5">**กรุณากรอกข้อมูลจริง</p>
                         <div className="md:flex justify-between gap-4">
                             <div>
@@ -21,6 +21,26 @@ const RegisterPage: React.FC = (props) => {
                                 <input type="text" name=""
                                     className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
                                 />
+                            </div>
+                        </div>
+                        <div className="md:flex justify-between gap-4">
+                            <div>
+                                <label htmlFor="">Age</label>
+                                <input type="text" name=""
+                                    className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="">Gender</label>
+                                <select name="" id=""
+                                    className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                                >
+                                    <option value="">กรุณาเลือก</option>
+                                    <option value="">Male</option>
+                                    <option value="">Female</option>
+                                    <option value="">LGBTQ+</option>
+                                    <option value="">Genderless</option>
+                                </select>
                             </div>
                         </div>
                         <div>

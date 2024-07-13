@@ -7,7 +7,7 @@ import { FaUserCircle } from "react-icons/fa";
 const navItems = [
     { href: "/", label: "HOME" },
     { href: "/guild", label: "GUILD & PEOPLE" },
-    { href: "/activity", label: "ACTIVITY & GAMES" },
+    { href: "/activity", label: "ACTIVITY" },
     { href: "/news", label: "NEWS" },
     // { href: "/marketplace", label: "MARKET" },
     { href: "/contact", label: "CONTACT" },
