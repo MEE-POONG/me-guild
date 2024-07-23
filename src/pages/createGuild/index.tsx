@@ -15,32 +15,30 @@ const CreateGuildPage: React.FC = (props) => {
                 <div className="container mx-auto my-10 ">
                     <form className="mt-3 bg-white/60 p-5 rounded-lg md:w-[450px] mx-auto">
                         <p className="text-center mb-4 font-extrabold text-teal-500 text-4xl drop-shadow">Create Guild</p>
-                        <p className="text-sm font-thin text-gray-600 mt-5">**กรุณากรอกข้อมูลจริง</p>
-                        <div className="md:flex justify-between gap-4">
-                            <div>
-                                <label htmlFor="">Name</label>
-                                <input type="text" name=""
-                                    className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="">Nickname</label>
-                                <input type="text" name=""
-                                    className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
-                                />
-                            </div>
+                        <hr className="mb-10" />
+                        <div>
+                            <label htmlFor="">ชื่อกิลด์</label>
+                            <input type="text" name=""
+                                className="w-full py-1 px-2 drop-shadow-lg bg-gray-200 bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="">คำอธิบาย</label>
+                            <input type="text" name=""
+                                className="w-full py-1 px-2 drop-shadow-lg bg-gray-200 border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                            />
                         </div>
                         <div className="md:flex justify-between gap-4">
                             <div>
-                                <label htmlFor="">Age</label>
+                                <label htmlFor="">ช่วงอายุ(ปี)</label>
                                 <input type="text" name=""
-                                    className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                                    className="w-full py-1 px-2 drop-shadow-lg bg-gray-200 border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
                                 />
                             </div>
                             <div>
-                                <label htmlFor="">Gender</label>
+                                <label htmlFor="">เพศ</label>
                                 <select name="" id=""
-                                    className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                                    className="w-full py-1 px-2 drop-shadow-lg bg-gray-200 border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
                                 >
                                     <option value="">กรุณาเลือก</option>
                                     <option value="">Male</option>
@@ -51,32 +49,29 @@ const CreateGuildPage: React.FC = (props) => {
                             </div>
                         </div>
                         <div>
-                            <label htmlFor="">Email</label>
+                            <label htmlFor="">กฏ</label>
                             <input type="text" name=""
-                                className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                                className="w-full py-1 px-2 drop-shadow-lg bg-gray-200 border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
                             />
                         </div>
                         <div>
-                            <label htmlFor="">Discord</label>
+                            <label htmlFor="">Discord Link</label>
                             <input type="text" name=""
-                                className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                                className="w-full py-1 px-2 drop-shadow-lg bg-gray-200 border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
                             />
                         </div>
                         <div>
-                            <label htmlFor="">Career/อาชีพ</label>
-                            <select name="" id=""
-                                className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
-                            >
-                                <option value="">กรุณาเลือก</option>
-                                <option value="">นักเวทย์</option>
-                                <option value="">แทงค์</option>
-                                <option value="">ฮีลเลอร์</option>
-                            </select>
+                            <label htmlFor="">Profile <span className="text-xs text-orange-500">**ขนาด X*Y</span></label>
+                            <input type="file" name="" id="" />
+                        </div>
+                        <div className="mt-3">
+                        <label htmlFor="">Profile <span className="text-xs text-orange-500">**ขนาด X*Y</span></label>
+                            <input type="file" name="" id="" />
                         </div>
 
                         <div className="text-center my-8">
-                            <button className="loginbutt">
-                                <Link href="/">ลงชื่อเข้าใช้</Link>
+                            <button className="bg-cyan-500 py-1 px-4 rounded-full text-gray-100 hover:bg-cyan-600">
+                                <Link href="/guild/guildProfile">Create</Link>
                             </button>
                         </div>
 

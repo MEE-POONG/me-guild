@@ -4,9 +4,9 @@ import { GiRank2 } from "react-icons/gi";
 const ProfileUser: React.FC = (props) => {
     return (
         <Layout>
-            <div className="container mx-auto py-24 px-5">
+            <div className="container mx-auto py-24 px-5 ">
                 <div className="text-center bg-[url('/images/bg05.webp')] drop-shadow-lg bg-cover">
-                    <div className="bg-black/30 p-10">
+                    <div className="bg-black/45 p-10">
                         <img src="https://static.vecteezy.com/system/resources/previews/006/735/770/original/beautiful-woman-avatar-profile-icon-vector.jpg"
                             className="w-44 h-44 mx-auto rounded-full"
                             alt="" />

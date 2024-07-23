@@ -16,7 +16,7 @@ const ProfileGuild: React.FC = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className=" bg-gray-100 p-5 md:p-10 mt-5 drop-shadow-lg">
+                <div className=" bg-gray-200 rounded-b-lg p-5 md:p-10 mt-5 drop-shadow-lg">
                     <p className="text-lg font-bold">About Guild</p>
                     <div>Name : <span>Guild Guild</span></div>
                     <div>Target : <span></span></div>

@@ -174,3 +174,30 @@ model UserGameRank {
   updatedBy    String
   deleteBy     String
 }
+
+model Profile {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  fname     String
+  lname     String
+  nickname  String
+  age       String
+  phone     String
+  email     String
+  gender    String
+  discord   String
+  career    String
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+}
+
+model NewsUpdate {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  img         String
+  description String
+  creditlink  String
+  createdAt   DateTime @default(now())
+  createdBy   String?
+}
