@@ -4,7 +4,7 @@ import React from "react"
 const PeopleList: React.FC = () => {
     return (
         <div className="container mx-auto px-4  ">
-            <h2 className="text-4xl mt-10 font-bold text-gray-700 drop-shadow-md">Poppular</h2>
+            <h2 className="text-4xl mt-10 font-bold text-gray-700 drop-shadow-md">Poeple</h2>
             <div className="bg-gray-900 p-5 rounded shadow-md mt-2">
                 <p className="text-gray-200 mb-3">Top People</p>
                 {/* <div>

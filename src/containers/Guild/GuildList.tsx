@@ -1,139 +1,47 @@
 import Link from "next/link";
-import React from "react"
+import { useEffect, useState } from "react";
 
 const GuildList: React.FC = () => {
+    const [guilds, setGuilds] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchGuilds = async () => {
+            try {
+                const response = await fetch('/api/guildProfile?page=1&pageSize=10');
+                const data = await response.json();
+                setGuilds(data.guilds);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching guilds:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchGuilds();
+    }, []);
+
     return (
-        <div className="container mx-auto px-4  ">
+        <div className="container mx-auto px-4">
             <h2 className="text-4xl mt-10 font-bold text-gray-700 drop-shadow-md">Guild Hall</h2>
             <div className="mt-2 grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                <Link href='' className="flex items-center border p-2 hover:bg-gray-100">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
-                        className="w-24 h-24"
-                        alt="" />
-                    <div>
-                        <p className="text-lg font-bold">Guild Name</p>
-                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
-                        <p className="text-sm font-bold text-teal-600">ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
-                    </div>
-                </Link>
-                <Link href='' className="flex items-center border p-2">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
-                        className="w-24 h-24"
-                        alt="" />
-                    <div>
-                        <p className="text-lg font-bold">Guild Name</p>
-                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
-                        <p>ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
-                    </div>
-                </Link>
-                <Link href='' className="flex items-center border p-2">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
-                        className="w-24 h-24"
-                        alt="" />
-                    <div>
-                        <p className="text-lg font-bold">Guild Name</p>
-                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
-                        <p>ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
-                    </div>
-                </Link>
-
-
-                {/* <div>
-                    <Link href='' className="flex items-center bg-gray-50 rounded-md space-x-2 md:w-72 p-3 mx-auto mb-5 relative">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Guild-logo-01_.png"
-                            className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
-                            alt="" />
-                        <div >
-                            <p>Name: <span className="font-bold text-teal-700 text-sm md:text-base">Guild Number One</span></p>
-                        </div>
-                        <div className="absolute bg-amber-400 rounded-full py-1 px-3 -top-3 right-0">
-                            1
-                        </div>
-                    </Link>
-                    <div className="mx-auto flex justify-center gap-5">
-                        <Link href='' className="md:flex items-center bg-gray-50 rounded-md space-x-2 p-2 relative">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Guild-logo-01_.png"
-                                className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
-                                alt="" />
-                            <div>
-                                <p>Name: <span className="font-bold text-teal-700 text-sm md:text-base">Guild Number One</span></p>
-                            </div>
-                            <div className="absolute bg-amber-400 rounded-full py-1 px-3 -top-3 right-0">
-                                2
+                {loading ? (
+                    <p>Loading...</p>
+                ) : (
+                    guilds.map(guild => (
+                        <Link href={`/guild/${guild.id}`} key={guild.id} className="flex items-center border p-2 hover:bg-gray-100">
+                            <img src={guild.avatar || "https://via.placeholder.com/96"} className="w-24 h-24" alt={guild.guildname} />
+                            <div className="ml-3">
+                                <p className="text-lg font-bold">{guild.guildname}</p>
+                                <p className="text-sm font-thin text-gray-500">{guild.description}</p>
+                                <p className="text-sm font-bold text-teal-600">{guild.rule}</p>
                             </div>
                         </Link>
-                        <Link href='' className="md:flex items-center bg-gray-50 rounded-md space-x-2 p-2 relative">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Guild-logo-01_.png"
-                                className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
-                                alt="" />
-                            <div>
-                                <p>Name: <span className="font-bold text-teal-700 text-sm md:text-base">Guild Number One</span></p>
-                            </div>
-                            <div className="absolute bg-amber-400 rounded-full py-1 px-3 -top-3 right-0">
-                                3
-                            </div>
-                        </Link>
-                    </div>
-                </div>
-                <div className="overflow-hidden border border-gray-200  md:rounded-lg mt-5">
-                    <table className="min-w-full divide-y divide-gray-200 bg-white">
-                        <tbody className="">
-                        <tr className="text-gray-200 border-b">
-                                <td className="pl-3 md:pl-5 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">4</td>
-                                <td className="py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
-                                        <div>
-                                            <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Guild Name</h2>
-                                            <p className="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr className="text-gray-200 border-b">
-                                <td className="pl-3 md:pl-5 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">4</td>
-                                <td className="py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
-                                        <div>
-                                            <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Guild Name</h2>
-                                            <p className="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr className="text-gray-200 border-b">
-                                <td className="pl-3 md:pl-5 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">4</td>
-                                <td className="py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
-                                        <div>
-                                            <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Guild Name</h2>
-                                            <p className="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr className="text-gray-200 border-b">
-                                <td className="pl-3 md:pl-5 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">4</td>
-                                <td className="py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
-                                        <div>
-                                            <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Guild Name</h2>
-                                            <p className="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-
-
-                        </tbody>
-                    </table>
-                </div> */}
+                    ))
+                )}
             </div>
         </div>
-    )
+    );
 }
+
 export default GuildList;

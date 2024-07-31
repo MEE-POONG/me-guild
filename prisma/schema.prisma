@@ -201,3 +201,34 @@ model NewsUpdate {
   createdAt   DateTime @default(now())
   createdBy   String?
 }
+
+model GuildProfile {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  guildname   String
+  description String
+  rule        String
+  discordlink String
+  backdrop    String
+  avatar      String
+  sex         String
+  age         String
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String
+}
+
+model ActDetail {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  point       String
+  type        String
+  img         String
+  startdate   String
+  enddate     String
+  description String
+  disname     String
+  dislink     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

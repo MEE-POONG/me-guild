@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const page: number = Number(req.query.page) || 1;
                 const pageSize: number = Number(req.query.pageSize) || 10;
 
-                const news = await prisma.newsUpdate.findMany({
+                const guilds = await prisma.guildProfile.findMany({
                     skip: (page - 1) * pageSize,
                     take: pageSize,
                     orderBy: {
@@ -20,9 +20,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                 });
 
-                const totalNews = await prisma.newsUpdate.count();
-                const totalPage: number = Math.ceil(totalNews / pageSize);
-                res.status(200).json({ news, totalPage });
+                const totalGuilds = await prisma.guildProfile.count();
+                const totalPage: number = Math.ceil(totalGuilds / pageSize);
+                res.status(200).json({ guilds, totalPage });
             } catch (error) {
                 console.error("Error fetching news updates:", error);
                 res.status(500).json({ error: "An error occurred while fetching the news updates" });
@@ -31,17 +31,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'POST':
             try {
-                const { title, img, description, creditlink } = req.body;
+                const { guildname, rule, description, discordlink, backdrop, avatar } = req.body;
 
-                if (!title || !img || !description || !creditlink) {
-                    return res.status(400).json({ error: "Title and content are required" });
+                if (!guildname || !rule || !description || !discordlink || !backdrop || !avatar) {
+                    return res.status(400).json({ error: "content are required" });
                 }
 
-                const newNews = await prisma.newsUpdate.create({
-                    data: { title, img, description, creditlink },
-                });
+                // const newGuild = await prisma.guildProfile.create({
+                //     data: { guildname, rule, description, discordlink, backdrop, avatar },
+                // });
 
-                res.status(201).json(newNews);
+                // res.status(201).json(newGuild);
             } catch (error) {
                 res.status(500).json({ error: "An error occurred while creating the news update" });
             }

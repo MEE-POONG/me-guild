@@ -31,9 +31,15 @@ const CreateGuildPage: React.FC = (props) => {
                         <div className="md:flex justify-between gap-4">
                             <div>
                                 <label htmlFor="">ช่วงอายุ(ปี)</label>
-                                <input type="text" name=""
+                                <select name="" id=""
                                     className="w-full py-1 px-2 drop-shadow-lg bg-gray-200 border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
-                                />
+                                >
+                                    <option value="">กรุณาเลือก</option>
+                                    <option value="">15 ปีขึ้นไป</option>
+                                    <option value="">18 ปีขึ้นไป</option>
+                                    <option value="">20 ปีขึ้นไป</option>
+                                    <option value="">ไม่จำกัดอายุ</option>
+                                </select>
                             </div>
                             <div>
                                 <label htmlFor="">เพศ</label>
@@ -65,7 +71,7 @@ const CreateGuildPage: React.FC = (props) => {
                             <input type="file" name="" id="" />
                         </div>
                         <div className="mt-3">
-                        <label htmlFor="">Profile <span className="text-xs text-orange-500">**ขนาด X*Y</span></label>
+                            <label htmlFor="">Backdrop <span className="text-xs text-orange-500">**ขนาด X*Y</span></label>
                             <input type="file" name="" id="" />
                         </div>
 

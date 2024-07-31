@@ -8,7 +8,7 @@ const promt = Prompt({
 });
 
 export default function App({ Component, pageProps } :AppProps) {
-  return (
+  return ( 
     <main className={promt.className}>
       <Component {...pageProps} />
     </main>

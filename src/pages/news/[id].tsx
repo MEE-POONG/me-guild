@@ -45,6 +45,7 @@ const ReadNews: React.FC = (props) => {
             </Layout>
         );
     }
+    
     return (
         <Layout>
             <div className="container mx-auto px-4 py-10">
