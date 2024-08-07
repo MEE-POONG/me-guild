@@ -9,7 +9,7 @@ datasource db {
 
 model UserDB {
   id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  user_id       String          @unique
+  discord_id    String          @unique
   username      String
   email         String          @unique
   password      String
@@ -64,6 +64,7 @@ model PointHistoryDB {
 model GameOnlineDB {
   id                   String                 @id @default(auto()) @map("_id") @db.ObjectId
   game_name            String
+  dis_RoomID           String
   createdAt            DateTime               @default(now())
   createdBy            String?
   updatedAt            DateTime               @updatedAt
@@ -147,6 +148,7 @@ model ConditionGameMatchDB {
 model RankGameDB {
   id           String         @id @default(auto()) @map("_id") @db.ObjectId
   nameRank     String
+  imgRank      String
   number       Int
   gameId       String         @db.ObjectId
   gameOnlineDB GameOnlineDB   @relation(fields: [gameId], references: [id])
@@ -175,7 +177,32 @@ model UserGameRank {
   deleteBy     String
 }
 
-model Profile {
+model DiscordID {
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  discord_ID String
+  nameCheck  String
+  type       String
+  server     String
+  customer   CustomerDB @relation(fields: [customerId], references: [id])
+  customerId String     @db.ObjectId
+}
+
+model CustomerDB {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  discord_id String      @unique
+  username   String
+  email      String      @unique
+  password   String
+  server     String      @unique
+  createdAt  DateTime    @default(now())
+  createdBy  String?
+  updatedAt  DateTime    @updatedAt
+  updatedBy  String
+  deleteBy   String
+  DiscordID  DiscordID[]
+}
+
+model ProfileDB {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   fname     String
   lname     String
@@ -192,7 +219,7 @@ model Profile {
   updatedBy String
 }
 
-model NewsUpdate {
+model NewsUpdateDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   img         String
@@ -202,7 +229,7 @@ model NewsUpdate {
   createdBy   String?
 }
 
-model GuildProfile {
+model GuildProfileDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   guildname   String
   description String
@@ -218,7 +245,7 @@ model GuildProfile {
   updatedBy   String
 }
 
-model ActDetail {
+model ActDetailDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   point       String

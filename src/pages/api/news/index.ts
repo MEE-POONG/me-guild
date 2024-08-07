@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const page: number = Number(req.query.page) || 1;
                 const pageSize: number = Number(req.query.pageSize) || 10;
 
-                const news = await prisma.newsUpdate.findMany({
+                const news = await prisma.newsUpdateDB.findMany({
                     skip: (page - 1) * pageSize,
                     take: pageSize,
                     orderBy: {
@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                 });
 
-                const totalNews = await prisma.newsUpdate.count();
+                const totalNews = await prisma.newsUpdateDB.count();
                 const totalPage: number = Math.ceil(totalNews / pageSize);
                 res.status(200).json({ news, totalPage });
             } catch (error) {
@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     return res.status(400).json({ error: "Title and content are required" });
                 }
 
-                const newNews = await prisma.newsUpdate.create({
+                const newNews = await prisma.newsUpdateDB.create({
                     data: { title, img, description, creditlink },
                 });
 

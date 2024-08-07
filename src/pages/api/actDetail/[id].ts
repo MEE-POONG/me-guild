@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
         case 'GET':
             try {
-                const actDetail = await prisma.actDetail.findUnique({
+                const actDetail = await prisma.actDetailDB.findUnique({
                     where: { id: id as string },
                 });
 
@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     return res.status(400).json({ error: "Title and content are required" });
                 }
 
-                const updatedActivities = await prisma.actDetail.update({
+                const updatedActivities = await prisma.actDetailDB.update({
                     where: { id: id as string },
                     data: { title, img, description, point, type, startdate, enddate, disname, dislink },
                 });
@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'DELETE':
             try {
-                await prisma.actDetail.delete({
+                await prisma.actDetailDB.delete({
                     where: { id: id as string },
                 });
 

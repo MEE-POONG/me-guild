@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
         case 'GET':
             try {
-                const newsUpdate = await prisma.newsUpdate.findUnique({
+                const newsUpdate = await prisma.newsUpdateDB.findUnique({
                     where: { id: id as string },
                 });
 
@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     return res.status(400).json({ error: "Title and content are required" });
                 }
 
-                const updatedNews = await prisma.newsUpdate.update({
+                const updatedNews = await prisma.newsUpdateDB.update({
                     where: { id: id as string },
                     data: { title, img, description, creditlink },
                 });
@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'DELETE':
             try {
-                await prisma.newsUpdate.delete({
+                await prisma.newsUpdateDB.delete({
                     where: { id: id as string },
                 });
 

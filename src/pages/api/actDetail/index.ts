@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const page: number = Number(req.query.page) || 1;
                 const pageSize: number = Number(req.query.pageSize) || 10;
 
-                const activities = await prisma.actDetail.findMany({
+                const activities = await prisma.actDetailDB.findMany({
                     skip: (page - 1) * pageSize,
                     take: pageSize,
                     orderBy: {
@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                 });
 
-                const totalActivities = await prisma.actDetail.count();
+                const totalActivities = await prisma.actDetailDB.count();
                 const totalPage: number = Math.ceil(totalActivities / pageSize);
                 res.status(200).json({ activities, totalPage });
             } catch (error) {
@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     return res.status(400).json({ error: "Title and content are required" });
                 }
 
-                const newActivities = await prisma.actDetail.create({
+                const newActivities = await prisma.actDetailDB.create({
                     data: { title, img, description, point, type, startdate, enddate, disname, dislink },
                 });
 

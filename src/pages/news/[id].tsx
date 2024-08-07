@@ -62,7 +62,7 @@ const ReadNews: React.FC = (props) => {
                         
                         <div className="mt-10">
                             <hr className="mb-3" />
-                            Credit :
+                            อ่านเพิ่ม :
                             <a href= {news.creditlink}
                                 className="ml-3 text-teal-500 hover:text-teal-700" target="_blank">
                                 {news.creditlink}

@@ -51,7 +51,7 @@ const ActivityDetail: React.FC = (props) => {
     return (
         <Layout>
             <div className='container mx-auto py-20 px-1'>
-                <Link href='/activity'>Back</Link>
+                {/* <Link href='/activity'>Back</Link> */}
                 <div className='bg-gray-100 py-10 drop-shadow-lg rounded shadow-inner text-center'>
                     <p className='text-xl font-black mb-10'>{activities.title}</p>
                     <p>ระยะเวลา : <span className='text-orange-400'> {activities.startdate} - 1 Aug 2024</span></p>

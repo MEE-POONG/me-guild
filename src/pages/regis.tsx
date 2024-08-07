@@ -55,17 +55,8 @@ const RegisterPage: React.FC = (props) => {
                                 className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
                             />
                         </div>
-                        <div>
-                            <label htmlFor="">Career/อาชีพ</label>
-                            <select name="" id=""
-                                className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
-                            >
-                                <option value="">กรุณาเลือก</option>
-                                <option value="">นักเวทย์</option>
-                                <option value="">แทงค์</option>
-                                <option value="">ฮีลเลอร์</option>
-                            </select>
-                        </div>
+                        
+                        
 
                         <div className="text-center my-8">
                             <button className="loginbutt">
