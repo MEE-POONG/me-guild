@@ -177,7 +177,7 @@ model UserGameRank {
   deleteBy     String
 }
 
-model DiscordID {
+model DiscordIDDB {
   id         String     @id @default(auto()) @map("_id") @db.ObjectId
   discord_ID String
   nameCheck  String
@@ -188,18 +188,18 @@ model DiscordID {
 }
 
 model CustomerDB {
-  id         String      @id @default(auto()) @map("_id") @db.ObjectId
-  discord_id String      @unique
-  username   String
-  email      String      @unique
-  password   String
-  server     String      @unique
-  createdAt  DateTime    @default(now())
-  createdBy  String?
-  updatedAt  DateTime    @updatedAt
-  updatedBy  String
-  deleteBy   String
-  DiscordID  DiscordID[]
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  discord_id  String        @unique
+  username    String
+  email       String        @unique
+  password    String
+  server      String        @unique
+  createdAt   DateTime      @default(now())
+  createdBy   String?
+  updatedAt   DateTime      @updatedAt
+  updatedBy   String
+  deleteBy    String
+  DiscordIDDB DiscordIDDB[]
 }
 
 model ProfileDB {
