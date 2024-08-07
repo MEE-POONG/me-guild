@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const page: number = Number(req.query.page) || 1;
                 const pageSize: number = Number(req.query.pageSize) || 10;
 
-                const guilds = await prisma.guildProfile.findMany({
+                const guilds = await prisma.guildProfileDB.findMany({
                     skip: (page - 1) * pageSize,
                     take: pageSize,
                     orderBy: {
@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                 });
 
-                const totalGuilds = await prisma.guildProfile.count();
+                const totalGuilds = await prisma.guildProfileDB.count();
                 const totalPage: number = Math.ceil(totalGuilds / pageSize);
                 res.status(200).json({ guilds, totalPage });
             } catch (error) {

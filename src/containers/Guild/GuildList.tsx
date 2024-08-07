@@ -30,7 +30,7 @@ const GuildList: React.FC = () => {
                 ) : (
                     guilds.map(guild => (
                         <Link href={`/guild/${guild.id}`} key={guild.id} className="flex items-center border p-2 hover:bg-gray-100">
-                            <img src={guild.avatar || "https://via.placeholder.com/96"} className="w-24 h-24" alt={guild.guildname} />
+                            <img src={guild.avatar} className="w-24 h-24" alt={guild.guildname} />
                             <div className="ml-3">
                                 <p className="text-lg font-bold">{guild.guildname}</p>
                                 <p className="text-sm font-thin text-gray-500">{guild.description}</p>

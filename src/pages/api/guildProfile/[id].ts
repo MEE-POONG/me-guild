@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
         case 'GET':
             try {
-                const guildProfile = await prisma.guildProfile.findUnique({
+                const guildProfile = await prisma.guildProfileDB.findUnique({
                     where: { id: id as string },
                 });
 
@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     return res.status(400).json({ error: "Content are required" });
                 }
 
-                const updatedGuilds = await prisma.guildProfile.update({
+                const updatedGuilds = await prisma.guildProfileDB.update({
                     where: { id: id as string },
                     data: { guildname, rule, description, discordlink, backdrop, avatar },
                 });
@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'DELETE':
             try {
-                await prisma.guildProfile.delete({
+                await prisma.guildProfileDB.delete({
                     where: { id: id as string },
                 });
 
