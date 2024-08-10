@@ -25,7 +25,7 @@ const NewActivityUpdate: React.FC = (props) => {
     return (
         <div className="textstyles">
             <div className="container mx-auto bg-gray-100 text-gray-900 p-16">
-                <h1 className="text-cyan-600 animate-cha02">
+                <h1 className="text-cyan-700 animate-cha02">
                     ประกาศกิจกรรม
                 </h1>
                 <div className="mt-3">
@@ -37,7 +37,7 @@ const NewActivityUpdate: React.FC = (props) => {
                             ) : (
                                 activityData.map(activities => (
                                     <li key={activities.id}  className="border-b border-slate-500 mb-2">
-                                        <a href={`/activity/${activities.id}`} className="flex justify-between">
+                                        <a href={`/activity/${activities.id}`} className="flex justify-between ">
                                             {activities.title}
                                             <span className="text-orange-400">{activities.point} point</span>
                                         </a>

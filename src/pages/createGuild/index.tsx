@@ -6,7 +6,7 @@ const CreateGuildPage: React.FC = (props) => {
     return (
         <Layout>
             <section className="">
-                <div className="w-full h-[350px] overflow-hidden">
+                <div className="w-full h-[250px] overflow-hidden">
                     <img src="/images/bg05.webp"
                         className="w-full h-full object-cover "
                         alt=""
@@ -14,7 +14,7 @@ const CreateGuildPage: React.FC = (props) => {
                 </div>
                 <div className="container mx-auto my-10 ">
                     <form className="mt-3 bg-white/60 p-5 rounded-lg md:w-[450px] mx-auto">
-                        <p className="text-center mb-4 font-extrabold text-teal-500 text-4xl drop-shadow">Create Guild</p>
+                        <p className="text-center mb-4 font-extrabold text-teal-600 text-4xl drop-shadow">Create Guild</p>
                         <hr className="mb-10" />
                         <div>
                             <label htmlFor="">ชื่อกิลด์</label>

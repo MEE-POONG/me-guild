@@ -7,7 +7,7 @@ const ActivityUpdate: React.FC = () => {
     useEffect(() => {
         const fetchActivity = async () => {
             try {
-                const response = await fetch('/api/actDetail?page=1&pageSize=10');
+                const response = await fetch('/api/actDetail?page=1&pageSize=7');
                 const data = await response.json();
                 setActivityData(data.activities);
                 setLoading(false);
@@ -22,14 +22,13 @@ const ActivityUpdate: React.FC = () => {
 
     return (
         <section className="bg-gray-900 w-full mt-12">
-            <div className="container mx-auto text-gray-100  py-16">
-                <p className="textstyles flex justify-between">
+            <div className="container mx-auto text-gray-100 py-16 px-4">
+                <p className=" flex justify-between text-4xl font-bold">
                     Activity
-                    <a href="/activity" className="text-sm">All {'>>'}</a>
+                    <a href="/activity" className="text-base">ทั้งหมด {'>>'}</a>
                 </p>
                 <div className="mt-3">
                     <div className="p-5">
-                        <p className="text-xl mb-3">Daily</p>
                         <ul className="list-inside text-sm mt-5">
                             {loading ? (
                                 <p>Loading...</p>

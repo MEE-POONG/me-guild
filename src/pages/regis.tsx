@@ -60,7 +60,7 @@ const RegisterPage: React.FC = (props) => {
 
                         <div className="text-center my-8">
                             <button className="loginbutt">
-                                <Link href="/">ลงชื่อเข้าใช้</Link>
+                                <Link href="/">สมัคร</Link>
                             </button>
                         </div>
 

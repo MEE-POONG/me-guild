@@ -24,12 +24,11 @@ const NewsPage: React.FC = (props) => {
     return (
         <Layout>
             <div className="container mx-auto px-4">
-                <p className="text-xl font-bold flex items-end justify-between text-gray-500 border-b border-gray-400 pb-2">
+                <p className="text-2xl font-bold flex items-end justify-between text-gray-500 border-b border-gray-400 pb-2">
                     <span>
-                        Game trends
-                        <span className="text-xs bg-blue-400 px-1 rounded-md text-white font-light">Update</span>
+                        News
+                        <span className="text-xs bg-blue-400 px-1 rounded-md text-white font-light ml-1">Update</span>
                     </span>
-                    <a href="" className="text-sm hover:text-gray-800">All {'>>'}</a>
                 </p>
                 <div className="flex flex-wrap mt-5">
                     {loading ? (

@@ -52,28 +52,30 @@ const ProfileGuild: React.FC = (props) => {
     return (
         <Layout>
             <div className="container mx-auto py-24 px-5">
-                <div className="text-center bg-[url('/images/bg04.webp')] drop-shadow-lg bg-cover">
-                    <div className="bg-black/55 p-16">
+                <div className="text-center bg-[url('/images/bg04.webp')] drop-shadow-lg bg-cover h-[340px] rounded-t-lg overflow-hidden">
+                    <div className="bg-black/55 p-16 h-full">
                         <img src={guild.avatar}
-                            className="w-40 h-full mx-auto rounded-full"
+                            className="w-40 h-40 mx-auto rounded-full shadow-white/75 shadow-lg"
                             alt="" />
-                        <p className="text-xl font-bold text-cyan-200 drop-shadow-lg">{guild.guildname}</p>
+                        <p className="text-xl font-bold text-white drop-shadow-lg mt-3">{guild.guildname}</p>
                         <div className="flex justify-center items-center text-gray-50">
                             {/* Rank: Silver <GiRank2 /> */}
                         </div>
                     </div>
                 </div>
-                <div className=" bg-gray-200 rounded-b-lg p-5 md:p-10 mt-5 drop-shadow-lg">
+                <div className=" bg-gray-200 rounded-b-lg p-5 md:p-10 mt-8 drop-shadow-lg">
                     <p className="text-lg font-bold">About Guild</p>
-                    <div>Name : <span>{guild.guildname}</span></div>
-                    <div>Age : <span>{guild.age}</span></div>
-                    <div>sex : <span>{guild.sex}</span></div>
-                    <div>Target : <span>{guild.description}</span></div>
+                    <div className="text-sm md:text-base text-cyan-700">Name : <span className="text-black">{guild.guildname}</span></div>
+                    <div className="text-sm md:text-base text-cyan-700">Age : <span className="text-black">{guild.age}</span></div>
+                    {/* <div className="text-sm md:text-base text-cyan-700">sex : <span className="text-black">{guild.sex}</span></div> */}
+                    <div className="text-sm md:text-base text-cyan-700">Target : <span className="text-black">{guild.description}</span></div>
                     {/* <div>Rule : <span>{guild.rule}</span></div> */}
                     <div className="mt-3">
                         <p className="text-lg font-bold">Contact</p>
                         <ul>
-                            <li>Discord : <Link href={guild.discordlink}>{guild.guildname}</Link></li>
+                            <li className="text-sm md:text-base text-cyan-700">
+                                Discord : <Link href={guild.discordlink} className="text-black">{guild.guildname}</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

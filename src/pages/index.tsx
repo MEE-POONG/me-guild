@@ -8,16 +8,15 @@ import Link from "next/link";
 import React from "react"; 
 
 
-export default function Home() {
+export default function Home(props) {
   return (
     <Layout>
       <div className="">
         <HomeSlider />
-        {/* ไส้ใส่สไลด์ */}
-        <GuildRecomend />
+        <GuildRecomend /> {/*กิลด์แนะนำ*/}
         <ActivityUpdate />
         <NewsUpdate />
-        <PoppularPerson/>
+        {/* <PoppularPerson/> */}
       </div>
     </Layout>
   );

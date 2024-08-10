@@ -1,46 +1,48 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const GuildRecomend: React.FC = () => {
+    const [guilds, setGuilds] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchGuilds = async () => {
+            try {
+                const response = await fetch('/api/guildProfile?page=1&pageSize=3');
+                const data = await response.json();
+                setGuilds(data.guilds);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching guilds:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchGuilds();
+    }, []);
     return (
-        <section className="py-20">
-            <div className="container mx-auto ">
-                <p className="text-xl font-bold flex items-end justify-between text-gray-500 hover:text-gray-800">Guild Recomend
-                    <a href="" className="text-sm">All {'>>'}</a>
-                </p>
-                <div className="mt-2 grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                <Link href='' className="flex items-center border p-2 hover:bg-gray-100">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
-                        className="w-24 h-24"
-                        alt="" />
-                    <div>
-                        <p className="text-lg font-bold">Guild Name</p>
-                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
-                        <p className="text-sm font-bold text-teal-600">ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
-                    </div>
-                </Link>
-                <Link href='' className="flex items-center border p-2">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
-                        className="w-24 h-24"
-                        alt="" />
-                    <div>
-                        <p className="text-lg font-bold">Guild Name</p>
-                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
-                        <p>ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
-                    </div>
-                </Link>
-                <Link href='' className="flex items-center border p-2">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd4apD1IYVtMN5rO2yPJLE6_1pvpehAJAag&s"
-                        className="w-24 h-24"
-                        alt="" />
-                    <div>
-                        <p className="text-lg font-bold">Guild Name</p>
-                        <p className="text-sm font-thin text-gray-500">คำอธิบายเกี่ยวกับกิลด์ สั้นๆ เช่น ทำกิลด์เกี่ยวกับอะไร</p>
-                        <p>ประเภทกิลด์ เช่น หางาน ทั่วไปฯ</p>
-                    </div>
-                </Link>
+        <div className="container mx-auto px-4 py-16">
+            <h3 className="text-4xl mt-10 font-bold text-gray-700 drop-shadow-md flex items-end justify-between">
+                กิลด์แนะนำ
+                <a href="/guild" className="text-base text-teal-600 hover:text-teal-500">ทั้งหมด{`>>`}</a>
+            </h3>
+            <div className="mt-2 grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {loading ? (
+                    <p>Loading...</p>
+                ) : (
+                    guilds.map(guild => (
+                        <Link href={`/guild/${guild.id}`} key={guild.id} className="flex items-center border p-2 hover:bg-gray-100">
+                            <img src={guild.avatar} className="w-24 h-24" alt={guild.guildname} />
+                            <div className="ml-3">
+                                <p className="text-lg font-bold">{guild.guildname}</p>
+                                <p className="text-sm font-thin text-gray-500">{guild.description}</p>
+                                <p className="text-sm font-bold text-teal-600">{guild.rule}</p>
+                            </div>
+                        </Link>
+                    ))
+                )}
             </div>
-            </div>
-        </section>
+        </div>
     )
 }
 export default GuildRecomend;
