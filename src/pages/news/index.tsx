@@ -8,7 +8,7 @@ const NewsPage: React.FC = (props) => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=10');
+                const response = await fetch('/api/news');
                 const data = await response.json();
                 setNewsData(data.news);
                 setLoading(false);

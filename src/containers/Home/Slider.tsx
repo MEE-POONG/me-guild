@@ -13,8 +13,8 @@ const HomeSlider: React.FC = () => {
     };
     return (
         <div className="slidestyle">
-            <div className="slider-container">
-                <Slider {...settings} className="slide">
+            <div className="slider-container h-[420px] overflow-hidden">
+                <Slider {...settings}>
                     <div className="slide ">
                         <img src="/images/bg01.webp" alt="" className="" />
                     </div>

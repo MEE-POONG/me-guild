@@ -15,19 +15,19 @@ const ContactPage: React.FC = (props) => {
                 </iframe>
                 <div className="mt-10 p-5 md:p-8 shadow-inner shadow-gray-300 rounded-md ">
                     <div className="grid md:grid-cols-2 gap-4">
-                        <div className="space-y-3">
+                        <div className="space-y-2">
                             <p className="font-bold text-lg">Contact us</p>
-                            <p>Address: <span>Mueang Nakhon Ratchasima District, 30000</span></p>
-                            <p>Phone: <span>044 895 7725</span></p>
-                            <p>Email: <span>meguild@mail.com</span></p>
-                            <button className="">
+                            <p className="text-sm md:text-base">Address: <span>Mueang Nakhon Ratchasima District, 30000</span></p>
+                            <p className="text-sm md:text-base">Phone: <span>044 895 7725</span></p>
+                            <p className="text-sm md:text-base">Email: <span>meguild@mail.com</span></p>
+                            <button className="text-sm md:text-base">
                                 <Link href="" className="hover:text-purple-700 flex items-center gap-1">
                                     <PiDiscordLogoBold /> ME GUILE
                                 </Link>
                             </button>
 
                         </div>
-                        <div className="">
+                        <div className="text-sm md:text-base">
                             <p className="font-bold text-lg">Leave a Reply</p>
                             <form action="" className="w-full mt-3 space-y-3">
                                 <div className="lg:flex justify-between gap-3">
