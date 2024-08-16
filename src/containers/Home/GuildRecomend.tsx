@@ -36,7 +36,7 @@ const GuildRecomend: React.FC = () => {
                             <div className="ml-3">
                                 <p className="text-lg font-bold">{guild.guildname}</p>
                                 <p className="text-sm font-thin text-gray-500">{guild.description}</p>
-                                <p className="text-sm font-bold text-teal-600">{guild.rule}</p>
+                                <p className="text-sm font-bold text-teal-600 line-clamp-1">{guild.rule}</p>
                             </div>
                         </Link>
                     ))

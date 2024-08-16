@@ -47,7 +47,7 @@ const GuildList: React.FC = () => {
                 <CiSearch size={20} />
             </div>
 
-            <div className="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
@@ -57,8 +57,8 @@ const GuildList: React.FC = () => {
                         >
                             <img src={guild.avatar} className="w-24 h-24" alt={guild.guildname} />
                             <div className="ml-3">
-                                <p className="text-lg font-bold">{guild.guildname}</p>
-                                <p className="text-sm font-thin text-gray-500">{guild.description}</p>
+                                <p className="text-lg font-bold ">{guild.guildname}</p>
+                                <p className="text-sm font-thin text-gray-500 line-clamp-2">{guild.description}</p>
                                 <p className="text-sm font-bold text-teal-600 line-clamp-1">{guild.rule}</p>
                             </div>
                         </Link>

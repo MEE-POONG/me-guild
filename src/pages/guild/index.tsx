@@ -26,7 +26,7 @@ const GuildPage: React.FC = (props) => {
                     </button>
                 </div>
                 <GuildList />
-                <PeopleList />
+                {/* <PeopleList /> */}
             </section>
         </Layout>
     )

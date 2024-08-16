@@ -1,5 +1,4 @@
 import Layout from "@/components/layout"
-import NewActivityUpdate from "@/containers/Activity/NewActivityUpdate";
 import { useEffect, useState } from "react";
 
 const ActivityPage: React.FC = (props) => {
@@ -10,7 +9,7 @@ const ActivityPage: React.FC = (props) => {
     useEffect(() => {
         const fetchActivity = async () => {
             try {
-                const response = await fetch('/api/actDetail?page=1&pageSize=10');
+                const response = await fetch('/api/actDetail');
                 const data = await response.json();
                 setActivityData(data.activities);
                 setLoading(false);

@@ -59,7 +59,7 @@ const ActivityDetail: React.FC = (props) => {
 
                     {/* ภาพประกอบ/โปรโมท */}
                     <img src={activities.img}
-                        className='py-5 mx-auto drop-shadow-lg w-[620px] h-full'
+                        className='py-5 mx-auto drop-shadow-lg w-[620px] h-[400px]'
                         alt="" />
                     <div>
                         <p>รายละเอียดกิจกรรม</p>

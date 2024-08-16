@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         case 'GET':
             try {
                 const page: number = Number(req.query.page) || 1;
-                const pageSize: number = Number(req.query.pageSize) || 10;
+                const pageSize: number = Number(req.query.pageSize) || 100;
 
                 const activities = await prisma.actDetailDB.findMany({
                     skip: (page - 1) * pageSize,
@@ -31,14 +31,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'POST':
             try {
-                const { title, img, description, point, type, startdate, enddate, disname, dislink } = req.body;
+                const { title, point, type, img, startdate, enddate, description, disname, dislink } = req.body;
 
-                if (!title || !img || !description || !point || !type || !startdate || !enddate || !disname || !dislink) {
+                if (!title || !point || !type || !img || !startdate || !enddate || !description || !disname || !dislink) {
                     return res.status(400).json({ error: "Title and content are required" });
                 }
 
                 const newActivities = await prisma.actDetailDB.create({
-                    data: { title, img, description, point, type, startdate, enddate, disname, dislink },
+                    data: { title, point, type, img, startdate, enddate, description, disname, dislink },
                 });
 
                 res.status(201).json(newActivities);
