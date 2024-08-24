@@ -1,3 +1,4 @@
+import LoginWithDiscord from "@/components/LoginWithDiscord";
 import Link from "next/link";
 
 const RegisterPage: React.FC = (props) => {
@@ -6,9 +7,9 @@ const RegisterPage: React.FC = (props) => {
         <div className="loginpage" >
             <div className="background-image p-5 md:p-10">
                 <div className="container mx-auto mt-40">
-                    <form className="mt-3 bg-white/60 p-5 rounded-lg md:w-[450px] mx-auto">
+                    <form className="mt-3 bg-white/60 p-10 rounded-lg md:w-[450px] mx-auto">
                         <p className="text-center mb-4 font-extrabold text-amber-400 text-4xl drop-shadow">REGISTER</p>
-                        <p className="text-sm font-thin text-gray-600 mt-5">**กรุณากรอกข้อมูลจริง</p>
+                        {/* <p className="text-sm font-thin text-gray-600 mt-5">**กรุณากรอกข้อมูลจริง</p> */}
                         <div className="md:flex justify-between gap-4">
                             <div>
                                 <label htmlFor="">Name</label>
@@ -56,8 +57,6 @@ const RegisterPage: React.FC = (props) => {
                             />
                         </div>
 
-
-
                         <div className="text-center mt-5">
                             <button className="loginbutt">
                                 <Link href="/">สมัคร</Link>
@@ -69,7 +68,7 @@ const RegisterPage: React.FC = (props) => {
                             <div className="bg-gray-400 h-[1px] w-full" ></div>
                         </div>
                         <div className="mt-3">
-                            <button
+                            {/* <button
                                 className="mx-auto flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                                 <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
                                     width="800px" height="800px" viewBox="0 -28.5 256 256" version="1.1" preserveAspectRatio="xMidYMid">
@@ -84,7 +83,8 @@ const RegisterPage: React.FC = (props) => {
 
                                 <span>Continue with Discord</span>
 
-                            </button>
+                            </button> */}
+                            <LoginWithDiscord/>
                         </div>
 
                         <p className="text-sm mt-10">Already have an account?

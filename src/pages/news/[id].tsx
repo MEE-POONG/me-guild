@@ -53,7 +53,7 @@ const ReadNews: React.FC = (props) => {
                     <p className="text-2xl mb-3 font-black">{news.title}</p>
                     <div className="border-t-4 border-purple-500 text-sm md:text-base">
                         <img src={news.img}
-                            className="w-full h-full mx-auto drop-shadow-md"
+                            className="w-full h-[420px] mx-auto drop-shadow-md"
                             alt=""
                         />
                         <p className="mt-10 indent-8 ">

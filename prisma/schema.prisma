@@ -63,8 +63,8 @@ model PointHistoryDB {
 
 model GameOnlineDB {
   id                   String                 @id @default(auto()) @map("_id") @db.ObjectId
+  logo                 String
   game_name            String
-  dis_RoomID           String
   createdAt            DateTime               @default(now())
   createdBy            String?
   updatedAt            DateTime               @updatedAt
@@ -132,33 +132,36 @@ model GameMatchDB {
 }
 
 model ConditionGameMatchDB {
-  id           String       @id @default(auto()) @map("_id") @db.ObjectId
-  gameId       String       @db.ObjectId
-  gameOnlineDB GameOnlineDB @relation(fields: [gameId], references: [id])
-  maxParty     Int
-  matchRank    Boolean
-  limitNumber  Int          @default(0)
-  createdAt    DateTime     @default(now())
-  createdBy    String?
-  updatedAt    DateTime     @updatedAt
-  updatedBy    String
-  deleteBy     String
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  rankGameDB     RankGameDB    @relation(fields: [rankId], references: [id])
+  rankId         String        @db.ObjectId
+  maxParty       Int
+  matchRank      Boolean
+  limitNumber    Int           @default(0)
+  createdAt      DateTime      @default(now())
+  createdBy      String?
+  updatedAt      DateTime      @updatedAt
+  updatedBy      String
+  deleteBy       String
+  GameOnlineDB   GameOnlineDB? @relation(fields: [gameOnlineDBId], references: [id])
+  gameOnlineDBId String?       @db.ObjectId
 }
 
 model RankGameDB {
-  id           String         @id @default(auto()) @map("_id") @db.ObjectId
-  nameRank     String
-  imgRank      String
-  number       Int
-  gameId       String         @db.ObjectId
-  gameOnlineDB GameOnlineDB   @relation(fields: [gameId], references: [id])
-  gameMatchDB  GameMatchDB[]
-  createdAt    DateTime       @default(now())
-  createdBy    String?
-  updatedAt    DateTime       @updatedAt
-  updatedBy    String
-  deleteBy     String
-  userGameRank UserGameRank[]
+  id                   String                 @id @default(auto()) @map("_id") @db.ObjectId
+  nameRank             String
+  imgRank              String
+  number               Int
+  gameId               String                 @db.ObjectId
+  gameOnlineDB         GameOnlineDB           @relation(fields: [gameId], references: [id])
+  gameMatchDB          GameMatchDB[]
+  createdAt            DateTime               @default(now())
+  createdBy            String?
+  updatedAt            DateTime               @updatedAt
+  updatedBy            String
+  deleteBy             String
+  userGameRank         UserGameRank[]
+  ConditionGameMatchDB ConditionGameMatchDB[]
 }
 
 model UserGameRank {
