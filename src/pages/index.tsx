@@ -8,7 +8,7 @@ import Link from "next/link";
 import React from "react"; 
 
 
-export default function Home(props) {
+const Home: React.FC = (props) => {
   return (
     <Layout>
       <div className="">
@@ -21,3 +21,4 @@ export default function Home(props) {
     </Layout>
   );
 }
+export default Home;

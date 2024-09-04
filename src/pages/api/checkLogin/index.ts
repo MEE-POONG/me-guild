@@ -9,31 +9,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
         case 'GET':
             try {
-                const page: number = Number(req.query.page) || 1;
-                const pageSize: number = Number(req.query.pageSize) || 10;
+                const users = await prisma.userDB.findMany();
 
-                const users = await prisma.userDB.findMany({
-                    skip: (page - 1) * pageSize,
-                    take: pageSize,
-                });
-
-                const totaladminUser = await prisma.userDB.count();
-                const totalPage: number = Math.ceil(totaladminUser / pageSize);
                 res.status(200).json({ users });
             } catch (error) {
-                res.status(500).json({ error: "An error occurred while fetching the adminUser" });
+                res.status(500).json({ error: "An error occurred while fetching the users" });
             }
             break;
 
         case 'POST':
             try {
-                const newadminUser = await prisma.userDB.create({
+                const newUser = await prisma.userDB.create({
                     data: req.body,
                 });
 
-                res.status(201).json(newadminUser);
+                res.status(201).json(newUser);
             } catch (error) {
-                res.status(500).json({ error: "An error occurred while creating the adminUser" });
+                res.status(500).json({ error: "An error occurred while creating the user" });
             }
             break;
 
@@ -42,3 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             res.status(405).end(`Method ${method} Not Allowed`);
     }
 }
+
+
+
+
