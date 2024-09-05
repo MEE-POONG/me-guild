@@ -31,14 +31,16 @@ const LoginDropdown: React.FC = () => {
                 <div className="relative">
                     <button
                         onClick={toggleDropdown}
-                        className="flex items-center py-3 px-2 font-semibold hover:text-teal-600 transition duration-300 hover:border-b-2 "
+                        className="flex items-center py-3 px-2 font-semibold hover:text-teal-600 "
                     >
                         <FaUserCircle className="mr-1" />
                         PROFILE
                     </button>
                     {isDropdownOpen && (
                         <div
-                            className="absolute lg:mt-2 py-2 lg:w-48 bg-white lg:rounded-lg lg:shadow-lg shadow-inner w-full border-l-2 border-teal-500 hover:bg-gray-300"
+                            className="absolute lg:mt-2 py-2 lg:w-48 bg-white lg:rounded-lg lg:shadow-lg shadow-inner 
+                                       w-full border-l-2 border-teal-500 hover:bg-gray-300 animate-flip-down lg:animate-none
+                                       "
                         >
                             {/* <Link href="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                                 My Profile

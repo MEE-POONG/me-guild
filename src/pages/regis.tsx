@@ -45,7 +45,13 @@ const RegisterPage: React.FC = (props) => {
                             </div>
                         </div>
                         <div>
-                            <label htmlFor="">Email</label>
+                            <label htmlFor="">Username</label>
+                            <input type="text" name=""
+                                className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="">Password</label>
                             <input type="text" name=""
                                 className="w-full py-1 px-2 drop-shadow-lg bg-none border-b-2 border-amber-400 focus:outline-none focus:border-blue-400 mb-3"
                             />
@@ -84,7 +90,7 @@ const RegisterPage: React.FC = (props) => {
                                 <span>Continue with Discord</span>
 
                             </button> */}
-                            <LoginWithDiscord/>
+                            <LoginWithDiscord />
                         </div>
 
                         <p className="text-sm mt-10">Already have an account?

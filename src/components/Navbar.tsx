@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className={`lg:hidden h-screen pl-9 ${isOpen ? "block bg-white " : "hidden "}`}>
+            <div className={`lg:hidden h-screen pl-9 ${isOpen ? "block bg-white animate-flip-down" : "hidden "}`}>
                 {navItems.map((item) => (
                     <Link key={item.href} href={item.href}>
                         <p
