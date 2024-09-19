@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
                             </Link>
                         ))}
                         {/* Use the LoginDropdown component */}
-                        <LoginDropdown />
+                        {/* <LoginDropdown /> */}
                     </div>
                     <div className="lg:hidden flex items-center">
                         <button className="outline-none mobile-menu-button" onClick={toggleMenu}>
