@@ -9,13 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "home-body": "url('/public/images/bg01.webp')",
-      },
+     
     },
   },
   plugins: [
-    require('tailwindcss-animated')
+    require('tailwindcss-animated'),
   ],
 };
+
 export default config;

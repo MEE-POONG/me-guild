@@ -5,7 +5,7 @@ import NewsUpdate from "@/containers/Home/NewsUpdate";
 import PoppularPerson from "@/containers/Home/PopularPerson";
 import HomeSlider from "@/containers/Home/Slider";
 import Link from "next/link";
-import React from "react"; 
+import React from "react";
 
 
 const Home: React.FC = (props) => {
@@ -13,8 +13,8 @@ const Home: React.FC = (props) => {
     <Layout>
       <div className="">
         <HomeSlider />
-        <GuildRecomend /> {/*กิลด์แนะนำ*/}
         <ActivityUpdate />
+        {/* <GuildRecomend /> กิลด์แนะนำ */}
         <NewsUpdate />
         {/* <PoppularPerson/> */}
       </div>

@@ -12,8 +12,8 @@ const HomeSlider: React.FC = () => {
         cssEase: "linear"
     };
     return (
-        <div className="slidestyle">
-            <div className="slider-container h-[420px] overflow-hidden">
+        <div className="slidestyle container mx-auto mt-3">
+            <div className="slider-container h-[480px] overflow-hidden">
                 <Slider {...settings}>
                     <div className="slide ">
                         <img src="/images/bg01.webp" alt="" className="" />

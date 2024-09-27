@@ -21,7 +21,7 @@ const ContactPage: React.FC = (props) => {
                             <p className="text-sm md:text-base">Phone: <span>044 895 7725</span></p>
                             <p className="text-sm md:text-base">Email: <span>meguild@mail.com</span></p>
                             <button className="text-sm md:text-base">
-                                <Link href="" className="hover:text-purple-700 flex items-center gap-1">
+                                <Link href="https://discord.gg/ptYdn5bS" className="hover:text-purple-700 flex items-center gap-1">
                                     <PiDiscordLogoBold /> ME GUILE
                                 </Link>
                             </button>
