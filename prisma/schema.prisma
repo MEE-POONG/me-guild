@@ -8,19 +8,22 @@ datasource db {
 }
 
 model UserDB {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  discord_id    String          @unique
-  username      String
-  email         String          @unique
-  password      String
-  createdAt     DateTime        @default(now())
-  createdBy     String?
-  updatedAt     DateTime        @updatedAt
-  updatedBy     String
-  deleteBy      String
-  gameMatchDB   GameMatchDB[]
-  userGameRank  UserGameRank[]
-  creditPointDB CreditPointDB[]
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  discord_id        String   @unique
+  username          String?
+  email             String   @unique
+  nickname          String?
+  password          String?
+  firstname         String
+  lastname          String
+  birthday          DateTime
+  gender            String
+  alternativeGender String
+  createdAt         DateTime @default(now())
+  createdBy         String?
+  updatedAt         DateTime @updatedAt
+  updatedBy         String
+  deleteBy          String
 }
 
 model CheckOnlineDB {
@@ -38,8 +41,7 @@ model CheckOnlineDB {
 
 model CreditPointDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  userDB      UserDB   @relation(fields: [userId], references: [id])
-  userId      String   @db.ObjectId
+  userId      String
   points      Int      @default(0)
   totalPoints Int
   createdAt   DateTime @default(now())
@@ -62,152 +64,116 @@ model PointHistoryDB {
 }
 
 model GameOnlineDB {
-  id                   String                 @id @default(auto()) @map("_id") @db.ObjectId
-  logo                 String
-  game_name            String
-  createdAt            DateTime               @default(now())
-  createdBy            String?
-  updatedAt            DateTime               @updatedAt
-  updatedBy            String?
-  deleteBy             String?
-  conditionGameMatchDB ConditionGameMatchDB[]
-  rankGame             RankGameDB[]
-  gameMatchDB          GameMatchDB[]
-  userGameRank         UserGameRank[]
-  gameTypeGame         GameTypeGame[]
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  logo        String
+  game_name   String
+  partyLimit  Int
+  ranking     Boolean // มีระบบแรงค์ไม่มีระบบแรงค์
+  numberMatch Int?
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String?
+  deleteBy    String?
 }
 
 model GameCategoryDB {
-  id        String       @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
-  createdAt DateTime     @default(now())
+  createdAt DateTime @default(now())
   createdBy String?
-  updatedAt DateTime     @updatedAt
+  updatedAt DateTime @updatedAt
   updatedBy String
   deleteBy  String
-  gameTypes GameTypeDB[]
 }
 
 model GameTypeDB {
-  id             String         @id @default(auto()) @map("_id") @db.ObjectId
-  title          String
-  createdAt      DateTime       @default(now())
-  createdBy      String?
-  updatedAt      DateTime       @updatedAt
-  updatedBy      String
-  deleteBy       String
-  categoryId     String         @db.ObjectId
-  gameCategoryDB GameCategoryDB @relation(fields: [categoryId], references: [id])
-  gameTypeGame   GameTypeGame[]
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  createdAt  DateTime @default(now())
+  createdBy  String?
+  updatedAt  DateTime @updatedAt
+  updatedBy  String
+  deleteBy   String
+  categoryId String   @db.ObjectId
 }
 
 model GameTypeGame {
-  id           String       @id @default(auto()) @map("_id") @db.ObjectId
-  gameId       String       @db.ObjectId
-  typeId       String       @db.ObjectId
-  createdAt    DateTime     @default(now())
-  createdBy    String?
-  updatedAt    DateTime     @updatedAt
-  updatedBy    String
-  deleteBy     String
-  gameOnlineDB GameOnlineDB @relation(fields: [gameId], references: [id])
-  gameTypeDB   GameTypeDB   @relation(fields: [typeId], references: [id])
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  gameId    String   @db.ObjectId
+  typeId    String   @db.ObjectId
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
+}
+
+model GameRankUser {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id   String
+  rank_id   String   @db.ObjectId
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
 }
 
 model GameMatchDB {
-  id           String       @id @default(auto()) @map("_id") @db.ObjectId
-  user         UserDB       @relation(fields: [userId], references: [id])
-  userId       String       @db.ObjectId
-  gameOnlineDB GameOnlineDB @relation(fields: [gameId], references: [id])
-  gameId       String       @db.ObjectId
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String
+  gameId       String   @db.ObjectId
   rank         Boolean
-  rankGameDB   RankGameDB?  @relation(fields: [selectRankID], references: [id])
-  selectRankID String?      @db.ObjectId
+  selectRankID String?  @db.ObjectId
+  channel_id   String
+  partyLimit   Int
+  limitNumber  Int
+  status       Boolean
   members      String[]
-  createdAt    DateTime     @default(now())
+  createdAt    DateTime @default(now())
   createdBy    String?
-  updatedAt    DateTime     @updatedAt
+  updatedAt    DateTime @updatedAt
   updatedBy    String
   deleteBy     String
 }
 
 model ConditionGameMatchDB {
-  id             String        @id @default(auto()) @map("_id") @db.ObjectId
-  rankGameDB     RankGameDB    @relation(fields: [rankId], references: [id])
-  rankId         String        @db.ObjectId
-  maxParty       Int
-  matchRank      Boolean
-  limitNumber    Int           @default(0)
-  createdAt      DateTime      @default(now())
-  createdBy      String?
-  updatedAt      DateTime      @updatedAt
-  updatedBy      String
-  deleteBy       String
-  GameOnlineDB   GameOnlineDB? @relation(fields: [gameOnlineDBId], references: [id])
-  gameOnlineDBId String?       @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  maxParty    Int
+  limitNumber Int      @default(0)
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String
+  deleteBy    String
+  gameId      String?  @db.ObjectId
 }
 
-model RankGameDB {
-  id                   String                 @id @default(auto()) @map("_id") @db.ObjectId
-  nameRank             String
-  imgRank              String
-  number               Int
-  gameId               String                 @db.ObjectId
-  gameOnlineDB         GameOnlineDB           @relation(fields: [gameId], references: [id])
-  gameMatchDB          GameMatchDB[]
-  createdAt            DateTime               @default(now())
-  createdBy            String?
-  updatedAt            DateTime               @updatedAt
-  updatedBy            String
-  deleteBy             String
-  userGameRank         UserGameRank[]
-  ConditionGameMatchDB ConditionGameMatchDB[]
+model GameRankDB {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  nameRank  String
+  imgRank   String
+  number    Int
+  gameId    String   @db.ObjectId
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
 }
 
 model UserGameRank {
-  id           String       @id @default(auto()) @map("_id") @db.ObjectId
-  gameOnlineDB GameOnlineDB @relation(fields: [gameId], references: [id])
-  gameId       String       @db.ObjectId
-  UserDB       UserDB       @relation(fields: [userId], references: [id])
-  userId       String       @db.ObjectId
-  rankGameDB   RankGameDB?  @relation(fields: [rankGameId], references: [id])
-  rankGameId   String?      @db.ObjectId
-  invitation   Boolean
-  createdAt    DateTime     @default(now())
-  createdBy    String?
-  updatedAt    DateTime     @updatedAt
-  updatedBy    String
-  deleteBy     String
-}
-
-model DiscordIDDB {
-  id         String     @id @default(auto()) @map("_id") @db.ObjectId
-  discord_ID String
-  nameCheck  String
-  type       String
-  server     String
-  customer   CustomerDB @relation(fields: [customerId], references: [id])
-  customerId String     @db.ObjectId
-  createdAt  DateTime   @default(now())
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  gameId     String   @db.ObjectId
+  userId     String
+  gameRankId String   @db.ObjectId
+  invitation Boolean
+  createdAt  DateTime @default(now())
   createdBy  String?
-  updatedAt  DateTime   @updatedAt
+  updatedAt  DateTime @updatedAt
   updatedBy  String
   deleteBy   String
-}
-
-model CustomerDB {
-  id          String        @id @default(auto()) @map("_id") @db.ObjectId
-  discord_id  String        @unique
-  username    String
-  email       String        @unique
-  password    String
-  server      String        @unique
-  createdAt   DateTime      @default(now())
-  createdBy   String?
-  updatedAt   DateTime      @updatedAt
-  updatedBy   String
-  deleteBy    String
-  DiscordIDDB DiscordIDDB[]
 }
 
 model NewsUpdateDB {
@@ -256,10 +222,71 @@ model ActDetailDB {
   deleteBy    String
 }
 
-model IPAddress {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  ipAddress  String?
-  createdAt  DateTime? @default(now())
-  updatedAt  DateTime? @updatedAt
-  deleted_at DateTime? @map("deleted_at")
+model Wallet {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String
+  createdAt    DateTime @default(now())
+  createdBy    String?
+  updatedAt    DateTime @updatedAt
+  updatedBy    String?
+  coin_copper  Int      @default(0)
+  coin_silver  Int      @default(0)
+  coin_gold    Int      @default(0)
+  coin_diamond Int      @default(0)
+  coin_crystal Int      @default(0)
+}
+
+model paymentHistory {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String
+  status       String   @default("pending")
+  reason       String?
+  title        String?
+  detail       String?
+  total        String?
+  receive      String?
+  pay          String?
+  net          String?
+  createdAt    DateTime @default(now())
+  createdBy    String?
+  updatedAt    DateTime @updatedAt
+  updatedBy    String
+  coin_copper  Int      @default(0)
+  coin_silver  Int      @default(0)
+  coin_gold    Int      @default(0)
+  coin_diamond Int      @default(0)
+  coin_crystal Int      @default(0)
+}
+
+model Guild {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  guild_name   String?
+  guild_level  Int     @default(1)
+  guild_copper Int     @default(0)
+  guild_size   Int     @default(5)
+  guild_roleId String?
+  guild_leader String
+}
+
+model GuildMembers {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  guildId  String  @db.ObjectId
+  userId   String
+  position String?
+  status   String?
+}
+
+model InviteData {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String
+  guildId String
+}
+
+model GuildCreateReport {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  ownerId   String
+  channelId String
+  messageId String
+  guildName String
+  members   String[]
 }
