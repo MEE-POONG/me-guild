@@ -298,6 +298,7 @@ model GameRegistrationDB {
   isIndividual   Boolean // true ถ้าเป็นการสมัครแบบเดี่ยว, false ถ้าเป็นการสมัครแบบปาร์ตี้
   GameEventId    String // เชื่อมกับตารางที่เก็บข้อมูลรายการแข่ง
   members        String[] // รายชื่อสมาชิกในปาร์ตี้ (สำหรับการสมัครแบบปาร์ตี้)
+  teamId         String // กรณีลงทะเบียนด้วยทีม
   representative String? // ข้อมูลผู้ที่เป็นตัวแทนของปาร์ตี้ในการแข่ง
   createdAt      DateTime @default(now())
   createdBy      String?
@@ -317,10 +318,10 @@ model GameEventDB {
   deleteBy    String
 }
 
-model MatchScheduleDB {
+model GameMatchScheduleDB {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  teamAId      String   @db.ObjectId // เชื่อมกับ TeamDB
-  teamBId      String   @db.ObjectId // เชื่อมกับ TeamDB
+  teamAId      String   @db.ObjectId // เชื่อมกับ GameRegistrationDB
+  teamBId      String   @db.ObjectId // เชื่อมกับ GameRegistrationDB
   eventId      String   @db.ObjectId // เชื่อมกับรายการแข่ง (GameEventDB)
   matchTime    DateTime // เวลาแข่งขัน
   status       String // สถานะของการแข่งขัน (เช่น pending, completed)
@@ -344,4 +345,5 @@ model TeamDB {
   updatedBy      String
   deleteBy       String
 }
+
 //ใช้ในกรณีกิจกรรมที่ไม่เกี่ยวกับการแข่งขัน
