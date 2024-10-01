@@ -163,6 +163,49 @@ model GameRankDB {
   deleteBy  String
 }
 
+model GameRegistrationDB {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  discord_id     String // เชื่อมกับ UserDB ผ่าน discord_id
+  partyName      String? // ฟิลด์นี้จะใช้เฉพาะการลงทะเบียนแบบปาร์ตี้
+  isIndividual   Boolean // true ถ้าเป็นการสมัครแบบเดี่ยว, false ถ้าเป็นการสมัครแบบปาร์ตี้
+  GameEventId    String // เชื่อมกับตารางที่เก็บข้อมูลรายการแข่ง
+  members        String[] // รายชื่อสมาชิกในปาร์ตี้ (สำหรับการสมัครแบบปาร์ตี้)
+  teamId         String // กรณีลงทะเบียนด้วยทีม
+  representative String? // ข้อมูลผู้ที่เป็นตัวแทนของปาร์ตี้ในการแข่ง
+  createdAt      DateTime @default(now())
+  createdBy      String?
+  updatedAt      DateTime @updatedAt
+  updatedBy      String
+  deleteBy       String
+}
+
+model GameEventDB {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String // ชื่อรายการแข่ง
+  description String? // รายละเอียดของรายการแข่ง
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String
+  deleteBy    String
+}
+
+model GameMatchScheduleDB {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamAId      String   @db.ObjectId // เชื่อมกับ GameRegistrationDB
+  teamBId      String   @db.ObjectId // เชื่อมกับ GameRegistrationDB
+  eventId      String   @db.ObjectId // เชื่อมกับรายการแข่ง (GameEventDB)
+  matchTime    DateTime // เวลาแข่งขัน
+  status       String // สถานะของการแข่งขัน (เช่น pending, completed)
+  channel_id   String // ID ของช่องที่ใช้สำหรับการแข่งขัน (เช่น Discord Channel)
+  winnerTeamId String? // ทีมที่ชนะการแข่งขัน
+  createdAt    DateTime @default(now())
+  createdBy    String?
+  updatedAt    DateTime @updatedAt
+  updatedBy    String
+  deleteBy     String
+}
+
 model UserGameRank {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   gameId     String   @db.ObjectId
@@ -182,21 +225,6 @@ model NewsUpdateDB {
   img         String
   description String
   creditlink  String
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
-}
-
-model GuildProfileDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  guildname   String
-  description String
-  rule        String
-  discordlink String
-  backdrop    String
-  avatar      String
   createdAt   DateTime @default(now())
   createdBy   String?
   updatedAt   DateTime @updatedAt
@@ -268,18 +296,27 @@ model Guild {
   guild_leader String
 }
 
+model GuildProfileDB {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  guildname   String
+  description String
+  rule        String
+  discordlink String
+  backdrop    String
+  avatar      String
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String
+  deleteBy    String
+}
+
 model GuildMembers {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   guildId  String  @db.ObjectId
   userId   String
   position String?
   status   String?
-}
-
-model InviteData {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  userId  String
-  guildId String
 }
 
 model GuildCreateReport {
@@ -291,47 +328,10 @@ model GuildCreateReport {
   members   String[]
 }
 
-model GameRegistrationDB {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  discord_id     String // เชื่อมกับ UserDB ผ่าน discord_id
-  partyName      String? // ฟิลด์นี้จะใช้เฉพาะการลงทะเบียนแบบปาร์ตี้
-  isIndividual   Boolean // true ถ้าเป็นการสมัครแบบเดี่ยว, false ถ้าเป็นการสมัครแบบปาร์ตี้
-  GameEventId    String // เชื่อมกับตารางที่เก็บข้อมูลรายการแข่ง
-  members        String[] // รายชื่อสมาชิกในปาร์ตี้ (สำหรับการสมัครแบบปาร์ตี้)
-  teamId         String // กรณีลงทะเบียนด้วยทีม
-  representative String? // ข้อมูลผู้ที่เป็นตัวแทนของปาร์ตี้ในการแข่ง
-  createdAt      DateTime @default(now())
-  createdBy      String?
-  updatedAt      DateTime @updatedAt
-  updatedBy      String
-  deleteBy       String
-}
-
-model GameEventDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String // ชื่อรายการแข่ง
-  description String? // รายละเอียดของรายการแข่ง
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
-}
-
-model GameMatchScheduleDB {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  teamAId      String   @db.ObjectId // เชื่อมกับ GameRegistrationDB
-  teamBId      String   @db.ObjectId // เชื่อมกับ GameRegistrationDB
-  eventId      String   @db.ObjectId // เชื่อมกับรายการแข่ง (GameEventDB)
-  matchTime    DateTime // เวลาแข่งขัน
-  status       String // สถานะของการแข่งขัน (เช่น pending, completed)
-  channel_id   String // ID ของช่องที่ใช้สำหรับการแข่งขัน (เช่น Discord Channel)
-  winnerTeamId String? // ทีมที่ชนะการแข่งขัน
-  createdAt    DateTime @default(now())
-  createdBy    String?
-  updatedAt    DateTime @updatedAt
-  updatedBy    String
-  deleteBy     String
+model InviteData {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String
+  guildId String
 }
 
 model TeamDB {
@@ -346,4 +346,4 @@ model TeamDB {
   deleteBy       String
 }
 
-//ใช้ในกรณีกิจกรรมที่ไม่เกี่ยวกับการแข่งขัน
+//ใช้ในกรณีกิจกรรมที่ไม่เกี่ยวกับการแข่งขันเป็นหลัก สารมารถสัมครแข่งเกมส์ได้
