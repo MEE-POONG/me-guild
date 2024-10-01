@@ -16,7 +16,7 @@ const HomeSlider: React.FC = () => {
             <div className="slider-container h-[480px] overflow-hidden">
                 <Slider {...settings}>
                     <div className="slide ">
-                        <img src="/images/bg01.webp" alt="" className="" />
+                        <img src="/images/bg01.png" alt="" className="" />
                     </div>
                     <div className="slide">
                         <img src="/images/bg05.webp" alt="" className="" />
