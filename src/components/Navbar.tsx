@@ -24,11 +24,11 @@ const Navbar: React.FC = () => {
     return (
         <nav
             className={`z-50 fixed w-full transition-all duration-150 ${
-                scrollY > 50 ? "bg-white shadow-lg text-gray-500" : "bg-white/75 text-gray-500"
+                scrollY > 50 ? "bg-stone-800 text-gray-100 shadow-yellow-300/50 shadow-2xl" : "bg-transparent text-gray-100 "
             }`}
         >
-            <div className="max-w-4xl mx-auto px-4 bg-white md:px-10">
-                <div className="flex justify-between items-center py-4">
+            <div className="max-w-4xl mx-auto px-4 bg-transparent md:px-10">
+                <div className="flex justify-between items-center py-5 md:py-3">
                     <div className="flex items-center space-x-7">
                         <Link href="/">
                             <img src="/images/logo-mg.webp" className="w-10 md:w-16 rounded-full" alt="Logo" />
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
                         {navItems.map((item) => (
                             <Link key={item.href} href={item.href}>
                                 <p
-                                    className={`py-3 px-2 flex items-center ${
+                                    className={`px-2 flex items-center ${
                                         router.pathname === item.href
                                             ? "text-teal-600 border-b-4 border-teal-600 font-semibold"
                                             : "font-semibold hover:text-teal-600 transition duration-300"
@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
                 {navItems.map((item) => (
                     <Link key={item.href} href={item.href}>
                         <p
-                            className={`block text-sm px-2 py-4 ${
+                            className={`block text-sm px-2 py-3 ${
                                 router.pathname === item.href
                                     ? "text-teal-600 font-semibold bg-gray-100 border-l-2 border-teal-500"
                                     : "text-gray-500 transition duration-300"
@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
                 ))}
                 {/* Mobile version of LoginDropdown */}
                 <div>
-                    <LoginDropdown />
+                    {/* <LoginDropdown /> */}
                 </div>
             </div>
         </nav>

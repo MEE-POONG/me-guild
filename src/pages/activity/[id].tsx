@@ -50,7 +50,7 @@ const ActivityDetail: React.FC = (props) => {
 
     return (
         <Layout>
-            <div className='container mx-auto md:px-10 py-24'>
+            <div className='container mx-auto py-3 md:px-10 md:py-24'>
                 {/* <Link href='/activity'>Back</Link> */}
                 <div className="bg-[url('/images/blackboard01.jpg')] drop-shadow-xl py-12 px-7 md:p-24">
                     <div className="bg-[url('/images/paper1.jpg')] text-center p-6 md:p-16">

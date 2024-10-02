@@ -26,12 +26,12 @@ const NewsUpdate: React.FC = () => {
 
         <section className="mt-12">
             <div className="container mx-auto px-4 py-16">
-                <p className="text-xl md:text-4xl font-bold flex items-end justify-between text-gray-700 border-b border-gray-400 pb-2">
+                <p className="text-xl md:text-2xl flex items-end justify-between text-gray-100 border-b border-gray-400 pb-2">
                     <span>
                         News
                         <span className="text-xs bg-blue-400 px-1 rounded-md text-white font-light ml-1">Update</span>
                     </span>
-                    <a href="/news" className="text-base text-teal-600 hover:text-teal-500">ทั้งหมด {`>>`}</a>
+                    <a href="/news" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a>
                 </p>
                 <div className="flex flex-wrap mt-5">
                     {loading ? (

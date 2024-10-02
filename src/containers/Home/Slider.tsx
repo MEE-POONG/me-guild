@@ -12,7 +12,7 @@ const HomeSlider: React.FC = () => {
         cssEase: "linear"
     };
     return (
-        <div className="slidestyle container mx-auto mt-3">
+        <div className="slidestyle mt-10">
             <div className="slider-container h-[480px] overflow-hidden">
                 <Slider {...settings}>
                     <div className="slide ">
