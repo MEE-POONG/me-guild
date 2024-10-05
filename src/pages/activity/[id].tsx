@@ -50,22 +50,27 @@ const ActivityDetail: React.FC = (props) => {
 
     return (
         <Layout>
-            <div className='container mx-auto md:px-10 py-24'>
+            <div className='container mx-auto py-3 md:px-10 md:py-24'>
                 {/* <Link href='/activity'>Back</Link> */}
-                <div className='bg-gray-100 py-10 px-3 rounded shadow-inner text-center'>
-                    <p className='text-xl font-black mb-10'>{activities.title}</p>
-                    <p>ระยะเวลา : <span className='text-orange-400'> {activities.startdate} - {activities.enddate}</span></p>
-                    <p>ประเภทการแข่งขัน : {activities.type}</p>
+                <div className="bg-[url('/images/blackboard01.jpg')] drop-shadow-xl py-12 px-3 md:p-20 shadow-xl shadow-indigo-600/50 rounded-lg">
+                    <div className="bg-[url('/images/paper1.jpg')] text-center p-6 md:p-16 relative rounded-lg ">
+                        <div className="absolute top-2 -left-8 md:left-10 md:top-10 lg:top-2 ">
+                            <img src="/images/Megaphone01.png" alt="" className="w-20 lg:w-36 translate-x-6" />
+                        </div>
+                        <p className='text-xl font-black mb-10'>{activities.title}</p>
+                        <p className='text-xs md:text-base'>ระยะเวลา : <span className='text-orange-400'> {activities.startdate} - {activities.enddate}</span></p>
+                        <p className='text-xs md:text-base'>ประเภทการแข่งขัน : {activities.type}</p>
 
-                    {/* ภาพประกอบ/โปรโมท */}
-                    <img src={activities.img}
-                        className='py-5 mx-auto drop-shadow-lg w-[620px] h-[400px]'
-                        alt="" />
-                    <div>
-                        <p>รายละเอียดกิจกรรม</p>
-                        <p className='text-purple-700'>Discord :
-                            <a href="/ลิงค์ดิสก์" className='ml-3 hover:text-purple-900'>{activities.disname}</a>
-                        </p>
+                        {/* ภาพประกอบ/โปรโมท */}
+                        <img src={activities.img}
+                            className='py-5 mx-auto drop-shadow-lg w-[620px] h-[400px]'
+                            alt="" />
+                        <div>
+                            <p className='text-xs md:text-base'>รายละเอียดกิจกรรม</p>
+                            <p className='text-purple-700'>Discord :
+                                <a href="/ลิงค์ดิสก์" className='ml-3 hover:text-purple-900'>{activities.disname}</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

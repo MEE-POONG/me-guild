@@ -30,7 +30,7 @@ const GuildList: React.FC = () => {
 
     return (
         <div className="container mx-auto px-4 py-12">
-            <h2 className="text-2xl font-bold flex items-end justify-between text-gray-600 border-b border-gray-400 drop-shadow-lg">
+            <h2 className="text-2xl font-bold flex items-end justify-between text-gray-100 border-b border-gray-400 drop-shadow-lg">
                 Guild Hall
             </h2>
 
@@ -53,13 +53,13 @@ const GuildList: React.FC = () => {
                 ) : (
                     filteredGuilds.map(guild => (
                         <Link href={`/guild/${guild.id}`} key={guild.id}
-                            className="flex items-center border-b-2 p-2 hover:bg-gray-100 hover:border-teal-400"
+                            className="flex items-center border-b-2 p-2 bg-gray-300 hover:shadow-lg hover:shadow-teal-400 rounded-lg"
                         >
                             <img src={guild.avatar} className="w-24 h-24" alt={guild.guildname} />
                             <div className="ml-3">
-                                <p className="text-lg font-bold ">{guild.guildname}</p>
-                                <p className="text-sm font-thin text-gray-500 line-clamp-2">{guild.description}</p>
-                                <p className="text-sm font-bold text-teal-600 line-clamp-1">{guild.rule}</p>
+                                <p className="text-sm md:text-lg font-bold ">{guild.guildname}</p>
+                                <p className="text-xs md:text-sm font-thin text-gray-500 line-clamp-2">{guild.description}</p>
+                                <p className="text-xs md:text-sm font-bold text-teal-600 line-clamp-1">{guild.rule}</p>
                             </div>
                         </Link>
                     ))
