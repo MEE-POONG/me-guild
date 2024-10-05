@@ -1,4 +1,5 @@
-import { Prompt } from 'next/font/google'
+import React from "react";
+// import { Prompt } from 'next/font/google'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import BackToTopButton from './BackToTop'
@@ -14,7 +15,7 @@ export default function Layout({
     return (
         <>
             <Navbar />
-            <div className="py-16 md:py-24 ">
+            <div className="pt-16 md:pt-24 ">
                 {children}
                 <ShortcutSocial />
                 <BackToTopButton />

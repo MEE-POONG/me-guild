@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@/components/layout";
+import Layout from "@/components/LLayout";
 
 
 const RegisterPage: React.FC = (props) => {
