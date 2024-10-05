@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Layout from "@/components/LLayout";
+import Layout from "@/components/Layout";
 
 const NewsPage: React.FC = (props) => {
     const [newsData, setNewsData] = useState<any[]>([]);

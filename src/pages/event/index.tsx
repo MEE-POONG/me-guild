@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "@/components/LLayout";
 import TournamentSection from "@/containers/event/TournamentSection";
+import Layout from "@/components/Layout";
 
 const EventPage: React.FC = () => {
     return (
