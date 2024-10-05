@@ -335,6 +335,7 @@ model InviteData {
 }
 
 model TeamDB {
+  //ใช้ในกรณีกิจกรรมที่ไม่เกี่ยวกับการแข่งขันเป็นหลัก สารมารถสมัครแข่งเกมส์ได้
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   teamName       String // ชื่อทีม
   members        String[] // รายชื่อสมาชิกในทีม (discord_id หรือ userId)
@@ -345,5 +346,3 @@ model TeamDB {
   updatedBy      String
   deleteBy       String
 }
-
-//ใช้ในกรณีกิจกรรมที่ไม่เกี่ยวกับการแข่งขันเป็นหลัก สารมารถสัมครแข่งเกมส์ได้
