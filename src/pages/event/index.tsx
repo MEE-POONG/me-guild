@@ -1,5 +1,5 @@
 import React from "react";
-import TournamentSection from "@/containers/event/TournamentSection";
+import TournamentSection from "@/containers/Eevent/TournamentSection";
 import Layout from "@/components/Layout";
 
 const EventPage: React.FC = () => {
