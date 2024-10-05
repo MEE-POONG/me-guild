@@ -23,8 +23,8 @@ const Navbar: React.FC = () => {
 
     return (
         <nav
-            className={`z-50 fixed w-full transition-all duration-150 ${
-                scrollY > 50 ? "bg-stone-800 text-gray-100 shadow-yellow-300/50 shadow-2xl" : "bg-transparent text-gray-100 "
+            className={`z-50 fixed w-full transition-all duration-150 bg-[#1f1f1c] ${
+                scrollY > 50 ? "text-gray-100 shadow-violet-300/50 shadow-2xl" : "text-gray-100  "
             }`}
         >
             <div className="max-w-4xl mx-auto px-4 bg-transparent md:px-10">
@@ -40,8 +40,8 @@ const Navbar: React.FC = () => {
                                 <p
                                     className={`px-2 flex items-center ${
                                         router.pathname === item.href
-                                            ? "text-teal-600 border-b-4 border-teal-600 font-semibold"
-                                            : "font-semibold hover:text-teal-600 transition duration-300"
+                                            ? "text-teal-600 border-b-4 border-teal-600 shadow-lg shadow-cyan-500/50 font-bold"
+                                            : "hover:text-teal-600  transition duration-300 "
                                     }`}
                                 >
                                     {item.label}

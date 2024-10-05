@@ -28,7 +28,7 @@ const ActivityPage: React.FC = (props) => {
             <section className="container mx-auto px-3 py-24 textstyles">
                 <h2 className="animate-cha02 font-bold">ประกาศกิจกรรม</h2>
                 <hr />
-                <div className="bg-gray-100 text-gray-900 p-5 md:p-16 mt-5 mb-20">
+                <div className="bg-[url('/images/blackboard01.jpg')] text-gray-100 p-5 md:p-16 mt-5 mb-20 shadow-xl shadow-indigo-600/50 rounded-lg">
                     <ul className="list-inside text-sm mt-8">
                         {loading ? (
                             <p>Loading...</p>

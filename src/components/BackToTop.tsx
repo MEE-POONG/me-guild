@@ -33,7 +33,10 @@ const BackToTopButton: React.FC = () => {
             {isVisible && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-5 right-5 bg-blue-500 text-white p-3 rounded-full shadow-lg bg-gradient-to-r from-violet-500 to-fuchsia-500 transition duration-300"
+                    className="fixed bottom-5 right-5 bg-blue-500 text-white p-3 rounded-full shadow-lg 
+                                bg-gradient-to-r from-violet-500 to-fuchsia-500 transition duration-300
+                                hover:animate-jump
+                                "
                 >
                     <FaArrowUp/>
                 </button>

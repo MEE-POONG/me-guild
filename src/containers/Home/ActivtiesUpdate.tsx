@@ -22,7 +22,7 @@ const ActivityUpdate: React.FC = () => {
 
     return (
         <section className=" w-full md:mt-12">
-            <div className="container mx-auto text-gray-700 px-5">
+            <div className="container mx-auto text-gray-700 px-3">
                 {/* <p className="text-xl md:text-4xl font-bold flex items-end justify-between text-gray-700 border-b border-gray-400 pb-2">
                     <span>
                         Activity
@@ -30,11 +30,8 @@ const ActivityUpdate: React.FC = () => {
                     </span>
                     <a href="/activity" className="text-base text-teal-600 hover:text-teal-500">ทั้งหมด {`>>`}</a>
                 </p> */}
-                <div className="mt-3 bg-[url('/images/blackboard01.jpg')] shadow-xl shadow-indigo-600/50 relative rounded-lg">
-                    <div className="absolute top-40">
-                        <img src="/images/Megaphone01.png" alt="" className="w-48" />
-                    </div>
-                    <div className="p-10 md:p-32">
+                <div className="mt-3 bg-[url('/images/blackboard01.jpg')] shadow-xl shadow-indigo-600/50 rounded-lg">
+                    <div className="p-10 md:p-32 ">
                         <p className="text-white text-2xl text-center">ประกาศกิจกรรม</p>
                         <ul className="list-inside text-xs md:text-base mt-7 ">
                             {loading ? (
@@ -51,7 +48,7 @@ const ActivityUpdate: React.FC = () => {
                             )}
                         </ul>
                         <div className="text-right">
-                            <a href="/activity" className="text-base text-teal-400 hover:text-teal-500 hover:underline">ทั้งหมด {`>>`}</a>
+                            <a href="/activity" className="text-xs md:text-base text-teal-400 hover:text-teal-500 hover:underline">ทั้งหมด {`>>`}</a>
                         </div>
                     </div>
                 </div>

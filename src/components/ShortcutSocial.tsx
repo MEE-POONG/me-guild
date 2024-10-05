@@ -26,7 +26,7 @@ const ShortcutSocial: React.FC = () => {
                     rel="noopener noreferrer"
                     className="flex items-center"
                 >
-                    <BsDiscord className="w-6 h-6" />
+                    <BsDiscord className="w-6 h-6 hover:animate-jump" />
                 </a>
             </div>
 
