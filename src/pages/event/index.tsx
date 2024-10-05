@@ -1,16 +1,16 @@
 import React from "react";
-import TournamentSection from "@/containers/Eevent/TournamentSection";
+import TournamentSection from "@/containers/Event/TournamentSection";
 import Layout from "@/components/Layout";
 
 const EventPage: React.FC = () => {
     return (
         <Layout>
             <div className="event-page">
-                <div className="relative h-screen flex items-center justify-center bg-black">
+                <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
                     <div className="absolute inset-0 overflow-hidden">
                         {/* Background image */}
                         <img
-                            src="/path-to-your-image/DALL·E-2024-10-05_17.49.18.webp" // Update with your image path
+                            src="/images/bg01.png" // Update with your image path
                             alt="Fantasy Event"
                             className="object-cover w-full h-full opacity-60"
                         />
