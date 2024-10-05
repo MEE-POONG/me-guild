@@ -180,14 +180,17 @@ model GameRegistrationDB {
 }
 
 model GameEventDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String // ชื่อรายการแข่ง
-  description String? // รายละเอียดของรายการแข่ง
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  title          String // ชื่อรายการแข่ง
+  subDescription String // เนื้อหาย่อย ทำ seo ได้
+  description    String // รายละเอียดของรายการแข่ง
+  image          String // ภาพปกหลัก
+  imageto        String //ภาพปกลอง
+  createdAt      DateTime @default(now())
+  createdBy      String?
+  updatedAt      DateTime @updatedAt
+  updatedBy      String
+  deleteBy       String
 }
 
 model GameMatchScheduleDB {
