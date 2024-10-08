@@ -26,6 +26,7 @@ const EventPage: React.FC = () => {
                         <div className="mt-8">
                             <button className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600">
                                 Join Discord
+                              
                             </button>
                         </div>
                     </div>
