@@ -12,6 +12,7 @@ const Home: React.FC = (props) => {
   return (
     <Layout>
       <section className="">
+        <HomeSlider/>
         <ActivityUpdate />
         {/* <GuildRecomend /> กิลด์แนะนำ */}
         <NewsUpdate />

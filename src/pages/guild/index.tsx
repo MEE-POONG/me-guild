@@ -9,7 +9,7 @@ const GuildPage: React.FC = (props) => {
     return (
         <Layout>
             <section className="">
-                <div className="w-full h-[350px] md:h-[450px] overflow-hidden" >
+                <div className="w-full overflow-hidden" >
                     <img src="/images/bg05.webp"
                         className="w-full h-full object-cover absolute"
                         alt=""
