@@ -15,11 +15,7 @@ export default function Layout({
     return (
         <div>
             <Navbar />
-<<<<<<< HEAD:src/components/layout.tsx
-            <div className="py-16">
-=======
             <div className="pt-16 md:pt-24 ">
->>>>>>> 239a68b5b908a43b7494813bf2af4af7e921db28:src/components/Layout.tsx
                 {children}
                 <ShortcutSocial />
                 <BackToTopButton />
