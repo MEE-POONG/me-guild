@@ -180,14 +180,17 @@ model GameRegistrationDB {
 }
 
 model GameEventDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String // ชื่อรายการแข่ง
-  description String? // รายละเอียดของรายการแข่ง
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  title          String // ชื่อรายการแข่ง
+  subDescription String // เนื้อหาย่อย ทำ seo ได้
+  description    String // รายละเอียดของรายการแข่ง
+  image          String // ภาพปกหลัก
+  imageto        String //ภาพปกลอง
+  createdAt      DateTime @default(now())
+  createdBy      String?
+  updatedAt      DateTime @updatedAt
+  updatedBy      String
+  deleteBy       String
 }
 
 model GameMatchScheduleDB {
@@ -335,6 +338,7 @@ model InviteData {
 }
 
 model TeamDB {
+  //ใช้ในกรณีกิจกรรมที่ไม่เกี่ยวกับการแข่งขันเป็นหลัก สารมารถสมัครแข่งเกมส์ได้
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   teamName       String // ชื่อทีม
   members        String[] // รายชื่อสมาชิกในทีม (discord_id หรือ userId)
@@ -345,5 +349,3 @@ model TeamDB {
   updatedBy      String
   deleteBy       String
 }
-
-//ใช้ในกรณีกิจกรรมที่ไม่เกี่ยวกับการแข่งขันเป็นหลัก สารมารถสัมครแข่งเกมส์ได้

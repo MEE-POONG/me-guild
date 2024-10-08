@@ -1,4 +1,4 @@
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import GuildList from "@/containers/Guild/GuildList";
 import PeopleList from "@/containers/Guild/PeopleList";
 import Link from "next/link";

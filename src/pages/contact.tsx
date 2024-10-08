@@ -1,4 +1,4 @@
-import Layout from "@/components/layout"
+import Layout from "@/components/LLayout"
 import Link from "next/link";
 import { PiDiscordLogoBold } from "react-icons/pi";
 

@@ -1,4 +1,4 @@
-import Layout from "@/components/layout"
+import Layout from "@/components/LLayout"
 import { GiRank2 } from "react-icons/gi";
 
 const ProfileUser: React.FC = (props) => {

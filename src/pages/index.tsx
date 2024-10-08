@@ -1,4 +1,4 @@
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import ActivityUpdate from "@/containers/Home/ActivtiesUpdate";
 import GuildRecomend from "@/containers/Home/GuildRecomend";
 import NewsUpdate from "@/containers/Home/NewsUpdate";
