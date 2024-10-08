@@ -5,16 +5,13 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-
 @import "slide.scss";
 @import "textstyles.scss";
 
-
-
-body{
+body {
     background: rgb(54, 54, 54);
-    background: radial-gradient(circle, rgba(106,106,106,1) 0%, rgba(59,58,58,1) 100%);
-    // background-color: #424242; 
+    background: radial-gradient(circle, rgba(106, 106, 106, 1) 0%, rgba(59, 58, 58, 1) 100%);
+    // background-color: #424242;
     // background-image: url('/images/BG2.jpg');
     background-size: cover;
     background-position: center;
@@ -23,21 +20,19 @@ body{
     padding: 0;
     min-height: 100vh;
     width: 100%;
-        
 }
 
-.container{
+.container {
     max-width: 68rem;
 }
 
-.loginpage{
-
-    .loginbutt{
+.login-page {
+    .loginbutt {
         display: inline-block;
         border-radius: 50px;
         background-color: #58abd8;
         border: none;
-        color: #FFFFFF;
+        color: #ffffff;
         text-align: center;
         font-size: 16px;
         padding: 6px;
@@ -53,31 +48,57 @@ body{
         position: relative;
         transition: 0.5s;
     }
-           
+
     button span:after {
-        content: '»';
+        content: "»";
         position: absolute;
         opacity: 0;
         top: 0;
         right: -15px;
         transition: 0.5s;
     }
-           
+
     button:hover span {
         padding-right: 15px;
     }
-           
+
     button:hover span:after {
         opacity: 1;
         right: 0;
     }
 
     .background-image {
-        background-image: url('/images/bg01.webp'); 
-        background-size: cover; 
-        background-position: center; 
-        background-repeat: no-repeat; 
-        width: 100%; 
+        background-image: url("/images/bg01.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
         height: 100vh;
+    }
+}
+.title-gold {
+    background: linear-gradient(to bottom, #cfc09f 27%, #ffecb3 40%, #3a2c0f 78%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #fff;
+    font-family: "Playfair Display", serif;
+    position: relative;
+    text-transform: uppercase;
+    font-size: calc(18vw + 0.5rem);
+    margin: 0;
+    font-weight: 400;
+
+    &::after {
+        background: none;
+        content: attr(data-heading) / "";
+        left: 0;
+        top: 0;
+        z-index: -1;
+        position: absolute;
+        text-shadow:
+            -1px 0 1px #c6bb9f,
+            0 1px 1px #c6bb9f,
+            5px 5px 10px rgba(0, 0, 0, 0.4),
+            -5px -5px 10px rgba(0, 0, 0, 0.4);
     }
 }

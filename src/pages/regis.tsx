@@ -4,7 +4,7 @@ import Link from "next/link";
 const RegisterPage: React.FC = (props) => {
 
     return (
-        <div className="loginpage" >
+        <div className="login-page" >
             <div className="background-image p-2 md:p-10">
                 <div className="container mx-auto mt-40">
                     <form className="mt-3 bg-white/60 p-3 md:p-10 rounded-lg md:w-[450px] mx-auto">

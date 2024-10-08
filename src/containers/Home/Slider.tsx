@@ -54,7 +54,7 @@ const HomeSlider: React.FC = () => {
                                 />
                             </div>
 
-                            <div className="relative z-10 text-center">
+                            <div className="relative z-10 text-center title-gold">
                                 <h1 className="text-5xl font-bold text-white">
                                     Welcome to Me Guild
                                 </h1>
