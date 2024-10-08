@@ -11,13 +11,12 @@ import React from "react";
 const Home: React.FC = (props) => {
   return (
     <Layout>
-      <div className="">
-        <HomeSlider />
+      <section className="">
         <ActivityUpdate />
         {/* <GuildRecomend /> กิลด์แนะนำ */}
         <NewsUpdate />
         {/* <PoppularPerson/> */}
-      </div>
+      </section>
     </Layout>
   );
 }

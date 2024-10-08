@@ -9,19 +9,12 @@ const GuildPage: React.FC = (props) => {
     return (
         <Layout>
             <section className="">
-                <div className="w-full h-[350px] md:h-[450px] overflow-hidden relative" >
+                <div className="w-full h-[350px] md:h-[450px] overflow-hidden" >
                     <img src="/images/bg05.webp"
                         className="w-full h-full object-cover absolute"
                         alt=""
                     />
                 </div>
-                {/* <div className=" container mx-auto mt-5 px-4">
-                    <button className="bg-teal-500 hover:bg-teal-600 p-2 rounded text-gray-700 hover:text-gray-200 font-bold">
-                        <Link href="/createGuild" className="flex items-center gap-1 ">
-                            <GiDaemonSkull />CREATE GUILE
-                        </Link>
-                    </button>
-                </div> */}
                 <GuildList />
                 {/* <PeopleList /> */}
             </section>

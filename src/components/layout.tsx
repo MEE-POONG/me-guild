@@ -12,14 +12,14 @@ export default function Layout({
 
 
     return (
-        <>
+        <div>
             <Navbar />
-            <div className="py-16 md:py-24 ">
+            <div className="py-16">
                 {children}
                 <ShortcutSocial />
                 <BackToTopButton />
             </div>
             <Footer />
-        </>
+        </div>
     )
 }

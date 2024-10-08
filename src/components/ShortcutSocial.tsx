@@ -21,7 +21,7 @@ const ShortcutSocial: React.FC = () => {
             }
             >
                 <a
-                    href="https://discord.gg/ptYdn5bS"
+                    href="https://discord.com/invite/4eS7Bt3PZF"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center"

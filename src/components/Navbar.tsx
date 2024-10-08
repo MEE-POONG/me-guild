@@ -23,8 +23,8 @@ const Navbar: React.FC = () => {
 
     return (
         <nav
-            className={`z-50 fixed w-full transition-all duration-150 bg-[#1f1f1c] ${
-                scrollY > 50 ? "text-gray-100 shadow-violet-300/50 shadow-2xl" : "text-gray-100  "
+            className={`z-50 fixed w-full transition-all duration-150  ${
+                scrollY > 50 ? "text-gray-100 shadow-2xl bg-[#1f1f1c]" : "text-gray-100  bg-transparent"
             }`}
         >
             <div className="max-w-4xl mx-auto px-4 bg-transparent md:px-10">
