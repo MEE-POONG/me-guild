@@ -13,15 +13,13 @@ const HomeSlider: React.FC = () => {
     };
     return (
         <div className="slide-style ">
-
             <div className="slider-container overflow-hidden">
                 <Slider {...settings}>
                     <div className="slide ">
                         <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
                             <div className="absolute inset-0 overflow-hidden">
-                                {/* Background image */}
                                 <img
-                                    src="/images/bg01.png" // Update with your image path
+                                    src="/images/bg01.png"
                                     alt="Fantasy Event"
                                     className="object-cover w-full h-full opacity-60"
                                 />
@@ -35,8 +33,40 @@ const HomeSlider: React.FC = () => {
                                     Join our world of fantasy and adventure!
                                 </p>
                                 <div className="mt-8">
-                                    <button className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600">
-                                        Join Discord
+                                    <button
+                                        className="relative text-white py-2 px-6 rounded-lg bg-cover bg-center bg-[url('/images/btnBlue.png')] hover:bg-[url('/images/btnRed.png')] hover:opacity-90 w-[125px]"
+                                        // style={{ backgroundImage: "url('/images/btnBlue.png')" }}
+                                    >
+                                        <span className="relative z-10">Join Discord</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="slide ">
+
+                        <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
+                            <div className="absolute inset-0 overflow-hidden">
+                                <img
+                                    src="/images/bg01.png"
+                                    alt="Fantasy Event"
+                                    className="object-cover w-full h-full opacity-60"
+                                />
+                            </div>
+
+                            <div className="relative z-10 text-center">
+                                <h1 className="text-5xl font-bold text-white">
+                                    Welcome to Me Guild
+                                </h1>
+                                <p className="mt-4 text-xl text-white">
+                                    Join our world of fantasy and adventure!
+                                </p>
+                                <div className="mt-8">
+                                    <button
+                                        className="relative text-white py-2 px-6 rounded-lg bg-cover bg-center bg-[url('/images/btnBlue.png')] hover:bg-[url('/images/btnRed.png')] hover:opacity-90 w-[125px]"
+                                        // style={{ backgroundImage: "url('/images/btnBlue.png')" }}
+                                    >
+                                        <span className="relative z-10">Join Discord</span>
                                     </button>
                                 </div>
                             </div>
@@ -45,9 +75,8 @@ const HomeSlider: React.FC = () => {
                     <div className="slide ">
                         <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
                             <div className="absolute inset-0 overflow-hidden">
-                                {/* Background image */}
                                 <img
-                                    src="/images/bg04.webp" // Update with your image path
+                                    src="/images/bg01.png"
                                     alt="Fantasy Event"
                                     className="object-cover w-full h-full opacity-60"
                                 />
@@ -61,39 +90,17 @@ const HomeSlider: React.FC = () => {
                                     Join our world of fantasy and adventure!
                                 </p>
                                 <div className="mt-8">
-                                    <button className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600">
-                                        Join Discord
+                                    <button
+                                        className="relative text-white py-2 px-6 rounded-lg bg-cover bg-center bg-[url('/images/btnBlue.png')] hover:bg-[url('/images/btnRed.png')] hover:opacity-90 w-[125px]"
+                                        // style={{ backgroundImage: "url('/images/btnBlue.png')" }}
+                                    >
+                                        <span className="relative z-10">Join Discord</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="slide ">
-                        <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
-                            <div className="absolute inset-0 overflow-hidden">
-                                {/* Background image */}
-                                <img
-                                    src="/images/bg05.webp" // Update with your image path
-                                    alt="Fantasy Event"
-                                    className="object-cover w-full h-full opacity-60"
-                                />
-                            </div>
 
-                            <div className="relative z-10 text-center">
-                                <h1 className="text-5xl font-bold text-white">
-                                    Welcome to Me Guild
-                                </h1>
-                                <p className="mt-4 text-xl text-white">
-                                    Join our world of fantasy and adventure!
-                                </p>
-                                <div className="mt-8">
-                                    <button className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600">
-                                        Join Discord
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </Slider>
             </div>
         </div>
