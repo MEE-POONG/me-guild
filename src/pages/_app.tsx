@@ -9,7 +9,7 @@ const kanit = Kanit({
 
 export default function App({ Component, pageProps }) {
   return ( 
-    <main >
+    <main className={kanit.className}>
       <Component {...pageProps} />
     </main>
   );
