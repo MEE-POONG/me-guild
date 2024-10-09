@@ -1,15 +1,15 @@
 import type { AppProps } from 'next/app';
 import '@/sass/globals.scss';
-import { Prompt } from 'next/font/google';
+import { Kanit } from 'next/font/google';
 
-const promt = Prompt({
-  weight: '400',
+const kanit = Kanit({
+  weight: '500',
   subsets: ['latin'],
 });
 
-export default function App({ Component, pageProps } :AppProps) {
+export default function App({ Component, pageProps }) {
   return ( 
-    <main className={promt.className}>
+    <main className={kanit.className}>
       <Component {...pageProps} />
     </main>
   );

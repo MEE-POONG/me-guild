@@ -30,10 +30,6 @@ const GuildList: React.FC = () => {
 
     return (
         <div className="container mx-auto px-4 py-12">
-            <h2 className="text-2xl font-bold flex items-end justify-between text-gray-100 border-b border-gray-400 drop-shadow-lg">
-                Guild Hall
-            </h2>
-
             {/* Search Input */}
             <div className="mt-4 flex items-center justify-end gap-2">
                 <p className="text-gray-600 text-sm">ค้นหา</p>

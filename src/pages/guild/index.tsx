@@ -6,17 +6,23 @@ import React from "react"
 import { GiDaemonSkull } from "react-icons/gi";
 
 const GuildPage: React.FC = (props) => {
+    const backgroundImageUrl = '/images/grandhall2.png';
+
     return (
         <Layout>
             <section className="">
-                <div className="w-full overflow-hidden" >
-                    <img src="/images/bg05.webp"
-                        className="w-full h-full object-cover absolute"
-                        alt=""
-                    />
+                <div
+                    className="bg-fixed h-[600px] w-full relative"
+                    style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+                >
+                    <div className="relative z-10 bg-black/75 h-full">
+                        <h2 className="text-4xl font-bold text-white    ">
+                            Guild Hall
+                        </h2>
+                    </div>
                 </div>
                 <GuildList />
-                {/* <PeopleList /> */}
+
             </section>
         </Layout>
     )
