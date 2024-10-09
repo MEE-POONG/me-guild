@@ -1,4 +1,4 @@
-import Layout from "@/components/LLayout"
+import Layout from "@/components/Layout"
 
 const MarketPlace: React.FC = (props) => {
     return (

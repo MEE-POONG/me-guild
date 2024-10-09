@@ -2,29 +2,21 @@ import React from "react";
 import Slider from "react-slick";
 
 const HomeSlider: React.FC = () => {
-    const settings = {
-        dots: false,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        cssEase: "linear"
-    };
+
     return (
         <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
             <div className="absolute inset-0 overflow-hidden">
                 <img
                     src="/images/bg01.png"
                     alt="Fantasy Event"
-                    className="object-cover w-full h-full opacity-60"
+                    className="object-cover w-full h-full opacity-100"
                 />
             </div>
 
             <div className="relative z-10 text-center">
                 <div className="relative z-10 text-center">
-                    <h1 className="text-5xl font-bold text-gold" data-text="Welcome to Me Guild">
-                        Welcome to Me Guild
+                    <h1 className="text-[8rem] font-bold text-gold" data-text="Welcome">
+                        Welcome
                     </h1>
                 </div>
                 <div className="relative z-10 text-center">
