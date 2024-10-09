@@ -21,7 +21,7 @@ const HomeSlider: React.FC = () => {
                 />
             </div>
 
-            <div className="relative z-10 text-center font-mg02">
+            <div className="relative z-10 text-center font-mg01">
                 <div className="relative z-10 text-center">
                     <h1 className="text-5xl font-bold text-gold" data-text="Welcome to Me Guild">
                         Welcome to Me Guild
