@@ -22,7 +22,11 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className={`z-50 fixed w-full transition-all duration-150 bg-[#1f1f1c] ${scrollY > 50 ? "text-gray-100 shadow-violet-300/50 shadow-2xl" : "text-gray-100"}`}>
+        <nav className={`z-50 fixed w-full transition-all duration-150 bg-[#1f1f1c] 
+                    ${scrollY > 50 
+                    ? "text-gray-100 shadow-violet-300/50 shadow-2xl" 
+                    : "text-gray-100"}`}
+        >
             <div className="max-w-4xl mx-auto px-4 bg-transparent md:px-10">
                 <div className="flex justify-between items-center py-5 md:py-3 h-16 md:h-24">
                     <div className="flex items-center space-x-7">

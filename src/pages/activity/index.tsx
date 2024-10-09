@@ -1,4 +1,4 @@
-import Layout from "@/components/LLayout"
+import Layout from "@/components/Layout"
 import { useEffect, useState } from "react";
 
 const ActivityPage: React.FC = (props) => {

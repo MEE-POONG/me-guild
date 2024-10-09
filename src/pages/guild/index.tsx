@@ -12,11 +12,15 @@ const GuildPage: React.FC = (props) => {
         <Layout>
             <section className="">
                 <div
-                    className="bg-fixed h-[600px] w-full relative"
-                    style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+                    className="bg-fixed h-[530px] w-full relative flex items-center justify-center"
+                    style={{
+                        backgroundImage: `url(${backgroundImageUrl})`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover', 
+                    }}
                 >
-                    <div className="relative z-10 bg-black/75 h-full">
-                        <h2 className="text-4xl font-bold text-white    ">
+                    <div className="relative bg-black/25 h-full w-full flex items-center justify-center">
+                        <h2 className="text-4xl font-bold text-white">
                             Guild Hall
                         </h2>
                     </div>
