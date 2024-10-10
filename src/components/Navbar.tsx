@@ -1,43 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import {
-    FaRss,
-    FaTwitch,
-    FaSteam,
-    FaFacebook,
-    FaGooglePlusG,
-    FaTwitter,
-    FaPinterestP,
-    FaBehance,
-    FaBitbucket,
-    FaDropbox,
-    FaDribbble,
-    FaDeviantart,
-    FaFlickr,
-    FaFoursquare,
-    FaGithub,
-    FaInstagram,
-    FaLinkedin,
-    FaMedium,
-    FaOdnoklassniki,
-    FaPaypal,
-    FaReddit,
-    FaSkype,
-    FaSoundcloud,
-    FaSlack,
-    FaTumblr,
-    FaVimeo,
-    FaVk,
-    FaWordpress,
-    FaYoutube,
-    FaGooglePlus,
-    FaSearch,
-    FaUser,
-    FaShoppingCart,
-    FaTimes,
-} from 'react-icons/fa';
 import useScroll from "./useScroll";
-import LoginDropdown from "./LoginDropdown";
+import { FaRss, FaTwitch, FaSteam, FaFacebook, FaGooglePlus, FaTwitter, FaPinterestP, FaSearch, FaUser, FaShoppingCart } from 'react-icons/fa';
+import Image from 'next/image';
 import Link from "next/link";
 
 const navItems = [
@@ -58,244 +23,80 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <header className="nk-header nk-header-opaque">
-            {/* START: Top Contacts */}
-            <div className="nk-contacts-top">
-                <div className="container">
-                    <div className="nk-contacts-left">
-                        <ul className="nk-social-links">
-                            <li>
-                                <a className="nk-social-rss" href="#">
-                                    <FaRss />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="nk-social-twitch" href="#">
-                                    <FaTwitch />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="nk-social-steam" href="#">
-                                    <FaSteam />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="nk-social-facebook" href="#">
-                                    <FaFacebook />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="nk-social-google-plus" href="#">
-                                    <FaGooglePlus />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="nk-social-twitter" href="#" target="_blank">
-                                    <FaTwitter />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="nk-social-pinterest" href="#">
-                                    <FaPinterestP />
-                                </a>
-                            </li>
-                        </ul>
+        <header className="relative z-10 bg-transparent">
+            {/* Top Contacts */}
+            <div className="bg-dark-1 text-white py-2">
+                <div className="container mx-auto flex justify-between items-center">
+                    <div className="flex space-x-4">
+                        <a href="#" className="text-white"><FaRss /></a>
+                        <a href="#" className="text-white"><FaTwitch /></a>
+                        <a href="#" className="text-white"><FaSteam /></a>
+                        <a href="#" className="text-white"><FaFacebook /></a>
+                        <a href="#" className="text-white"><FaGooglePlus /></a>
+                        <a href="#" className="text-white" target="_blank"><FaTwitter /></a>
+                        <a href="#" className="text-white"><FaPinterestP /></a>
                     </div>
-                    <div className="nk-contacts-right">
-                        <ul className="nk-contacts-icons">
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#modalSearch">
-                                    <FaSearch />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#modalLogin">
-                                    <FaUser />
-                                </a>
-                            </li>
-                            <li>
-                                <span className="nk-cart-toggle">
-                                    <FaShoppingCart />
-                                    <span className="nk-badge">27</span>
-                                </span>
-                                {/* <div className="nk-cart-dropdown">
-                                    <div className="nk-widget-post">
-                                        <Link href="store-product.html" className="nk-post-image">
-                                            <img
-                                                src="assets/images/product-5-xs.jpg"
-                                                alt="In all revolutions of"
-                                            />
-                                        </Link>
-                                        <h3 className="nk-post-title">
-                                            <a href="#" className="nk-cart-remove-item">
-                                                <FaTimes name="close" />
-                                            </a>
-                                            <Link href="store-product.html">In all revolutions of</Link>
-                                        </h3>
-                                        <div className="nk-gap-1"></div>
-                                        <div className="nk-product-price">€ 23.00</div>
+                    <div className="flex space-x-4">
+                        <a href="#" className="text-white"><FaSearch /></a>
+                        <a href="#" className="text-white"><FaUser /></a>
+                        <div className="relative">
+                            <FaShoppingCart className="text-white" />
+                            <span className="absolute top-0 right-0 text-xs bg-red-600 text-white rounded-full px-1">27</span>
+                            {/* Cart dropdown */}
+                            {/* <div className="absolute right-0 mt-2 bg-white text-black shadow-lg w-64">
+                                <div className="p-4 flex items-center">
+                                    <Image src="/assets/images/product-5-xs.jpg" alt="In all revolutions of" width={40} height={40} />
+                                    <div className="ml-3">
+                                        <h3 className="text-sm">In all revolutions of</h3>
+                                        <span className="text-sm text-gray-500">€ 23.00</span>
                                     </div>
-                                    <div className="nk-widget-post">
-                                        <Link href="store-product.html" className="nk-post-image">
-                                            <img
-                                                src="assets/images/product-7-xs.jpg"
-                                                alt="With what mingled joy"
-                                            />
-                                        </Link>
-                                        <h3 className="nk-post-title">
-                                            <a href="#" className="nk-cart-remove-item">
-                                                <FaTimes name="close" />
-                                            </a>
-                                            <Link href="store-product.html">
-                                                With what mingled joy
-                                            </Link>
-                                        </h3>
-                                        <div className="nk-gap-1"></div>
-                                        <div className="nk-product-price">€ 14.00</div>
-                                    </div>
-                                    <div className="nk-gap-2"></div>
-                                    <div className="text-center">
-                                        <Link
-                                            href="store-checkout.html"
-                                            className="nk-btn nk-btn-rounded nk-btn-color-main-1 nk-btn-hover-color-white"
-                                        >
-                                            Proceed to Checkout
-                                        </Link>
-                                    </div>
-                                </div> */}
-                            </li>
-                        </ul>
+                                </div>
+                                <div className="text-center p-2">
+                                    <a href="/store-checkout.html" className="bg-red-500 text-white py-2 px-4 rounded-full">Proceed to Checkout</a>
+                                </div>
+                            </div> */}
+                        </div>
                     </div>
                 </div>
             </div>
-            {/* END: Top Contacts */}
 
-            {/* START: Navbar */}
-            <nav className="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
-                <div className="container">
-                    <div className="nk-nav-table">
-                        <Link href="index.html" className="nk-nav-logo">
-                            <img src="assets/images/logo.png" alt="GoodGames" width="199" />
-                        </Link>
-                        <ul
-                            className="nk-nav nk-nav-right d-none d-lg-table-cell"
-                            data-nav-mobile="#nk-nav-mobile"
-                        >
-                            <li className="active nk-drop-item">
-                                <Link href="elements.html">Features</Link>
-                                <ul className="dropdown">
-                                    <li>
-                                        <Link href="elements.html">Elements (Shortcodes)</Link>
-                                    </li>
-                                    <li className="active nk-drop-item">
-                                        <Link href="forum.html">Forum</Link>
-                                        <ul className="dropdown">
-                                            <li>
-                                                <Link href="forum.html">Forum</Link>
-                                            </li>
-                                            <li className="active">
-                                                <Link href="forum-topics.html">Topics</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="forum-single-topic.html">Single Topic</Link>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <Link href="widgets.html">Widgets</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="coming-soon.html">Coming Soon</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="offline.html">Offline</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="404.html">404</Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="nk-drop-item">
-                                <Link href="blog-list.html">Blog</Link>
-                                <ul className="dropdown">
-                                    <li>
-                                        <Link href="news.html">News</Link>
-                                    </li>
-                                    <li className="nk-drop-item">
-                                        <Link href="blog-grid.html">Blog With Sidebar</Link>
-                                        <ul className="dropdown">
-                                            <li>
-                                                <Link href="blog-grid.html">Blog Grid</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="blog-list.html">Blog List</Link>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <Link href="blog-fullwidth.html">Blog Fullwidth</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="blog-article.html">Blog Article</Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <Link href="gallery.html">Gallery</Link>
-                            </li>
-                            <li className="nk-drop-item">
-                                <Link href="tournaments.html">Tournaments</Link>
-                                <ul className="dropdown">
-                                    <li>
-                                        <Link href="tournaments.html">Tournament</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="tournaments-teams.html">Teams</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="tournaments-teammate.html">Teammate</Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="nk-drop-item">
-                                <Link href="store.html">Store</Link>
-                                <ul className="dropdown">
-                                    <li>
-                                        <Link href="store.html">Store</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="store-product.html">Product</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="store-catalog.html">Catalog</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="store-catalog-alt.html">Catalog Alt</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="store-checkout.html">Checkout</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="store-cart.html">Cart</Link>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul className="nk-nav nk-nav-right nk-nav-icons">
-                            <li className="single-icon d-lg-none">
-                                <a href="#" className="no-link-effect" data-nav-toggle="#nk-nav-mobile">
-                                    <span className="nk-icon-burger">
-                                        <span className="nk-t-1"></span>
-                                        <span className="nk-t-2"></span>
-                                        <span className="nk-t-3"></span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+            {/* Navbar */}
+            <nav className="bg-dark-2 text-white sticky top-0 z-20">
+                <div className="container mx-auto flex justify-between items-center py-4">
+                    <a href="/" className="text-xl font-bold">
+                        <Image src="/images/logo.png" alt="GoodGames" width={199} height={50} />
+                    </a>
+                    <ul className="hidden lg:flex space-x-6">
+                        <li className="relative group">
+                            <a href="elements.html" className="hover:text-red-500">Features</a>
+                            <a href="elements.html" className="hover:text-red-500">Features</a>
+                            <a href="elements.html" className="hover:text-red-500">Features</a>
+                            <a href="elements.html" className="hover:text-red-500">Features</a>
+                            <a href="elements.html" className="hover:text-red-500">Features</a>
+                            {/* <ul className="absolute hidden group-hover:block bg-dark-2 mt-2 space-y-2 p-4">
+                                <li><a href="elements.html" className="hover:text-red-500">Elements (Shortcodes)</a></li>
+                                <li>
+                                    <a href="forum.html" className="hover:text-red-500">Forum</a>
+                                    <ul className="mt-2 space-y-2 pl-4">
+                                        <li><a href="forum.html" className="hover:text-red-500">Forum</a></li>
+                                        <li><a href="forum-topics.html" className="hover:text-red-500">Topics</a></li>
+                                        <li><a href="forum-single-topic.html" className="hover:text-red-500">Single Topic</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="widgets.html" className="hover:text-red-500">Widgets</a></li>
+                                <li><a href="coming-soon.html" className="hover:text-red-500">Coming Soon</a></li>
+                                <li><a href="offline.html" className="hover:text-red-500">Offline</a></li>
+                                <li><a href="404.html" className="hover:text-red-500">404</a></li>
+                            </ul> */}
+                            
+                        </li>
+                        {/* Add more menu items following the pattern */}
+                    </ul>
+                    <div className="lg:hidden">
+                        <button className="text-white">Menu</button>
                     </div>
                 </div>
             </nav>
-            {/* END: Navbar */}
         </header>
 
 

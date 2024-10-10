@@ -15,12 +15,12 @@ export default function Layout({
     return (
         <div>
             <Navbar />
-            <div className="pt-16 md:pt-24 ">
+            {/* <div className="pt-16 md:pt-24 ">
                 {children}
                 <ShortcutSocial />
                 <BackToTopButton />
             </div>
-            <Footer />
+            <Footer /> */}
         </div>
     )
 }
