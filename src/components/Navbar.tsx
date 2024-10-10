@@ -23,44 +23,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <header className="relative z-10 bg-transparent">
-            {/* Top Contacts */}
-            <div className="bg-dark-1 text-white py-2">
-                <div className="container mx-auto flex justify-between items-center">
-                    <div className="flex space-x-4">
-                        <a href="#" className="text-white"><FaRss /></a>
-                        <a href="#" className="text-white"><FaTwitch /></a>
-                        <a href="#" className="text-white"><FaSteam /></a>
-                        <a href="#" className="text-white"><FaFacebook /></a>
-                        <a href="#" className="text-white"><FaGooglePlus /></a>
-                        <a href="#" className="text-white" target="_blank"><FaTwitter /></a>
-                        <a href="#" className="text-white"><FaPinterestP /></a>
-                    </div>
-                    <div className="flex space-x-4">
-                        <a href="#" className="text-white"><FaSearch /></a>
-                        <a href="#" className="text-white"><FaUser /></a>
-                        <div className="relative">
-                            <FaShoppingCart className="text-white" />
-                            <span className="absolute top-0 right-0 text-xs bg-red-600 text-white rounded-full px-1">27</span>
-                            {/* Cart dropdown */}
-                            {/* <div className="absolute right-0 mt-2 bg-white text-black shadow-lg w-64">
-                                <div className="p-4 flex items-center">
-                                    <Image src="/assets/images/product-5-xs.jpg" alt="In all revolutions of" width={40} height={40} />
-                                    <div className="ml-3">
-                                        <h3 className="text-sm">In all revolutions of</h3>
-                                        <span className="text-sm text-gray-500">€ 23.00</span>
-                                    </div>
-                                </div>
-                                <div className="text-center p-2">
-                                    <a href="/store-checkout.html" className="bg-red-500 text-white py-2 px-4 rounded-full">Proceed to Checkout</a>
-                                </div>
-                            </div> */}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Navbar */}
+      
             <nav className="relative bg-black bg-opacity-60 p-7 font-montserrat text-[1.07rem] text-white transition-colors duration-300 z-1000">
                 <div className="container mx-auto flex justify-between items-center">
                     <a href="/" className="text-xl font-bold">
@@ -99,7 +62,7 @@ const Navbar: React.FC = () => {
                     </div>
                 </div>
             </nav>
-        </header>
+
 
 
     );

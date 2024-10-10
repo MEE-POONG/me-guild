@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import BackToTopButton from './BackToTop'
 import ShortcutSocial from './ShortcutSocial'
+import Header from "./Header";
 
 export default function Layout({
     children,
@@ -14,7 +15,10 @@ export default function Layout({
 
     return (
         <div>
-            <Navbar />
+            <Header />
+            <div className="h-[5000px]">
+
+            </div>
             {/* <div className="pt-16 md:pt-24 ">
                 {children}
                 <ShortcutSocial />
