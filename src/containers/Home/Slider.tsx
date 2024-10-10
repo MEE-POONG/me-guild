@@ -25,12 +25,11 @@ const HomeSlider: React.FC = () => {
                     </h1>
                 </div>
                 <div className="mt-8">
-                    <button
-                        className="relative text-white py-2 px-6 rounded-lg bg-cover bg-center bg-[url('/images/btnBlue.png')] hover:bg-[url('/images/btnRed.png')] hover:opacity-90 w-[125px]"
-                    // style={{ backgroundImage: "url('/images/btnBlue.png')" }}
-                    >
-                        <span className="relative z-10">Join Discord</span>
-                    </button>
+                    <a href="https://discord.com/invite/4eS7Bt3PZF">
+                        <button className="btn-home">
+                            Join To Discord
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
