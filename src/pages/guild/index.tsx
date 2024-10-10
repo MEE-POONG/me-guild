@@ -19,8 +19,8 @@ const GuildPage: React.FC = (props) => {
                         backgroundSize: 'cover', 
                     }}
                 >
-                    <div className="relative bg-black/25 h-full w-full flex items-center justify-center">
-                        <h2 className="text-4xl font-bold text-white">
+                    <div className="relative bg-black/50 h-full w-full flex items-center justify-center">
+                        <h2 className="text-7xl font-bold text-white font-mg04">
                             Guild Hall
                         </h2>
                     </div>
