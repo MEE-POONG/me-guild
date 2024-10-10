@@ -1,0 +1,674 @@
+/* Navbar */
+.nk-navbar {
+    position: relative;
+    padding: 27px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.07rem;
+    color: #fff;
+    transition: 0.3s background-color;
+    z-index: 1000;
+    will-change: background-color;
+
+    &.nk-navbar-fixed {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        transition:
+            0.2s transform,
+            0.2s visibility,
+            0.3s background-color;
+        will-change: transform, visibility, background-color;
+
+        &.nk-onscroll-hide {
+            visibility: hidden;
+            transform: translateY(-100%);
+        }
+
+        &.nk-onscroll-show {
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        &.nk-navbar-light {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    }
+
+    &.nk-navbar-light,
+    &.nk-navbar-light.nk-navbar-solid {
+        color: inherit;
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    &.nk-navbar-transparent {
+        background-color: transparent;
+    }
+
+    &,
+    &.nk-navbar-solid {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    &.nk-navbar-align-center {
+        text-align: center;
+    }
+
+    &.nk-navbar-align-right {
+        text-align: right;
+    }
+
+    .nk-nav-table {
+        display: table;
+        width: 100%;
+        height: 100%;
+
+        > * {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .nk-nav-row {
+            display: table-row;
+        }
+
+        .nk-nav-row-full {
+            height: 100%;
+        }
+
+        .nk-nav-row-center > * {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .nk-nav-icons,
+        .nk-nav-logo {
+            width: 1%;
+        }
+
+        .nk-nav-logo img {
+            height: auto;
+        }
+
+        .nk-nav-icons {
+            white-space: nowrap;
+
+            > * {
+                white-space: initial;
+            }
+        }
+    }
+
+    a {
+        color: inherit;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+
+        > li > a {
+            white-space: nowrap;
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .nk-navbar-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .nk-nav {
+        position: relative;
+        width: 100px;
+
+        &.nk-nav {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        li.single-icon > a {
+            padding: 0 15px;
+
+            > i,
+            > span {
+                height: 32px;
+                font-size: 1.1rem;
+                line-height: 32px;
+                vertical-align: middle;
+            }
+        }
+
+        li > a .nk-item-descr {
+            display: block;
+            font-size: 0.7em;
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        li > a {
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.15s color;
+
+            &:hover,
+            &.hover {
+                color: #dd163b;
+            }
+        }
+
+        li.active > a {
+            color: #dd163b;
+        }
+
+        > li {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+
+            &:last-child {
+                margin-right: -21px;
+
+                @media (max-width: 767px) {
+                    margin-right: -10px;
+                }
+            }
+
+            > a {
+                position: relative;
+                display: block;
+                padding: 6px 21px;
+
+                @media (max-width: 1199px) {
+                    padding: 6px 18px;
+                }
+            }
+        }
+
+        .dropdown {
+            position: absolute;
+            display: none;
+            min-width: 250px;
+            padding: 9px 0;
+            margin-top: 12px;
+            margin-left: 9px;
+            background-color: rgba(0, 0, 0, 0.85);
+            border-bottom: 4px solid #dd163b;
+            opacity: 0;
+            z-index: 1;
+
+            > li {
+                position: relative;
+            }
+
+            > li > a {
+                display: block;
+                padding: 6px 17px;
+                padding-right: 64px;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            .nk-drop-item > a::after {
+                content: " +";
+            }
+
+            .nk-drop-item .nk-drop-item > a::after {
+                position: absolute;
+                right: 20px;
+            }
+
+            .nk-drop-item .nk-drop-item .dropdown {
+                top: 0;
+                left: 5px;
+                margin-top: -9px;
+                margin-left: 100%;
+            }
+
+            &.nk-navbar-light {
+                background-color: #fff;
+            }
+        }
+    }
+
+    &.nk-nav-toggler-right,
+    &.nk-nav-toggler-left {
+        position: fixed;
+        top: 20px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        z-index: 1000;
+
+        > li {
+            display: inline-block;
+
+            & + li {
+                margin-left: 15px;
+            }
+
+            > a {
+                display: block;
+                padding: 12px;
+                color: #fff;
+                background-color: #171e22;
+                box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08);
+
+                > span {
+                    height: 25px;
+                    vertical-align: text-bottom;
+                }
+            }
+        }
+    }
+}
+
+/* Navbar Side */
+.nk-navbar-side {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #171e22;
+    z-index: 1002;
+
+    &.nk-navbar-left-side {
+        left: 0;
+        width: 250px;
+        margin-left: -250px;
+
+        @media (max-width: 400px) {
+            width: 200px;
+            margin-left: -200px;
+        }
+
+        &.nk-navbar-lg {
+            width: 350px;
+            margin-left: -350px;
+
+            @media (max-width: 550px) {
+                width: 300px;
+                margin-left: -300px;
+            }
+
+            @media (max-width: 450px) {
+                width: 250px;
+                margin-left: -250px;
+            }
+        }
+    }
+
+    &.nk-navbar-right-side {
+        right: 0;
+        width: 250px;
+        margin-right: -250px;
+
+        @media (max-width: 400px) {
+            width: 200px;
+            margin-right: -200px;
+        }
+
+        &.nk-navbar-lg {
+            width: 350px;
+            margin-right: -350px;
+
+            @media (max-width: 550px) {
+                width: 300px;
+                margin-right: -300px;
+            }
+
+            @media (max-width: 450px) {
+                width: 250px;
+                margin-right: -250px;
+            }
+        }
+    }
+
+    .nk-nav-logo {
+        display: block;
+
+        .nk-nav-logo {
+            display: block;
+            width: 100%;
+            padding: 20px 25px;
+
+            &.nk-navbar-lg {
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+        }
+
+        .nano {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .nk-nav {
+            position: relative;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+
+            > li:last-child {
+                margin-right: 0;
+            }
+
+            .dropdown > li,
+            > li {
+                position: static;
+                display: block;
+            }
+
+            .dropdown > li > a,
+            > li > a {
+                padding: 12px 25px;
+                white-space: normal;
+            }
+
+            .nk-drop-item > a,
+            > .nk-drop-item > a,
+            .bropdown-back > a {
+                position: relative;
+            }
+
+            .nk-drop-item .nk-drop-item > a::after,
+            .nk-drop-item > a::after,
+            > .nk-drop-item > a::after {
+                position: absolute;
+                right: 20px;
+            }
+
+            .dropdown {
+                display: block;
+                padding: 0;
+                background-color: transparent;
+                border-bottom: 0;
+                opacity: 1;
+
+                &::before {
+                    content: none;
+                }
+
+                .nk-drop-item > .dropdown,
+                .nk-drop-item .nk-drop-item > .dropdown {
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    margin-top: 0;
+                    margin-left: 0;
+                }
+
+                .nk-drop-item > .dropdown > li > a,
+                .nk-drop-item .nk-drop-item > .dropdown > li > a {
+                    display: none;
+                }
+
+                .bropdown-back > a::after {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    top: 50%;
+                    left: 15px;
+                    width: 0;
+                    height: 0;
+                    margin-top: -3px;
+                    border: none;
+                    border-top: 3px solid transparent;
+                    border-right: 3px solid;
+                    border-bottom: 3px solid transparent;
+                    transition: 0.13s opacity;
+                    transform: none;
+                    will-change: opacity;
+                }
+            }
+
+            .nk-nav-icons {
+                list-style: none;
+
+                li {
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    > a {
+                        display: inline-block;
+                        padding: 0 15px;
+
+                        > i,
+                        > span {
+                            height: 32px;
+                            font-size: 1.2rem;
+                            line-height: 32px;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nk-navbar-overlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    background-color: #000;
+    opacity: 0;
+    z-index: 1001;
+}
+/*------------------------------------------------------------------
+  Navbar Side
+ -------------------------------------------------------------------*/
+ .nk-navbar-side {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #171e22;
+    z-index: 1002;
+  
+    &.nk-navbar-left-side {
+      left: 0;
+      width: 250px;
+      margin-left: -250px;
+  
+      @media (max-width: 400px) {
+        width: 200px;
+        margin-left: -200px;
+      }
+    }
+  
+    &.nk-navbar-right-side {
+      right: 0;
+      width: 250px;
+      margin-right: -250px;
+  
+      @media (max-width: 400px) {
+        width: 200px;
+        margin-right: -200px;
+      }
+    }
+  
+    &.nk-navbar-lg {
+      &.nk-navbar-left-side {
+        width: 350px;
+        margin-left: -350px;
+  
+        @media (max-width: 550px) {
+          width: 300px;
+          margin-left: -300px;
+        }
+  
+        @media (max-width: 450px) {
+          width: 250px;
+          margin-left: -250px;
+        }
+      }
+  
+      &.nk-navbar-right-side {
+        width: 350px;
+        margin-right: -350px;
+  
+        @media (max-width: 550px) {
+          width: 300px;
+          margin-right: -300px;
+        }
+  
+        @media (max-width: 450px) {
+          width: 250px;
+          margin-right: -250px;
+        }
+      }
+    }
+  
+    .nk-nav-logo {
+      display: block;
+      width: 100%;
+      padding: 20px 25px;
+  
+      &.nk-navbar-lg {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+    }
+  
+    .nano {
+      height: 100%;
+      overflow-y: auto;
+    }
+  
+    .nk-nav {
+      position: relative;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+  
+      > li:last-child {
+        margin-right: 0;
+      }
+  
+      .dropdown > li,
+      > li {
+        position: static;
+        display: block;
+      }
+  
+      .dropdown > li > a,
+      > li > a {
+        padding: 12px 25px;
+        white-space: normal;
+      }
+  
+      .nk-drop-item > a,
+      > .nk-drop-item > a,
+      .bropdown-back > a {
+        position: relative;
+      }
+  
+      .nk-drop-item .nk-drop-item > a::after,
+      .nk-drop-item > a::after,
+      > .nk-drop-item > a::after {
+        position: absolute;
+        right: 20px;
+      }
+  
+      .dropdown {
+        display: block;
+        padding: 0;
+        background-color: transparent;
+        border-bottom: 0;
+        opacity: 1;
+  
+        &::before {
+          content: none;
+        }
+  
+        .nk-drop-item > .dropdown,
+        .nk-drop-item .nk-drop-item > .dropdown {
+          top: 0;
+          left: 0;
+          width: 100%;
+          margin-top: 0;
+          margin-left: 0;
+        }
+  
+        .nk-drop-item > .dropdown > li > a,
+        .nk-drop-item .nk-drop-item > .dropdown > li > a {
+          display: none;
+        }
+  
+        .bropdown-back > a::after {
+          content: "";
+          position: absolute;
+          display: block;
+          top: 50%;
+          left: 15px;
+          width: 0;
+          height: 0;
+          margin-top: -3px;
+          color: inherit;
+          border: none;
+          border-top: 3px solid transparent;
+          border-right: 3px solid;
+          border-bottom: 3px solid transparent;
+          transition: 0.13s opacity;
+          transform: none;
+          will-change: opacity;
+        }
+      }
+  
+      .nk-nav-icons {
+        list-style: none;
+  
+        li {
+          position: relative;
+          display: inline-block;
+          vertical-align: middle;
+  
+          > a {
+            display: inline-block;
+            padding: 0 15px;
+  
+            > i,
+            > span {
+              height: 32px;
+              font-size: 1.2rem;
+              line-height: 32px;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  
+    .nk-navbar-overlay {
+      position: fixed;
+      display: none;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      cursor: pointer;
+      background-color: #000;
+      opacity: 0;
+      z-index: 1001;
+    }
+  }
+  
