@@ -5,54 +5,51 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
+@import "navbar.scss";
 @import "slide.scss";
 @import "textstyles.scss";
 
-
 @font-face {
-    font-family: 'LibreBodoni';
-    src: url('/fonts/LibreBodoni.ttf') format('truetype');
+    font-family: "LibreBodoni";
+    src: url("/fonts/LibreBodoni.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'PirataOne';
-    src: url('/fonts/PirataOne.ttf') format('truetype');
+    font-family: "PirataOne";
+    src: url("/fonts/PirataOne.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'CosmicLove';
-    src: url('/fonts/CosmicLove.ttf') format('truetype');
+    font-family: "CosmicLove";
+    src: url("/fonts/CosmicLove.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'TeachDemo';
-    src: url('/fonts/TeachDemo.ttf') format('truetype');
+    font-family: "TeachDemo";
+    src: url("/fonts/TeachDemo.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
-
-
- //Font Family
- .font-mg01{
-    font-family: 'LibreBodoni', sans-serif;
+//Font Family
+.font-mg01 {
+    font-family: "LibreBodoni", sans-serif;
 }
-.font-mg02{
-    font-family: 'PirataOne';
+.font-mg02 {
+    font-family: "PirataOne";
 }
-.font-mg03{
-    font-family: 'TeachDemo';
+.font-mg03 {
+    font-family: "TeachDemo";
 }
-.font-mg04{
-    font-family: 'CosmicLove';
+.font-mg04 {
+    font-family: "CosmicLove";
 }
-
 
 body {
     background: rgb(54, 54, 54);
@@ -66,7 +63,6 @@ body {
     padding: 0;
     min-height: 100vh;
     width: 100%;
-
 }
 
 .container {
@@ -124,3 +120,32 @@ body {
     }
 }
 
+.btn-home {
+    width: 250px;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    font-family: "Skranji", cursive;
+    color: #ffc000;
+    font-size: 18px;
+    font-weight: 400;
+    text-shadow: 0 1px 3px #000;
+    text-align: center;
+    padding: 10px 0;
+    background: radial-gradient(circle, #1d65ff, #1d65ff);
+    border-top: 4px ridge #ffb000;
+    border-left: 4px groove #ffb000;
+    border-right: 4px ridge #ffb000;
+    border-bottom: 4px groove #ffb000;
+    box-shadow: inset 0px 0px 5px 3px rgba(1, 1, 1, 0.3);
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.btn-home:hover {
+    background: radial-gradient(circle, #65d3ff, #1d65ff);
+    box-shadow: 0px 0 5px 5px rgba(255, 255, 255, 0.2);
+}
+
+.btn-home:active {
+    background: radial-gradient(circle, #65d3ff, #1d65ff);
+    box-shadow: 0px 0 5px 5px rgba(255, 255, 255, 0.2);
+}
