@@ -29,7 +29,7 @@ const ActivityPage: React.FC = (props) => {
         <Layout>
             <section className="">
                 <div
-                    className="bg-fixed h-[530px] w-full relative flex items-center justify-center"
+                    className="bg-fixed h-[430px] w-full relative flex items-center justify-center"
                     style={{
                         backgroundImage: `url(${backgroundImageUrl})`,
                         backgroundPosition: 'center',
@@ -38,12 +38,10 @@ const ActivityPage: React.FC = (props) => {
                 >
                     <div className="relative bg-black/50 h-full w-full flex items-center justify-center">
                         <h2 className="text-7xl font-bold text-white font-mg04">
-                            Guild Hall
+                            Activity Hall
                         </h2>
                     </div>
                 </div>
-                <h2 className="animate-cha02 font-bold">ประกาศกิจกรรม</h2>
-                <hr />
                 <div className="container mx-auto">
                     <div className="bg-[url('/images/blackboard01.jpg')] text-gray-100 p-5 md:p-16 mt-5 mb-20 shadow-xl shadow-indigo-600/50 rounded-lg">
                         <ul className="list-inside text-sm mt-8">
