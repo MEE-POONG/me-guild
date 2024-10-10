@@ -61,17 +61,13 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Navbar */}
-            <nav className="bg-dark-2 text-white sticky top-0 z-20">
-                <div className="container mx-auto flex justify-between items-center py-4">
+            <nav className="relative bg-black bg-opacity-60 p-7 font-montserrat text-[1.07rem] text-white transition-colors duration-300 z-1000">
+                <div className="container mx-auto flex justify-between items-center">
                     <a href="/" className="text-xl font-bold">
-                        <Image src="/images/logo.png" alt="GoodGames" width={199} height={50} />
+                        <Image src="/images/logo.png" alt="GoodGames" width={100} height={100} />
                     </a>
                     <ul className="hidden lg:flex space-x-6">
                         <li className="relative group">
-                            <a href="elements.html" className="hover:text-red-500">Features</a>
-                            <a href="elements.html" className="hover:text-red-500">Features</a>
-                            <a href="elements.html" className="hover:text-red-500">Features</a>
-                            <a href="elements.html" className="hover:text-red-500">Features</a>
                             <a href="elements.html" className="hover:text-red-500">Features</a>
                             {/* <ul className="absolute hidden group-hover:block bg-dark-2 mt-2 space-y-2 p-4">
                                 <li><a href="elements.html" className="hover:text-red-500">Elements (Shortcodes)</a></li>
@@ -88,8 +84,14 @@ const Navbar: React.FC = () => {
                                 <li><a href="offline.html" className="hover:text-red-500">Offline</a></li>
                                 <li><a href="404.html" className="hover:text-red-500">404</a></li>
                             </ul> */}
-                            
+
                         </li>
+                        <li className="relative group">
+                            <a href="elements.html" className="hover:text-red-500">
+                                Features
+                            </a>
+                        </li>
+
                         {/* Add more menu items following the pattern */}
                     </ul>
                     <div className="lg:hidden">
