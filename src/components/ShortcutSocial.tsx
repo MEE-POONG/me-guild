@@ -10,7 +10,7 @@ const ShortcutSocial: React.FC = () => {
     };
 
     return (
-        <div className="fixed right-0 top-1/2 transform -translate-y-1/2">
+        <div className="z-50 fixed right-0 top-1/2 transform -translate-y-1/2">
             {/* ลิ้นชัก */}
             <div className={`bg-gradient-to-l from-green-300 via-blue-500 to-purple-600 text-white p-3 rounded-l-full shadow-lg transition-transform duration-300 
                 ${isOpen

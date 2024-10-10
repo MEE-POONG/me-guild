@@ -8,7 +8,7 @@ const NewsUpdate: React.FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=3');
+                const response = await fetch('/api/news?page=1&pageSize=4');
                 const data = await response.json();
                 setNewsData(data.news);
                 setLoading(false);
@@ -29,7 +29,7 @@ const NewsUpdate: React.FC = () => {
                 <p className="text-xl md:text-2xl flex items-end justify-between text-gray-100 border-b border-gray-400 pb-2">
                     <span>
                         News
-                        <span className="text-[9px] md:text-xs bg-blue-400 shadow-sm shadow-violet-700 px-1 rounded-md text-white font-light ml-1">Update</span>
+                        <span className="text-[9px] md:text-xs bg-sky-400 shadow-sm shadow-violet-700 px-1 rounded-md text-white font-light ml-1">Update</span>
                     </span>
                     <a href="/news" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a>
                 </p>
@@ -38,15 +38,27 @@ const NewsUpdate: React.FC = () => {
                         <p>Loading...</p>
                     ) : (
                         newsData.map(news => (
-                            <div key={news.id} className="p-1 w-1/2 lg:w-1/3 ">
-                                <div className="h-full border-2 border-gray-200 border-opacity-60 bg-gray-300 rounded overflow-hidden drop-shadow-lg">
-                                    <img className="lg:h-48 md:h-36 w-full object-cover object-center" src={news.img} alt="news" />
+                            <div key={news.id} className="p-1 w-1/2 lg:w-1/4 ">
+                                <div className="h-full drop-shadow-lg">
+                                    <a href={`/news/${news.id}`}>
+                                        <img className="lg:h-48 md:h-36 w-full object-cover object-center hover:scale-105" src={news.img} alt="news" />
+                                    </a>
                                     <div className="p-3">
-                                        <p className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">NEWS</p>
-                                        <h1 className="title-font text-sm md:text-lg font-medium text-gray-800 mb-3">{news.title}</h1>
-                                        <p className="leading-relaxed mb-3 line-clamp-2 text-sm">{news.content}</p>
-                                        <div className="">
-                                            <a href={`/news/${news.id}`} className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 text-sm">Read
+                                        <div
+                                            className="tracking-widest text-xs font-medium text-white mb-1 p-1 w-12 bg-yellow-400 rounded-r"
+                                        >
+                                            NEWS
+                                        </div>
+                                        <a href={`/news/${news.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-red-500 leading-3"
+                                        >
+                                            {news.title}
+                                        </a>
+                                        {/* <p className="leading-relaxed mb-3 line-clamp-2 text-sm">{news.content}</p> */}
+                                        <p className="text-xs line-clamp-3 font-extralight text-gray-400 mt-3">{news.description}</p>
+                                        <div className="mt-5">
+                                            <a href={`/news/${news.id}`}
+                                                className="text-white inline-flex items-center md:mb-2 lg:mb-0 text-sm bg-gray-500/50 p-2 rounded hover:bg-red-600">
+                                                Read
                                                 <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                     <path d="M5 12h14"></path>
                                                     <path d="M12 5l7 7-7 7"></path>

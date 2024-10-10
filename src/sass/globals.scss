@@ -9,6 +9,52 @@
 @import "slide.scss";
 @import "textstyles.scss";
 
+
+@font-face {
+    font-family: 'LibreBodoni';
+    src: url('/fonts/LibreBodoni.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PirataOne';
+    src: url('/fonts/PirataOne.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CosmicLove';
+    src: url('/fonts/CosmicLove.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TeachDemo';
+    src: url('/fonts/TeachDemo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+ //Font Family
+ .font-mg01{
+    font-family: 'LibreBodoni', sans-serif;
+}
+.font-mg02{
+    font-family: 'PirataOne';
+}
+.font-mg03{
+    font-family: 'TeachDemo';
+}
+.font-mg04{
+    font-family: 'CosmicLove';
+}
+
+
 body {
     background: rgb(54, 54, 54);
     background: radial-gradient(circle, rgba(106, 106, 106, 1) 0%, rgba(59, 58, 58, 1) 100%);
@@ -21,6 +67,7 @@ body {
     padding: 0;
     min-height: 100vh;
     width: 100%;
+
 }
 
 .container {
