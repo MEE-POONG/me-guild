@@ -26,14 +26,14 @@ const NewsUpdate: React.FC = () => {
 
         <section className="mt-12">
             <div className="container mx-auto px-4 py-16">
-                <p className="text-xl md:text-2xl flex items-end justify-between text-gray-100 border-b border-gray-400 pb-2">
+                <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-gray-500 pb-2 uppercase">
                     <span>
-                        News
-                        <span className="text-[9px] md:text-xs bg-sky-400 shadow-sm shadow-violet-700 px-1 rounded-md text-white font-light ml-1">Update</span>
+                        Latest 
+                        <span className="ml-3 text-white">News</span>
                     </span>
                     <a href="/news" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a>
                 </p>
-                <div className="flex flex-wrap mt-5">
+                <div className="flex flex-wrap mt-10">
                     {loading ? (
                         <p>Loading...</p>
                     ) : (
@@ -49,7 +49,7 @@ const NewsUpdate: React.FC = () => {
                                         >
                                             NEWS
                                         </div>
-                                        <a href={`/news/${news.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-red-500 leading-3"
+                                        <a href={`/news/${news.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-teal-500 leading-3"
                                         >
                                             {news.title}
                                         </a>
