@@ -24,10 +24,10 @@ const Navbar: React.FC = () => {
 
     return (
       
-            <nav className="relative bg-black bg-opacity-60 p-7 font-montserrat text-[1.07rem] text-white transition-colors duration-300 z-1000">
+            <nav className="relative bg-black bg-opacity-60 p-6 font-montserrat text-[1.07rem] text-white transition-colors duration-300 z-1000">
                 <div className="container mx-auto flex justify-between items-center">
                     <a href="/" className="text-xl font-bold">
-                        <Image src="/images/logo.png" alt="GoodGames" width={100} height={100} />
+                        <Image src="/images/logo.png" alt="GoodGames" width={60} height={60} />
                     </a>
                     <ul className="hidden lg:flex space-x-6">
                         <li className="relative group">

@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     return (
         <header className="relative z-10 bg-transparent">
             {/* Top Contacts */}
-            <div className="bg-dark-1 text-white py-3">
+            <div className="bg-dark-1 text-white py-2">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="flex space-x-2">
                         <a href="#" className="w-5 h-5 flex items-center justify-center bg-gray-300 text-black hover:text-white hover:bg-orange-500 p-[3px] cursor-pointer rounded-xl">
