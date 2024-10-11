@@ -9,7 +9,7 @@ interface NewsItem {
     image: string;
 }
 
-const NewsCard: FC = () => {
+const NewsCardHome: FC = () => {
     const [newsData, setNewsData] = useState<NewsItem[]>([]);
     const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -40,17 +40,17 @@ const NewsCard: FC = () => {
     }
 
     return (
-        <div className='container mx-auto mt-10 px-2'>
+        <div className='container mx-auto mt-10 px-2 md:px-10 xl:px-0'>
             <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-gray-500 pb-2 uppercase">
                 <span>
                     Latest
                     <span className="ml-3 text-white">News</span>
                 </span>
-                <a href="/news" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a>
+                {/* <a href="/news" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a> */}
             </p>
             <div className="md:flex bg-gray-800 text-white h-full">
                 {/* Left Side (News Items List) */}
-                <div className="md:w-1/3 space-y-4  max-h-[500px] overflow-y-auto">
+                <div className="md:w-1/3 space-y-1 max-h-[500px] overflow-y-auto">
                     {newsData.map((item) => (
                         <div
                             key={item.id}
@@ -63,9 +63,9 @@ const NewsCard: FC = () => {
                                 alt={item.title}
                                 width={80}
                                 height={80}
-                                className="rounded-md"
+                                className="rounded-md overflow-hidden"
                             />
-                            <div>
+                            <div className=''>
                                 <h3 className="text-lg font-semibold tracking-tighter line-clamp-1">
                                     {item.title}
                                 </h3>
@@ -92,10 +92,10 @@ const NewsCard: FC = () => {
                             height={400}
                             className="rounded-md mb-4"
                         />
-                        <h3 className="text-2xl font-bold">{selectedNews.title}</h3>
-                        <p className="text-gray-300 mt-4">{selectedNews.description}</p>
-                        <button className="mt-4 px-4 py-2 bg-red-500 rounded-md text-white">
-                            Action
+                        <h3 className="text-lg font-bold">{selectedNews.title}</h3>
+                        <p className="text-gray-300 mt-4 text-sm">{selectedNews.description}</p>
+                        <button className="mt-4 px-4 py-2 bg-yellow-500 rounded-md text-white">
+                            News
                         </button>
                     </div>
                 )}
@@ -105,4 +105,4 @@ const NewsCard: FC = () => {
     );
 };
 
-export default NewsCard;
+export default NewsCardHome;
