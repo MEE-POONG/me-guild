@@ -5,6 +5,7 @@ import NewsList from '@/containers/News/NewsList';
 import HotNewsCard from '@/containers/News/HotNews';
 import HotNewsTwoCard from '@/containers/News/HowNewsTwo';
 import WeAreSocial from '@/containers/CardReccommend/WeAreSocial';
+import LatestActivity from '@/containers/CardReccommend/LatestActivity';
 
 const NewsPage: React.FC = (props) => {
     const [newsData, setNewsData] = useState<any[]>([]);
@@ -40,7 +41,7 @@ const NewsPage: React.FC = (props) => {
 
     return (
         <Layout>
-            <div className="container mx-auto px-2 md:px-10 xl:px-0">
+            <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
                 <a href="/" className='text-gray-100 flex items-center gap-2 hover:underline decoration-sky-500'> <BiArrowFromRight /> Home</a>
 
                 <p className="text-4xl font-bold uppercase flex text-gray-100 border-teal-400 border-b-4 pb-2 mt-10">
@@ -89,8 +90,7 @@ const NewsPage: React.FC = (props) => {
                         {/* Social */}
                         <WeAreSocial/>
                         {/* Latest Activity */}
-
-
+                        <LatestActivity/>
                         {/* Latest Match */}
                     </div>
                 </div>
