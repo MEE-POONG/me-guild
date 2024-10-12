@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const NewsUpdate: React.FC = () => {
+const NewsList: React.FC = () => {
     const [newsData, setNewsData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=9'); 
+                const response = await fetch('/api/news');
                 const data = await response.json();
                 setNewsData(data.news);
                 setLoading(false);
@@ -23,15 +23,12 @@ const NewsUpdate: React.FC = () => {
 
     return (
         <section className="container mx-auto px-2 md:px-10 xl:px-0 py-16">
-            <div className="text-right border-b-4 border-sky-400">
-                <a href="/news" className="text-base text-white hover:text-amber-500">ทั้งหมด {`>>`}</a>
-            </div>
             <div className="flex flex-wrap mt-10">
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
-                    newsData.slice(5).map(news => (
-                        <div key={news.id} className="p-1 w-1/2 lg:w-1/4">
+                    newsData.slice(4).map(news => (
+                        <div key={news.id} className="p-1 w-1/2 lg:w-1/3">
                             <div className="h-full drop-shadow-lg">
                                 <a href={`/news/${news.id}`}>
                                     <img className="lg:h-48 md:h-36 w-full object-cover object-center hover:scale-105" src={news.img} alt="news" />
@@ -63,4 +60,4 @@ const NewsUpdate: React.FC = () => {
     );
 };
 
-export default NewsUpdate;
+export default NewsList;
