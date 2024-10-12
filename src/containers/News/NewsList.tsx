@@ -27,7 +27,7 @@ const NewsList: React.FC = () => {
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
-                    newsData.slice(3).map(news => (
+                    newsData.slice(4).map(news => (
                         <div key={news.id} className="p-1 w-1/2 lg:w-1/3">
                             <div className="h-full drop-shadow-lg">
                                 <a href={`/news/${news.id}`}>
