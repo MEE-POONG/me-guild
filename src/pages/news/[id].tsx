@@ -1,6 +1,11 @@
 import Layout from "@/components/Layout"
+import LatestActivity from "@/containers/CardReccommend/LatestActivity";
+import SearchBar from "@/containers/CardReccommend/SearchBarForm";
+import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
+import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { BiArrowFromRight, BiChevronRight } from "react-icons/bi";
 
 const ReadNews: React.FC = (props) => {
     const router = useRouter();
@@ -48,16 +53,27 @@ const ReadNews: React.FC = (props) => {
 
     return (
         <Layout>
-            <div className="container mx-auto py-10">
-                <div className="bg-[url('/images/blackboard01.jpg')] drop-shadow-xl py-12 px-3 md:p-20 shadow-xl shadow-indigo-600/50 rounded-lg">
-                    {/* <p className="text-2xl mb-3 font-black text-gray-50">{news.title}</p> */}
-                    <div className="border-t-4 border-purple-500 text-sm md:text-base bg-[url('/images/paper1.jpg')] text-center p-6 md:p-16 rounded-lg ">
-                        <p className="text-lg lg:text-2xl mb-3 font-black text-left">{news.title}</p>
+            <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
+                <div className="flex items-center gap-2">
+                    <Link href="/" className='text-gray-100 flex items-center gap-1 hover:underline decoration-sky-500'>
+                        <BiArrowFromRight size={20} /> Home
+                    </Link>
+                    <Link href="/news" className='text-gray-100 flex items-center hover:underline decoration-sky-500'>
+                        <BiChevronRight size={18} />News <BiChevronRight size={18} />
+                    </Link>
+                </div>
+
+                <h3 className="text-4xl font-bold uppercase flex text-gray-100 border-teal-400 border-b-4 pb-2 mt-10">
+                    {news.title}
+                </h3>
+                <div className="lg:grid grid-cols-12 gap-10 mt-6">
+                    <div className="col-span-8">
+
                         <img src={news.img}
                             className="w-full h-[420px] mx-auto drop-shadow-md"
                             alt=""
                         />
-                        <p className="mt-10 indent-8 ">
+                        <p className="mt-10 indent-8 text-gray-200">
                             {news.description}
                         </p>
 
@@ -70,7 +86,16 @@ const ReadNews: React.FC = (props) => {
                             </a>
                         </div>
                     </div>
+                    <div className='col-span-4'>
+                        {/* search */}
+                        <SearchBar />
 
+                        {/* Social */}
+                        <WeAreSocial />
+                        {/* Latest Activity */}
+                        <LatestActivity />
+                        {/* Latest Match */}
+                    </div>
                 </div>
             </div>
         </Layout>

@@ -1,8 +1,12 @@
 import Layout from '@/components/Layout';
+import LatestActivity from '@/containers/CardReccommend/LatestActivity';
+import SearchBar from '@/containers/CardReccommend/SearchBarForm';
+import WeAreSocial from '@/containers/CardReccommend/WeAreSocial';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { BiArrowFromRight, BiChevronRight } from 'react-icons/bi';
 
 const ActivityDetail: React.FC = (props) => {
     const router = useRouter();
@@ -50,16 +54,23 @@ const ActivityDetail: React.FC = (props) => {
 
     return (
         <Layout>
-            <div className='container mx-auto py-3 md:px-10 md:py-24'>
-                {/* <Link href='/activity'>Back</Link> */}
-                <div className="bg-[url('/images/blackboard01.jpg')] drop-shadow-xl py-12 px-3 md:p-20 shadow-xl shadow-indigo-600/50 rounded-lg">
-                    <div className="bg-[url('/images/paper1.jpg')] text-center p-6 md:p-16 relative rounded-lg ">
-                        <div className="absolute top-2 -left-8 md:left-10 md:top-10 lg:top-2 ">
-                            <img src="/images/Megaphone01.png" alt="" className="w-20 lg:w-36 translate-x-6" />
-                        </div>
-                        <p className='text-xl font-black mb-10'>{activities.title}</p>
-                        <p className='text-xs md:text-base'>ระยะเวลา : <span className='text-orange-400'> {activities.startdate} - {activities.enddate}</span></p>
-                        <p className='text-xs md:text-base'>ประเภทการแข่งขัน : {activities.type}</p>
+            <div className='container mx-auto px-2 md:px-10 xl:px-0 py-3'>
+                <div className="flex items-center gap-2">
+                    <Link href="/" className='text-gray-100 flex items-center gap-1 hover:underline decoration-sky-500'>
+                        <BiArrowFromRight size={20} /> Home
+                    </Link>
+                    <Link href="/activity" className='text-gray-100 flex items-center hover:underline decoration-sky-500'>
+                        <BiChevronRight size={18} /> Activity<BiChevronRight size={18} />
+                    </Link>
+                </div>
+
+                <h3 className="text-4xl uppercase flex text-gray-100 border-orange-500 border-b-4 pb-2 mt-10">
+                    {activities.title}
+                </h3>
+                <div className="lg:grid grid-cols-12 gap-10 mt-6">
+                    <div className="col-span-8">
+                        <p className='text-xs md:text-base text-gray-50'>ระยะเวลา : <span className='text-orange-400'> {activities.startdate} - {activities.enddate}</span></p>
+                        <p className='text-xs md:text-base text-gray-50'>ประเภทการแข่งขัน : {activities.type}</p>
 
                         {/* ภาพประกอบ/โปรโมท */}
                         <img src={activities.img}
@@ -67,10 +78,20 @@ const ActivityDetail: React.FC = (props) => {
                             alt="" />
                         <div>
                             <p className='text-xs md:text-base'>รายละเอียดกิจกรรม</p>
-                            <p className='text-purple-700'>Discord :
-                                <a href="/ลิงค์ดิสก์" className='ml-3 hover:text-purple-900'>{activities.disname}</a>
+                            <p className='text-purple-400'>Discord :
+                                <a href="/ลิงค์ดิสก์" className='ml-3 hover:text-purple-500'>{activities.disname}</a>
                             </p>
                         </div>
+                    </div>
+                    <div className='col-span-4'>
+                        {/* search */}
+                        <SearchBar />
+
+                        {/* Social */}
+                        <WeAreSocial />
+                        {/* Latest Activity */}
+                        <LatestActivity />
+                        {/* Latest Match */}
                     </div>
                 </div>
             </div>
