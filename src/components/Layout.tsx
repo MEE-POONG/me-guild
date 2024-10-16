@@ -19,12 +19,12 @@ export default function Layout({
             <div className="h-[5000px]">
 
             </div>
-            {/* <div className="pt-16 md:pt-24 ">
+            <div className="pt-16 md:pt-24 ">
                 {children}
                 <ShortcutSocial />
                 <BackToTopButton />
             </div>
-            <Footer /> */}
+            <Footer />
         </div>
     )
 }
