@@ -18,7 +18,7 @@ const WeAreSocial: FC = () => {
                     href="https://discord.com/invite/4eS7Bt3PZF"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-600 p-5 flex items-center justify-center text-white hover:bg-violet-600 transition-colors"
+                    className="bg-gray-600 p-5 flex items-center justify-center text-white hover:bg-violet-500 transition-colors"
                 >
                     <BsDiscord size={18} />
                 </a>
