@@ -4,7 +4,8 @@ import Slider from "react-slick";
 const HomeSlider: React.FC = () => {
 
     return (
-        <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
+        <div className="relative h-screen flex items-center justify-center bg-black" >
+            <img className="nk-page-background-top" src="assets/images/bg-top.png" alt=""></img>
             <div className="absolute inset-0 overflow-hidden">
                 <img
                     src="/images/bg01.png"

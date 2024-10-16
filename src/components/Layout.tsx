@@ -16,14 +16,12 @@ export default function Layout({
     return (
         <div>
             <Header />
-            <div className="h-[5000px]">
+            {/* <div className="h-[5000px] bg-[]">
 
-            </div>
-            <div className="pt-16 md:pt-24 ">
-                {children}
-                <ShortcutSocial />
-                <BackToTopButton />
-            </div>
+            </div> */}
+            {children}
+            <ShortcutSocial />
+            <BackToTopButton />
             <Footer />
         </div>
     )

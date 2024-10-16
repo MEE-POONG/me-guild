@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
     const handleToggle = (dropdownTitle: string) => {
         setOpenDropdown(openDropdown === dropdownTitle ? null : dropdownTitle);
     };
-    const classNameSetBtnNav = "text-white px-4 py-2 flex items-center space-x-2 hover:bg-gray-700 transition";
+    const classNameSetBtnNav = "text-white px-4 py-2 flex items-center space-x-2 transition hover:text-[#f2b265]";
     const navItems: NavItem[] = [
         { href: "/", label: "HOME", dropdown: false },
         {
@@ -30,15 +30,14 @@ const Navbar: React.FC = () => {
     ];
 
     return (
-        <nav className="bg-gray-900 px-6 py-4">
+        <nav className="bg-black/50 px-6 py-4">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo or Home Link */}
                 <Link href="/" className="text-white text-lg font-semibold">
-                    MyWebsite
+                <img src="/images/logo.png" alt="GoodGames" width={60} height={60}  />
                 </Link>
-
                 {/* Navigation Links */}
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center">
                     {navItems.map((item) =>
                         item.dropdown && item.list ? (
                             <NavDropdown
@@ -47,6 +46,7 @@ const Navbar: React.FC = () => {
                                 items={item.list}
                                 isOpen={openDropdown === item.label}
                                 onToggle={() => handleToggle(item.label)}
+                                navClass={classNameSetBtnNav}
                             />
                         ) : (
                             <Link key={item.label} href={item.href} className={classNameSetBtnNav}>

@@ -11,23 +11,25 @@ interface DropdownProps {
   title: string;
   items: DropdownItem[];
   isOpen: boolean;
+  navClass: string;
   onToggle: () => void;
 }
 
-const NavDropdown: FC<DropdownProps> = ({ title, items, isOpen, onToggle }) => {
+const NavDropdown: FC<DropdownProps> = ({ title, items, navClass, isOpen, onToggle }) => {
   return (
     <div className="relative">
       <button
         onClick={onToggle}
-        className="text-white px-4 py-2 flex items-center space-x-2 hover:bg-gray-700 transition"
+        className={navClass}
+        style={{ color: isOpen ? '#f2b265' : undefined }} // Use a conditional (ternary) operator
       >
         {title}
-        <FaPlus className='ms-1'/>
+        <FaPlus className='ms-1' />
       </button>
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg z-10">
+        <div className="absolute left-0 mt-8 w-48 bg-black/80 shadow-lg z-10" style={{ borderBottom: '5px solid #f2b265' }}>
           {items.map((item) => (
-            <Link key={item.label} href={item.href} className="block px-4 py-2 text-white hover:bg-gray-700">
+            <Link key={item.label} href={item.href} className={navClass}>
               {item.label}
             </Link>
           ))}
