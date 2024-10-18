@@ -13,7 +13,7 @@ const Home: React.FC = (props) => {
   return (
     <Layout>
       <section className="">
-        {/* <HomeSlider /> */}
+        <HomeSlider />
         <NewsCardHome />
         <NewsUpdate />
         <ActivityUpdate />
