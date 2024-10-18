@@ -1,4 +1,8 @@
 import Layout from "@/components/Layout"
+import LatestNews from "@/containers/CardReccommend/LatesNews";
+import LatestActivity from "@/containers/CardReccommend/LatestActivity";
+import SearchBar from "@/containers/CardReccommend/SearchBarForm";
+import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
 import { useEffect, useState } from "react";
 
 const ActivityPage: React.FC = (props) => {
@@ -42,22 +46,35 @@ const ActivityPage: React.FC = (props) => {
                         </h2>
                     </div>
                 </div>
-                <div className="container mx-auto">
-                    <div className="bg-[url('/images/blackboard01.jpg')] text-gray-100 p-5 md:p-16 mt-5 mb-20 shadow-xl shadow-indigo-600/50 rounded-lg">
-                        <ul className="list-inside text-sm mt-8">
-                            {loading ? (
-                                <p>Loading...</p>
-                            ) : (
-                                activityData.map(activities => (
-                                    <li key={activities.id} className="border-b border-slate-500 mb-2">
-                                        <a href={`/activity/${activities.id}`} className="flex justify-between hover:text-cyan-500">
-                                            {activities.title}
-                                            <span className="text-orange-400">{activities.point} point</span>
-                                        </a>
-                                    </li>
-                                ))
-                            )}
-                        </ul>
+
+                <div className="container mx-auto px-2 md:px-10 xl:px-0 py-10">
+                    <div className="lg:grid grid-cols-12 gap-10 mt-6">
+                        <div className="col-span-8 bg-black/10 p-5">
+                            <ul className="list-inside text-sm ">
+                                {loading ? (
+                                    <p>Loading...</p>
+                                ) : (
+                                    activityData.map(activities => (
+                                        <li key={activities.id} className="border-b border-slate-500 mb-2">
+                                            <a href={`/activity/${activities.id}`} className="flex justify-between text-white hover:text-cyan-500">
+                                                {activities.title}
+                                                <span className="text-orange-400">{activities.point} point</span>
+                                            </a>
+                                        </li>
+                                    ))
+                                )}
+                            </ul>
+                        </div>
+                        <div className='col-span-4'>
+                            {/* search */}
+                            <SearchBar/>
+
+                            {/* Social */}
+                            <WeAreSocial />
+                            {/* Latest News */}
+                            <LatestNews/>
+                            {/* Latest Match */}
+                        </div>
                     </div>
                 </div>
             </section>
