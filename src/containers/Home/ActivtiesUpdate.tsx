@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ActivityUpdate: React.FC = () => {
@@ -38,16 +39,16 @@ const ActivityUpdate: React.FC = () => {
                             ) : (
                                 activityData.map(activities => (
                                     <li key={activities.id} className="border-b border-slate-500 mb-5">
-                                        <a href={`/activity/${activities.id}`} className="flex justify-between text-stone-50">
+                                        <Link href={`/activity/${activities.id}`} className="flex justify-between text-stone-50">
                                             {activities.title}
                                             <span className="text-orange-400">{activities.point} point</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))
                             )}
                         </ul>
                         <div className="text-right">
-                            <a href="/activity" className="text-xs md:text-base text-teal-400 hover:text-teal-500 hover:underline">ทั้งหมด {`>>`}</a>
+                            <Link href="/activity" className="text-xs md:text-base text-teal-400 hover:text-teal-500 hover:underline">ทั้งหมด {`>>`}</Link>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 
 const LatestNews: FC = () => {
@@ -33,13 +34,13 @@ const LatestNews: FC = () => {
                 {newsData.map(news => (
                     <div key={news.id} className="p-2">
                         <div className="flex">
-                            <a href={`/news/${news.id}`}>
+                            <Link href={`/news/${news.id}`}>
                                 <img className="h-24 w-24 object-cover object-center hover:scale-105" src={news.img} alt="news" />
-                            </a>
+                            </Link>
                             <div className="p-3">
-                                <a href={`/news/${news.id}`} className="text-gray-50 text-sm">
+                                <Link href={`/news/${news.id}`} className="text-gray-50 text-sm">
                                     {news.title}
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <hr />

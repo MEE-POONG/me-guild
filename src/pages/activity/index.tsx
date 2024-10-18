@@ -3,6 +3,7 @@ import LatestNews from "@/containers/CardReccommend/LatesNews";
 import LatestActivity from "@/containers/CardReccommend/LatestActivity";
 import SearchBar from "@/containers/CardReccommend/SearchBarForm";
 import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ActivityPage: React.FC = (props) => {
@@ -56,10 +57,10 @@ const ActivityPage: React.FC = (props) => {
                                 ) : (
                                     activityData.map(activities => (
                                         <li key={activities.id} className="border-b border-slate-500 mb-2">
-                                            <a href={`/activity/${activities.id}`} className="flex justify-between text-white hover:text-cyan-500">
+                                            <Link href={`/activity/${activities.id}`} className="flex justify-between text-white hover:text-cyan-500">
                                                 {activities.title}
                                                 <span className="text-orange-400">{activities.point} point</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))
                                 )}
@@ -68,7 +69,6 @@ const ActivityPage: React.FC = (props) => {
                         <div className='col-span-4'>
                             {/* search */}
                             <SearchBar/>
-
                             {/* Social */}
                             <WeAreSocial />
                             {/* Latest News */}

@@ -30,7 +30,7 @@ const ContactPage: React.FC = (props) => {
                     className="w-full h-[450px] mt-5 shadow-purple-700 rounded-lg"
                     loading="lazy" >
                 </iframe>
-                <div className="mt-10 p-5 md:p-8 shadow-inner rounded-md bg-slate-50/5">
+                <div className="mt-10 p-5 md:p-8 shadow-inner rounded-md bg-slate-900/50">
                     <div className="grid md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                             <p className="font-bold text-lg text-red-400 uppercase">Contact us</p>
