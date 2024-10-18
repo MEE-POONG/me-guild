@@ -16,7 +16,7 @@ const SearchBar: FC = () => {
                 placeholder="Type something..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none"
+                className="w-full px-4 py-2 focus:outline-none text-sm"
             />
             <button
                 type="submit"

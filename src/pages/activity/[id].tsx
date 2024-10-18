@@ -8,7 +8,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { BiArrowFromRight, BiChevronRight } from 'react-icons/bi';
 
+
 const ActivityDetail: React.FC = (props) => {
+    const CFIMG = 'https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/';
     const router = useRouter();
     const { id } = router.query;
     const [activities, setActivities] = useState<any>(null);
@@ -23,7 +25,7 @@ const ActivityDetail: React.FC = (props) => {
                     setActivities(data);
                     setLoading(false);
                 } catch (error) {
-                    console.error('Error fetching news:', error);
+                    console.error('Error fetching activity details:', error);
                     setLoading(false);
                 }
             };
@@ -33,23 +35,11 @@ const ActivityDetail: React.FC = (props) => {
     }, [id]);
 
     if (loading) {
-        return (
-            <Layout>
-                <div className="container mx-auto px-4 py-10">
-                    <p>Loading...</p>
-                </div>
-            </Layout>
-        );
+        return <p>Loading...</p>;
     }
 
     if (!activities) {
-        return (
-            <Layout>
-                <div className="container mx-auto px-4 py-10">
-                    <p>News not found</p>
-                </div>
-            </Layout>
-        );
+        return <p>No activity details found.</p>;
     }
 
     return (
@@ -69,17 +59,26 @@ const ActivityDetail: React.FC = (props) => {
                 </h3>
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
-                        <p className='text-xs md:text-base text-gray-50'>ระยะเวลา : <span className='text-orange-400'> {activities.startdate} - {activities.enddate}</span></p>
-                        <p className='text-xs md:text-base text-gray-50'>ประเภทการแข่งขัน : {activities.type}</p>
+                        <p className='text-xs md:text-base text-gray-50'>
+                            ระยะเวลา : <span className='text-orange-400'>{activities.startdate} - {activities.enddate}</span>
+                        </p>
+                        <p className='text-xs md:text-base text-gray-50'>
+                            ประเภทการแข่งขัน : {activities.type}
+                        </p>
 
                         {/* ภาพประกอบ/โปรโมท */}
-                        <img src={activities.img}
+                        <img
+                            src={`${CFIMG}${activities.img}/wmd`}
                             className='py-5 mx-auto drop-shadow-lg w-[620px] h-[400px]'
-                            alt="" />
+                            alt={activities.title || 'Activity image'}
+                        />
                         <div>
                             <p className='text-xs md:text-base'>รายละเอียดกิจกรรม</p>
-                            <p className='text-purple-400'>Discord :
-                                <a href="/ลิงค์ดิสก์" className='ml-3 hover:text-purple-500'>{activities.disname}</a>
+                            <p className='text-purple-400'>
+                                Discord:
+                                <a href={activities.dislink || '#'} className='ml-3 hover:text-purple-500'>
+                                    {activities.disname || 'No Discord link provided'}
+                                </a>
                             </p>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ const NewsUpdate: React.FC = () => {
 
     return (
         <section className="container mx-auto px-2 md:px-10 xl:px-0 py-16">
-            <div className="text-right border-b-4 border-sky-400">
+            <div className="text-right border-b-4 border-cyan-400">
                 <a href="/news" className="text-base text-white hover:text-amber-500">ทั้งหมด {`>>`}</a>
             </div>
             <div className="flex flex-wrap mt-10">

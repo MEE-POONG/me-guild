@@ -8,7 +8,7 @@ const HomeSlider: React.FC = () => {
             <img className="nk-page-background-top" src="assets/images/bg-top.png" alt=""></img>
             <div className="absolute inset-0 overflow-hidden">
                 <img
-                    src="/images/bg01.png"
+                    src="/images/bg02.webp"
                     alt="Fantasy Event"
                     className="object-cover w-full h-full opacity-100"
                 />

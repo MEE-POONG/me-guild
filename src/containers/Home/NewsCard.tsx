@@ -41,7 +41,7 @@ const NewsCardHome: FC = () => {
 
     return (
         <div className='container mx-auto mt-10 px-2 md:px-10 xl:px-0'>
-            <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-gray-500 pb-2 uppercase">
+            <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-cyan-400 mb-2 uppercase">
                 <span>
                     Latest
                     <span className="ml-3 text-white">News</span>
