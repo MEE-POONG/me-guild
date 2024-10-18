@@ -11,7 +11,7 @@ const ActivityPage: React.FC = (props) => {
     const [activityData, setActivityData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const backgroundImageUrl = '/images/grandhall2.png';
+    const backgroundImageUrl = '/images/gameVS.jpg';
 
     useEffect(() => {
         const fetchActivity = async () => {
@@ -34,14 +34,14 @@ const ActivityPage: React.FC = (props) => {
         <Layout>
             <section className="">
                 <div
-                    className="bg-fixed h-[430px] w-full relative flex items-center justify-center"
+                    className="bg-fixed h-[620px] w-full relative flex items-center justify-center"
                     style={{
                         backgroundImage: `url(${backgroundImageUrl})`,
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                     }}
                 >
-                    <div className="relative bg-black/50 h-full w-full flex items-center justify-center">
+                    <div className="relative bg-black/70 h-full w-full flex items-center justify-center">
                         <h2 className="text-7xl font-bold text-white font-mg04">
                             Activity Hall
                         </h2>
