@@ -30,9 +30,9 @@ const LatestActivity: FC = () => {
             </div>
             <div className='bg-gray-700 p-3'>
                 {activityData.map(activities => (
-                    <div>
+                    <div key={activities.id}>
                         <a href={`/activity/${activities.id}`}
-                        className='text-gray-100 text-sm hover:text-cyan-400'
+                            className='text-gray-100 text-sm hover:text-cyan-400'
                         >
                             {activities.title}
                         </a>

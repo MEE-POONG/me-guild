@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';  // Import useRouter
 import { FaPlus } from 'react-icons/fa';
+import usePathChecker from './check/usePathChecker';
 
 interface NavItem {
     href: string;
@@ -12,8 +13,12 @@ interface NavItem {
 
 const Navbar: React.FC = () => {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-    const router = useRouter();  
-    const isActive = (href: string) => router.asPath === href;
+    const router = useRouter();
+    const { getBasePath } = usePathChecker();
+    const basePath = getBasePath();
+    useEffect(() => {
+        console.log(basePath);
+    }, [basePath]);  
 
     const handleMouseEnter = (dropdownLabel: string) => {
         setOpenDropdown(dropdownLabel);
@@ -95,7 +100,9 @@ const Navbar: React.FC = () => {
                         </div>
                     ) : (
                         <Link key={item.label} href={item.href} className={`text-white px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${openDropdown === item.label ? `text-[#f2b265]` : ''}`}>
-                            {item.label} {openDropdown === item.label ? `true` : `false`} {openDropdown}
+                            {item.label}
+                            {/* {basePath} */}
+                            {/* {openDropdown === item.label ? `true` : `false`} {openDropdown} */}
                         </Link>
                     ))}
                 </div>
