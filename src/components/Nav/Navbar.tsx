@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
                 <Link href="/" className="text-white text-lg font-semibold">
                     <img src="/images/logo.png" alt="GoodGames" width={60} height={60} />
                 </Link>
-                <div className="flex items-center font-mg05 italic">
+                <div className="flex items-center font-mg05 font-bold italic">
                     {navItems.map((item) => (
                         <div
                             key={item.label} // Ensure each dropdown has a unique key

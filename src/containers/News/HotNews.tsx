@@ -45,7 +45,7 @@ const HotNewsCard: FC = () => {
                 >
                     {/* Full Image */}
                     <div className="relative w-full h-64">
-                        <a href={`/blog/news/${item.id}`} className=''>
+                        <a href={`/news/${item.id}`} className=''>
                             <Image
                                 src={item.fullImage}
                                 alt={item.title}
@@ -59,7 +59,7 @@ const HotNewsCard: FC = () => {
                         </span>
                     </div>
                     <div className="p-6">
-                        <a href={`/blog/news/${item.id}`} className="text-lg font-bold mb-2 hover:text-teal-500">{item.title}</a>
+                        <a href={`/news/${item.id}`} className="text-lg font-bold mb-2 hover:text-teal-500">{item.title}</a>
 
                         <p className="text-gray-300 text-sm md:text-base line-clamp-3 mt-2">
                             {item.description}

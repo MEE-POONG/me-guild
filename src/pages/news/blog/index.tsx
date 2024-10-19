@@ -7,6 +7,7 @@ import HotNewsTwoCard from '@/containers/News/HowNewsTwo';
 import WeAreSocial from '@/containers/CardReccommend/WeAreSocial';
 import LatestActivity from '@/containers/CardReccommend/LatestActivity';
 import SecondaryTopicOne from '@/components/Head/SecondaryTopicOne';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const BlogPage: React.FC = (props) => {
     const [newsData, setNewsData] = useState<any[]>([]);
@@ -44,7 +45,8 @@ const BlogPage: React.FC = (props) => {
     return (
         <Layout>
             <SecondaryTopicOne title={`Blog`} imgBg={backgroundImageUrl} />
-            <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
+            <Breadcrumb />
+            {/* <div >
                 <a href="/" className='text-gray-100 flex items-center gap-2 hover:underline decoration-sky-500'> <BiArrowFromRight /> Home</a>
 
                 <p className="text-4xl font-bold uppercase flex text-gray-100 border-teal-400 border-b-4 pb-2 mt-10">
@@ -53,6 +55,9 @@ const BlogPage: React.FC = (props) => {
                         <span className="text-xs bg-sky-400 px-1 rounded-md text-white font-light ml-2">Update</span>
                     </span>
                 </p>
+            </div> */}
+            <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
+
                 <div className='lg:grid grid-cols-12 gap-10 mt-6'>
                     <div className='col-span-8'>
                         <HotNewsCard />

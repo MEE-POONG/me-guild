@@ -54,6 +54,7 @@ const ReadNews: React.FC = (props) => {
     return (
         <Layout>
             <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
+                <div className="pt-[140px]"></div>
                 <div className="flex items-center gap-2">
                     <Link href="/" className='text-gray-100 flex items-center gap-1 hover:underline decoration-sky-500'>
                         <BiArrowFromRight size={20} /> Home

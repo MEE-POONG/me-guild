@@ -157,3 +157,6 @@ body {
     background: radial-gradient(circle, #65d3ff, #1d65ff);
     box-shadow: 0px 0 5px 5px rgba(255, 255, 255, 0.2);
 }
+.eng-first-uppercase::first-letter {
+    text-transform: uppercase;
+  }
