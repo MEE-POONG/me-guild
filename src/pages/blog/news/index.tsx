@@ -45,7 +45,7 @@ const NewsPage: React.FC = (props) => {
         <Layout>
             <section>
                 <div
-                    className="bg-fixed h-[430px] w-full relative flex items-center justify-center"
+                    className="bg-fixed h-[530px] w-full relative flex items-center justify-center"
                     style={{
                         backgroundImage: `url(${backgroundImageUrl})`,
                         backgroundPosition: 'center',

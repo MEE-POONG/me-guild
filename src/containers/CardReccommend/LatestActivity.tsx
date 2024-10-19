@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 
 const LatestActivity: FC = () => {
@@ -31,15 +32,15 @@ const LatestActivity: FC = () => {
             <div className='bg-gray-700 p-3'>
                 {activityData.map(activities => (
                     <div key={activities.id}>
-                        <a href={`/activity/${activities.id}`}
+                        <Link href={`/activity/${activities.id}`}
                             className='text-gray-100 text-sm hover:text-cyan-400'
                         >
                             {activities.title}
-                        </a>
+                        </Link>
                         <hr />
                     </div>
                 ))}
-                <a href="/activity" className='flex justify-end text-sm text-gray-50 hover:text-purple-400 mt-5'>เพิ่มเติม</a>
+                <Link href="/activity" className='flex justify-end text-sm text-gray-50 hover:text-purple-400 mt-5'>เพิ่มเติม</Link>
             </div>
 
         </div>

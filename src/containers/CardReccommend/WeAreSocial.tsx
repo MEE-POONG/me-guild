@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FC, useState } from 'react';
 import { BsDiscord } from 'react-icons/bs';
 import { FaFacebookF, FaGoogle, FaInstagram, FaTwitch } from 'react-icons/fa';
@@ -14,44 +15,44 @@ const WeAreSocial: FC = () => {
             </div>
             <div className="grid grid-cols-4">
                 {/* Discord */}
-                <a
+                <Link
                     href="https://discord.com/invite/4eS7Bt3PZF"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-600 p-5 flex items-center justify-center text-white hover:bg-violet-500 transition-colors"
                 >
                     <BsDiscord size={18} />
-                </a>
+                </Link>
 
                 {/* Facebook */}
-                <a
+                <Link
                     href="https://www.facebook.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-700 p-4 flex items-center justify-center text-white hover:bg-blue-600 transition-colors"
                 >
                     <FaFacebookF size={18} />
-                </a>
+                </Link>
 
                 {/* Instagram */}
-                <a
+                <Link
                     href="https://www.instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-600 p-4 flex items-center justify-center text-white hover:bg-gray-500 transition-colors"
                 >
                     <FaInstagram size={18} />
-                </a>
+                </Link>
                 
                 {/* Twitch */}
-                <a
+                <Link
                     href="https://www.twitch.tv"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-700 p-4 flex items-center justify-center text-white hover:bg-purple-600 transition-colors"
                 >
                     <FaTwitch size={18} />
-                </a>
+                </Link>
 
             </div>
         </div>
