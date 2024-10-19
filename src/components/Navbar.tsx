@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
                             onMouseEnter={() => handleMouseEnter(item.label)}  // Trigger open on hover
                             onMouseLeave={handleMouseLeave}  // Trigger close when mouse leaves both button and dropdown
                         >
-                            <Link href={item.href} className={`px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : 'text-white'}`}>
+                            <Link href={item.href} className={`font-mg04 px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : 'text-white'}`}>
                                 {item.label}
                                 {item.dropdown &&
                                     <FaPlus className={`ms-1 transition ${basePath === item.href || isAnySubItemActive(item.href, item.list) ? `text-[#f2b265]` : ''} `} aria-hidden="true" />
