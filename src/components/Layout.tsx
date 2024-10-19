@@ -1,6 +1,6 @@
 import React from "react";
 // import { Prompt } from 'next/font/google'
-import Navbar from './Navbar'
+import Navbar from './Nav/Navbar'
 import Footer from './Footer'
 import BackToTopButton from './BackToTop'
 import ShortcutSocial from './ShortcutSocial'

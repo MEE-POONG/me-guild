@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';  // Import useRouter
 import { FaPlus } from 'react-icons/fa';
-import usePathChecker from '../Function/usePathChecker';
+import usePathChecker from '../../Function/usePathChecker';
 
 interface NavItem {
     href: string;
@@ -37,9 +37,8 @@ const Navbar: React.FC = () => {
     const navItems: NavItem[] = [
         { href: "/", label: "Home", dropdown: false },
         {
-            href: "/blog", label: "Blog", dropdown: true, list: [
-                { href: "/news", label: "News" },
-                { href: "/event", label: "Event" },
+            href: "/news", label: "News", dropdown: true, list: [
+                { href: "/blog", label: "Blog" },
             ]
         },
         {
