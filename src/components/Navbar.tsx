@@ -84,12 +84,12 @@ const Navbar: React.FC = () => {
                                         id="dropdownHover"
                                         className="absolute left-0 pt-7 z-10"
                                     >
-                                        <ul className="shadow w-44 bg-black/80 py-2 text-sm"
+                                        <ul className="shadow w-44 bg-black/80 py-2 text-sm "
                                             style={{ borderBottom: '5px solid #f2b265' }}
                                         >
                                             {item?.list.map((listPage) => (
                                                 <li key={listPage.label}>
-                                                    <Link href={item.href + listPage.href} className={`block px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
+                                                    <Link href={item.href + listPage.href} className={`font-mg04 block px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
                                                         {listPage.label}
                                                     </Link>
                                                 </li>
