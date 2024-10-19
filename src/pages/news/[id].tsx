@@ -56,7 +56,7 @@ const ReadNews: React.FC = (props) => {
         <Layout>
             <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
                 <div className="pt-[140px]"></div>
-                <Breadcrumb />
+                <Breadcrumb idTitle={news.title} />
                 <h3 className="text-4xl font-bold uppercase flex text-gray-100 border-teal-400 border-b-4 pb-2 mt-10">
                     {news.title}
                 </h3>
