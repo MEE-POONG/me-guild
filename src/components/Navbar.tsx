@@ -35,15 +35,15 @@ const Navbar: React.FC = () => {
     };
 
     const navItems: NavItem[] = [
-        { href: "/", label: "HOME", dropdown: false },
+        { href: "/", label: "Home", dropdown: false },
         {
-            href: "/blog", label: "BLOG", dropdown: true, list: [
-                { href: "/news", label: "NEWS" },
-                { href: "/event", label: "event" },
+            href: "/blog", label: "Blog", dropdown: true, list: [
+                { href: "/news", label: "News" },
+                { href: "/event", label: "Event" },
             ]
         },
         {
-            href: "/guild", label: "GUILD", dropdown: true, list: [
+            href: "/guild", label: "Guild", dropdown: true, list: [
                 { href: "/list", label: "Guild List" },
                 { href: "/register", label: "Guild Register" }
             ]
@@ -54,8 +54,8 @@ const Navbar: React.FC = () => {
                 { href: "/register", label: "Adventurer Register" }
             ]
         },
-        { href: "/activity", label: "ACTIVITY", dropdown: false },
-        { href: "/contact", label: "CONTACT", dropdown: false },
+        { href: "/activity", label: "Activity", dropdown: false },
+        { href: "/contact", label: "Contact", dropdown: false },
     ];
 
     return (
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
                 <Link href="/" className="text-white text-lg font-semibold">
                     <img src="/images/logo.png" alt="GoodGames" width={60} height={60} />
                 </Link>
-                <div className="flex items-center">
+                <div className="flex items-center font-mg05 italic">
                     {navItems.map((item) => (
                         <div
                             key={item.label} // Ensure each dropdown has a unique key
@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
                             onMouseEnter={() => handleMouseEnter(item.label)}  // Trigger open on hover
                             onMouseLeave={handleMouseLeave}  // Trigger close when mouse leaves both button and dropdown
                         >
-                            <Link href={item.href} className={`font-mg04 px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : 'text-white'}`}>
+                            <Link href={item.href} className={`px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : 'text-white'}`}>
                                 {item.label}
                                 {item.dropdown &&
                                     <FaPlus className={`ms-1 transition ${basePath === item.href || isAnySubItemActive(item.href, item.list) ? `text-[#f2b265]` : ''} `} aria-hidden="true" />
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
                                         >
                                             {item?.list.map((listPage) => (
                                                 <li key={listPage.label}>
-                                                    <Link href={item.href + listPage.href} className={`font-mg04 block px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
+                                                    <Link href={item.href + listPage.href} className={`block px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
                                                         {listPage.label}
                                                     </Link>
                                                 </li>
