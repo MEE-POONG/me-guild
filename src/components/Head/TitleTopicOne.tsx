@@ -1,7 +1,16 @@
 import React from "react";
-import Slider from "react-slick";
 
-const HomeSlider: React.FC = () => {
+
+interface ItemProps {
+    title: string;
+    detailOne: string;
+    detailTwo: string;
+    detailThree: string;
+    imgBg: string;
+}
+
+const TitleTopicOne: React.FC<ItemProps> = ({ title, detailOne, detailTwo, detailThree, imgBg }) => {
+
 
     return (
         <div className="relative h-screen flex items-center justify-center bg-black" >
@@ -16,13 +25,23 @@ const HomeSlider: React.FC = () => {
 
             <div className="relative z-10 text-center font-mg05 italic">
                 <div className="relative z-10 text-center">
-                    <h1 className="text-[8rem] font-bold text-gold" data-text="Welcome">
-                        Welcome
+                    <h1 className="text-[8rem] font-bold text-gold" data-text={title}>
+                        {title}
                     </h1>
                 </div>
                 <div className="relative z-10 text-center">
-                    <h1 className="text-5xl font-bold text-gold" data-text="Join our world of fantasy and adventure!">
-                        Join our world of fantasy and adventure!
+                    <h1 className="text-5xl font-bold text-gold" data-text={detailOne}>
+                        {detailOne}
+                    </h1>
+                </div>
+                <div className="relative z-10 text-center">
+                    <h1 className="text-5xl font-bold text-gold" data-text={detailTwo}>
+                        {detailTwo}
+                    </h1>
+                </div>
+                <div className="relative z-10 text-center">
+                    <h1 className="text-5xl font-bold text-gold" data-text={detailThree}>
+                        {detailThree}
                     </h1>
                 </div>
                 <div className="mt-8">
@@ -35,6 +54,6 @@ const HomeSlider: React.FC = () => {
             </div>
         </div>
     );
-}
+};
 
-export default HomeSlider;
+export default TitleTopicOne;

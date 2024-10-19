@@ -6,6 +6,7 @@ import HotNewsCard from '@/containers/News/HotNews';
 import HotNewsTwoCard from '@/containers/News/HowNewsTwo';
 import WeAreSocial from '@/containers/CardReccommend/WeAreSocial';
 import LatestActivity from '@/containers/CardReccommend/LatestActivity';
+import SecondaryTopicOne from '@/components/Head/SecondaryTopicOne';
 
 const NewsPage: React.FC = (props) => {
     const [newsData, setNewsData] = useState<any[]>([]);
@@ -44,20 +45,7 @@ const NewsPage: React.FC = (props) => {
     return (
         <Layout>
             <section>
-                <div
-                    className="bg-fixed h-[530px] w-full relative flex items-center justify-center"
-                    style={{
-                        backgroundImage: `url(${backgroundImageUrl})`,
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                    }}
-                >
-                    <div className="relative bg-black/50 h-full w-full flex items-center justify-center">
-                        <h2 className="text-7xl font-bold text-white font-mg04">
-                            News Hall
-                        </h2>
-                    </div>
-                </div>
+                <SecondaryTopicOne title={`News Hall`} imgBg={backgroundImageUrl} />
                 <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
                     <a href="/" className='text-gray-100 flex items-center gap-2 hover:underline decoration-sky-500'> <BiArrowFromRight /> Home</a>
 

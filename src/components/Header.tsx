@@ -85,12 +85,12 @@ const Header: React.FC = () => {
                     </div>
 
                     <div className="flex space-x-4">
-                        <a href="#" className="text-black hover:text-red-500">
+                        <a href="#" className="text-black hover:text-[#f2b265]">
                             <FaUser />
                         </a>
                         <div className="relative flex">
-                            <FaShoppingCart className="text-black hover:text-red-500" />
-                            <span className="top-0 right-0 text-xs bg-red-600 text-white rounded-full px-1 ms-1">
+                            <FaShoppingCart className="text-black hover:text-[#f2b265]" />
+                            <span className="top-0 right-0 text-xs bg-[#f2b265] text-white rounded-full px-1 ms-1">
                                 27
                             </span>
                         </div>

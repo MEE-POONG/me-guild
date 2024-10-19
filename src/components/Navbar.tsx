@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';  // Import useRouter
 import { FaPlus } from 'react-icons/fa';
-import usePathChecker from './check/usePathChecker';
+import usePathChecker from '../Function/usePathChecker';
 
 interface NavItem {
     href: string;
@@ -16,9 +16,10 @@ const Navbar: React.FC = () => {
     const router = useRouter();
     const { getBasePath } = usePathChecker();
     const basePath = getBasePath();
+
     useEffect(() => {
         console.log(basePath);
-    }, [basePath]);  
+    }, [basePath]);
 
     const handleMouseEnter = (dropdownLabel: string) => {
         setOpenDropdown(dropdownLabel);
@@ -28,24 +29,21 @@ const Navbar: React.FC = () => {
         setOpenDropdown(null);
     };
 
-    // Function to check if any link in the dropdown list is active
-    // const isDropdownItemActive = (href: string, list?: { href: string; label: string }[]) => {
-    //     if (list) {
-    //         return list.some(listPage => router.asPath === href + listPage.href);
-    //     }
-    //     return false;
-    // };
+    // Helper function to check if any sub-item of a dropdown is active
+    const isAnySubItemActive = (itemHref: string, list?: { href: string }[]) => {
+        return list?.some((listPage) => basePath === (itemHref + listPage.href));
+    };
 
     const navItems: NavItem[] = [
-        { href: "/", label: "HOME", dropdown: false },
+        { href: "/", label: "Home", dropdown: false },
         {
             href: "/blog", label: "Blog", dropdown: true, list: [
-                { href: "/news", label: "NEWS" },
-                { href: "/event", label: "event" },
+                { href: "/news", label: "News" },
+                { href: "/event", label: "Event" },
             ]
         },
         {
-            href: "/guild", label: "GUILD", dropdown: true, list: [
+            href: "/guild", label: "Guild", dropdown: true, list: [
                 { href: "/list", label: "Guild List" },
                 { href: "/register", label: "Guild Register" }
             ]
@@ -56,8 +54,8 @@ const Navbar: React.FC = () => {
                 { href: "/register", label: "Adventurer Register" }
             ]
         },
-        { href: "/activity", label: "ACTIVITY", dropdown: false },
-        { href: "/contact", label: "CONTACT", dropdown: false },
+        { href: "/activity", label: "Activity", dropdown: false },
+        { href: "/contact", label: "Contact", dropdown: false },
     ];
 
     return (
@@ -66,44 +64,41 @@ const Navbar: React.FC = () => {
                 <Link href="/" className="text-white text-lg font-semibold">
                     <img src="/images/logo.png" alt="GoodGames" width={60} height={60} />
                 </Link>
-                <div className="flex items-center">
-                    {navItems.map((item) => item.dropdown && item.list ? (
+                <div className="flex items-center font-mg05 italic">
+                    {navItems.map((item) => (
                         <div
                             key={item.label} // Ensure each dropdown has a unique key
                             className="relative inline-block text-left"
                             onMouseEnter={() => handleMouseEnter(item.label)}  // Trigger open on hover
                             onMouseLeave={handleMouseLeave}  // Trigger close when mouse leaves both button and dropdown
                         >
-                            <Link href={item.href} className={`text-white px-4 py-1 flex items-center space-x-2 transition`}>
+                            <Link href={item.href} className={`px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : 'text-white'}`}>
                                 {item.label}
-                                <FaPlus className={`ms-1 transition ${openDropdown === item.label ? `text-[#f2b265]` : ''} `} aria-hidden="true" />
+                                {item.dropdown &&
+                                    <FaPlus className={`ms-1 transition ${basePath === item.href || isAnySubItemActive(item.href, item.list) ? `text-[#f2b265]` : ''} `} aria-hidden="true" />
+                                }
                             </Link>
-
-                            {openDropdown === item.label && (
-                                <div
-                                    id="dropdownHover"
-                                    className="absolute left-0 pt-7 z-10"
-                                >
-                                    <ul className="shadow w-44 bg-black/80 py-2 text-sm"
-                                        style={{ borderBottom: '5px solid #f2b265' }}
+                            {item.dropdown && item.list && (
+                                openDropdown === item.label && (
+                                    <div
+                                        id="dropdownHover"
+                                        className="absolute left-0 pt-7 z-10"
                                     >
-                                        {item.list.map((listPage) => (
-                                            <li key={listPage.label}>
-                                                <Link href={item.href + listPage.href} className={`block text-white px-4 py-2 items-center space-x-2 transition ${openDropdown === item.label ? `text-[#f2b265]` : ''}`}>
-                                                    {listPage.label} {openDropdown === item.label ? `true` : `false`}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
+                                        <ul className="shadow w-44 bg-black/80 py-2 text-sm "
+                                            style={{ borderBottom: '5px solid #f2b265' }}
+                                        >
+                                            {item?.list.map((listPage) => (
+                                                <li key={listPage.label}>
+                                                    <Link href={item.href + listPage.href} className={`block px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
+                                                        {listPage.label}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))
+                            }
                         </div>
-                    ) : (
-                        <Link key={item.label} href={item.href} className={`text-white px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${openDropdown === item.label ? `text-[#f2b265]` : ''}`}>
-                            {item.label}
-                            {/* {basePath} */}
-                            {/* {openDropdown === item.label ? `true` : `false`} {openDropdown} */}
-                        </Link>
                     ))}
                 </div>
             </div>
