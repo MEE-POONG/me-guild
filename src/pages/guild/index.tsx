@@ -1,3 +1,4 @@
+import SecondaryTopicOne from "@/components/Head/SecondaryTopicOne";
 import Layout from "@/components/Layout";
 import GuildList from "@/containers/Guild/GuildList";
 import PeopleList from "@/containers/Guild/PeopleList";
@@ -11,22 +12,8 @@ const GuildPage: React.FC = (props) => {
     return (
         <Layout>
             <section className="">
-                <div
-                    className="bg-fixed h-[530px] w-full relative flex items-center justify-center"
-                    style={{
-                        backgroundImage: `url(${backgroundImageUrl})`,
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover', 
-                    }}
-                >
-                    <div className="relative bg-black/50 h-full w-full flex items-center justify-center">
-                        <h2 className="text-7xl font-bold text-white font-mg04">
-                            Guild Hall
-                        </h2>
-                    </div>
-                </div>
+                <SecondaryTopicOne title={`Guild Gall`} imgBg={backgroundImageUrl} />
                 <GuildList />
-
             </section>
         </Layout>
     )

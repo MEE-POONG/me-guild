@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';  // Import useRouter
 import { FaPlus } from 'react-icons/fa';
-import usePathChecker from './check/usePathChecker';
+import usePathChecker from '../Function/usePathChecker';
 
 interface NavItem {
     href: string;
