@@ -1,3 +1,4 @@
+import Breadcrumb from "@/components/Breadcrumb";
 import Layout from "@/components/Layout"
 import LatestActivity from "@/containers/CardReccommend/LatestActivity";
 import SearchBar from "@/containers/CardReccommend/SearchBarForm";
@@ -54,15 +55,8 @@ const ReadNews: React.FC = (props) => {
     return (
         <Layout>
             <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
-                <div className="flex items-center gap-2">
-                    <Link href="/" className='text-gray-100 flex items-center gap-1 hover:underline decoration-sky-500'>
-                        <BiArrowFromRight size={20} /> Home
-                    </Link>
-                    <Link href="/news" className='text-gray-100 flex items-center hover:underline decoration-sky-500'>
-                        <BiChevronRight size={18} />News <BiChevronRight size={18} />
-                    </Link>
-                </div>
-
+                <div className="pt-[140px]"></div>
+                <Breadcrumb idTitle={news.title} />
                 <h3 className="text-4xl font-bold uppercase flex text-gray-100 border-teal-400 border-b-4 pb-2 mt-10">
                     {news.title}
                 </h3>
