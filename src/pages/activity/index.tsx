@@ -7,6 +7,7 @@ import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BiArrowFromRight } from "react-icons/bi";
+import NowPlaying from '../../containers/Activity/NowPlaying';
 
 const ActivityPage: React.FC = (props) => {
 
@@ -77,9 +78,19 @@ const ActivityPage: React.FC = (props) => {
                                     )}
                                 </ul>
                             </div>
-                            <div>
+                            
+                            <div className="my-16">
+                                <div className="flex items-center justify-center">
+                                    <div className="w-10 border-t-4 border-gray-400"></div>
+                                    <h2 className="mx-4 text-red-600 text-2xl font-bold whitespace-nowrap">
+                                        LATEST <span className="text-white">MATCHES</span>
+                                    </h2>
+                                    <div className="flex-grow border-t-4 border-gray-400"></div>
+                                </div>
+                                <NowPlaying />
                                 <LatestMath />
                             </div>
+
                         </div>
                         <div className='col-span-4'>
                             {/* search */}
