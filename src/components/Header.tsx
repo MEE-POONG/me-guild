@@ -10,7 +10,7 @@ import {
     FaUser,
     FaShoppingCart,
 } from "react-icons/fa";
-import Navbar from "./Navbar";
+import Navbar from "./Nav/Navbar";
 
 const Header: React.FC = () => {
     const [isScrolled, setIsScrolled] = useState(false);

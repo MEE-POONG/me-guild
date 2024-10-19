@@ -43,7 +43,7 @@ const BlogPage: React.FC = (props) => {
 
     return (
         <Layout>
-            <SecondaryTopicOne title={`News`} imgBg={backgroundImageUrl} />
+            <SecondaryTopicOne title={`Blog`} imgBg={backgroundImageUrl} />
             <div className="container mx-auto px-2 md:px-10 xl:px-0 py-3">
                 <a href="/" className='text-gray-100 flex items-center gap-2 hover:underline decoration-sky-500'> <BiArrowFromRight /> Home</a>
 
