@@ -13,7 +13,7 @@ const NowPlaying: React.FC = () => {
                     </div>
                     <p className="my-5 text-gray-300 text-xs">As she said this she looked down at her hands and was surprised to see.</p>
                     <Link href=""
-                        className="uppercase px-4 py-2 bg-black/25 w-fit rounded-md text-white my-5 text-sm">
+                        className="uppercase px-4 py-2 bg-amber-500 hover:bg-amber-400 w-fit rounded-md text-white my-5 text-sm">
                         now playing
                     </Link>
 

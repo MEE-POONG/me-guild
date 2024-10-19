@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const LatestMath: React.FC = () => {
     return (
-        <section className="">
+        <section className="mt-3">
             {/* Satrt Content */}
             <div className="bg-black/25 p-5 md:flex items-center justify-between gap-2">
                 {/* Team 1 */}

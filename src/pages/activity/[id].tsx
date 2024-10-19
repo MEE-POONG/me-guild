@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import LatestMath from '@/containers/Activity/LatsetMath';
 import LatestActivity from '@/containers/CardReccommend/LatestActivity';
 import SearchBar from '@/containers/CardReccommend/SearchBarForm';
 import WeAreSocial from '@/containers/CardReccommend/WeAreSocial';
@@ -75,27 +76,40 @@ const ActivityDetail: React.FC = (props) => {
                 </h3>
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
-                        <p className='text-xs md:text-base text-gray-50'>
-                            ระยะเวลา : <span className='text-orange-400'>{activities.startdate} - {activities.enddate}</span>
-                        </p>
-                        <p className='text-xs md:text-base text-gray-50'>
-                            ประเภทการแข่งขัน : {activities.type}
-                        </p>
-
-                        {/* ภาพประกอบ/โปรโมท */}
-                        <img
-                            src={`${CFIMG}${activities.img}/wmd`}
-                            className='py-5 mx-auto drop-shadow-lg w-[620px] h-[400px]'
-                            alt={activities.title || 'Activity image'}
-                        />
                         <div>
-                            <p className='text-xs md:text-base'>รายละเอียดกิจกรรม</p>
-                            <p className='text-purple-400'>
-                                Discord:
-                                <a href={activities.dislink || '#'} className='ml-3 hover:text-purple-500'>
-                                    {activities.disname || 'No Discord link provided'}
-                                </a>
+                            <p className='text-xs md:text-base text-gray-50'>
+                                ระยะเวลา : <span className='text-orange-400'>{activities.startdate} - {activities.enddate}</span>
                             </p>
+                            <p className='text-xs md:text-base text-gray-50'>
+                                ประเภทการแข่งขัน : {activities.type}
+                            </p>
+
+                            {/* ภาพประกอบ/โปรโมท */}
+                            <img
+                                src={`${CFIMG}${activities.img}/wmd`}
+                                className='py-5 mx-auto drop-shadow-lg w-[620px] h-[400px]'
+                                alt={activities.title || 'Activity image'}
+                            />
+                            <div>
+                                <p className='text-xs md:text-base'>รายละเอียดกิจกรรม</p>
+                                <p className='text-purple-400'>
+                                    Discord:
+                                    <a href={activities.dislink || '#'} className='ml-3 hover:text-purple-500'>
+                                        {activities.disname || 'No Discord link provided'}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className='mt-10'>
+                            <div className="flex items-center justify-center">
+                                <div className="w-10 border-t-4 border-gray-400"></div>
+                                <h2 className="mx-4 text-red-600 text-2xl font-bold whitespace-nowrap">
+                                    LATEST <span className="text-white">MATCHES</span>
+                                </h2>
+                                <div className="flex-grow border-t-4 border-gray-400"></div>
+                            </div>
+                            <LatestMath />
                         </div>
                     </div>
                     <div className='col-span-4'>

@@ -20,12 +20,12 @@ const SearchBar: FC = () => {
             />
             <button
                 type="submit"
-                className="bg-red-500 px-4 py-2 text-white rounded-r-md hover:bg-red-600 transition-colors"
+                className="bg-red-500 px-4 py-2 text-white hover:bg-red-600 transition-colors"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
-                    viewBox="0 0 24 24"
+                    viewBox="0 0 28 28"
                     stroke="currentColor"
                     className="w-5 h-5"
                 >
