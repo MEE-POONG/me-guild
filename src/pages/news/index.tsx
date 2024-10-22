@@ -7,11 +7,8 @@ import HotNewsTwoCard from '@/containers/News/HowNewsTwo';
 import WeAreSocial from '@/containers/CardReccommend/WeAreSocial';
 import LatestActivity from '@/containers/CardReccommend/LatestActivity';
 import SecondaryTopicOne from '@/components/Head/SecondaryTopicOne';
-<<<<<<< HEAD
 import SearchBar from '@/containers/CardReccommend/SearchBarForm';
-=======
 import Breadcrumb from '@/components/Breadcrumb';
->>>>>>> 86836ee0ad9c05a4a6389d595efc610a0ca5e65e
 
 const NewsPage: React.FC = (props) => {
     const [newsData, setNewsData] = useState<any[]>([]);
