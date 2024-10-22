@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import MatchToday from "./MatchToday";
 
 const ActivityUpdate: React.FC = () => {
     const [activityData, setActivityData] = useState<any[]>([]);
@@ -22,17 +23,17 @@ const ActivityUpdate: React.FC = () => {
     }, []);
 
     return (
-        <section className=" w-full md:my-12">
-            <div className="container mx-auto text-gray-700 px-3">
-                <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-gray-500 pb-2 uppercase">
+        <section className="md:my-12">
+            <div className="container mx-auto text-gray-700 px-2 md:px-10 xl:px-0">
+                <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-cyan-400 mb-2 uppercase">
                     <span>
                         Latest
                         <span className="ml-3 text-white">Activity</span>
                     </span>
+                    <a href="/activity" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a>
                 </p>
-                <div className="mt-3 bg-[url('/images/blackboard01.jpg')] shadow-xl">
-                    <div className="p-10 md:p-32">
-                        <p className="text-white text-2xl text-center">ประกาศกิจกรรม</p>
+                <div className="lg:grid grid-cols-2 gap-10 mt-3">
+                    <div className="bg-black/25 px-3">
                         <ul className="list-inside text-xs md:text-base mt-7 ">
                             {loading ? (
                                 <p>Loading...</p>
@@ -47,9 +48,9 @@ const ActivityUpdate: React.FC = () => {
                                 ))
                             )}
                         </ul>
-                        <div className="text-right">
-                            <Link href="/activity" className="text-xs md:text-base text-teal-400 hover:text-teal-500 hover:underline">ทั้งหมด {`>>`}</Link>
-                        </div>
+                    </div>
+                    <div className="mt-10 lg:mt-5">
+                        <MatchToday />
                     </div>
                 </div>
             </div>

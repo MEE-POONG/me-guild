@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const BlogList: React.FC = () => {
+const BlogCard: React.FC = () => {
     const [blogData, setBlogData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null); // เพิ่ม state สำหรับจัดการข้อผิดพลาด
@@ -9,7 +9,7 @@ const BlogList: React.FC = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch('/api/blog');
+                const response = await fetch('/api/blog?page=1&pageSize=2');
                 if (!response.ok) {
                     throw new Error('Failed to fetch blog data');
                 }
@@ -35,7 +35,14 @@ const BlogList: React.FC = () => {
 
     return (
         <section className="container mx-auto px-2 md:px-10 xl:px-0 py-16">
-            <div className="flex flex-wrap mt-10">
+            <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-cyan-400 mb-2 uppercase">
+                <span>
+                    Latest
+                    <span className="ml-3 text-white">Blog</span>
+                </span>
+                <a href="/news/blog" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a>
+            </p>
+            <div className="flex flex-wrap mt-3">
                 {blogData.length === 0 ? (
                     <p className="text-center text-gray-400">No blogs available</p>
                 ) : (
@@ -76,4 +83,4 @@ const BlogList: React.FC = () => {
     );
 };
 
-export default BlogList;
+export default BlogCard;

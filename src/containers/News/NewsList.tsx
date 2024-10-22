@@ -22,7 +22,7 @@ const NewsList: React.FC = () => {
     }, []);
 
     return (
-        <section className="container mx-auto px-2 md:px-10 xl:px-0 py-16">
+        <section className="container mx-auto px-2 md:px-10 xl:px-0">
             <div className="flex flex-wrap mt-10">
                 {loading ? (
                     <p>Loading...</p>
@@ -30,9 +30,9 @@ const NewsList: React.FC = () => {
                     newsData.slice(4).map(news => (
                         <div key={news.id} className="p-1 w-1/2 lg:w-1/3">
                             <div className="h-full drop-shadow-lg">
-                                <Link href={`/news/${news.id}`}>
+                                <Link href={`/news/${news.id}`} className="img-wrapper lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
                                     <img
-                                        className="lg:h-48 md:h-36 w-full object-cover object-center hover:scale-105"
+                                        className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                                         src={news.img}
                                         alt={news.title || 'news'}
                                     />

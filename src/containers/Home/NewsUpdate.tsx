@@ -8,7 +8,7 @@ const NewsUpdate: React.FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=9'); 
+                const response = await fetch('/api/news?page=1&pageSize=9');
                 const data = await response.json();
                 setNewsData(data.news);
                 setLoading(false);
@@ -33,8 +33,12 @@ const NewsUpdate: React.FC = () => {
                     newsData.slice(5).map(news => (
                         <div key={news.id} className="p-1 w-1/2 lg:w-1/4">
                             <div className="h-full drop-shadow-lg">
-                                <Link href={`/news/${news.id}`}>
-                                    <img className="lg:h-48 md:h-36 w-full object-cover object-center hover:scale-105" src={news.img} alt="news" />
+                                <Link href={`/news/${news.id}`} className="img-wrapper lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
+                                    <img
+                                        className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
+                                        src={news.img}
+                                        alt={news.title || 'news'}
+                                    />
                                 </Link>
                                 <div className="p-3">
                                     <div className="tracking-widest text-xs font-medium text-white mb-1 p-1 w-12 bg-yellow-400 rounded-r">

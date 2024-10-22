@@ -44,14 +44,14 @@ const HotNewsCard: FC = () => {
                     className="text-white overflow-hidden border-b border-gray-500"
                 >
                     {/* Full Image */}
-                    <div className="relative w-full h-64">
+                    <div className="relative w-full h-64 img-wrapper overflow-hidden inline-block box-border">
                         <a href={`/news/${item.id}`} className=''>
                             <Image
                                 src={item.fullImage}
                                 alt={item.title}
                                 layout="fill"
                                 objectFit="cover"
-                                className="w-full h-full hover:scale-105"
+                                className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                             />
                         </a>
                         <span className="absolute top-2 left-2 bg-yellow-400 text-white px-5 py-1 text-sm rounded">

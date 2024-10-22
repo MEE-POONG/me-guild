@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import ActivityUpdate from "@/containers/Home/ActivtiesUpdate";
+import BlogCard from "@/containers/Home/BlogCard";
 import GuildRecomend from "@/containers/Home/GuildRecomend";
 import NewsCardHome from "@/containers/Home/NewsCard";
 import NewsUpdate from "@/containers/Home/NewsUpdate";
@@ -17,6 +18,7 @@ const Home: React.FC = (props) => {
         <NewsCardHome />
         <NewsUpdate />
         <ActivityUpdate />
+        <BlogCard/>
         {/* <GuildRecomend /> กิลด์แนะนำ */}
         {/* <PoppularPerson/> */}
       </section>
