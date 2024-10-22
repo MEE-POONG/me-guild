@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const page: number = Number(req.query.page) || 1;
                 const pageSize: number = Number(req.query.pageSize) || 100;
 
-                const activities = await prisma.actDetailDB.findMany({
+                const blogs = await prisma.blogDB.findMany({
                     skip: (page - 1) * pageSize,
                     take: pageSize,
                     orderBy: {
@@ -20,30 +20,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                 });
 
-                const totalActivities = await prisma.actDetailDB.count();
-                const totalPage: number = Math.ceil(totalActivities / pageSize);
-                res.status(200).json({ activities, totalPage });
+                const totalBlogs = await prisma.blogDB.count();
+                const totalPage: number = Math.ceil(totalBlogs / pageSize);
+                res.status(200).json({ blogs, totalPage });
             } catch (error) {
                 console.error("Error fetching news updates:", error);
-                res.status(500).json({ error: "An error occurred while fetching the activity updates" });
+                res.status(500).json({ error: "An error occurred while fetching the blog updates" });
             }
             break;
 
         case 'POST':
             try {
-                const { title, point, type, img, startdate, enddate, description, disname, dislink } = req.body;
+                const { title, img, video, description } = req.body;
 
-                if (!title || !point || !type || !img || !startdate || !enddate || !description || !disname || !dislink) {
+                if (!title || !img || !video || !description) {
                     return res.status(400).json({ error: "Title and content are required" });
                 }
 
-                const newActivities = await prisma.actDetailDB.create({
-                    data: { title, point, type, img, startdate, enddate, description, disname, dislink },
+                const newBlogs = await prisma.blogDB.create({
+                    data: { title, img, video, description, },
                 });
 
-                res.status(201).json(newActivities);
+                res.status(201).json(newBlogs);
             } catch (error) {
-                res.status(500).json({ error: "An error occurred while creating the activity update" });
+                res.status(500).json({ error: "An error occurred while creating the blog update" });
             }
             break
 
