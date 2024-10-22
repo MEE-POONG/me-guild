@@ -3,6 +3,7 @@ import CommentSection from "@/components/CommentSection";
 import Layout from "@/components/Layout"
 import LatestMath from "@/containers/Activity/LatsetMath";
 import LatestActivity from "@/containers/CardReccommend/LatestActivity";
+import LatestNews from "@/containers/CardReccommend/LatestNews";
 import SearchBar from "@/containers/CardReccommend/SearchBarForm";
 import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
 import Link from "next/link";
@@ -143,7 +144,8 @@ const ReadBlog: React.FC = (props) => {
                         <WeAreSocial />
                         {/* Latest Activity */}
                         <LatestActivity />
-                        {/* Latest Match */}
+                        {/* Latest News */}
+                        <LatestNews />
                     </div>
                 </div>
             </div>
