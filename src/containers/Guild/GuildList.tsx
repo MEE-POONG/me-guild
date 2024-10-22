@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 const GuildList: React.FC = () => {
     const [guilds, setGuilds] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
-    const [searchQuery, setSearchQuery] = useState(''); // State for search query
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchGuilds = async () => {

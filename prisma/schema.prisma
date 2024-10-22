@@ -347,10 +347,18 @@ model TeamDB {
 }
 
 model inviteData {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId   String
-  guildId  String
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String
+  guildId String
 }
 
 //ใช้ในกรณีกิจกรรมที่ไม่เกี่ยวกับการแข่งขันเป็นหลัก สารมารถสัมครแข่งเกมส์ได้
 
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  userID    String
+  content   String
+  createdAt DateTime @default(now())
+  createdBy String?
+}

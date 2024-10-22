@@ -1,5 +1,7 @@
 import Breadcrumb from "@/components/Breadcrumb";
+import CommentSection from "@/components/CommentSection";
 import Layout from "@/components/Layout"
+import LatestMath from "@/containers/Activity/LatsetMath";
 import LatestActivity from "@/containers/CardReccommend/LatestActivity";
 import SearchBar from "@/containers/CardReccommend/SearchBarForm";
 import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
@@ -62,24 +64,38 @@ const ReadNews: React.FC = (props) => {
                 </h3>
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
+                        <div>
+                            <img src={news.img}
+                                className="w-full h-[420px] mx-auto drop-shadow-md"
+                                alt=""
+                            />
+                            <p className="mt-10 indent-8 text-gray-200">
+                                {news.description}
+                            </p>
 
-                        <img src={news.img}
-                            className="w-full h-[420px] mx-auto drop-shadow-md"
-                            alt=""
-                        />
-                        <p className="mt-10 indent-8 text-gray-200">
-                            {news.description}
-                        </p>
+                            <div className="mt-10 text-gray-100">
+                                อ่านเพิ่ม :
+                                <a href={news.creditlink}
+                                    className="ml-3 text-teal-500 hover:text-teal-300" target="_blank">
+                                    {news.creditlink}
+                                </a>
+                            </div>
+                        </div>
 
-                        <div className="mt-10">
-                            <hr className="mb-3" />
-                            อ่านเพิ่ม :
-                            <a href={news.creditlink}
-                                className="ml-3 text-teal-500 hover:text-teal-700" target="_blank">
-                                {news.creditlink}
-                            </a>
+                        <div className='mt-10'>
+                            <div className="flex items-center justify-center">
+                                <div className="w-10 border-t-4 border-gray-400"></div>
+                                <h2 className="mx-4 text-red-600 text-2xl font-bold whitespace-nowrap">
+                                    LATEST <span className="text-white ml-3">MATCHES</span>
+                                </h2>
+                                <div className="flex-grow border-t-4 border-gray-400"></div>
+                            </div>
+                            <LatestMath />
+                            <CommentSection articleId={news.id} />
                         </div>
                     </div>
+
+
                     <div className='col-span-4'>
                         {/* search */}
                         <SearchBar />

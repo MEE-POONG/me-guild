@@ -42,7 +42,7 @@ const ContactPage: React.FC = (props) => {
                                     <PiDiscordLogoBold /> : ME GUILE
                                 </Link>
                             </button>
-                            <button className="text-sm md:text-base text-gray-50 ">
+                            <button className="text-sm md:text-base text-gray-50 ml-5">
                                 <Link href='' className="hover:text-blue-500 flex items-center gap-1">
                                     <FaFacebook />
                                     Me Guild
