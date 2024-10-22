@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NewsList: React.FC = () => {
-    const CFIMG = 'https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/';
     const [newsData, setNewsData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -34,11 +33,11 @@ const NewsList: React.FC = () => {
                                 <Link href={`/news/${news.id}`}>
                                     <img
                                         className="lg:h-48 md:h-36 w-full object-cover object-center hover:scale-105"
-                                        src={`${CFIMG}${news.img}/wmd`}
+                                        src={news.img}
                                         alt={news.title || 'news'}
                                     />
                                 </Link>
-                                <div className="p-3">
+                                <div className="">
                                     <div className="tracking-widest text-xs font-medium text-white mb-1 p-1 w-12 bg-yellow-400 rounded-r">
                                         NEWS
                                     </div>
