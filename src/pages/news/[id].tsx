@@ -91,6 +91,7 @@ const ReadNews: React.FC = (props) => {
                                 <div className="flex-grow border-t-4 border-gray-400"></div>
                             </div>
                             <LatestMath />
+                            
                             <CommentSection articleId={news.id} />
                         </div>
                     </div>

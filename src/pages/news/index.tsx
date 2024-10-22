@@ -9,6 +9,7 @@ import LatestActivity from '@/containers/CardReccommend/LatestActivity';
 import SecondaryTopicOne from '@/components/Head/SecondaryTopicOne';
 import SearchBar from '@/containers/CardReccommend/SearchBarForm';
 import Breadcrumb from '@/components/Breadcrumb';
+import ReccommentBlog from '@/containers/CardReccommend/ReccommentBlog';
 
 const NewsPage: React.FC = (props) => {
     const [newsData, setNewsData] = useState<any[]>([]);
@@ -64,6 +65,7 @@ const NewsPage: React.FC = (props) => {
                             {/* Latest Activity */}
                             <LatestActivity />
                             {/* Latest Match */}
+                            <ReccommentBlog/>
                         </div>
                     </div>
                 </div>

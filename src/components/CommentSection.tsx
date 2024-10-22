@@ -107,9 +107,9 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
                 />
                 <button
                     onClick={handleCommentSubmit}
-                    className="bg-yelloe-500 text-white px-4 py-2 rounded-md"
+                    className="bg-teal-500 hover:bg-teal-400 text-white text-sm px-4 py-2 rounded-md"
                 >
-                    Post Comment
+                    Comment
                 </button>
             </div>
         </div>
