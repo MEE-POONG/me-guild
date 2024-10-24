@@ -61,7 +61,7 @@
 
 body {
     background: #e7b386;
-    background: radial-gradient(circle, #b4c9bd 20%, #9ea17c 35%, #a19672 40%, #88694d 70%, #4b4744 100%);
+    background: radial-gradient(circle, #879b90 20%, #91a17c 35%, #72a17e 40%, #4d8a67 70%, #385c48 100%);
     // background-color: #424242;
     // background-image: url('/images/BG2.jpg');
     background-size: cover;
@@ -159,4 +159,96 @@ body {
 }
 .eng-first-uppercase::first-letter {
     text-transform: uppercase;
+}
+
+.box-one {
+    /* Decorations */
+    .corner-decoration {
+        position: absolute;
+        width: 3em;
+        margin: -3px;
+    }
+
+    @media (min-width: 768px) {
+        .corner-decoration {
+            width: 3.5em;
+            margin: -4px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .corner-decoration {
+            width: 4em;
+            margin: -5px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .corner-decoration {
+            width: 5em;
+            margin: -6px;
+        }
+    }
+
+    .corner-decoration.corner-left-top {
+        left: 0;
+        top: 0;
+    }
+
+    .corner-decoration.corner-right-top {
+        top: 0;
+        right: 0;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    .corner-decoration.corner-right-bottom {
+        right: 0;
+        bottom: 0;
+        -webkit-transform: scale(-1);
+        transform: scale(-1);
+    }
+
+    .corner-decoration.corner-left-bottom {
+        left: 0;
+        bottom: 0;
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+    }
+
+    .inner-border {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .outer-border {
+        border: 2px solid #e39d79;
+        height: 99%;
+        width: 98%;
+        padding: 6px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 992px) {
+        .outer-border {
+            height: 94%;
+        }
+    }
+
+    .mid-border {
+        border: 6px solid #e39d79;
+        height: 100%;
+        width: 100%;
+        padding: 6px;
+        margin: auto;
+    }
+
+    .inner-border {
+        position: relative;
+        border: 2px solid #e39d79;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+    }
 }
