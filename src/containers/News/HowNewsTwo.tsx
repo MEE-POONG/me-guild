@@ -41,25 +41,25 @@ const HotNewsTwoCard: FC = () => {
             {newsData.slice(2).map((item) => (
                 <div
                     key={item.id}
-                    className="text-white overflow-hidden border-b border-gray-500 md:flex mb-3"
+                    className="text-white overflow-hidden border-b border-gray-500 md:flex mb-3 drop-shadow-md"
                 >
                     {/* Full Image */}
-                    <div className="relative w-full h-64 img-wrapper overflow-hidden inline-block box-border">
+                    <div className="relative w-[420px] h-52 img-wrapper overflow-hidden inline-block box-border">
                         <a href={`/news/${item.id}`} className=''>
                             <Image
                                 src={item.fullImage}
                                 alt={item.title}
                                 layout="fill"
                                 objectFit="cover"
-                                className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
+                                className="transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                             />
                         </a>
                         <span className="absolute top-2 left-2 bg-yellow-400 text-white px-5 py-1 text-sm rounded">
                             News
                         </span>
                     </div>
-                    <div className="p-6">
-                        <a href={`/news/${item.id}`} className="text-lg font-bold mb-2 hover:text-teal-500">{item.title}</a>
+                    <div className="p-6 bg-amber-50 mb-2">
+                        <a href={`/news/${item.id}`} className="text-lg font-bold mb-2 text-gray-800 hover:text-teal-500">{item.title}</a>
                         {/* <div className="flex items-center text-gray-400 text-sm mb-4">
                             <span className="mr-2">
                                 <svg className="w-4 h-4 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -78,7 +78,7 @@ const HotNewsTwoCard: FC = () => {
                                 {item.comments} comments
                             </span>
                         </div> */}
-                        <p className="text-gray-300 text-sm md:text-base line-clamp-3 mt-2">
+                        <p className="text-gray-700 text-sm md:text-base line-clamp-3 mt-2">
                             {item.description}
                         </p>
                     </div>
