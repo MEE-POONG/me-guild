@@ -28,7 +28,7 @@ const NewsList: React.FC = () => {
                     <p>Loading...</p>
                 ) : (
                     newsData.slice(4).map(news => (
-                        <div key={news.id} className="drop-shadow-md">
+                        <div key={news.id} className="drop-shadow-md bg-black/20 rounded-b-lg">
                             <div className="h-full drop-shadow-lg">
                                 <Link href={`/news/${news.id}`} className="img-wrapper lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
                                     <img
@@ -38,16 +38,16 @@ const NewsList: React.FC = () => {
                                     />
                                 </Link>
                                 <div className="">
-                                    <div className="tracking-widest text-xs font-medium text-black mb-1 p-1 w-12 bg-yellow-400 rounded-r">
+                                    <div className="tracking-widest text-xs font-medium text-white mb-1 p-1 w-12 bg-red-500 rounded-r">
                                         NEWS
                                     </div>
-                                    <div className="p-2 bg-amber-50 ">
-                                        <Link href={`/news/${news.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-gray-900 hover:text-teal-500 leading-3">
+                                    <div className="p-2 ">
+                                        <Link href={`/news/${news.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-amber-400 hover:text-teal-500 leading-3">
                                             {news.title}
                                         </Link>
                                         <p className="text-xs line-clamp-1 font-extralight text-gray-700 mt-3">{news.description}</p>
                                         <div className="mt-5">
-                                            <Link href={`/news/${news.id}`} className="text-white inline-flex items-center md:mb-2 lg:mb-0 text-sm bg-gray-500/50 p-2 rounded hover:bg-red-600">
+                                            <Link href={`/news/${news.id}`} className="text-white inline-flex items-center md:mb-2 lg:mb-0 text-sm bg-gray-800/50 p-2 rounded hover:bg-red-600">
                                                 Read
                                                 <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                     <path d="M5 12h14"></path>

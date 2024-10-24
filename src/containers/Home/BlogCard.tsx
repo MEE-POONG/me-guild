@@ -35,10 +35,10 @@ const BlogCard: React.FC = () => {
 
     return (
         <section className="container mx-auto px-2 md:px-10 xl:px-0 py-16">
-            <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-cyan-400 mb-2 uppercase">
+            <p className="text-xl md:text-3xl flex items-end justify-between text-amber-400 border-b-4 border-gray-700 mb-2 uppercase">
                 <span>
                     Latest
-                    <span className="ml-3 text-white">Blog</span>
+                    <span className="ml-3 text-white">blog</span>
                 </span>
                 <a href="/news/blog" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a>
             </p>
@@ -57,7 +57,7 @@ const BlogCard: React.FC = () => {
                                     />
                                 </Link>
                                 <div className="mt-1">
-                                    <div className="tracking-widest text-xs font-medium text-white mb-1 p-1 w-12 bg-cyan-400 rounded-r">
+                                    <div className="tracking-widest text-xs font-medium text-white mb-1 px-2 py-1 w-12 bg-cyan-400 rounded-r">
                                         BLOG
                                     </div>
                                     <Link href={`/blogs/${blog.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-teal-500 leading-3">
@@ -65,7 +65,7 @@ const BlogCard: React.FC = () => {
                                     </Link>
                                     <p className="text-xs line-clamp-2 indent-5 font-extralight text-gray-400 mt-3">{blog.description}</p>
                                     <div className="mt-5">
-                                        <Link href={`/news/blog/${blog.id}`} className="text-white inline-flex items-center md:mb-2 lg:mb-0 text-sm bg-gray-500/50 p-2 rounded hover:bg-red-600">
+                                        <Link href={`/news/blog/${blog.id}`} className="text-white inline-flex items-center md:mb-2 lg:mb-0 text-sm bg-gray-800/50 p-2 rounded hover:bg-red-600">
                                             Read
                                             <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                 <path d="M5 12h14"></path>

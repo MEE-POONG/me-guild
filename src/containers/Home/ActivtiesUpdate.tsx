@@ -25,7 +25,7 @@ const ActivityUpdate: React.FC = () => {
     return (
         <section className="md:my-12">
             <div className="container mx-auto text-gray-700 px-2 md:px-10 xl:px-0">
-                <p className="text-xl md:text-3xl flex items-end justify-between text-cyan-500 border-b-4 border-cyan-400 mb-2 uppercase">
+                <p className="text-xl md:text-3xl flex items-end justify-between text-amber-400 border-b-4 border-gray-700 mb-2 uppercase">
                     <span>
                         Latest
                         <span className="ml-3 text-white">Activity</span>

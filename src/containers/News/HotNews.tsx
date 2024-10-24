@@ -54,14 +54,14 @@ const HotNewsCard: FC = () => {
                                 className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                             />
                         </a>
-                        <span className="absolute top-2 left-2 bg-yellow-400 text-white px-5 py-1 text-sm rounded">
+                        <span className="absolute top-2 bg-red-500 text-white px-5 py-1 text-sm rounded">
                             News
                         </span>
                     </div>
-                    <div className="p-6 bg-amber-50 mb-2">
-                        <a href={`/news/${item.id}`} className="text-lg font-bold mb-2 text-gray-800 hover:text-teal-500">{item.title}</a>
+                    <div className="p-6 bg-black/20 mb-2">
+                        <a href={`/news/${item.id}`} className="text-lg font-bold mb-2 text-amber-400 hover:text-teal-500">{item.title}</a>
 
-                        <p className="text-gray-700 text-sm md:text-base line-clamp-3 mt-2">
+                        <p className="text-gray-100 text-sm md:text-base line-clamp-3 mt-2">
                             {item.description}
                         </p>
                     </div>

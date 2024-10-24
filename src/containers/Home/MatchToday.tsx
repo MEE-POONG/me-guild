@@ -3,16 +3,16 @@ import Link from "next/link";
 const MatchToday: React.FC = () => {
     return (
         <section>
-            <div className="flex items-center justify-center">
-                <div className="w-10 border-t-4 border-gray-400"></div>
+            <div className="flex items-center justify-center drop-shadow">
+                <div className="w-10 border-t-4 border-gray-700"></div>
                 <h2 className="mx-4 text-red-600 text-xl font-bold whitespace-nowrap">
                     LATEST <span className="text-white">MATCHES</span>
                 </h2>
-                <div className="flex-grow border-t-4 border-gray-400"></div>
+                <div className="flex-grow border-t-4 border-gray-700"></div>
             </div>
             <div className="md:grid grid-cols-7 gap-5 mt-3">
                 <div className="col-span-3">
-                    <div className="uppercase px-4 py-2 bg-black/25 w-fit rounded-md text-white my-5 text-sm">now playing</div>
+                    <div className="uppercase px-4 py-2 bg-black/40 w-fit rounded-md text-white my-5 text-sm">now playing</div>
                     <div className="flex items-center gap-2">
                         <img src="" className="w-10 h-10" alt="" />
                         VS
