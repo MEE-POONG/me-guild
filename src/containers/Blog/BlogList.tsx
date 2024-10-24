@@ -56,7 +56,7 @@ const BlogList: React.FC = () => {
                                     <Link href={`/blogs/${blog.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-teal-500 leading-3">
                                         {blog.title}
                                     </Link>
-                                    <p className="text-xs line-clamp-2 indent-5 font-extralight text-gray-400 mt-3">{blog.description}</p>
+                                    <p className="text-xs line-clamp-2 indent-5 font-extralight text-gray-700 mt-3">{blog.description}</p>
                                     <div className="mt-5">
                                         <Link href={`/news/blog/${blog.id}`} className="text-white inline-flex items-center md:mb-2 lg:mb-0 text-sm bg-gray-800/50 p-2 rounded hover:bg-red-600">
                                             Read
