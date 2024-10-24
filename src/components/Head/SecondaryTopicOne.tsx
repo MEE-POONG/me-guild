@@ -11,7 +11,7 @@ const SecondaryTopicOne: React.FC<ItemProps> = ({ title, imgBg }) => {
 
     return (
         <div
-            className="bg-fixed h-[530px] w-full relative flex items-center justify-center"
+            className="bg-fixed h-[530px] w-full relative flex items-center justify-center border-b-2 border-yellow-500 border-double "
             style={{
                 backgroundImage: `url(${imgBg})`,
                 backgroundPosition: 'center',
