@@ -294,6 +294,7 @@ model Guild {
   guild_size   Int     @default(5)
   guild_roleId String?
   guild_leader String
+  Logo         String
 }
 
 model GuildProfileDB {
