@@ -78,7 +78,7 @@ const Header: React.FC = () => {
                         </a>
                         <a
                             href="#"
-                            className="w-5 h-5 flex items-center justify-center bg-yellow-100 text-black hover:text-amber-200 hover:bg-red-500 p-[3px] cursor-pointer rounded-xl"
+                            className="w-5 h-5 flex items-center justify-center bg-yellow-100 text-black hover:text-amber-200 hover:bg-yellow-500 p-[3px] cursor-pointer rounded-xl"
                         >
                             <FaPinterestP className="text-sm" />
                         </a>

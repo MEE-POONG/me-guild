@@ -54,8 +54,8 @@ const NewsCardHome: FC = () => {
                     {newsData.map((item) => (
                         <div
                             key={item.id}
-                            className={`flex items-center p-4 space-x-4 ${selectedNews?.id === item.id ? 'bg-red-500' : 'bg-gray-700'
-                                } hover:bg-red-500 cursor-pointer`}
+                            className={`flex items-center p-4 space-x-4 ${selectedNews?.id === item.id ? 'bg-yellow-500' : 'bg-gray-700'
+                                } hover:bg-yellow-500 cursor-pointer`}
                             onClick={() => handleSelect(item)}
                         >
                             <Image

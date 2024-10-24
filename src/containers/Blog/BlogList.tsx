@@ -30,7 +30,7 @@ const BlogList: React.FC = () => {
     }
 
     if (error) {
-        return <p className="text-center text-red-500">{error}</p>;
+        return <p className="text-center text-yellow-500">{error}</p>;
     }
 
     return (
