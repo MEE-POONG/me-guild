@@ -11,7 +11,7 @@
 @import "sociallinks.scss";
 @import "textstyles.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 
 @font-face {
     font-family: "LibreBodoni";
@@ -55,13 +55,13 @@
     font-family: "CosmicLove";
 }
 .font-mg05 {
-        font-family: "Lora", serif;
-        font-optical-sizing: auto;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
 }
 
 body {
-    background: rgb(54, 54, 54);
-    background: radial-gradient(circle, rgba(106, 106, 106, 1) 0%, rgba(59, 58, 58, 1) 100%);
+    background: #e7b386;
+    background: radial-gradient(circle, #e0f8eb 20%, #f5fbc1 27%, #ffecb3 40%, #e7b386 70%, #9d9691 100%);
     // background-color: #424242;
     // background-image: url('/images/BG2.jpg');
     background-size: cover;
@@ -159,4 +159,4 @@ body {
 }
 .eng-first-uppercase::first-letter {
     text-transform: uppercase;
-  }
+}
