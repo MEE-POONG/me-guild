@@ -1,3 +1,4 @@
+import TitleTopicOne from "@/components/Head/TitleTopicOne";
 import Layout from "@/components/Layout";
 import ActivityUpdate from "@/containers/Home/ActivtiesUpdate";
 import BlogCard from "@/containers/Home/BlogCard";
@@ -14,11 +15,12 @@ const Home: React.FC = (props) => {
   return (
     <Layout>
       <section className="">
-        <HomeSlider />
+        <TitleTopicOne title="Welcome" detailOne="Join our world of fantasy and adventure!" detailTwo="" detailThree="" imgBg="/images/bg02.webp" textBtn="Join To Discord" />
+        {/* <HomeSlider /> */}
         <NewsCardHome />
         <NewsUpdate />
         <ActivityUpdate />
-        <BlogCard/>
+        <BlogCard />
         {/* <GuildRecomend /> กิลด์แนะนำ */}
         {/* <PoppularPerson/> */}
       </section>

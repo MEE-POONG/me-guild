@@ -14,11 +14,9 @@ export default function Layout({
 
 
     return (
-        <div>
+        <div className="relative bg-fixed bg-center bg-cover bg-no-repeat bg-opacity-20" style={{ backgroundImage: "url('/images/bg-map.jpg')" }}>
+            {/* <img className="w-full fixed -z-10" src='/images/bg-map.jpg' /> */}
             <Header />
-            {/* <div className="h-[5000px] bg-[]">
-
-            </div> */}
             {children}
             <ShortcutSocial />
             <BackToTopButton />
