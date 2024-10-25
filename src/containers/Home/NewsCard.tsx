@@ -1,140 +1,108 @@
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { FaPlus, FaBars, FaTimes } from 'react-icons/fa';
-import usePathChecker from '../../Function/usePathChecker';
+import Image from 'next/image';
+import { FC, useState, useEffect } from 'react';
 
-interface NavItem {
-    href: string;
-    label: string;
-    dropdown: boolean;
-    list?: { href: string; label: string }[];
+interface NewsItem {
+    id: number;
+    title: string;
+    description: string;
+    date: string;
+    image: string;
 }
 
-const Navbar: React.FC = () => {
-    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // State สำหรับเมนูมือถือ
-    const router = useRouter();
-    const { getBasePath } = usePathChecker();
-    const basePath = getBasePath();
+const NewsCardHome: FC = () => {
+    const [newsData, setNewsData] = useState<NewsItem[]>([]);
+    const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        console.log(basePath);
-    }, [basePath]);
+        const fetchNews = async () => {
+            try {
+                const response = await fetch('/api/news?page=1&pageSize=7');
+                const data = await response.json();
+                setNewsData(data.news);
+                setSelectedNews(data.news[0]); // Automatically select the first news item.
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                setLoading(false);
+            }
+        };
 
-    const handleMouseEnter = (dropdownLabel: string) => {
-        setOpenDropdown(dropdownLabel);
+        fetchNews();
+    }, []);
+
+    const handleSelect = (item: NewsItem) => {
+        setSelectedNews(item);
     };
 
-    const handleMouseLeave = () => {
-        setOpenDropdown(null);
-    };
-
-    const isAnySubItemActive = (itemHref: string, list?: { href: string }[]) => {
-        return list?.some((listPage) => basePath === (itemHref + listPage.href));
-    };
-
-    const navItems: NavItem[] = [
-        { href: "/", label: "Home", dropdown: false },
-        {
-            href: "/news", label: "News", dropdown: true, list: [
-                { href: "/blog", label: "Blog" },
-            ]
-        },
-        {
-            href: "/guild", label: "Guild", dropdown: true, list: [
-                { href: "/list", label: "Guild List" },
-                { href: "/register", label: "Guild Register" }
-            ]
-        },
-        {
-            href: "/adventurer", label: "Adventurer", dropdown: true, list: [
-                { href: "/list", label: "Adventurer List" },
-                { href: "/register", label: "Adventurer Register" }
-            ]
-        },
-        { href: "/activity", label: "Activity", dropdown: false },
-        { href: "/contact", label: "Contact", dropdown: false },
-    ];
+    if (loading) {
+        return <div className="text-center text-white">Loading...</div>;
+    }
 
     return (
-        <nav className="bg-black/50 px-6 py-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <Link href="/" className="text-white text-lg font-semibold">
-                    <img src="/images/logo.png" alt="GoodGames" width={60} height={60} />
-                </Link>
-
-                {/* Toggle Button for Mobile Menu */}
-                <button
-                    className="text-white lg:hidden"
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                >
-                    {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-                </button>
-
-                {/* Main Navigation for Desktop */}
-                <div className="hidden lg:flex items-center font-mg05 font-bold italic">
-                    {navItems.map((item) => (
+        <div className='container mx-auto mt-10 px-2 md:px-10 xl:px-0'>
+            <p className="text-xl md:text-3xl flex items-end justify-between text-amber-400 border-b-4 border-gray-700 mb-2 uppercase">
+                <span>
+                    Latest
+                    <span className="ml-3 text-white">News</span>
+                </span>
+                {/* <a href="/news" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a> */}
+            </p>
+            <div className="md:flex bg-gray-800 text-white h-full">
+                {/* Left Side (News Items List) */}
+                <div className="md:w-1/3 space-y-1 max-h-[500px] overflow-y-auto">
+                    {newsData.map((item) => (
                         <div
-                            key={item.label}
-                            className="relative inline-block text-left"
-                            onMouseEnter={() => handleMouseEnter(item.label)}
-                            onMouseLeave={handleMouseLeave}
+                            key={item.id}
+                            className={`flex items-center p-4 space-x-4 ${selectedNews?.id === item.id ? 'bg-amber-400 text-gray-800' : 'bg-gray-700'
+                                } hover:bg-amber-400 cursor-pointer`}
+                            onClick={() => handleSelect(item)}
                         >
-                            <Link href={item.href} className={`px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : 'text-white'}`}>
-                                {item.label}
-                                {item.dropdown &&
-                                    <FaPlus className={`ms-1 transition ${basePath === item.href || isAnySubItemActive(item.href, item.list) ? `text-[#f2b265]` : ''}`} aria-hidden="true" />
-                                }
-                            </Link>
-                            {item.dropdown && item.list && (
-                                openDropdown === item.label && (
-                                    <div
-                                        id="dropdownHover"
-                                        className="absolute left-0 pt-7 z-10"
-                                    >
-                                        <ul className="shadow w-44 bg-black/80 py-2 text-sm" style={{ borderBottom: '5px solid #f2b265' }}>
-                                            {item?.list.map((listPage) => (
-                                                <li key={listPage.label}>
-                                                    <Link href={item.href + listPage.href} className={`block px-4 py-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
-                                                        {listPage.label}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )
-                            )}
+                            <Image
+                                src={item.image}
+                                alt={item.title}
+                                width={80}
+                                height={80}
+                                className="rounded-md overflow-hidden"
+                            />
+                            <div className=''>
+                                <h3 className="text-lg font-semibold tracking-tighter line-clamp-1">
+                                    {item.title}
+                                </h3>
+                                <p className="text-sm text-white line-clamp-1">
+                                    {item.description}
+                                </p>
+                                <p className="text-xs text-gray-400 mt-2 flex items-center">
+                                    <span className="ml-2">{item.date}</span>
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Mobile Navigation */}
-                {mobileMenuOpen && (
-                    <div className="lg:hidden w-full bg-black/70 mt-4 p-4 rounded-lg">
-                        {navItems.map((item) => (
-                            <div key={item.label} className="mb-2">
-                                <Link href={item.href} className={`block text-white py-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : ''}`}>
-                                    {item.label}
-                                </Link>
-                                {item.dropdown && item.list && (
-                                    <ul className="ml-4">
-                                        {item.list.map((listPage) => (
-                                            <li key={listPage.label}>
-                                                <Link href={item.href + listPage.href} className={`block py-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
-                                                    {listPage.label}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </div>
-                        ))}
+
+                {/* Right Side (Selected News Details) */}
+                {selectedNews && (
+                    <div className="flex-1 p-6 bg-gray-900 h-full">
+                        <Image
+                            src={selectedNews.image}
+                            alt={selectedNews.title}
+                            layout="responsive"
+                            width={600}
+                            height={400}
+                            className="rounded-md mb-4"
+                        />
+                        <h3 className="text-lg font-bold">{selectedNews.title}</h3>
+                        <p className="text-gray-300 mt-4 text-sm">{selectedNews.description}</p>
+                        <button className="mt-4 px-4 py-2 bg-yellow-500 rounded-md text-white">
+                            News
+                        </button>
                     </div>
                 )}
             </div>
-        </nav>
+
+        </div>
     );
 };
 
-export default Navbar;
+export default NewsCardHome;

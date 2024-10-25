@@ -20,22 +20,22 @@ const TitleTopicOne: React.FC<ItemProps> = ({ title, detailOne, detailTwo, detai
         >
             <div className="relative z-10 text-center font-mg05 italic">
                 <div className="relative z-10 text-center">
-                    <h1 className="text-[8rem] font-bold text-gold" data-text={title}>
+                    <h1 className="text-[4rem] md:text-[8rem] font-bold text-gold" data-text={title}>
                         {title}
                     </h1>
                 </div>
                 <div className="relative z-10 text-center">
-                    <h1 className="text-5xl font-bold text-gold" data-text={detailOne}>
+                    <h1 className="md:text-5xl font-bold text-gold" data-text={detailOne}>
                         {detailOne}
                     </h1>
                 </div>
                 <div className="relative z-10 text-center">
-                    <h1 className="text-5xl font-bold text-gold" data-text={detailTwo}>
+                    <h1 className="md:text-5xl font-bold text-gold" data-text={detailTwo}>
                         {detailTwo}
                     </h1>
                 </div>
                 <div className="relative z-10 text-center">
-                    <h1 className="text-5xl font-bold text-gold" data-text={detailThree}>
+                    <h1 className="md:text-5xl font-bold text-gold" data-text={detailThree}>
                         {detailThree}
                     </h1>
                 </div>

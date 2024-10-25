@@ -15,7 +15,7 @@ export default function Layout({
 
     return (
         <div className="relative bg-fixed bg-center bg-cover bg-no-repeat bg-opacity-20" >
-            <img className="w-full h-full fixed -z-10 opacity-30" src='/images/bg-map.jpg' />
+            {/* <img className="w-full h-full fixed -z-10 opacity-30" src='/images/bg-map.jpg' /> */}
             {/* <div className="relative bg-fixed bg-center bg-cover bg-no-repeat bg-opacity-20" style={{ backgroundImage: "url('/images/bg-map.jpg')" }}> */}
             <Header />
             {children}
