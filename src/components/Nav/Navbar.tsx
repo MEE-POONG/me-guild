@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FaPlus, FaBars, FaTimes } from 'react-icons/fa';
+import { FaPlus} from 'react-icons/fa';
 import usePathChecker from '../../Function/usePathChecker';
+import { FiAlignJustify, FiX } from 'react-icons/fi';
 
 interface NavItem {
     href: string;
@@ -60,7 +61,6 @@ const Navbar: React.FC = () => {
     return (
         <nav className="bg-black/50 py-4">
             <div className="container mx-auto flex justify-between items-center px-3">
-
                 <Link href="/" className="text-white text-lg font-semibold">
                     <img src="/images/logo.png" alt="GoodGames" width={60} height={60} />
                 </Link>
@@ -70,45 +70,46 @@ const Navbar: React.FC = () => {
                     className="text-white md:hidden"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
-                    {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                    {mobileMenuOpen ? <FiX size={24} /> : <FiAlignJustify size={24} />}
                 </button>
-            </div>
 
-            {/* Main Navigation for Desktop */}
-            <div className="hidden md:flex items-center font-mg05 font-bold italic">
-                {navItems.map((item) => (
-                    <div
-                        key={item.label}
-                        className="relative inline-block text-left"
-                        onMouseEnter={() => handleMouseEnter(item.label)}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        <Link href={item.href} className={`px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : 'text-white'}`}>
-                            {item.label}
-                            {item.dropdown &&
-                                <FaPlus className={`ms-1 transition ${basePath === item.href || isAnySubItemActive(item.href, item.list) ? `text-[#f2b265]` : ''}`} aria-hidden="true" />
-                            }
-                        </Link>
-                        {item.dropdown && item.list && (
-                            openDropdown === item.label && (
-                                <div
-                                    id="dropdownHover"
-                                    className="absolute left-0 pt-7 z-10"
-                                >
-                                    <ul className="shadow w-44 bg-black/80 py-2 text-sm" style={{ borderBottom: '5px solid #f2b265' }}>
-                                        {item?.list.map((listPage) => (
-                                            <li key={listPage.label}>
-                                                <Link href={item.href + listPage.href} className={`block px-4 py-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
-                                                    {listPage.label}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )
-                        )}
-                    </div>
-                ))}
+                {/* Main Navigation for Desktop */}
+                <div className="hidden md:flex items-center font-mg05 font-bold italic">
+                    {navItems.map((item) => (
+                        <div
+                            key={item.label}
+                            className="relative inline-block text-left"
+                            onMouseEnter={() => handleMouseEnter(item.label)}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            <Link href={item.href} className={`px-4 py-1 flex items-center space-x-2 transition hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : 'text-white'}`}>
+                                {item.label}
+                                {item.dropdown &&
+                                    <FaPlus className={`ms-1 transition ${basePath === item.href || isAnySubItemActive(item.href, item.list) ? `text-[#f2b265]` : ''}`} aria-hidden="true" />
+                                }
+                            </Link>
+                            {item.dropdown && item.list && (
+                                openDropdown === item.label && (
+                                    <div
+                                        id="dropdownHover"
+                                        className="absolute left-0 pt-7 z-10"
+                                    >
+                                        <ul className="shadow w-44 bg-black/80 py-2 text-sm" style={{ borderBottom: '5px solid #f2b265' }}>
+                                            {item?.list.map((listPage) => (
+                                                <li key={listPage.label}>
+                                                    <Link href={item.href + listPage.href} className={`block px-4 py-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
+                                                        {listPage.label}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )
+                            )}
+                        </div>
+                    ))}
+                </div>
+
             </div>
 
 
@@ -116,17 +117,17 @@ const Navbar: React.FC = () => {
             <div
                 className={`md:hidden w-full overflow-hidden transition-max-height duration-500 ease-in-out ${mobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}
             >
-                <div className="bg-black/70 mt-4 p-4 w-full">
+                <div className="bg-black/70 mt-4 px-6 py-4 text-sm h-screen">
                     {navItems.map((item) => (
-                        <div key={item.label} className="mb-2 border-b">
-                            <Link href={item.href} className={`block text-white py-2 transition text-sm hover:text-[#f2b265] ${basePath === item.href ? `text-[#f2b265]` : ''}`}>
+                        <div key={item.label} className="">
+                            <Link href={item.href} className={`block text-white py-2 transition hover:text-[#f2b265]  ${basePath === item.href ? `text-[#f2b265]` : ''}`}>
                                 {item.label}
                             </Link>
                             {item.dropdown && item.list && (
-                                <ul className="ml-4 text-sm">
+                                <ul className="ml-2">
                                     {item.list.map((listPage) => (
                                         <li key={listPage.label}>
-                                            <Link href={item.href + listPage.href} className={`block py-2 transition hover:text-[#f2b265] ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
+                                            <Link href={item.href + listPage.href} className={`block py-1 transition hover:text-[#f2b265] ml-2 ${basePath === item.href + listPage.href ? `text-[#f2b265]` : 'text-white'}`}>
                                                + {listPage.label}
                                             </Link>
                                         </li>
