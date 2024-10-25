@@ -19,7 +19,7 @@ const SecondaryTopicOne: React.FC<ItemProps> = ({ title, imgBg }) => {
         >
             <div className="relative bg-black/50 h-full w-full flex items-center justify-center">
                 <div className="relative z-10 text-center">
-                    <h1 className="text-7xl font-bold text-white font-mg04 text-gold" data-text={title}>
+                    <h1 className="text-5xl md:text-7xl font-bold text-white font-mg04 text-gold" data-text={title}>
                         {title}
                     </h1>
                 </div>

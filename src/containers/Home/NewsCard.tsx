@@ -54,8 +54,8 @@ const NewsCardHome: FC = () => {
                     {newsData.map((item) => (
                         <div
                             key={item.id}
-                            className={`flex items-center p-4 space-x-4 ${selectedNews?.id === item.id ? 'bg-yellow-500' : 'bg-gray-700'
-                                } hover:bg-yellow-500 cursor-pointer`}
+                            className={`flex items-center p-4 space-x-4 ${selectedNews?.id === item.id ? 'bg-amber-400 text-gray-800' : 'bg-gray-700'
+                                } hover:bg-amber-400 cursor-pointer`}
                             onClick={() => handleSelect(item)}
                         >
                             <Image
@@ -69,7 +69,7 @@ const NewsCardHome: FC = () => {
                                 <h3 className="text-lg font-semibold tracking-tighter line-clamp-1">
                                     {item.title}
                                 </h3>
-                                <p className="text-sm text-gray-300 line-clamp-1">
+                                <p className="text-sm text-white line-clamp-1">
                                     {item.description}
                                 </p>
                                 <p className="text-xs text-gray-400 mt-2 flex items-center">

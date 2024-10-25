@@ -38,7 +38,7 @@ const Header: React.FC = () => {
         >
             {/* Top Contacts */}
             <div className={` text-white py-2 ${isScrolled ? 'hidden' : ''}`}>
-                <div className="container mx-auto flex justify-between items-center">
+                <div className="container mx-auto flex justify-between items-center px-1">
                     <div className="flex space-x-2">
                         <a
                             href="#"
