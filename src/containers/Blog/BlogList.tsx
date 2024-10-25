@@ -34,7 +34,7 @@ const BlogList: React.FC = () => {
     }
 
     return (
-        <section className="container mx-auto px-2 md:px-10 xl:px-0 py-16">
+        <section className="container mx-auto">
             <div className="flex flex-wrap mt-10">
                 {blogData.length === 0 ? (
                     <p className="text-center text-gray-400">No blogs available</p>

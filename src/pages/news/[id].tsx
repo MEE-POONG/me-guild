@@ -69,14 +69,14 @@ const ReadNews: React.FC = (props) => {
                                 className="w-full h-[420px] mx-auto drop-shadow-md"
                                 alt=""
                             />
-                            <p className="mt-10 indent-8 text-gray-200">
+                            <p className="mt-10 indent-8 text-black">
                                 {news.description}
                             </p>
 
                             <div className="mt-10 text-gray-100">
                                 อ่านเพิ่ม :
                                 <a href={news.creditlink}
-                                    className="ml-3 text-teal-500 hover:text-teal-300" target="_blank">
+                                    className="ml-3 text-teal-100 hover:text-teal-300" target="_blank">
                                     {news.creditlink}
                                 </a>
                             </div>
