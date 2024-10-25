@@ -15,7 +15,7 @@ const TitleTopicOne: React.FC<ItemProps> = ({ title, detailOne, detailTwo, detai
 
     return (
         <div
-            className="relative h-screen flex items-center justify-center bg-black/0 border-b-2 border-yellow-500 border-double bg-fixed bg-cover bg-center"
+            className="relative h-screen flex items-center justify-center bg-black/0 border-b-2 border-[#f2b265] border-double bg-fixed bg-cover bg-center"
             style={{ backgroundImage: `url(${imgBg})` }}
         >
             <div className="relative z-10 text-center font-mg05 italic">
