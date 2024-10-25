@@ -24,13 +24,13 @@ const ReccommentBlog: FC = () => {
 
     return (
         <div className="mt-6">
-            <div className="flex items-center bg-gray-900/60 pl-4 py-5">
+            <div className="flex items-center bg-gray-900/75 pl-4 py-5">
                 <h3 className="text-xl font-bold text-gray-100">
                     <span className="text-yellow-500">LATEST</span> BLOG
                 </h3>
                 <div className="flex-1 border-t-4 border-gray-100 ml-4"></div>
             </div>
-            <div className='bg-stone-800 p-3'>
+            <div className='bg-gray-700 p-3'>
                 {newsData.map(news => (
                     <div key={news.id} className="p-2">
                         <div className="flex">
