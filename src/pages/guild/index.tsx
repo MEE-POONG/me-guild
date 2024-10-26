@@ -21,7 +21,7 @@ const GuildPage: React.FC = (props) => {
             <Breadcrumb />
             <section className="sm:mt-6 lg:mt-8 mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mb-24">
                 <img src="/images/bg-paper.png" alt="bg-paper" className="top-0 w-full -z-10" />
-                <div className="absolute right-0 left-0 mx-24">
+                <div className="absolute top-0 right-0 left-0 mx-24">
                     <div className="relative z-10 text-center m-auto mt-12">
                         <h1 className="text-7xl font-bold font-mg04 text-gold" data-text={`MeGuild`}>
                             MeGuild
