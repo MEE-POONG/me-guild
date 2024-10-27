@@ -32,25 +32,13 @@ const GuildList: React.FC = () => {
     return (
         <div className="">
             {/* Optional Search Input */}
-            <div className="mt-4 flex items-center justify-end gap-2">
-                <p className="text-gray-600 text-sm">ค้นหา</p>
-                <input
-                    type="search"
-                    placeholder="Search guilds..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="border p-2 w-52 rounded-md text-sm"
-                />
-                <CiSearch size={20} />
-            </div>
-
             {/* Guild List */}
             <div className="mt-6">
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
                     filteredGuilds.map(guild => (
-                        <Link href={`/guild/list/${guild.id}`} key={guild.id} className="flex items-center bg-gray-300 hover:shadow-lg hover:shadow-[#f2b265] mb-3 p-3 rounded-lg">
+                        <Link href={`/guild/list/${guild.id}`} key={guild.id} className="flex items-center bg-gray-300 hover:shadow-lg hover:shadow-[#f2b265] mb-3 p-2 rounded-lg">
                             <img src={guild.guildLogo} className="w-28 h-28 bg-gray-900 rounded-md" alt={guild.guildname} />
                             <div className="ml-3">
                                 <p className="text-sm md:text-lg font-bold">{guild.guildname}</p>

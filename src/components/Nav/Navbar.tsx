@@ -19,10 +19,6 @@ const Navbar: React.FC = () => {
     const { getBasePath } = usePathChecker();
     const basePath = getBasePath();
 
-    useEffect(() => {
-        console.log(basePath);
-    }, [basePath]);
-
     const handleMouseEnter = (dropdownLabel: string) => {
         setOpenDropdown(dropdownLabel);
     };
