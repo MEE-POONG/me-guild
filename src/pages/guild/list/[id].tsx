@@ -8,8 +8,7 @@ import SearchBar from "@/containers/CardReccommend/SearchBarForm";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { GiRank2 } from "react-icons/gi";
-import GuildMember from "./guildMember";
+import GuildMember from "../guildMember";
 
 const ProfileGuild: React.FC = (props) => {
     const router = useRouter();
