@@ -62,7 +62,7 @@ const ActivityPage: React.FC = (props) => {
                     <div className="lg:grid grid-cols-12 gap-10 mt-6">
                         <div className="col-span-8">
                             <div>
-                                <ul className="list-inside text-sm bg-black/10 p-5">
+                                <ul className="list-inside text-sm bg-black/55 p-5">
                                     {loading ? (
                                         <p>Loading...</p>
                                     ) : (
