@@ -12,16 +12,36 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const page: number = Number(req.query.page) || 1;
                 const pageSize: number = Number(req.query.pageSize) || 100;
 
-                const guilds = await prisma.guildProfileDB.findMany({
+                // Fetch guild profiles with paginated results
+                const guildProfiles = await prisma.guildProfileDB.findMany({
                     skip: (page - 1) * pageSize,
                     take: pageSize,
-                    orderBy: {
-                        createdAt: 'desc', // Order by the most recent
-                    },
+                    orderBy: { createdAt: 'desc' },
                 });
+
+                // Map guild profiles to include guild details using guildId
+                const guilds = await Promise.all(
+                    guildProfiles.map(async (profile) => {
+                        let guildLogo = "";
+
+                        // Check if guildId is a valid non-empty string
+                        if (profile.guildId) {
+                            const guild = await prisma.guild.findUnique({
+                                where: { id: profile.guildId },
+                            });
+                            guildLogo = guild?.Logo || "";
+                        }
+
+                        return {
+                            ...profile,
+                            guildLogo, // Adds the guild logo if it exists
+                        };
+                    })
+                );
 
                 const totalGuilds = await prisma.guildProfileDB.count();
                 const totalPage: number = Math.ceil(totalGuilds / pageSize);
+
                 res.status(200).json({ guilds, totalPage });
             } catch (error) {
                 console.error("Error fetching news updates:", error);

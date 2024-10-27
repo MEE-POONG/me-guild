@@ -41,7 +41,7 @@
 
 .text-gold {
   // text-transform: uppercase;
-  line-height: 1.5;
+  line-height: 1.5 !important;
   text-align: center;
 
   background: linear-gradient(180deg, #e0f8eb 20%, #f5fbc1 27%, #ffecb3 40%, #e7b386 70%, #9d9691 100%);

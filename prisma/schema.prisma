@@ -294,11 +294,12 @@ model Guild {
   guild_size   Int     @default(5)
   guild_roleId String?
   guild_leader String
-  Logo         String
+  Logo         String  @default("")
 }
 
 model GuildProfileDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  guildId     String   @default("")
   guildname   String
   description String
   rule        String
