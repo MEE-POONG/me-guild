@@ -38,7 +38,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
 
                 const newActivities = await prisma.actDetailDB.create({
-                    data: { title, point, type, img, startdate, enddate, description, disname, dislink },
+                    data: {
+                        title,
+                        point,
+                        type,
+                        img,
+                        startdate,
+                        enddate,
+                        description,
+                        disname,
+                        dislink,
+                        updatedBy: "system", // or any other default value
+                        deleteBy: "", // default empty value if not required immediately
+                    },
                 });
 
                 res.status(201).json(newActivities);

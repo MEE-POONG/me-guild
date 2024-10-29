@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { FaPlus} from 'react-icons/fa';
 import usePathChecker from '../../Function/usePathChecker';
 import { FiAlignJustify, FiX } from 'react-icons/fi';
+import Image from 'next/image';
 
 interface NavItem {
     href: string;
@@ -58,7 +59,7 @@ const Navbar: React.FC = () => {
         <nav className="bg-black/50 py-4">
             <div className="container mx-auto flex justify-between items-center px-3">
                 <Link href="/" className="text-white text-lg font-semibold">
-                    <img src="/images/logo.png" alt="GoodGames" width={60} height={60} />
+                    <Image src="/images/logo.png" alt="GoodGames" width={60} height={60} />
                 </Link>
 
                 {/* Toggle Button for Mobile Menu */}

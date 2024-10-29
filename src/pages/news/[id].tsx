@@ -5,6 +5,7 @@ import LatestMath from "@/containers/Activity/LatsetMath";
 import LatestActivity from "@/containers/CardReccommend/LatestActivity";
 import SearchBar from "@/containers/CardReccommend/SearchBarForm";
 import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -65,7 +66,7 @@ const ReadNews: React.FC = (props) => {
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
                         <div>
-                            <img src={news.img}
+                            <Image src={news.img}
                                 className="w-full h-[420px] mx-auto drop-shadow-md"
                                 alt=""
                             />
@@ -75,10 +76,10 @@ const ReadNews: React.FC = (props) => {
 
                             <div className="mt-10 text-gray-100">
                                 อ่านเพิ่ม :
-                                <a href={news.creditlink}
+                                <Link href={news.creditlink}
                                     className="ml-3 text-teal-100 hover:text-teal-300" target="_blank">
                                     {news.creditlink}
-                                </a>
+                                </Link>
                             </div>
                         </div>
 

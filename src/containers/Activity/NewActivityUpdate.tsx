@@ -37,10 +37,10 @@ const NewActivityUpdate: React.FC = (props) => {
                             ) : (
                                 activityData.map(activities => (
                                     <li key={activities.id}  className="border-b border-slate-500 mb-2">
-                                        <a href={`/activity/${activities.id}`} className="flex justify-between ">
+                                        <Link href={`/activity/${activities.id}`} className="flex justify-between ">
                                             {activities.title}
                                             <span className="text-orange-400">{activities.point} point</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))
                             )}

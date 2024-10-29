@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const MatchToday: React.FC = () => {
@@ -14,9 +15,9 @@ const MatchToday: React.FC = () => {
                 <div className="col-span-3">
                     <div className="uppercase px-4 py-2 bg-black/40 w-fit rounded-md text-white my-5 text-sm">now playing</div>
                     <div className="flex items-center gap-2">
-                        <img src="" className="w-10 h-10" alt="" />
+                        <Image src="" className="w-10 h-10" alt="" />
                         VS
-                        <img src="" className="w-10 h-10" alt="" />
+                        <Image src="" className="w-10 h-10" alt="" />
                     </div>
                     <p className="my-5 text-gray-300 text-xs">As she said this she looked down at her hands and was surprised to see.</p>
                     <Link href=""

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface BreadcrumbProps {
     idTitle?: string; // รับค่า title ที่จะใช้แทนค่า [id]
@@ -14,7 +15,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ idTitle }) => {
         <div className="container mx-auto mt-3">
             <ul className="text-white flex flex-row items-center font-mg05 italic font-bold">
                 <li className="inline-block hover:text-yellow-400">
-                    <a href="/">Home</a>
+                    <Link href="/">Home</Link>
                 </li>
                 {pathnames.map((value, index) => {
                     const isLast = index === pathnames.length - 1;
@@ -33,9 +34,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ idTitle }) => {
                                 <span className="text-yellow-200 eng-first-uppercase">{value}</span>
                             ) : (
                                 // ถ้าไม่ใช่รายการสุดท้ายให้แสดงลิงก์
-                                <a href={link} className="hover:text-yellow-400 eng-first-uppercase">
+                                <Link href={link} className="hover:text-yellow-400 eng-first-uppercase">
                                     {value}
-                                </a>
+                                </Link>
                             )}
                         </li>
                     );

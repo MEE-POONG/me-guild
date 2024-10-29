@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import Image from 'next/image';
 
 const HomeSlider: React.FC = () => {
     const settings = {
@@ -18,7 +19,7 @@ const HomeSlider: React.FC = () => {
                     <div className="slide ">
                         <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
                             <div className="absolute inset-0 overflow-hidden">
-                                <img
+                                <Image
                                     src="/images/bg01.png"
                                     alt="Fantasy Event"
                                     className="object-cover w-full h-full opacity-60"
@@ -46,7 +47,7 @@ const HomeSlider: React.FC = () => {
                     <div className="slide ">
                         <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
                             <div className="absolute inset-0 overflow-hidden">
-                                <img
+                                <Image
                                     src="/images/bg01.png"
                                     alt="Fantasy Event"
                                     className="object-cover w-full h-full opacity-60"
@@ -74,7 +75,7 @@ const HomeSlider: React.FC = () => {
                     <div className="slide ">
                         <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
                             <div className="absolute inset-0 overflow-hidden">
-                                <img
+                                <Image
                                     src="/images/bg01.png"
                                     alt="Fantasy Event"
                                     className="object-cover w-full h-full opacity-60"

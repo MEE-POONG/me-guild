@@ -46,7 +46,7 @@ const NewsCardHome: FC = () => {
                     Latest
                     <span className="ml-3 text-white">News</span>
                 </span>
-                {/* <a href="/news" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a> */}
+                {/* <Link href="/news" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</Link> */}
             </p>
             <div className="md:flex bg-gray-800 text-white h-full">
                 {/* Left Side (News Items List) */}

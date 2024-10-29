@@ -5,6 +5,7 @@ import Footer from './Footer'
 import BackToTopButton from './BackToTop'
 import ShortcutSocial from './ShortcutSocial'
 import Header from "./Header";
+import Image from "next/image";
 
 export default function Layout({
     children,
@@ -15,7 +16,7 @@ export default function Layout({
 
     return (
         <div className="relative bg-fixed bg-center bg-cover bg-no-repeat " >
-            <img className="w-full h-full fixed -z-10 opacity-20" src='/images/bg-map.jpg' />
+            <Image className="w-full h-full fixed -z-10 opacity-20" src='/images/bg-map.jpg' alt="bg-layout" />
             {/* <div className="relative bg-fixed bg-center bg-cover bg-no-repeat bg-opacity-20" style={{ backgroundImage: "url('/images/bg-map.jpg')" }}> */}
             <Header />
             {children}

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FC, useState, useEffect } from 'react';
 
 interface NewsItem {
@@ -45,7 +46,7 @@ const HotNewsCard: FC = () => {
                 >
                     {/* Full Image */}
                     <div className="relative w-full h-64 img-wrapper overflow-hidden inline-block box-border">
-                        <a href={`/news/${item.id}`} className=''>
+                        <Link href={`/news/${item.id}`} className=''>
                             <Image
                                 src={item.fullImage}
                                 alt={item.title}
@@ -53,13 +54,13 @@ const HotNewsCard: FC = () => {
                                 objectFit="cover"
                                 className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                             />
-                        </a>
+                        </Link>
                         <span className="absolute top-2 bg-red-500 text-white px-5 py-1 text-sm rounded">
                             News
                         </span>
                     </div>
                     <div className="p-6 bg-black/20 mb-2">
-                        <a href={`/news/${item.id}`} className="text-lg font-bold mb-2 text-amber-400 hover:text-teal-500">{item.title}</a>
+                        <Link href={`/news/${item.id}`} className="text-lg font-bold mb-2 text-amber-400 hover:text-teal-500">{item.title}</Link>
 
                         <p className="text-gray-100 text-sm md:text-base line-clamp-3 mt-2">
                             {item.description}

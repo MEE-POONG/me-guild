@@ -51,7 +51,7 @@ const ActivityPage: React.FC = (props) => {
                 </div>
 
                 <div className="container mx-auto px-2 md:px-10 xl:px-0 py-10">
-                    <a href="/" className='text-gray-100 flex items-center gap-2 hover:underline decoration-sky-500'> <BiArrowFromRight /> Home</a>
+                    <Link href="/" className='text-gray-100 flex items-center gap-2 hover:underline decoration-sky-500'> <BiArrowFromRight /> Home</Link>
 
                     <p className="text-4xl font-bold uppercase flex text-gray-100 border-teal-400 border-b-4 pb-2 mt-10">
                         <span>
@@ -77,7 +77,7 @@ const ActivityPage: React.FC = (props) => {
                                     )}
                                 </ul>
                             </div>
-                            
+
                             <div className="my-16">
                                 <div className="flex items-center justify-center">
                                     <div className="w-10 border-t-4 border-gray-400"></div>

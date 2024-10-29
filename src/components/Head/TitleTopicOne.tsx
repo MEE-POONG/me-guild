@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 
@@ -40,11 +41,9 @@ const TitleTopicOne: React.FC<ItemProps> = ({ title, detailOne, detailTwo, detai
                     </h1>
                 </div>
                 <div className="mt-8">
-                    <a href="https://discord.com/invite/4eS7Bt3PZF">
-                        <button className="btn-home">
-                            {textBtn}
-                        </button>
-                    </a>
+                    <Link href="https://discord.com/invite/4eS7Bt3PZF" className="btn-home">
+                        {textBtn}
+                    </Link>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const ReccommentBlog: FC = () => {
     const [newsData, setNewsData] = useState<any[]>([]);
@@ -35,7 +36,7 @@ const ReccommentBlog: FC = () => {
                     <div key={news.id} className="p-2">
                         <div className="flex">
                             <Link href={`/news/${news.id}`}>
-                                <img className="h-24 w-24 object-cover object-center hover:scale-105" src={news.img} alt="news" />
+                                <Image className="h-24 w-24 object-cover object-center hover:scale-105" src={news.img} alt="news" />
                             </Link>
                             <div className="p-3">
                                 <Link href={`/news/${news.id}`} className="text-gray-50 text-sm">
@@ -46,7 +47,7 @@ const ReccommentBlog: FC = () => {
                         <hr />
                     </div>
                 ))}
-                <a href="/activity" className='flex justify-end text-xs text-gray-50 hover:text-purple-400 mt-3'>เพิ่มเติม</a>
+                <Link href="/activity" className='flex justify-end text-xs text-gray-50 hover:text-purple-400 mt-3'>เพิ่มเติม</Link>
             </div>
 
         </div>

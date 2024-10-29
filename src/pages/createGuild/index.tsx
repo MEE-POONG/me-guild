@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react"
 
@@ -7,7 +8,7 @@ const CreateGuildPage: React.FC = (props) => {
         <Layout>
             <section className="">
                 <div className="w-full h-[250px] overflow-hidden">
-                    <img src="/images/bg05.webp"
+                    <Image src="/images/bg05.webp"
                         className="w-full h-full object-cover "
                         alt=""
                     />

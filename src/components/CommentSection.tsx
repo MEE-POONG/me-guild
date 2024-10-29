@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface Comment {
     id: string;
@@ -89,7 +90,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
             {/* Comment Form */}
             <div className="mb-4">
                 <div className='flex gap-1 mb-1'>
-                    <img src="" className='w-6 h-6 rounded-full' alt="" />
+                    <Image src="" className='w-6 h-6 rounded-full' alt="" />
                     <p className='text-gray-50' >Name</p>
                 </div>
                 {/* <input

@@ -6,6 +6,7 @@ import LatestActivity from "@/containers/CardReccommend/LatestActivity";
 import LatestNews from "@/containers/CardReccommend/LatestNews";
 import SearchBar from "@/containers/CardReccommend/SearchBarForm";
 import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -81,7 +82,7 @@ const ReadBlog: React.FC = (props) => {
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
                         <div className="">
-                            <img src={blogs.img}
+                            <Image src={blogs.img}
                                 className="w-full h-full mx-auto drop-shadow-md"
                                 alt=""
                             />
@@ -114,10 +115,10 @@ const ReadBlog: React.FC = (props) => {
 
                             <div className="mt-10 text-gray-100">
                                 อ่านเพิ่ม :
-                                <a href={blogs.creditlink}
+                                <Link href={blogs.creditlink}
                                     className="ml-3 text-teal-500 hover:text-teal-300" target="_blank">
                                     {blogs.creditlink}
-                                </a>
+                                </Link>
                             </div>
                         </div>
 

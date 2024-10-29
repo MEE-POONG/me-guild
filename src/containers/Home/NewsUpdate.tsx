@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -24,7 +25,7 @@ const NewsUpdate: React.FC = () => {
     return (
         <section className="container mx-auto px-2 md:px-10 xl:px-0 py-16">
             <div className="text-right border-b-4 border-gray-700">
-                <a href="/news" className="text-base text-white hover:text-amber-500">ทั้งหมด {`>>`}</a>
+                <Link href="/news" className="text-base text-white hover:text-amber-500">ทั้งหมด {`>>`}</Link>
             </div>
             <div className="flex flex-wrap mt-10">
                 {loading ? (
@@ -34,7 +35,7 @@ const NewsUpdate: React.FC = () => {
                         <div key={news.id} className="p-1 w-1/2 lg:w-1/4 drop-shadow-md">
                             <div className="h-full drop-shadow-lg">
                                 <Link href={`/news/${news.id}`} className="lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
-                                    <img
+                                    <Image
                                         className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                                         src={news.img}
                                         alt={news.title || 'news'}

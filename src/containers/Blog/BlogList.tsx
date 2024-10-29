@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from 'next/image';
 
 const BlogList: React.FC = () => {
     const [blogData, setBlogData] = useState<any[]>([]);
@@ -43,7 +44,7 @@ const BlogList: React.FC = () => {
                         <div key={blog.id} className="p-1 lg:w-1/2">
                             <div className="h-full drop-shadow-lg">
                                 <Link href={`/blogs/${blog.id}`} className="img-wrapper lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
-                                    <img
+                                    <Image
                                         className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                                         src={blog.img}
                                         alt={blog.title || 'blog'}

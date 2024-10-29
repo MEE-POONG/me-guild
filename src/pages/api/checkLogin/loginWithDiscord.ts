@@ -1,48 +1,50 @@
-import express, { Request, Response } from "express";
-import axios from "axios";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import axios from 'axios';
 
-const app = express();
-const clientId = "YOUR_CLIENT_ID";
-const clientSecret = "YOUR_CLIENT_SECRET";
-const redirectUri = "YOUR_REDIRECT_URI";
+const clientId = process.env.CLIENT_ID; // Store this in .env file
+const clientSecret = process.env.CLIENT_SECRET; // Store this in .env file
+const redirectUri = process.env.REDIRECT_URI; // Store this in .env file
 
-app.get("/auth/discord/callback", async (req: Request, res: Response) => {
-  const code = req.query.code as string;
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'GET') {
+    const { code } = req.query;
 
-  try {
-    const tokenResponse = await axios.post(
-      "https://discord.com/api/oauth2/token",
-      new URLSearchParams({
-        client_id: clientId,
-        client_secret: clientSecret,
-        grant_type: "authorization_code",
-        code: code,
-        redirect_uri: redirectUri,
-      }),
-      {
+    if (!code) {
+      return res.status(400).json({ error: 'Authorization code is required' });
+    }
+
+    try {
+      const tokenResponse = await axios.post(
+        'https://discord.com/api/oauth2/token',
+        new URLSearchParams({
+          client_id: clientId!,
+          client_secret: clientSecret!,
+          grant_type: 'authorization_code',
+          code: code as string,
+          redirect_uri: redirectUri!,
+        }),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+
+      const accessToken = tokenResponse.data.access_token;
+
+      const userResponse = await axios.get('https://discord.com/api/users/@me', {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Bearer ${accessToken}`,
         },
-      }
-    );
+      });
 
-    const accessToken = tokenResponse.data.access_token;
-
-    // Now you can use the access token to fetch the user's Discord profile
-    const userResponse = await axios.get("https://discord.com/api/users/@me", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-
-    // Do something with the user's Discord data
-    res.json(userResponse.data);
-  } catch (error) {
-    console.error("Error during Discord OAuth:", error);
-    res.status(500).send("Authentication failed");
+      res.status(200).json(userResponse.data);
+    } catch (error) {
+      console.error('Error during Discord OAuth:', error);
+      res.status(500).json({ error: 'Authentication failed' });
+    }
+  } else {
+    res.setHeader('Allow', ['GET']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-});
-
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
+}

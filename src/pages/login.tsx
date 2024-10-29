@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -34,7 +35,7 @@ const LoginPage: React.FC = () => {
 
     return (
         <div className="flex justify-center h-lvh login-page">
-            <img
+            <Image
                 src="/images/bg01.webp"
                 className="absolute w-full h-full object-cover lg:object-fit"
                 alt=""

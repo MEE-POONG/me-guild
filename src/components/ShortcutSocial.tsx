@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { BsDiscord } from "react-icons/bs";
 
@@ -20,14 +21,14 @@ const ShortcutSocial: React.FC = () => {
                 md:translate-x-0`
             }
             >
-                <a
+                <Link
                     href="https://discord.com/invite/4eS7Bt3PZF"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center"
                 >
                     <BsDiscord className="w-6 h-6 hover:animate-jump" />
-                </a>
+                </Link>
             </div>
 
             {/* ปุ่มเปิด/ปิดลิ้นชัก */}

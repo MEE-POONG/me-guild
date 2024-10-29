@@ -30,7 +30,7 @@ const ActivityUpdate: React.FC = () => {
                         Latest
                         <span className="ml-3 text-white">Activity</span>
                     </span>
-                    <a href="/activity" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</a>
+                    <Link href="/activity" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</Link>
                 </p>
                 <div className="lg:grid grid-cols-2 gap-10 mt-3">
                     <div className="bg-black/25 px-3">

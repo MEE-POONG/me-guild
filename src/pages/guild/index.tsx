@@ -7,6 +7,7 @@ import SearchBar from "@/containers/CardReccommend/SearchBarForm";
 import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
 import GuildList from "@/containers/Guild/GuildList";
 import PeopleList from "@/containers/Guild/PeopleList";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react"
 import { BiArrowFromRight } from "react-icons/bi";
@@ -20,7 +21,7 @@ const GuildPage: React.FC = (props) => {
             <div className="pt-[140px]" />
             <Breadcrumb />
             <section className="sm:mt-6 lg:mt-8 mt-12 max-w-7xl mx-auto relative mb-24">
-                <img src="/images/bg-paper.png" alt="bg-paper" className="absolute left-0 " />
+                <Image src="/images/bg-paper.png" alt="bg-paper" className="absolute left-0 " />
                 <div className="relative w-full bg-center bg-contain border border-yellow-900 bg-no-repeat shadow-md shadow-[#000000] bg-[#f8f0d9]" >
                     <div className="text-brown-900 font-serif text-lg m-8 p-4 md:text-xl leading-relaxed border-2 border-orange-950/20	">
                         <div className="relative z-10 text-center m-auto ">
@@ -30,7 +31,7 @@ const GuildPage: React.FC = (props) => {
                         </div>
                         <div className=" relative mb-10 mx-auto max-w-7xl flex gap-3 lg:flex-justify lg:flex flex-col lg:flex-row text-gray-700">
                             <div className="lg:inset-y-0 lg:right-0 lg:w-1/2 my-4">
-                                <img src="/images/logoFull.png" alt="logoFull" className="object-cover object-center rounded" />
+                                <Image src="/images/logoFull.png" alt="logoFull" className="object-cover object-center rounded" />
                             </div>
                             <div className="sm:text-center lg:text-left">
                                 <h2 className="text-4xl tracking-tight font-extrabold text-gray-800">
@@ -42,16 +43,16 @@ const GuildPage: React.FC = (props) => {
                                 </p>
                                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                                     <div className="rounded-md shadow">
-                                        <a href="#"
+                                        <Link href="#"
                                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-600 md:py-4 md:text-lg md:px-10">
                                             เยี่ยมเยือนโลกของMe Guild
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="mt-3 sm:mt-0 sm:ml-3">
-                                        <a href="#"
+                                        <Link href="#"
                                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-800 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
                                             สร้าง Guild
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +101,7 @@ const GuildPage: React.FC = (props) => {
                         </div>
                         <div className="mb-8">
                             <div className="ml-auto flex items-center justify-center m-0 p-0 font-bold flex-col w-max text-center" >
-                                <img src="https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/907bdcd3-565b-4ae1-045b-c4d966eaa600/350" alt="" className="mx-auto h-16" />
+                                <Image src="https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/907bdcd3-565b-4ae1-045b-c4d966eaa600/350" alt="" className="mx-auto h-16" />
                                 <p className="w-full hidden md:inline font-bold text-cyan-400">Me Prompt Technology</p>
                                 <p className="text-sm">จัดทำโดย</p>
                             </div>

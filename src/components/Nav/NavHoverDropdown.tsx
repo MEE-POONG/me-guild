@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import { FaChevronDown, FaPlus } from 'react-icons/fa';
 
@@ -49,24 +50,24 @@ const NavHoverDropdown: React.FC<DropdownProps> = ({ title, items, navClass }) =
             style={{ borderBottom: '5px solid #f2b265' }}
           >
             <li>
-              <a href="#" className="block text-white px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265]">
+              <Link href="#" className="block text-white px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265]">
                 Dashboard
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block text-white px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265]">
+              <Link href="#" className="block text-white px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265]">
                 Settings
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block text-white px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265]">
+              <Link href="#" className="block text-white px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265]">
                 Earnings
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block text-white px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265]">
+              <Link href="#" className="block text-white px-4 py-2 items-center space-x-2 transition hover:text-[#f2b265]">
                 Sign out
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

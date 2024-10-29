@@ -31,14 +31,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'POST':
             try {
-                const { title, img, video, description } = req.body;
+                const { title, img, video, description, creditlink = '', updatedBy = '', deleteBy = '' } = req.body;
 
                 if (!title || !img || !video || !description) {
                     return res.status(400).json({ error: "Title and content are required" });
                 }
 
                 const newBlogs = await prisma.blogDB.create({
-                    data: { title, img, video, description, },
+                    data: { title, img, video, description, creditlink, updatedBy, deleteBy },
                 });
 
                 res.status(201).json(newBlogs);

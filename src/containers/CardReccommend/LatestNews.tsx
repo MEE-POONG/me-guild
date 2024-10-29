@@ -3,14 +3,14 @@ import axios from 'axios';
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 import { FaCalendarAlt } from 'react-icons/fa';
-import { FaCableCar } from 'react-icons/fa6';
+import Image from 'next/image';
 
 interface LatestNewsProps {
     title?: string;
-    api: string;
+    api?: string;
 }
 
-const LatestNews: FC<LatestNewsProps> = ({ title = "LATEST NEWS", api }) => {
+const LatestNews: FC<LatestNewsProps> = ({ title = "LATEST NEWS", api="/" }) => {
     const [newsData, setNewsData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -47,7 +47,7 @@ const LatestNews: FC<LatestNewsProps> = ({ title = "LATEST NEWS", api }) => {
                         <div key={news.id} className="p-2">
                             <Link href={`/news/${news.id}`} >
                                 <div className='w-full flex'>
-                                    <img
+                                    <Image
                                         className="h-24 w-24 object-cover object-center hover:scale-105"
                                         // src={news.img || '/images/guild/CyberToothOne.webp'}
                                         src={'/images/guild/CyberToothOne.webp'}
@@ -69,7 +69,7 @@ const LatestNews: FC<LatestNewsProps> = ({ title = "LATEST NEWS", api }) => {
                 ) : (
                     !loading && <p className="text-gray-50 text-sm">No news available.</p>
                 )}
-                <a href="/activity" className='flex justify-end text-xs text-gray-50 hover:text-[#f2b265] mt-3'>เพิ่มเติม</a>
+                <Link href="/activity" className='flex justify-end text-xs text-gray-50 hover:text-[#f2b265] mt-3'>เพิ่มเติม</Link>
             </div>
         </div>
     );

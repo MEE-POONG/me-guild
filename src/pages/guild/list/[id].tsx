@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import GuildMember from "../guildMember";
+import Image from "next/image";
 
 const ProfileGuild: React.FC = (props) => {
     const router = useRouter();
@@ -69,7 +70,7 @@ const ProfileGuild: React.FC = (props) => {
                             <div>
                                 <div className="text-center bg-[url('/images/bg04.webp')] drop-shadow-lg bg-cover h-[340px] rounded-t-lg overflow-hidden">
                                     <div className="bg-black/55 p-16 h-full">
-                                        <img src={guild.avatar}
+                                        <Image src={guild.avatar}
                                             className="w-40 h-40 mx-auto rounded-full shadow-white/75 shadow-lg"
                                             alt="" />
                                         <p className="text-xl font-bold text-white drop-shadow-lg mt-3">{guild.guildname}</p>

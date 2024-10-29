@@ -3,6 +3,7 @@ import LatestMath from '@/containers/Activity/LatsetMath';
 import LatestActivity from '@/containers/CardReccommend/LatestActivity';
 import SearchBar from '@/containers/CardReccommend/SearchBarForm';
 import WeAreSocial from '@/containers/CardReccommend/WeAreSocial';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -85,7 +86,7 @@ const ActivityDetail: React.FC = (props) => {
                             </p>
 
                             {/* ภาพประกอบ/โปรโมท */}
-                            <img
+                            <Image
                                 src={`${CFIMG}${activities.img}/wmd`}
                                 className='py-5 mx-auto drop-shadow-lg w-[620px] h-[400px]'
                                 alt={activities.title || 'Activity image'}
@@ -94,9 +95,9 @@ const ActivityDetail: React.FC = (props) => {
                                 <p className='text-xs md:text-base'>รายละเอียดกิจกรรม</p>
                                 <p className='text-purple-400'>
                                     Discord:
-                                    <a href={activities.dislink || '#'} className='ml-3 hover:text-purple-500'>
+                                    <Link href={activities.dislink || '#'} className='ml-3 hover:text-purple-500'>
                                         {activities.disname || 'No Discord link provided'}
-                                    </a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
