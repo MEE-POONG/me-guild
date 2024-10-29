@@ -5,7 +5,7 @@ const LatestMath: React.FC = () => {
     return (
         <section className="mt-3">
             {/* Satrt Content */}
-            <div className="bg-black/25 p-5 md:flex items-center justify-between gap-2">
+            <div className="bg-black/55 p-5 md:flex items-center justify-between gap-2">
                 {/* Team 1 */}
                 <div className="flex items-center">
                     <Image src="/team1-logo.png" alt="Team 1 Logo" className="w-16 h-16 mr-4 p-1" />

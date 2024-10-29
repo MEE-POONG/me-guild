@@ -61,7 +61,7 @@ const BlogCard: React.FC = () => {
                                     <div className="tracking-widest text-xs font-medium text-white mb-1 px-2 py-1 w-12 bg-cyan-400 rounded-r">
                                         BLOG
                                     </div>
-                                    <Link href={`/blogs/${blog.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-teal-500 leading-3">
+                                    <Link href={`/news/blog/${blog.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-cyan-400 leading-3">
                                         {blog.title}
                                     </Link>
                                     <p className="text-xs line-clamp-2 indent-5 font-extralight text-gray-400 mt-3">{blog.description}</p>

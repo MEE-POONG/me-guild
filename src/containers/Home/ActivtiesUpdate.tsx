@@ -33,14 +33,14 @@ const ActivityUpdate: React.FC = () => {
                     <Link href="/activity" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</Link>
                 </p>
                 <div className="lg:grid grid-cols-2 gap-10 mt-3">
-                    <div className="bg-black/25 px-3">
+                    <div className="bg-black/55 px-4 py-2">
                         <ul className="list-inside text-xs md:text-base mt-7 ">
                             {loading ? (
                                 <p>Loading...</p>
                             ) : (
                                 activityData.map(activities => (
                                     <li key={activities.id} className="border-b border-slate-500 mb-5">
-                                        <Link href={`/activity/${activities.id}`} className="flex justify-between text-stone-50">
+                                        <Link href={`/activity/${activities.id}`} className="flex justify-between text-stone-50 hover:text-cyan-400">
                                             {activities.title}
                                             <span className="text-orange-400">{activities.point} point</span>
                                         </Link>
