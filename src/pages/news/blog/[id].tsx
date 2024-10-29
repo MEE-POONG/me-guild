@@ -115,7 +115,7 @@ const ReadBlog: React.FC = (props) => {
                             <div className="mt-10 text-gray-100">
                                 อ่านเพิ่ม :
                                 <a href={blogs.creditlink}
-                                    className="ml-3 text-teal-500 hover:text-teal-300" target="_blank">
+                                    className="ml-3 text-white hover:text-cyan-300" target="_blank">
                                     {blogs.creditlink}
                                 </a>
                             </div>

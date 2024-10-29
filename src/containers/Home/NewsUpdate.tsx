@@ -44,7 +44,7 @@ const NewsUpdate: React.FC = () => {
                                     <div className="tracking-widest text-xs font-medium text-white mb-1 p-1 w-12 bg-red-500 rounded-r">
                                         NEWS
                                     </div>
-                                    <Link href={`/news/${news.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-teal-500 leading-3">
+                                    <Link href={`/news/${news.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-cyan-400 leading-3">
                                         {news.title}
                                     </Link>
                                     <p className="text-xs line-clamp-3 font-extralight text-gray-700 mt-3">{news.description}</p>
