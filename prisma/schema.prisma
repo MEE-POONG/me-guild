@@ -220,16 +220,50 @@ model UserGameRank {
 }
 
 model NewsUpdateDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  img         String
-  description String
-  creditlink  String
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  img          String
+  description  String
+  creditlink   String
+  createdAt    DateTime       @default(now())
+  NewsTypeNews NewsTypeNews[]
+}
+
+model NewsCategoryDB {
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  createdAt  DateTime     @default(now())
+  createdBy  String?
+  updatedAt  DateTime     @updatedAt
+  updatedBy  String
+  deleteBy   String
+  NewsTypeDB NewsTypeDB[]
+}
+
+model NewsTypeDB {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  createdAt      DateTime       @default(now())
+  createdBy      String?
+  updatedAt      DateTime       @updatedAt
+  updatedBy      String
+  deleteBy       String
+  categoryId     String         @db.ObjectId
+  newsCategoryDB NewsCategoryDB @relation(fields: [categoryId], references: [id])
+  NewsTypeNews NewsTypeNews[]
+}
+
+model NewsTypeNews {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  newsUpdateId String       @db.ObjectId
+  typeId       String       @db.ObjectId
+  createdAt    DateTime     @default(now())
+  createdBy    String?
+  updatedAt    DateTime     @updatedAt
+  updatedBy    String
+  deleteBy     String
+  newsTypeDB   NewsTypeDB   @relation(fields: [typeId], references: [id])
+  newsUpdateDB NewsUpdateDB @relation(fields: [newsUpdateId], references: [id])
 }
 
 model ActDetailDB {
@@ -294,11 +328,12 @@ model Guild {
   guild_size   Int     @default(5)
   guild_roleId String?
   guild_leader String
-  Logo         String
+  Logo         String  @default("")
 }
 
 model GuildProfileDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  guildId     String   @default("")
   guildname   String
   description String
   rule        String
