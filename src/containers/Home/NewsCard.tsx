@@ -59,7 +59,7 @@ const NewsCardHome: FC = () => {
                             onClick={() => handleSelect(item)}
                         >
                             <img
-                                src={item.image}
+                                src={item.image ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.image}/wmd` : "/images/default.png"}
                                 alt={item.title}
                                 width={80}
                                 height={80}
@@ -80,17 +80,16 @@ const NewsCardHome: FC = () => {
                     ))}
                 </div>
 
-
-                {/* Right Side (Selected News Details) */}
                 {selectedNews && (
                     <div className="flex-1 p-6 bg-gray-900 h-full">
                         <Image
-                            src={selectedNews.image}
+                            src={selectedNews.image ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${selectedNews.image}/wmd` : "/images/default.png"}
                             alt={selectedNews.title}
                             layout="responsive"
                             width={600}
                             height={400}
                             className="rounded-md mb-4"
+                            priority
                         />
                         <h3 className="text-lg font-bold">{selectedNews.title}</h3>
                         <p className="text-gray-300 mt-4 text-sm">{selectedNews.description}</p>

@@ -1,6 +1,3 @@
-
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
-
 @font-face {
     font-family: "LibreBodoni";
     src: url("/fonts/LibreBodoni.ttf") format("truetype");
@@ -25,6 +22,14 @@
 @font-face {
     font-family: "TeachDemo";
     src: url("/fonts/TeachDemo.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lora", serif;
+    src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype");
+    font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
 }

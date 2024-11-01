@@ -16,13 +16,10 @@ const Home: React.FC = (props) => {
     <Layout>
       <section className="">
         <TitleTopicOne title="Welcome" detailOne="Join our world of fantasy and adventure!" detailTwo="" detailThree="" imgBg="/images/bg02.webp" textBtn="Join To Discord" />
-        {/* <HomeSlider /> */}
         <NewsCardHome />
         <NewsUpdate />
         <ActivityUpdate />
         <BlogCard />
-        {/* <GuildRecomend /> กิลด์แนะนำ */}
-        {/* <PoppularPerson/> */}
       </section>
     </Layout>
   );
