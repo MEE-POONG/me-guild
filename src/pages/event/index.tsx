@@ -9,7 +9,7 @@ const EventPage: React.FC = () => {
             <div className="event-page">
                 <div className="relative h-screen flex items-center justify-center bg-black" style={{ height: 'calc(100vh - 6rem)' }}>
                     <div className="absolute inset-0 overflow-hidden">
-                        <Image
+                        <img
                             src="/images/bg01.png"
                             alt="Fantasy Event"
                             className="object-cover w-full h-full opacity-60"

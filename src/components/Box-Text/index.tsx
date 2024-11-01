@@ -17,10 +17,10 @@ const BoxText: React.FC<BoxTextProps> = ({ title, detailOne, detailTwo, detailTh
             {/* <div className="border-2 border-[#de9b72] h-[99%] w-[98%] p-1 mx-auto">
                 <div className="border-6 border-[#de9b72] h-full w-full p-1 mx-auto">
                     <div className="relative border-2 border-[#de9b72] h-full w-full mx-auto flex flex-col justify-center">
-                        <Image className="absolute top-0 left-0 w-12" src="/images/box-one.png" alt="Decoration" />
-                        <Image className="absolute top-0 right-0 w-12 transform scale-x-[-1]" src="/images/box-one.png" alt="Decoration" />
-                        <Image className="absolute bottom-0 right-0 w-12 transform scale-[-1]" src="/images/box-one.png" alt="Decoration" />
-                        <Image className="absolute bottom-0 left-0 w-12 transform scale-y-[-1]" src="/images/box-one.png" alt="Decoration" />
+                        <img className="absolute top-0 left-0 w-12" src="/images/box-one.png" alt="Decoration" />
+                        <img className="absolute top-0 right-0 w-12 transform scale-x-[-1]" src="/images/box-one.png" alt="Decoration" />
+                        <img className="absolute bottom-0 right-0 w-12 transform scale-[-1]" src="/images/box-one.png" alt="Decoration" />
+                        <img className="absolute bottom-0 left-0 w-12 transform scale-y-[-1]" src="/images/box-one.png" alt="Decoration" />
                         <p className="m-6 leading-relaxed text-lg text-[#e39d79] relative">
                             &nbsp;&nbsp;&nbsp;&nbsp;{detailOne}
                         </p>
@@ -30,10 +30,10 @@ const BoxText: React.FC<BoxTextProps> = ({ title, detailOne, detailTwo, detailTh
             <div className="outer-border bg-[#ffffff]">
                 <div className="mid-border">
                     <div className="inner-border">
-                        <Image alt="left-top" className="corner-decoration  w-full h-full corner-left-top" src="/images/box-one.png" />
-                        <Image alt="right-top" className="corner-decoration  w-full h-full corner-right-top" src="/images/box-one.png" />
-                        <Image alt="right-bottom" className="corner-decoration  w-full h-full corner-right-bottom" src="/images/box-one.png" />
-                        <Image alt="left-bottom" className="corner-decoration  w-full h-full corner-left-bottom" src="/images/box-one.png" />
+                        <img alt="left-top" className="corner-decoration  w-full h-full corner-left-top" src="/images/box-one.png" />
+                        <img alt="right-top" className="corner-decoration  w-full h-full corner-right-top" src="/images/box-one.png" />
+                        <img alt="right-bottom" className="corner-decoration  w-full h-full corner-right-bottom" src="/images/box-one.png" />
+                        <img alt="left-bottom" className="corner-decoration  w-full h-full corner-left-bottom" src="/images/box-one.png" />
                         <div className="container p-6">
                             {/* ถ้ามี title จึงจะแสดง */}
                             {title && (

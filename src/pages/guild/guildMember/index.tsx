@@ -23,7 +23,7 @@ const GuildMember: React.FC = () => {
                             <GiCrenelCrown className="h-8 w-8 text-amber-400" />
                         </div>
                         {/* รูปภาพ */}
-                        <Image
+                        <img
                             className="w-16 h-16 rounded-full drop-shadow-md mx-auto"
                             src="https://via.placeholder.com/400"
                             alt="example"
@@ -39,7 +39,7 @@ const GuildMember: React.FC = () => {
                             <GiCrenelCrown className="h-8 w-8 text-slate-500" />
                         </div>
                         {/* รูปภาพ */}
-                        <Image
+                        <img
                             className="w-16 h-16 rounded-full drop-shadow-md mx-auto"
                             src="https://via.placeholder.com/400"
                             alt="example"
@@ -49,7 +49,7 @@ const GuildMember: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-5 mt-6">
                     <div className="text-center">
-                        <Image
+                        <img
                             className="w-16 h-16 rounded-full drop-shadow-md mx-auto"
                             src="https://via.placeholder.com/400"
                             alt="example"

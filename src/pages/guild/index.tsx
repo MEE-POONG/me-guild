@@ -21,7 +21,7 @@ const GuildPage: React.FC = (props) => {
             <div className="pt-[140px]" />
             <Breadcrumb />
             <section className="sm:mt-6 lg:mt-8 mt-12 max-w-7xl mx-auto relative mb-24">
-                <Image src="/images/bg-paper.png" alt="bg-paper" className="absolute left-0 " />
+                <img src="/images/bg-paper.png" alt="bg-paper" className="absolute left-0 " />
                 <div className="relative w-full bg-center bg-contain border border-yellow-900 bg-no-repeat shadow-md shadow-[#000000] bg-[#f8f0d9]" >
                     <div className="text-brown-900 font-serif text-lg m-8 p-4 md:text-xl leading-relaxed border-2 border-orange-950/20	">
                         <div className="relative z-10 text-center m-auto ">
@@ -31,7 +31,7 @@ const GuildPage: React.FC = (props) => {
                         </div>
                         <div className=" relative mb-10 mx-auto max-w-7xl flex gap-3 lg:flex-justify lg:flex flex-col lg:flex-row text-gray-700">
                             <div className="lg:inset-y-0 lg:right-0 lg:w-1/2 my-4">
-                                <Image src="/images/logoFull.png" alt="logoFull" className="object-cover object-center rounded" />
+                                <img src="/images/logoFull.png" alt="logoFull" className="object-cover object-center rounded" />
                             </div>
                             <div className="sm:text-center lg:text-left">
                                 <h2 className="text-4xl tracking-tight font-extrabold text-gray-800">
@@ -101,7 +101,7 @@ const GuildPage: React.FC = (props) => {
                         </div>
                         <div className="mb-8">
                             <div className="ml-auto flex items-center justify-center m-0 p-0 font-bold flex-col w-max text-center" >
-                                <Image src="https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/907bdcd3-565b-4ae1-045b-c4d966eaa600/350" alt="" className="mx-auto h-16" />
+                                <img src="https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/907bdcd3-565b-4ae1-045b-c4d966eaa600/350" alt="" className="mx-auto h-16" />
                                 <p className="w-full hidden md:inline font-bold text-cyan-400">Me Prompt Technology</p>
                                 <p className="text-sm">จัดทำโดย</p>
                             </div>

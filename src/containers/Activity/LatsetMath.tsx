@@ -8,7 +8,7 @@ const LatestMath: React.FC = () => {
             <div className="bg-black/55 p-5 md:flex items-center justify-between gap-2">
                 {/* Team 1 */}
                 <div className="flex items-center">
-                    <Image src="/team1-logo.png" alt="Team 1 Logo" className="w-16 h-16 mr-4 p-1" />
+                    <img src="/team1-logo.png" alt="Team 1 Logo" className="w-16 h-16 mr-4 p-1" />
                     <div>
                         <Link href="" className="text-white hover:text-amber-400">SK</Link>
                     </div>
@@ -28,7 +28,7 @@ const LatestMath: React.FC = () => {
                     <div className="text-right">
                         <Link href="" className="text-white hover:text-amber-400">CLOUD 9</Link>
                     </div>
-                    <Image src="/team2-logo.png" alt="Team 2 Logo" className="w-16 h-16 ml-4" />
+                    <img src="/team2-logo.png" alt="Team 2 Logo" className="w-16 h-16 ml-4" />
                 </div>
             </div>
         </section>

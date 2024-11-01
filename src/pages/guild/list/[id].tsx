@@ -70,7 +70,7 @@ const ProfileGuild: React.FC = (props) => {
                             <div>
                                 <div className="text-center bg-[url('/images/bg04.webp')] drop-shadow-lg bg-cover h-[340px] rounded-t-lg overflow-hidden">
                                     <div className="bg-black/55 p-16 h-full">
-                                        <Image src={guild.avatar}
+                                        <img src={guild.avatar}
                                             className="w-40 h-40 mx-auto rounded-full shadow-white/75 shadow-lg"
                                             alt="" />
                                         <p className="text-xl font-bold text-white drop-shadow-lg mt-3">{guild.guildname}</p>

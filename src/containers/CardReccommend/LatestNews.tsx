@@ -47,7 +47,7 @@ const LatestNews: FC<LatestNewsProps> = ({ title = "LATEST NEWS", api="/" }) => 
                         <div key={news.id} className="p-2">
                             <Link href={`/news/${news.id}`} >
                                 <div className='w-full flex'>
-                                    <Image
+                                    <img
                                         className="h-24 w-24 object-cover object-center hover:scale-105"
                                         // src={news.img || '/images/guild/CyberToothOne.webp'}
                                         src={'/images/guild/CyberToothOne.webp'}

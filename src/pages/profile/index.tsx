@@ -8,7 +8,7 @@ const ProfileUser: React.FC = (props) => {
             <div className="container mx-auto py-24 px-5 ">
                 <div className="text-center bg-[url('/images/bg05.webp')] drop-shadow-lg bg-cover">
                     <div className="bg-black/45 p-10">
-                        <Image src="https://static.vecteezy.com/system/resources/previews/006/735/770/original/beautiful-woman-avatar-profile-icon-vector.jpg"
+                        <img src="https://static.vecteezy.com/system/resources/previews/006/735/770/original/beautiful-woman-avatar-profile-icon-vector.jpg"
                             className="w-44 h-44 mx-auto rounded-full"
                             alt="" />
                         <p className="text-xl font-bold text-cyan-200 drop-shadow-lg">NameNameNameName</p>

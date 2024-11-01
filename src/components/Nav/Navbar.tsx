@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
         <nav className="bg-black/50 py-4">
             <div className="container mx-auto flex justify-between items-center px-3">
                 <Link href="/" className="text-white text-lg font-semibold">
-                    <Image src="/images/logo.png" alt="GoodGames" width={60} height={60} />
+                    <img src="/images/logo.png" alt="GoodGames" width={60} height={60} />
                 </Link>
 
                 {/* Toggle Button for Mobile Menu */}

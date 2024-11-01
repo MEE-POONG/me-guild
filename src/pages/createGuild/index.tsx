@@ -8,7 +8,7 @@ const CreateGuildPage: React.FC = (props) => {
         <Layout>
             <section className="">
                 <div className="w-full h-[250px] overflow-hidden">
-                    <Image src="/images/bg05.webp"
+                    <img src="/images/bg05.webp"
                         className="w-full h-full object-cover "
                         alt=""
                     />

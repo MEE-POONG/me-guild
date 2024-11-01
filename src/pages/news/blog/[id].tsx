@@ -82,7 +82,7 @@ const ReadBlog: React.FC = (props) => {
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
                         <div className="">
-                            <Image src={blogs.img}
+                            <img src={blogs.img}
                                 className="w-full h-full mx-auto drop-shadow-md"
                                 alt=""
                             />

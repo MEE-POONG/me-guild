@@ -35,7 +35,7 @@ const NewsUpdate: React.FC = () => {
                         <div key={news.id} className="p-1 w-1/2 lg:w-1/4 drop-shadow-md">
                             <div className="h-full drop-shadow-lg">
                                 <Link href={`/news/${news.id}`} className="lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
-                                    <Image
+                                    <img
                                         className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                                         src={news.img}
                                         alt={news.title || 'news'}

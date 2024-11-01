@@ -36,7 +36,7 @@ const NewsReccomend: FC = () => {
                     <div key={news.id} className="p-2">
                         <div className="flex">
                             <Link href={`/news/${news.id}`}>
-                                <Image className="h-24 w-24 object-cover object-center hover:scale-105" src={news.img} alt="news" />
+                                <img className="h-24 w-24 object-cover object-center hover:scale-105" src={news.img} alt="news" />
                             </Link>
                             <div className="p-3">
                                 <Link href={`/news/${news.id}`} className="text-gray-50 text-sm">

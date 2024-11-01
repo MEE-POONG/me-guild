@@ -58,7 +58,7 @@ const NewsCardHome: FC = () => {
                                 } hover:bg-amber-400 cursor-pointer`}
                             onClick={() => handleSelect(item)}
                         >
-                            <Image
+                            <img
                                 src={item.image}
                                 alt={item.title}
                                 width={80}

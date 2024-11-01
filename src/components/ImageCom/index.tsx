@@ -19,7 +19,7 @@ const ImageIndex: React.FC<CardProps> = ({
     const imageName = imageValue || 'xafkdfldsofasfa'; // Set default value for name if empty
 
     return (
-        <Image
+        <img
             src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${imageName}/wmd`}
             width={widthValue}
             height={heightValue}

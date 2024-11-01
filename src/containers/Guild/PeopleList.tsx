@@ -9,7 +9,7 @@ const PeopleList: React.FC = () => {
                 <p className="text-gray-500 mb-3">Top People</p>
                 {/* <div>
                     <Link href='' className="flex items-center bg-gray-50 rounded-md space-x-2 md:w-72 p-3 mx-auto mb-5 relative">
-                        <Image src="https://genshin.global/wp-content/uploads/2023/06/kirara-dendro-avatar-profile-genshin-impact.webp"
+                        <img src="https://genshin.global/wp-content/uploads/2023/06/kirara-dendro-avatar-profile-genshin-impact.webp"
                             className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
                             alt="" />
                         <div >
@@ -21,7 +21,7 @@ const PeopleList: React.FC = () => {
                     </Link>
                     <div className="mx-auto flex justify-center gap-5">
                         <Link href='' className="md:flex items-center bg-gray-50 rounded-md space-x-2 p-2 relative">
-                            <Image src="https://act-webstatic.hoyoverse.com/upload/contentweb/2022/06/29/80c603323013d50fba419fe48b049a85_1179446160895359895.png"
+                            <img src="https://act-webstatic.hoyoverse.com/upload/contentweb/2022/06/29/80c603323013d50fba419fe48b049a85_1179446160895359895.png"
                                 className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
                                 alt="" />
                             <div>
@@ -32,7 +32,7 @@ const PeopleList: React.FC = () => {
                             </div>
                         </Link>
                         <Link href='' className="md:flex items-center bg-gray-50 rounded-md space-x-2 p-2 relative">
-                            <Image src="https://m.media-amazon.com/images/I/81qE67fZAdL.jpg"
+                            <img src="https://m.media-amazon.com/images/I/81qE67fZAdL.jpg"
                                 className="w-12 h-12 md:w-20 md:h-20 rounded mx-auto"
                                 alt="" />
                             <div>
@@ -51,7 +51,7 @@ const PeopleList: React.FC = () => {
                                 <td className="pl-3 md:pl-5 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">4</td>
                                 <td className="py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div className="flex items-center gap-x-2">
-                                        <Image className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
+                                        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
                                         <div>
                                             <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Guild Name</h2>
                                             <p className="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
@@ -63,7 +63,7 @@ const PeopleList: React.FC = () => {
                                 <td className="pl-3 md:pl-5 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">4</td>
                                 <td className="py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div className="flex items-center gap-x-2">
-                                        <Image className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
+                                        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
                                         <div>
                                             <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Guild Name</h2>
                                             <p className="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
@@ -75,7 +75,7 @@ const PeopleList: React.FC = () => {
                                 <td className="pl-3 md:pl-5 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">4</td>
                                 <td className="py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div className="flex items-center gap-x-2">
-                                        <Image className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
+                                        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
                                         <div>
                                             <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Guild Name</h2>
                                             <p className="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
@@ -87,7 +87,7 @@ const PeopleList: React.FC = () => {
                                 <td className="pl-3 md:pl-5 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">4</td>
                                 <td className="py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div className="flex items-center gap-x-2">
-                                        <Image className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
+                                        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
                                         <div>
                                             <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Guild Name</h2>
                                             <p className="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>

@@ -16,7 +16,7 @@ const MarketPlace: React.FC = (props) => {
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-3 px-3">
                         <div className="h-72 rounded-md relative overflow-hidden bg-gray-100 shadow-lg">
-                            <Image src="https://i.ytimg.com/vi/Vkrso8pM8wY/maxresdefault.jpg" className="w-full h-36 object-cover" alt="" />
+                            <img src="https://i.ytimg.com/vi/Vkrso8pM8wY/maxresdefault.jpg" className="w-full h-36 object-cover" alt="" />
                             <div className="p-2">
                                 <p className="text-cyan-700 font-bold">ดอกไม้</p>
                                 <p className="text-xs line-clamp-2 text-gray-500">Kids can enjoy building a supercool tiger toy to display</p>
@@ -24,7 +24,7 @@ const MarketPlace: React.FC = (props) => {
                             </div>
                         </div>
                         <div className="h-72 rounded-md relative overflow-hidden bg-gray-100 shadow-lg">
-                            <Image src="https://inwfile.com/s-di/5zid7o.jpg" className="w-full h-36 object-cover" alt="" />
+                            <img src="https://inwfile.com/s-di/5zid7o.jpg" className="w-full h-36 object-cover" alt="" />
                             <div className="p-2">
                                 <p className="text-cyan-700 font-bold">LEGO LEGO LEGO LEGO LEGO</p>
                                 <p className="text-xs line-clamp-2 text-gray-500">Kids can enjoy building a supercool tiger toy to display</p>

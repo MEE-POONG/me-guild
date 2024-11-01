@@ -16,7 +16,7 @@ const TestPage: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200">
       <div className="relative w-full max-w-3xl p-10 bg-white shadow-xl">
-        <Image src={`/images/bg-paper.png`} alt="bg-paper" className="absolute top-0 w-full -z-10" />
+        <img src={`/images/bg-paper.png`} alt="bg-paper" className="absolute top-0 w-full -z-10" />
         <h1 className="text-4xl font-bold mb-5">Page {page}</h1>
         <p className="text-lg">เนื้อหาของหน้า {page}</p>
       </div>

@@ -90,7 +90,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
             {/* Comment Form */}
             <div className="mb-4">
                 <div className='flex gap-1 mb-1'>
-                    <Image src="" className='w-6 h-6 rounded-full' alt="" />
+                    <img src="" className='w-6 h-6 rounded-full' alt="" />
                     <p className='text-gray-50' >Name</p>
                 </div>
                 {/* <input

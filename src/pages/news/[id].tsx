@@ -66,7 +66,7 @@ const ReadNews: React.FC = (props) => {
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
                         <div>
-                            <Image src={news.img}
+                            <img src={news.img}
                                 className="w-full h-[420px] mx-auto drop-shadow-md"
                                 alt=""
                             />

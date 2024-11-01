@@ -35,7 +35,7 @@ const LoginPage: React.FC = () => {
 
     return (
         <div className="flex justify-center h-lvh login-page">
-            <Image
+            <img
                 src="/images/bg01.webp"
                 className="absolute w-full h-full object-cover lg:object-fit"
                 alt=""

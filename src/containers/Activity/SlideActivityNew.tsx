@@ -17,13 +17,13 @@ const SliderActivity: React.FC = () => {
             <div className="">
                 <Slider {...settings} className="w-full h-full object-cover">
                     <div className="slide ">
-                        <Image src="/images/bg01.webp" alt="" className="" />
+                        <img src="/images/bg01.webp" alt="" className="" />
                     </div>
                     <div className="slide">
-                        <Image src="/images/bg05.webp" alt="" className="" />
+                        <img src="/images/bg05.webp" alt="" className="" />
                     </div>
                     <div className="slide">
-                        <Image src="/images/bg04.webp" alt="" className="" />
+                        <img src="/images/bg04.webp" alt="" className="" />
                     </div>
                 </Slider>
             </div>
