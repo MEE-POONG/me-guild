@@ -13,7 +13,8 @@ const PoppularPerson: React.FC = () => {
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-5 gap-3">
                         <div className="p-4 w-full bg-slate-200 shadow-lg rounded-lg text-gray-900">
                             <Link href='' className="flex gap-2" >
-                                <img src="https://act-webstatic.hoyoverse.com/upload/contentweb/2022/06/28/4f598572016e3177da5d4256fe9c1f5e_8765525983470991811.png"
+                                <img 
+                                src="https://act-webstatic.hoyoverse.com/upload/contentweb/2022/06/28/4f598572016e3177da5d4256fe9c1f5e_8765525983470991811.png"
                                     className="w-20 h-20 rounded-full object-contain shadow-lg"
                                     alt="" />
                                 <div>
@@ -46,7 +47,8 @@ const PoppularPerson: React.FC = () => {
                         </div>
                         <div className="p-4 w-full bg-slate-200 shadow-lg rounded-lg text-gray-900">
                             <Link href='' className="flex gap-2" >
-                                <img src="https://m.media-amazon.com/images/I/81qE67fZAdL.jpg"
+                                <img
+                                    src="https://m.media-amazon.com/images/I/81qE67fZAdL.jpg"
                                     className="w-20 h-20 rounded-full object-contain shadow-lg"
                                     alt="" />
                                 <div>
