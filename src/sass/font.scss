@@ -1,0 +1,48 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+@font-face {
+    font-family: "LibreBodoni";
+    src: url("/fonts/LibreBodoni.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PirataOne";
+    src: url("/fonts/PirataOne.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CosmicLove";
+    src: url("/fonts/CosmicLove.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TeachDemo";
+    src: url("/fonts/TeachDemo.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+//Font Family
+.font-mg01 {
+    font-family: "LibreBodoni", sans-serif;
+}
+.font-mg02 {
+    font-family: "PirataOne";
+}
+.font-mg03 {
+    font-family: "TeachDemo";
+}
+.font-mg04 {
+    font-family: "CosmicLove";
+}
+.font-mg05 {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+}

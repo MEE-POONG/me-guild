@@ -41,7 +41,7 @@ const TitleTopicOne: React.FC<ItemProps> = ({ title, detailOne, detailTwo, detai
                     </h1>
                 </div>
                 <div className="mt-8">
-                    <Link href="https://discord.com/invite/4eS7Bt3PZF" className="btn-home">
+                    <Link href="https://discord.com/invite/4eS7Bt3PZF" className="btn-home px-4 py-2">
                         {textBtn}
                     </Link>
                 </div>
