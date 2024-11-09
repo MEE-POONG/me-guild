@@ -9,7 +9,7 @@ const NewsList: React.FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news');
+                const response = await fetch('/api/news?page=1&pageSize=10');
                 const data = await response.json();
                 setNewsData(data.news);
                 setLoading(false);
@@ -28,14 +28,13 @@ const NewsList: React.FC = () => {
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
-                    newsData.slice(4).map(item => (
+                    newsData.slice(6).map(item => (
                         <div key={item.id} className="drop-shadow-md bg-black/20 rounded-b-lg">
                             <div className="h-full drop-shadow-lg">
                                 <Link href={`/news/${item.id}`} className="img-wrapper lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
                                     <img
                                         className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                                         src={item.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.img}/wmd` : "/images/default.png"}
-
                                         alt={item.title || 'news'}
                                     />
                                 </Link>

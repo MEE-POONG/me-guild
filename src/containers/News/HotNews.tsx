@@ -7,7 +7,7 @@ interface NewsItem {
     title: string;
     description: string;
     date: string;
-    image: string;
+    img: string;
     comments: number;
     fullImage: string;
     category: string;
@@ -47,11 +47,9 @@ const HotNewsCard: FC = () => {
                     {/* Full Image */}
                     <div className="relative w-full h-64 img-wrapper overflow-hidden inline-block box-border">
                         <Link href={`/news/${item.id}`} className=''>
-                            <Image
-                                src={item.fullImage ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.fullImage}/wmd` : "/images/default.png"}
-                                alt={item.title}
-                                layout="fill"
-                                objectFit="cover"
+                            <img
+                                src={item.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.img}/wmd` : "/images/default.png"}
+                                alt={item.title || 'news'}
                                 className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                             />
                         </Link>

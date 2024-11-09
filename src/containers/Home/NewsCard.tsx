@@ -6,7 +6,7 @@ interface NewsItem {
     title: string;
     description: string;
     date: string;
-    image: string;
+    img: string;
 }
 
 const NewsCardHome: FC = () => {
@@ -17,7 +17,7 @@ const NewsCardHome: FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=7');
+                const response = await fetch('/api/news?page=1&pageSize=5');
                 const data = await response.json();
                 setNewsData(data.news);
                 setSelectedNews(data.news[0]); // Automatically select the first news item.
@@ -59,8 +59,8 @@ const NewsCardHome: FC = () => {
                             onClick={() => handleSelect(item)}
                         >
                             <img
-                                src={item.image ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.image}/wmd` : "/images/default.png"}
-                                alt={item.title}
+                               src={item.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.img}/wmd` : "/images/default.png"}
+                               alt={item.title || 'item'}
                                 width={80}
                                 height={80}
                                 className="rounded-md overflow-hidden"
@@ -81,15 +81,11 @@ const NewsCardHome: FC = () => {
                 </div>
 
                 {selectedNews && (
-                    <div className="flex-1 p-6 bg-gray-900 h-full">
-                        <Image
-                            src={selectedNews.image ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${selectedNews.image}/wmd` : "/images/default.png"}
+                    <div className="flex-1 p-6 bg-gray-900">
+                        <img
+                            src={selectedNews.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${selectedNews.img}/wmd` : "/images/default.png"}
                             alt={selectedNews.title}
-                            layout="responsive"
-                            width={600}
-                            height={400}
-                            className="rounded-md mb-4"
-                            priority
+                            className="rounded-md mb-4 w-full h-64 overflow-hidden object-cover"
                         />
                         <h3 className="text-lg font-bold">{selectedNews.title}</h3>
                         <p className="text-gray-300 mt-4 text-sm">{selectedNews.description}</p>

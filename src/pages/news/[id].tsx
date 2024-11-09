@@ -66,9 +66,10 @@ const ReadNews: React.FC = (props) => {
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
                         <div>
-                            <img src={news.img}
+                            <img
+                                src={news.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img}/wmd` : "/images/default.png"}
+                                alt={news.title || 'news'}
                                 className="w-full h-[420px] mx-auto drop-shadow-md"
-                                alt=""
                             />
                             <p className="mt-10 indent-8 text-black">
                                 {news.description}
@@ -92,7 +93,7 @@ const ReadNews: React.FC = (props) => {
                                 <div className="flex-grow border-t-4 border-gray-400"></div>
                             </div>
                             <LatestMath />
-                            
+
                             <CommentSection articleId={news.id} />
                         </div>
                     </div>

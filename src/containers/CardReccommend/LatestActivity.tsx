@@ -40,7 +40,7 @@ const LatestActivity: FC = () => {
                         <hr />
                     </div>
                 ))}
-                <Link href="/activity" className='flex justify-end text-sm text-gray-50 hover:text-purple-400 mt-5'>เพิ่มเติม</Link>
+                <Link href="/activity" className='flex justify-end text-xs text-gray-50 hover:text-purple-400 mt-5'>เพิ่มเติม</Link>
             </div>
 
         </div>

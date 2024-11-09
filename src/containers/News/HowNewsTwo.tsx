@@ -47,11 +47,9 @@ const HotNewsTwoCard: FC = () => {
                     {/* Full Image */}
                     <div className="relative w-[420px] h-48 overflow-hidden inline-block box-border">
                         <Link href={`/news/${item.id}`} className=''>
-                            <Image
+                            <img
                                 src={item.fullImage ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.fullImage}/wmd` : "/images/default.png"}
                                 alt={item.title}
-                                layout="fill"
-                                objectFit="cover"
                                 className="transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                             />
                         </Link>
