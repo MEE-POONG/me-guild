@@ -82,36 +82,15 @@ const ReadBlog: React.FC = (props) => {
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
                         <div className="">
-                            <img src={blogs.img}
+                            <img 
                                 className="w-full h-full mx-auto drop-shadow-md"
-                                alt=""
+                                src={blogs.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogs.img}/wmd` : "/images/default.png"}
+                                alt={blogs.title || 'blog'}
                             />
-                            <p className="mt-10 indent-8 text-gray-200">
+                            <p className="mt-10 indent-8 text-gray-250">
                                 {blogs.description}
                             </p>
-
-                            {/* Video Play */}
-                            <div className="flex justify-center mt-5">
-                                <div className="relative w-full max-w-lg">
-                                    <video
-                                        id="video"
-                                        className="w-full rounded-lg shadow-lg"
-                                        controls
-                                        poster="/path/to/your-poster-image.jpg"
-                                    >
-                                        <source src={blogs.video} type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-
-                                    {/* Play/Pause Button */}
-                                    <button
-                                        onClick={handlePlayPause}
-                                        className="absolute bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-                                    >
-                                        {isPlaying ? <BiPause/> : <BiPlay/>}
-                                    </button>
-                                </div>
-                            </div>
+                            
 
                             <div className="mt-10 text-gray-100">
                                 อ่านเพิ่ม :
