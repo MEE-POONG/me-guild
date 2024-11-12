@@ -23,6 +23,19 @@ model ActDetailDB {
   updatedAt   DateTime @updatedAt
   updatedBy   String
   deleteBy    String
+  actType     ActType  @relation(fields: [actTypeId], references: [id])
+  actTypeId   String   @db.ObjectId
+}
+
+model ActType {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  ActDetailDB ActDetailDB[]
+  createdAt   DateTime      @default(now())
+  createdBy   String?
+  updatedAt   DateTime      @updatedAt
+  updatedBy   String
+  deleteBy    String
 }
 
 model BlogDB {
@@ -86,13 +99,13 @@ model CreditPointDB {
 }
 
 model GameCategoryDB {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  title      String
-  createdAt  DateTime @default(now())
-  createdBy  String?
-  updatedAt  DateTime @updatedAt
-  updatedBy  String
-  deleteBy   String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
 }
 
 model GameEventDB {
