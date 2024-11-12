@@ -59,11 +59,9 @@ const NewsCardHome: FC = () => {
                             onClick={() => handleSelect(item)}
                         >
                             <img
-                               src={item.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.img}/wmd` : "/images/default.png"}
-                               alt={item.title || 'item'}
-                                width={80}
-                                height={80}
-                                className="rounded-md overflow-hidden"
+                                src={item.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.img}/wmd` : "/images/default.png"}
+                                alt={item.title || 'item'}
+                                className="rounded-md w-24"
                             />
                             <div className=''>
                                 <h3 className="text-lg font-semibold tracking-tighter line-clamp-1">
@@ -88,7 +86,7 @@ const NewsCardHome: FC = () => {
                             className="rounded-md mb-4 w-full h-64 overflow-hidden object-cover"
                         />
                         <h3 className="text-lg font-bold">{selectedNews.title}</h3>
-                        <p className="text-gray-300 mt-4 text-sm">{selectedNews.description}</p>
+                        <p className="text-gray-300 mt-4 text-sm indent-5">{selectedNews.description}</p>
                         <button className="mt-4 px-4 py-2 bg-yellow-500 rounded-md text-white">
                             News
                         </button>
