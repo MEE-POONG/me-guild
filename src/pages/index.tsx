@@ -17,7 +17,7 @@ const Home: React.FC = (props) => {
       <section className="">
         <TitleTopicOne title="Welcome" detailOne="Join our world of fantasy and adventure!" detailTwo="" detailThree="" imgBg="/images/bg02.webp" textBtn="Join To Discord" />
         <NewsCardHome />
-        <NewsUpdate />
+        {/* <NewsUpdate /> */}
         <ActivityUpdate />
         <BlogCard />
       </section>

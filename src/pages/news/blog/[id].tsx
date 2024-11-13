@@ -82,20 +82,23 @@ const ReadBlog: React.FC = (props) => {
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
                         <div className="">
-                            <img 
+                            <img
                                 className="w-full h-full mx-auto drop-shadow-md"
                                 src={blogs.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogs.img}/wmd` : "/images/default.png"}
                                 alt={blogs.title || 'blog'}
                             />
-                            <p className="mt-10 indent-8 text-gray-250">
+                            <p className="mt-10 indent-8 text-gray-100 bg-black/50 p-6 text-sm text-justify">
                                 {blogs.description}
                             </p>
-                            
 
-                            <div className="mt-10 text-gray-100">
-                                อ่านเพิ่ม :
+                            {/* <div>
+                                <iframe src={blogs.video} ></iframe>
+                            </div> */}
+
+                            <div className="mt-10 text-gray-100 border-t pt-1">
+                                ที่มา :
                                 <Link href={blogs.creditlink}
-                                    className="ml-3 text-teal-500 hover:text-teal-300" target="_blank">
+                                    className="ml-3 text-amber-400 hover:text-amber-300" target="_blank">
                                     {blogs.creditlink}
                                 </Link>
                             </div>
