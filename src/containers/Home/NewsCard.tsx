@@ -81,15 +81,15 @@ const NewsCardHome: FC = () => {
 
                 {selectedNews && (
                     <div className='md:w-2/3 space-y-1 max-h-[480px] overflow-y-auto'>
-                        <div className="flex-1 p-5 md:p-9 bg-gray-900">
+                        <div className="flex-1 p-5 md:p-9 bg-gray-50">
                             <img
                                 src={selectedNews.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${selectedNews.img}/wmd` : "/images/default.png"}
                                 alt={selectedNews.title}
                                 className="rounded-md mb-4 w-full overflow-hidden object-cover"
                             />
-                            <h3 className="md:text-lg font-bold">{selectedNews.title}</h3>
-                            <p className="text-gray-300 mt-4 text-[14px] indent-5 text-justify">{selectedNews.description}</p>
-                            <button className="mt-4 px-3 py-1 bg-yellow-500 rounded-md text-gray-300 text-xs">
+                            <h3 className="md:text-lg font-bold text-gray-700">{selectedNews.title}</h3>
+                            <p className="text-gray-700 mt-4 text-[14px] indent-5 text-justify">{selectedNews.description}</p>
+                            <button className="mt-4 px-3 py-1 bg-yellow-400 rounded-md text-white text-xs">
                                 News
                             </button>
                         </div>

@@ -41,7 +41,7 @@ const NewsList: React.FC = () => {
         <section className="mt-6">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
                 {newsData.slice(5).map((item) => (
-                    <div key={item.id} className="drop-shadow-md bg-black/20 rounded-b-lg">
+                    <div key={item.id} className="drop-shadow-md rounded-b-lg">
                         <div className="h-full drop-shadow-lg">
                             <Link href={`/news/${item.id}`} passHref
                                 className="img-wrapper lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
@@ -58,7 +58,7 @@ const NewsList: React.FC = () => {
                                 <Link href={`/news/${item.id}`} passHref className="title-font text-sm md:text-lg font-medium mb-3 text-amber-400 hover:text-teal-500 leading-3 block">
                                     {item.title}
                                 </Link>
-                                <p className="text-xs line-clamp-1 font-extralight text-gray-700 mt-3">
+                                <p className="text-xs line-clamp-1 font-extralight text-gray-100 mt-3">
                                     {item.description}
                                 </p>
                                 <div className="mt-5">
