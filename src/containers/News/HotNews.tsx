@@ -52,12 +52,12 @@ const HotNewsCard: FC = () => {
                         className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                     />
                 </Link>
-                <span className="absolute top-2 left-2 bg-red-500 text-white px-5 py-1 text-sm rounded">
+                <span className="absolute top-2 left-0 bg-red-500 text-white px-5 py-1 text-sm rounded-r">
                     {newsData.category || 'News'}
                 </span>
             </div>
             <div className="p-6 bg-black/20 mb-2">
-                <Link href={`/news/${newsData.id}`} className="text-lg font-bold mb-2 text-amber-400 hover:text-teal-500">
+                <Link href={`/news/${newsData.id}`} className="text-lg font-bold mb-2 text-amber-300 hover:text-amber-400">
                     {newsData.title}
                 </Link>
                 <p className="text-gray-100 text-sm md:text-base line-clamp-2 mt-2">

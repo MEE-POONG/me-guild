@@ -51,11 +51,11 @@ const NewsList: React.FC = () => {
                                     alt={item.title || 'news'}
                                 />
                             </Link>
-                            <div className="p-2">
-                                <div className="tracking-widest text-xs font-medium text-white mb-1 w-12 bg-red-500 rounded-r">
+                            <div className="">
+                                <div className="tracking-widest text-xs font-medium text-white mb-2 w-12 bg-red-500 rounded-r pl-1">
                                     NEWS
                                 </div>
-                                <Link href={`/news/${item.id}`} passHref className="title-font text-sm md:text-lg font-medium mb-3 text-amber-400 hover:text-teal-500 leading-3 block">
+                                <Link href={`/news/${item.id}`} passHref className="title-font text-sm md:text-md font-medium mb-3 text-amber-400 hover:text-teal-500 leading-3 block">
                                     {item.title}
                                 </Link>
                                 <p className="text-xs line-clamp-1 font-extralight text-gray-100 mt-3">

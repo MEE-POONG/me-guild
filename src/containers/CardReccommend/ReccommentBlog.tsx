@@ -38,15 +38,15 @@ const ReccommentBlog: FC = () => {
                 {blogData.map(blog => (
                     <div key={blog.id} className="">
                         <div className="flex">
-                            <Link href={`/blog/${blog.id}`}>
+                            <Link href={`/blog/${blog.id}`} className='img-wrapper w-36 h-16 overflow-hidden inline-block box-border' >
                                 <img
-                                    className="h-14 w-14 object-cover object-center hover:scale-105 transition-transform duration-200"
+                                    className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                                     src={blog.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img}/wmd` : "/images/default.png"}
                                     alt={blog.title || 'blog image'}
                                 />
                             </Link>
                             <div className="p-2">
-                                <Link href={`/blog/${blog.id}`} className="text-gray-50 text-sm font-medium hover:text-yellow-500">
+                                <Link href={`/blog/${blog.id}`} className="text-gray-50 text-xs font-medium hover:text-yellow-500">
                                     {blog.title}
                                 </Link>
                             </div>

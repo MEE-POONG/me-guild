@@ -58,7 +58,7 @@ const HotNewsTwoCard: FC = () => {
                             />
 
                         </Link>
-                        <span className="absolute top-2 left-2 bg-red-500 text-white px-5 py-1 text-sm rounded">
+                        <span className="absolute top-2 bg-red-500 text-white px-5 py-1 text-sm rounded-r">
                             {item.category || 'News'}
                         </span>
                     </div>

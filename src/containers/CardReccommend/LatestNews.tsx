@@ -48,22 +48,22 @@ const LatestNews: FC = () => {
                 </h3>
                 <div className="flex-1 border-t-4 border-gray-100 ml-4"></div>
             </div>
-            <div className="bg-gray-700 p-3">
+            <div className="bg-gray-700 p-2">
                 {newsData.map(news => (
-                    <div key={news.id} className="p-2">
+                    <div key={news.id} className="">
                         <div className="flex items-center">
-                            <Link href={`/news/${news.id}`}>
+                            <Link href={`/news/${news.id}`} className='img-wrapper w-48 h-16 overflow-hidden inline-block box-border'>
                                 <img
-                                    className="h-14 w-14 object-cover object-center rounded hover:scale-105 transition-transform duration-200"
+                                    className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
                                     src={news.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img}/wmd` : "/images/default.png"}
                                     alt={news.title || 'news image'}
                                 />
                             </Link>
                             <div className="ml-3">
-                                <Link href={`/news/${news.id}`} className="text-gray-50 text-sm font-medium hover:text-yellow-500">
+                                <Link href={`/news/${news.id}`} className="text-gray-50 text-xs font-medium hover:text-yellow-500 line-clamp-2">
                                     {news.title}
                                 </Link>
-                                <div className="flex items-center mt-1 text-xs text-gray-400">
+                                <div className="flex items-center mt-1 text-[10px] text-gray-400">
                                     <FaCalendarAlt className="mr-1" />
                                     {formatDate(news.createdAt)}
                                 </div>
@@ -72,7 +72,7 @@ const LatestNews: FC = () => {
                         <hr className="my-2 border-gray-600" />
                     </div>
                 ))}
-                <Link href="/news" className="flex justify-end text-xs text-gray-50 hover:text-purple-400 mt-3">
+                <Link href="/news" className="text-xs text-gray-50 hover:text-purple-400 flex justify-end p-1">
                     เพิ่มเติม
                 </Link>
             </div>
