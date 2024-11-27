@@ -33,7 +33,7 @@ const NewsUpdate: React.FC = () => {
                 ) : (
                     newsData.slice(5).map(news => (
                         <div key={news?.id} className="p-1 w-1/2 lg:w-1/4 drop-shadow-md">
-                            <div className="h-full drop-shadow-lg border-2 bg-white rounded-md hover:border-t-ridge hover:border-l-groove hover:border-r-ridge hover:border-b-groove hover:border-[#f2b265]">
+                            <div className="h-full drop-shadow-lg bg- rounded-md hover:border-t-ridge hover:border-l-groove hover:border-r-ridge hover:border-b-groove hover:border-[#f2b265]">
 
                                 <div className="lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
                                     <div className="tracking-widest text-xs font-medium text-white mb-1 p-1 w-12 bg-red-500 rounded-r absolute top-0 left-0 z-10 mt-2">
@@ -50,7 +50,7 @@ const NewsUpdate: React.FC = () => {
 
                                     <Link
                                         href={`/news/${news?.id}`}
-                                        className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-cyan-400 line-clamp-2"
+                                        className="title-font text-sm md:text-lg font-medium mb-3 hover:text-cyan-500 line-clamp-2"
                                     >
                                         {news?.title}
                                     </Link>

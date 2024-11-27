@@ -66,18 +66,19 @@ const ReadNews: React.FC = (props) => {
                 <div className="lg:grid grid-cols-12 gap-10 mt-6">
                     <div className="col-span-8">
                         <div>
-                            <img src={news.img}
-                                className="w-full h-[420px] mx-auto drop-shadow-md"
-                                alt=""
+                            <img
+                                src={news.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img}/wmd` : "/images/default.png"}
+                                alt={news.title || 'news'}
+                                className="w-full h-[420px] mx-auto drop-shadow-md object-cover"
                             />
-                            <p className="mt-10 indent-8 text-black">
+                            <p className="mt-10 indent-8 text-white text-justify text-sm bg-black/50 p-6 drop-shadow">
                                 {news.description}
                             </p>
 
-                            <div className="mt-10 text-gray-100">
+                            <div className="mt-6 border-t text-gray-100">
                                 อ่านเพิ่ม :
                                 <Link href={news.creditlink}
-                                    className="ml-3 text-teal-100 hover:text-teal-300" target="_blank">
+                                    className="ml-3 text-amber-100 hover:text-amber-300" target="_blank">
                                     {news.creditlink}
                                 </Link>
                             </div>
@@ -92,7 +93,7 @@ const ReadNews: React.FC = (props) => {
                                 <div className="flex-grow border-t-4 border-gray-400"></div>
                             </div>
                             <LatestMath />
-                            
+
                             <CommentSection articleId={news.id} />
                         </div>
                     </div>

@@ -25,6 +25,7 @@ model ActDetailDB {
   deleteBy    String
 }
 
+
 model BlogDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String

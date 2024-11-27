@@ -1,27 +1,30 @@
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
-import Image from 'next/image';
+
 
 const ReccommentBlog: FC = () => {
-    const [newsData, setNewsData] = useState<any[]>([]);
+    const [blogData, setBlogData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchNews = async () => {
+        const fetchBlogs = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=3');
+                const response = await fetch('/api/blog?page=1&pageSize=3');
                 const data = await response.json();
-                setNewsData(data.news);
+                setBlogData(data.blogs);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching news:', error);
+                console.error('Error fetching blogs:', error);
                 setLoading(false);
             }
         };
 
-        fetchNews();
+        fetchBlogs();
     }, []);
 
+    if (loading) {
+        return <p className="text-gray-200 text-center">Loading...</p>;
+    }
 
     return (
         <div className="mt-6">
@@ -32,24 +35,29 @@ const ReccommentBlog: FC = () => {
                 <div className="flex-1 border-t-4 border-gray-100 ml-4"></div>
             </div>
             <div className='bg-gray-700 p-3'>
-                {newsData.map(news => (
-                    <div key={news.id} className="p-2">
+                {blogData.map(blog => (
+                    <div key={blog.id} className="">
                         <div className="flex">
-                            <Link href={`/news/${news.id}`}>
-                                <img className="h-24 w-24 object-cover object-center hover:scale-105" src={news.img} alt="news" />
+                            <Link href={`/blog/${blog.id}`} className='img-wrapper w-36 h-16 overflow-hidden inline-block box-border' >
+                                <img
+                                    className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
+                                    src={blog.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img}/wmd` : "/images/default.png"}
+                                    alt={blog.title || 'blog image'}
+                                />
                             </Link>
-                            <div className="p-3">
-                                <Link href={`/news/${news.id}`} className="text-gray-50 text-sm">
-                                    {news.title}
+                            <div className="p-2">
+                                <Link href={`/blog/${blog.id}`} className="text-gray-50 text-xs font-medium hover:text-yellow-500">
+                                    {blog.title}
                                 </Link>
                             </div>
                         </div>
-                        <hr />
+                        <hr className="my-2 border-gray-600" />
                     </div>
                 ))}
-                <Link href="/activity" className='flex justify-end text-xs text-gray-50 hover:text-purple-400 mt-3'>เพิ่มเติม</Link>
+                <Link href="/news/blog" className='flex justify-end text-xs text-gray-50 hover:text-purple-400 mt-3'>
+                    เพิ่มเติม
+                </Link>
             </div>
-
         </div>
     );
 };

@@ -41,12 +41,12 @@ const BlogList: React.FC = () => {
                     <p className="text-center text-gray-400">No blogs available</p>
                 ) : (
                     blogData.map(blog => (
-                        <div key={blog.id} className="p-1 lg:w-1/2">
+                        <div key={blog.id} className="p-3 lg:w-1/2">
                             <div className="h-full drop-shadow-lg">
-                                <Link href={`/blogs/${blog.id}`} className="img-wrapper lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
+                                <Link href={`/news/blog/${blog.id}`} className="img-wrapper lg:h-48 md:h-36 w-full overflow-hidden inline-block box-border">
                                     <img
                                         className="inner-img transition-transform duration-300 hover:scale-110 w-full h-full object-cover"
-                                        src={blog.img}
+                                        src={blog.img ? `https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img}/wmd` : "/images/default.png"}
                                         alt={blog.title || 'blog'}
                                     />
                                 </Link>
@@ -54,7 +54,7 @@ const BlogList: React.FC = () => {
                                     <div className="tracking-widest text-xs font-medium text-white mb-1 p-1 w-12 bg-cyan-400 rounded-r">
                                         BLOG
                                     </div>
-                                    <Link href={`/blogs/${blog.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-teal-500 leading-3">
+                                    <Link href={`/news/blog/${blog.id}`} className="title-font text-sm md:text-lg font-medium mb-3 text-white hover:text-teal-500 leading-3">
                                         {blog.title}
                                     </Link>
                                     <p className="text-xs line-clamp-2 indent-5 font-extralight text-gray-700 mt-3">{blog.description}</p>
