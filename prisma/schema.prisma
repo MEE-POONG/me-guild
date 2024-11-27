@@ -59,25 +59,28 @@ model Comment {
   content   String
   createdAt DateTime @default(now())
   createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
 }
 
 model ConditionGameMatchDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   maxParty    Int
   limitNumber Int      @default(0)
+  gameId      String?  @db.ObjectId
   createdAt   DateTime @default(now())
   createdBy   String?
   updatedAt   DateTime @updatedAt
   updatedBy   String
   deleteBy    String
-  gameId      String?  @db.ObjectId
 }
 
 model CreditPointDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   userId      String
-  points      Int      @default(0)
-  totalPoints Int
+  points      BigInt   @default(0)
+  totalPoints BigInt
   createdAt   DateTime @default(now())
   createdBy   String?
   updatedAt   DateTime @updatedAt
@@ -86,13 +89,13 @@ model CreditPointDB {
 }
 
 model GameCategoryDB {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  title      String
-  createdAt  DateTime @default(now())
-  createdBy  String?
-  updatedAt  DateTime @updatedAt
-  updatedBy  String
-  deleteBy   String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
 }
 
 model GameEventDB {
@@ -150,8 +153,8 @@ model GameOnlineDB {
   createdAt   DateTime @default(now())
   createdBy   String?
   updatedAt   DateTime @updatedAt
-  updatedBy   String?
-  deleteBy    String?
+  updatedBy   String
+  deleteBy    String
 }
 
 model GameRankDB {
@@ -186,12 +189,12 @@ model GameRegistrationDB {
 model GameTypeDB {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   title      String
+  categoryId String   @db.ObjectId
   createdAt  DateTime @default(now())
   createdBy  String?
   updatedAt  DateTime @updatedAt
   updatedBy  String
   deleteBy   String
-  categoryId String   @db.ObjectId
 }
 
 model GameTypeGame {
@@ -208,9 +211,9 @@ model GameTypeGame {
 model Guild {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   guild_name   String?
-  guild_level  Int      @default(1)
-  guild_copper Int      @default(0)
-  guild_size   Int      @default(5)
+  guild_level  Int   @default(1)
+  guild_copper BigInt   @default(0)
+  guild_size   Int   @default(5)
   guild_roleId String?
   guild_leader String
   Logo         String   @default("")
@@ -231,11 +234,16 @@ model GuildCreateReport {
 }
 
 model GuildMembers {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  guildId  String  @db.ObjectId
-  userId   String
-  position String?
-  status   String?
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  guildId   String   @db.ObjectId
+  userId    String
+  position  String?
+  status    String?
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
 }
 
 model GuildProfileDB {
@@ -252,6 +260,18 @@ model GuildProfileDB {
   updatedAt   DateTime @updatedAt
   updatedBy   String
   deleteBy    String
+}
+
+model ImageList {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  modalName String
+  imageUrl  String   @unique
+  nameFile  String   @unique // Mark as unique
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
 }
 
 model InviteRequest {
@@ -332,11 +352,12 @@ model paymentHistory {
   createdBy    String?
   updatedAt    DateTime @updatedAt
   updatedBy    String
-  coin_copper  Int      @default(0)
-  coin_silver  Int      @default(0)
-  coin_gold    Int      @default(0)
-  coin_diamond Int      @default(0)
-  coin_crystal Int      @default(0)
+  deleteBy     String
+  coin_copper  BigInt   @default(0)
+  coin_silver  BigInt   @default(0)
+  coin_gold    BigInt   @default(0)
+  coin_diamond BigInt   @default(0)
+  coin_crystal BigInt   @default(0)
 }
 
 model PointHistoryDB {
@@ -401,12 +422,13 @@ model Wallet {
   createdAt    DateTime @default(now())
   createdBy    String?
   updatedAt    DateTime @updatedAt
-  updatedBy    String?
-  coin_copper  Int      @default(0)
-  coin_silver  Int      @default(0)
-  coin_gold    Int      @default(0)
-  coin_diamond Int      @default(0)
-  coin_crystal Int      @default(0)
+  updatedBy    String
+  deleteBy     String
+  coin_copper  BigInt   @default(0)
+  coin_silver  BigInt   @default(0)
+  coin_gold    BigInt   @default(0)
+  coin_diamond BigInt   @default(0)
+  coin_crystal BigInt   @default(0)
 }
 
 model WebDefaultDB {
@@ -414,9 +436,9 @@ model WebDefaultDB {
   logoSquare String? // โลโก้ที่เป็นสี่เหลี่ยม, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
   logoCircle String? // โลโก้ที่เป็นวงกลม, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
   logoWide   String? // โลโก้ที่เป็น wide, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
-  createdAt  DateTime @default(now()) // วันที่สร้าง
-  createdBy  String? // ผู้ที่สร้าง
-  updatedAt  DateTime @updatedAt // วันที่อัปเดตล่าสุด
-  updatedBy  String? // ผู้ที่อัปเดต
-  deleteBy   String? // ผู้ที่ลบ
+  createdAt  DateTime @default(now())
+  createdBy  String?
+  updatedAt  DateTime @updatedAt
+  updatedBy  String
+  deleteBy   String
 }
