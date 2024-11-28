@@ -12,9 +12,9 @@ const MatchToday: React.FC = () => {
                 <div className="flex-grow border-t-4 border-gray-700"></div>
             </div>
             <div className="md:grid grid-cols-7 gap-5 mt-3">
-                <div className="col-span-3">
-                    <div className="uppercase px-4 py-2 bg-black/40 w-fit rounded-md text-white my-5 text-sm">now playing</div>
-                    <div className="flex items-center gap-2">
+                <div className="col-span-3 text-center">
+                    <div className="uppercase px-4 py-2 bg-black/40 w-fit rounded-md text-white my-5 mx-auto text-sm">now playing</div>
+                    <div className="flex items-center justify-center gap-2">
                         <img src="/images/default.png" className="w-10 h-10" alt="" />
                         VS
                         <img src="/images/default.png" className="w-10 h-10" alt="" />
