@@ -71,7 +71,6 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
                 </h2>
                 <div className="flex-grow border-t-4 border-gray-400"></div>
             </div>
-
             {/* Comment List */}
             {loading ? (
                 <p>Loading comments...</p>
@@ -86,14 +85,12 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
                     ))}
                 </div>
             )}
-
             {/* Comment Form */}
             <div className="mb-4">
                 <div className='flex gap-1 mb-1'>
                     <img src="" className='w-6 h-6 rounded-full' alt="" />
                     <p className='text-gray-50' >Name</p>
                 </div>
-
                 <textarea
                     placeholder="Write your comment..."
                     value={newComment}
