@@ -1,23 +1,17 @@
+import React from "react";
 import TitleTopicOne from "@/components/Head/TitleTopicOne";
 import Layout from "@/components/Layout";
 import ActivityUpdate from "@/containers/Home/ActivtiesUpdate";
 import BlogCard from "@/containers/Home/BlogCard";
-import GuildRecomend from "@/containers/Home/GuildRecomend";
 import NewsCardHome from "@/containers/Home/NewsCard";
-import NewsUpdate from "@/containers/Home/NewsUpdate";
-import PoppularPerson from "@/containers/Home/PopularPerson";
-import HomeSlider from "@/containers/Home/Slider";
-import Link from "next/link";
-import React from "react";
 
 
-const Home: React.FC = (props) => {
+const Home: React.FC = () => {
   return (
     <Layout>
       <section className="">
         <TitleTopicOne title="Welcome" detailOne="Join our world of fantasy and adventure!" detailTwo="" detailThree="" imgBg="/images/bg02.webp" textBtn="Join To Discord" />
         <NewsCardHome />
-        {/* <NewsUpdate /> */}
         <ActivityUpdate />
         <BlogCard />
       </section>

@@ -93,13 +93,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
                     <img src="" className='w-6 h-6 rounded-full' alt="" />
                     <p className='text-gray-50' >Name</p>
                 </div>
-                {/* <input
-          type="text"
-          placeholder="Your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="border p-2 w-full mb-2 rounded-md"
-        /> */}
+
                 <textarea
                     placeholder="Write your comment..."
                     value={newComment}

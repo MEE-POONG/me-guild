@@ -13,14 +13,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const pageSize: number = Number(req.query.pageSize) || 20;
 
                 const news = await prisma.newsUpdateDB.findMany({
+                    // where: { updatedAt: { not: null } }, // Ensure only non-null updatedAt values are fetched
                     skip: (page - 1) * pageSize,
                     take: pageSize,
-                    orderBy: {
-                        createdAt: "desc", // Order by the most recent
-                    },
-                    include: {
-                        NewsTypeNews: true, // Include related NewsTypeNews data
-                    },
+                    orderBy: { createdAt: "desc" },
+                    include: { NewsTypeNews: true },
                 });
 
                 const totalNews = await prisma.newsUpdateDB.count();
@@ -51,6 +48,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         creditlink,
                         createdBy: createdBy || "System", // Default creator if not provided
                         updatedBy: createdBy || "System",
+                        updatedAt: new Date(),
+                        deleteBy: ''
                     },
                 });
 

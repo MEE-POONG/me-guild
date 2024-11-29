@@ -16,34 +16,21 @@ const NewsPage: React.FC = (props) => {
     const [loading, setLoading] = useState(true);
 
     const backgroundImageUrl = '/images/grandhall2.png';
-
-    useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const response = await fetch('/api/news');
-                const data = await response.json();
-                setNewsData(data.news);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching news:', error);
-                setLoading(false);
-            }
-        };
-
-        fetchNews();
-    }, []);
-
-
-
-    //SearchBar
-    const [searchQuery, setSearchQuery] = useState<string>('');
-
-    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Add logic to handle the search query here
-        console.log('Search query:', searchQuery);
+    const fetchNews = async () => {
+        try {
+            const response = await fetch('/api/news');
+            const data = await response.json();
+            setNewsData(data.news);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            setLoading(false);
+        }
     };
 
+    useEffect(() => {
+        fetchNews();
+    }, []);
 
     return (
         <Layout>

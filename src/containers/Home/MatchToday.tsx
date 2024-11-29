@@ -30,7 +30,7 @@ const MatchToday: React.FC = () => {
                     <iframe
                         src="https://www.youtube.com/embed/iYWGRGiYdHU?si=_1_1579Uk-QuYm80" title="YouTube video player"
                         className="w-full h-60 "
-                    ></iframe>
+                    />
                 </div>
 
             </div>
