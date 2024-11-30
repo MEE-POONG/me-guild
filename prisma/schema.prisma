@@ -64,7 +64,7 @@ model Comment {
   deleteBy  String
 }
 
-model ConditionGameMatchDB {
+model GameConditionMatchDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   maxParty    Int
   limitNumber Int      @default(0)
