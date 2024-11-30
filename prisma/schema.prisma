@@ -170,15 +170,11 @@ model GameRankDB {
   deleteBy  String
 }
 
-model GameRegistrationDB {
+model GameRegistrationEventDB {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  discord_id     String // เชื่อมกับ UserDB ผ่าน discord_id
-  partyName      String? // ฟิลด์นี้จะใช้เฉพาะการลงทะเบียนแบบปาร์ตี้
   isIndividual   Boolean // true ถ้าเป็นการสมัครแบบเดี่ยว, false ถ้าเป็นการสมัครแบบปาร์ตี้
   GameEventId    String // เชื่อมกับตารางที่เก็บข้อมูลรายการแข่ง
-  members        String[] // รายชื่อสมาชิกในปาร์ตี้ (สำหรับการสมัครแบบปาร์ตี้)
   teamId         String // กรณีลงทะเบียนด้วยทีม
-  representative String? // ข้อมูลผู้ที่เป็นตัวแทนของปาร์ตี้ในการแข่ง
   createdAt      DateTime @default(now())
   createdBy      String?
   updatedAt      DateTime @updatedAt
@@ -217,6 +213,8 @@ model Guild {
   guild_roleId String?
   guild_leader String
   Logo         String   @default("")
+  backdrop     String   @default("")
+  discordlink  String   @default("")
   createdAt    DateTime @default(now())
   createdBy    String?
   updatedAt    DateTime @updatedAt
@@ -246,22 +244,6 @@ model GuildMembers {
   deleteBy  String
 }
 
-model GuildProfileDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  guildId     String   @default("")
-  guildname   String
-  description String
-  rule        String
-  discordlink String
-  backdrop    String
-  avatar      String
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
-}
-
 model ImageList {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   modalName String
@@ -275,12 +257,6 @@ model ImageList {
 }
 
 model InviteRequest {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  userId  String
-  guildId String
-}
-
-model InviteData {
   id      String @id @default(auto()) @map("_id") @db.ObjectId
   userId  String
   guildId String
@@ -372,11 +348,36 @@ model PointHistoryDB {
   deleteBy    String
 }
 
+model RuleDB {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  topic     String
+  IssueBy   Int
+  GuildID   String
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
+}
+
+model topicDB {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  ruleId      Int
+  description String
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String
+  deleteBy    String
+}
+
 model TeamDB {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   teamName       String // ชื่อทีม
+  represent      String // ชื่อทีม
   members        String[] // รายชื่อสมาชิกในทีม (discord_id หรือ userId)
-  representative String // ตัวแทนของทีม
+  TeamLeader String // ตัวแทนของทีม
   createdAt      DateTime @default(now())
   createdBy      String?
   updatedAt      DateTime @updatedAt
@@ -419,16 +420,16 @@ model UserGameRank {
 model Wallet {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   userId       String
-  createdAt    DateTime @default(now())
-  createdBy    String?
-  updatedAt    DateTime @updatedAt
-  updatedBy    String
-  deleteBy     String
   coin_copper  BigInt   @default(0)
   coin_silver  BigInt   @default(0)
   coin_gold    BigInt   @default(0)
   coin_diamond BigInt   @default(0)
   coin_crystal BigInt   @default(0)
+  createdAt    DateTime @default(now())
+  createdBy    String?
+  updatedAt    DateTime @updatedAt
+  updatedBy    String
+  deleteBy     String
 }
 
 model WebDefaultDB {
