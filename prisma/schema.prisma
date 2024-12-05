@@ -64,7 +64,7 @@ model Comment {
   deleteBy  String
 }
 
-model GameConditionMatchDB {
+model ConditionGameMatchDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   maxParty    Int
   limitNumber Int      @default(0)
@@ -145,7 +145,7 @@ model GameMatchScheduleDB {
 
 model GameOnlineDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  logo        String
+  logo        String?
   game_name   String
   partyLimit  Int
   ranking     Boolean // มีระบบแรงค์ไม่มีระบบแรงค์
@@ -171,15 +171,15 @@ model GameRankDB {
 }
 
 model GameRegistrationEventDB {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  isIndividual   Boolean // true ถ้าเป็นการสมัครแบบเดี่ยว, false ถ้าเป็นการสมัครแบบปาร์ตี้
-  GameEventId    String // เชื่อมกับตารางที่เก็บข้อมูลรายการแข่ง
-  teamId         String // กรณีลงทะเบียนด้วยทีม
-  createdAt      DateTime @default(now())
-  createdBy      String?
-  updatedAt      DateTime @updatedAt
-  updatedBy      String
-  deleteBy       String
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  isIndividual Boolean // true ถ้าเป็นการสมัครแบบเดี่ยว, false ถ้าเป็นการสมัครแบบปาร์ตี้
+  GameEventId  String // เชื่อมกับตารางที่เก็บข้อมูลรายการแข่ง
+  teamId       String // กรณีลงทะเบียนด้วยทีม
+  createdAt    DateTime @default(now())
+  createdBy    String?
+  updatedAt    DateTime @updatedAt
+  updatedBy    String
+  deleteBy     String
 }
 
 model GameTypeDB {
@@ -360,6 +360,14 @@ model RuleDB {
   deleteBy  String
 }
 
+model Server {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  discordId String   @unique // Discord server ID
+  ownerId   String // Discord ID of the owner
+  createdAt DateTime @default(now()) // Timestamp of creation
+  updatedAt DateTime @updatedAt // Timestamp of last update
+}
+
 model topicDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
@@ -373,16 +381,16 @@ model topicDB {
 }
 
 model TeamDB {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  teamName       String // ชื่อทีม
-  represent      String // ชื่อทีม
-  members        String[] // รายชื่อสมาชิกในทีม (discord_id หรือ userId)
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamName   String // ชื่อทีม
+  represent  String // ชื่อทีม
+  members    String[] // รายชื่อสมาชิกในทีม (discord_id หรือ userId)
   TeamLeader String // ตัวแทนของทีม
-  createdAt      DateTime @default(now())
-  createdBy      String?
-  updatedAt      DateTime @updatedAt
-  updatedBy      String
-  deleteBy       String
+  createdAt  DateTime @default(now())
+  createdBy  String?
+  updatedAt  DateTime @updatedAt
+  updatedBy  String
+  deleteBy   String
 }
 
 model UserDB {
@@ -433,13 +441,20 @@ model Wallet {
 }
 
 model WebDefaultDB {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  logoSquare String? // โลโก้ที่เป็นสี่เหลี่ยม, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
-  logoCircle String? // โลโก้ที่เป็นวงกลม, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
-  logoWide   String? // โลโก้ที่เป็น wide, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
-  createdAt  DateTime @default(now())
-  createdBy  String?
-  updatedAt  DateTime @updatedAt
-  updatedBy  String
-  deleteBy   String
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  logoSquare     String? // โลโก้ที่เป็นสี่เหลี่ยม, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
+  logoCircle     String? // โลโก้ที่เป็นวงกลม, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
+  logoWide       String? // โลโก้ที่เป็น wide, ค่าเริ่มต้นเป็น null โดยไม่ต้องใส่ @default
+  defaultImg     String?
+  defaultProfile String?
+  facebook       String?
+  instagram      String?
+  youtube        String?
+  tiktok         String?
+  gmail          String?
+  createdAt      DateTime @default(now())
+  createdBy      String?
+  updatedAt      DateTime @updatedAt
+  updatedBy      String
+  deleteBy       String
 }
