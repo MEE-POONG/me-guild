@@ -9,7 +9,7 @@ import SearchBar from '@/containers/CardReccommend/SearchBarForm';
 import LatestNews from '@/containers/CardReccommend/LatestNews';
 
 const BlogPage: React.FC = (props) => {
-    
+
     const backgroundImageUrl = '/images/grandhall2.png';
 
 
@@ -21,18 +21,18 @@ const BlogPage: React.FC = (props) => {
 
                 <div className='lg:grid grid-cols-12 gap-10 mt-6'>
                     <div className='col-span-8'>
-                        <BlogList/>
+                        <BlogList />
                     </div>
                     <div className='col-span-4'>
                         {/* search */}
-                        <SearchBar/>
+                        <SearchBar />
 
                         {/* Social */}
                         <WeAreSocial />
                         {/* Latest Activity */}
                         <LatestActivity />
                         {/* Latest Match */}
-                        <LatestNews/>
+                        <LatestNews title={`News`} api={`/news/search?page=1&pageSize=3&keyCategory=`} />
                     </div>
                 </div>
             </div>

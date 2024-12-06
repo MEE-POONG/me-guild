@@ -10,8 +10,13 @@ interface NewsItem {
     img?: string;
     createdAt: string;
 }
+interface LatestNewsProps {
+    title: string;
+    api: string;
+}
 
-const LatestNews: FC = () => {
+
+const LatestNews: React.FC<LatestNewsProps> = ({ title, api }) => {
     const [newsData, setNewsData] = useState<NewsItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);

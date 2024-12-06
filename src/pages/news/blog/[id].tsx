@@ -128,7 +128,7 @@ const ReadBlog: React.FC = (props) => {
                         {/* Latest Activity */}
                         <LatestActivity />
                         {/* Latest News */}
-                        <LatestNews />
+                        <LatestNews title={`News`} api={`/news/search?page=1&pageSize=3&keyCategory=`} />
                     </div>
                 </div>
             </div>

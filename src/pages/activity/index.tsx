@@ -97,7 +97,7 @@ const ActivityPage: React.FC = (props) => {
                             {/* Social */}
                             <WeAreSocial />
                             {/* Latest News */}
-                            <LatestNews />
+                            <LatestNews title={`News`} api={`/news/search?page=1&pageSize=3&keyCategory=`} />
                             {/* Latest Match */}
                         </div>
                     </div>

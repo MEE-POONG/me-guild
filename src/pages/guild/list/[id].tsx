@@ -106,7 +106,7 @@ const ProfileGuild: React.FC = (props) => {
                             <SearchBar />
                             <LatestActivity />
                             <LatestMath />
-                            <LatestNews />
+                            <LatestNews title={`News`} api={`/news/search?page=1&pageSize=3&keyCategory=`} />
                         </div>
                     </div>
                 </div>
