@@ -50,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     skip,
                     take: pageSizeNum,
                     include: {
-                        NewsTypeNews: {
+                        newsTypeNews: {
                             include: {
                                 newsTypeDB: {
                                     include: {

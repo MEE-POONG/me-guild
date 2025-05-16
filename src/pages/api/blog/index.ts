@@ -29,24 +29,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
             break;
 
-        case 'POST':
-            try {
-                const { title, img, video, description, creditlink = '', updatedBy = '', deleteBy = '' } = req.body;
-
-                if (!title || !img || !video || !description) {
-                    return res.status(400).json({ error: "Title and content are required" });
-                }
-
-                const newBlogs = await prisma.blogDB.create({
-                    data: { title, img, video, description, creditlink, updatedBy, deleteBy },
-                });
-
-                res.status(201).json(newBlogs);
-            } catch (error) {
-                res.status(500).json({ error: "An error occurred while creating the blog update" });
-            }
-            break
-
         default:
             res.setHeader('Allow', ['GET', 'POST']);
             res.status(405).end(`Method ${method} Not Allowed`);

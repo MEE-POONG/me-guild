@@ -33,58 +33,58 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break;
 
         // POST: เพิ่มข้อมูล User ใหม่
-        case 'POST':
-            try {
-                const {
-                    discord_id,
-                    username,
-                    email,
-                    password,
-                    nickname,
-                } = req.body;
+        // case 'POST':
+        //     try {
+        //         const {
+        //             discord_id,
+        //             username,
+        //             email,
+        //             password,
+        //             nickname,
+        //         } = req.body;
 
-                // ตรวจสอบข้อมูลที่จำเป็น
-                if (!discord_id || !email || !password) {
-                    return res.status(400).json({ error: "ข้อมูลไม่ครบถ้วน กรุณากรอกข้อมูลให้ครบทุกช่องที่จำเป็น" });
-                }
+        //         // ตรวจสอบข้อมูลที่จำเป็น
+        //         if (!discord_id || !email || !password) {
+        //             return res.status(400).json({ error: "ข้อมูลไม่ครบถ้วน กรุณากรอกข้อมูลให้ครบทุกช่องที่จำเป็น" });
+        //         }
 
-                // ตรวจสอบข้อมูลซ้ำ
-                const existingUser = await prisma.userDB.findFirst({
-                    where: {
-                        OR: [
-                            { email: email }, // ตรวจสอบ email ซ้ำ
-                            { discord_id: discord_id } // ตรวจสอบ discord_id ซ้ำ
-                        ]
-                    }
-                });
+        //         // ตรวจสอบข้อมูลซ้ำ
+        //         const existingUser = await prisma.userDB.findFirst({
+        //             where: {
+        //                 OR: [
+        //                     { email: email }, // ตรวจสอบ email ซ้ำ
+        //                     { discord_id: discord_id } // ตรวจสอบ discord_id ซ้ำ
+        //                 ]
+        //             }
+        //         });
 
-                if (existingUser) {
-                    return res.status(409).json({ error: "อีเมล หรือ Discord ID นี้ถูกใช้ไปแล้ว กรุณาใช้ข้อมูลอื่น" });
-                }
+        //         if (existingUser) {
+        //             return res.status(409).json({ error: "อีเมล หรือ Discord ID นี้ถูกใช้ไปแล้ว กรุณาใช้ข้อมูลอื่น" });
+        //         }
 
-                // เข้ารหัสรหัสผ่าน
-                const hashedPassword = await bcrypt.hash(password, 10);
+        //         // เข้ารหัสรหัสผ่าน
+        //         const hashedPassword = await bcrypt.hash(password, 10);
 
-                // เพิ่มข้อมูลลงฐานข้อมูล
-                const newUser = await prisma.userDB.create({
-                    data: {
-                        discord_id,
-                        username: username || null,
-                        email,
-                        password: hashedPassword,
-                        nickname: nickname || null,
-                        updatedBy: "admin",
-                        deleteBy: ""
-                    },
-                });
+        //         // เพิ่มข้อมูลลงฐานข้อมูล
+        //         const newUser = await prisma.userDB.create({
+        //             data: {
+        //                 discord_id,
+        //                 username: username || null,
+        //                 email,
+        //                 password: hashedPassword,
+        //                 nickname: nickname || null,
+        //                 updatedBy: "admin",
+        //                 deleteBy: ""
+        //             },
+        //         });
 
-                res.status(201).json(newUser);
+        //         res.status(201).json(newUser);
 
-            } catch (error) {
-                console.error("Error creating user : ", error);
-                res.status(500).json({ error: "เกิดข้อผิดพลาดที่ไม่คาดคิด กรุณาลองใหม่อีกครั้ง" });
-            }
-            break;
+        //     } catch (error) {
+        //         console.error("Error creating user : ", error);
+        //         res.status(500).json({ error: "เกิดข้อผิดพลาดที่ไม่คาดคิด กรุณาลองใหม่อีกครั้ง" });
+        //     }
+        //     break;
         default:
             res.setHeader('Allow', ['GET', 'POST']);
             res.status(405).end(`Method ${method} Not Allowed`);

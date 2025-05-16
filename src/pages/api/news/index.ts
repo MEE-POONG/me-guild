@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     skip: (page - 1) * pageSize,
                     take: pageSize,
                     orderBy: { createdAt: "desc" },
-                    include: { NewsTypeNews: true },
+                    include: { newsTypeNews: true },
                 });
 
                 const totalNews = await prisma.newsUpdateDB.count();
@@ -30,35 +30,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
             break;
 
-        case "POST":
-            try {
-                const { title, img, description, creditlink, createdBy } = req.body;
-
-                // Validate required fields
-                if (!title || !img || !description || !creditlink) {
-                    return res.status(400).json({ error: "Title, img, description, and creditlink are required" });
-                }
-
-                // Create a new news update
-                const newNews = await prisma.newsUpdateDB.create({
-                    data: {
-                        title,
-                        img,
-                        description,
-                        creditlink,
-                        createdBy: createdBy || "System", // Default creator if not provided
-                        updatedBy: createdBy || "System",
-                        updatedAt: new Date(),
-                        deleteBy: ''
-                    },
-                });
-
-                res.status(201).json(newNews);
-            } catch (error) {
-                console.error("Error creating news update:", error);
-                res.status(500).json({ error: "An error occurred while creating the news update" });
-            }
-            break;
 
         default:
             res.setHeader("Allow", ["GET", "POST"]);
