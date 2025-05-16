@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from 'next/image';
+import axios from "axios";
 
 const BlogList: React.FC = () => {
     const [blogData, setBlogData] = useState<any[]>([]);
@@ -10,12 +11,8 @@ const BlogList: React.FC = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch('/api/blog');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch blog data');
-                }
-                const data = await response.json();
-                setBlogData(data.blogs); // เปลี่ยนจาก `news` เป็น `blogs`
+                const response = await axios.get(`/api/blog?page=1&pageSize=6`);
+                setBlogData(response.data.data); // เปลี่ยนจาก `news` เป็น `blogs`
                 setLoading(false);
             } catch (error: any) {
                 setError(error.message);

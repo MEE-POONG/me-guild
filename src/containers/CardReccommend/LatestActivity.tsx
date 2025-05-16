@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 
@@ -8,9 +9,8 @@ const LatestActivity: FC = () => {
     useEffect(() => {
         const fetchActivity = async () => {
             try {
-                const response = await fetch('/api/actDetail?page=1&pageSize=5');
-                const data = await response.json();
-                setActivityData(data.activities);
+                const response = await axios.get(`/api/actDetail?page=1&pageSize=6`);
+                setActivityData(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching activities:', error);

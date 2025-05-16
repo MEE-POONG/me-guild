@@ -37,7 +37,7 @@ const HotNewsTwoCard: FC = () => {
         return <div className="text-center text-white">Loading...</div>;
     }
 
-    if (!newsData.length) {
+    if (!newsData?.length) {
         return <div className="text-center text-white">No news available.</div>;
     }
 

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 
@@ -9,9 +10,8 @@ const ReccommentBlog: FC = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch('/api/blog?page=1&pageSize=3');
-                const data = await response.json();
-                setBlogData(data.blogs);
+                const response = await axios.get(`/api/blog?page=1&pageSize=6`);
+                setBlogData(response.data.data); // เปลี่ยนจาก `news` เป็น `blogs`
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching blogs:', error);
