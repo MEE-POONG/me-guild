@@ -10,38 +10,51 @@ datasource db {
 model ActDetailDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
-  point       String
-  type        String
+  description String
+  dislink     String
+  disname     String
   img         String
+  type        String
+  point       String
   startdate   String
   enddate     String
-  description String
-  disname     String
-  dislink     String
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @db.Date
+  createdBy   String
+  updatedAt   DateTime @db.Date
   updatedBy   String
   deleteBy    String
+  actType     ActType? @relation(fields: [actTypeId], references: [id])
+  actTypeId   String   @db.ObjectId
+}
+
+model ActType {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  createdAt   DateTime      @db.Date
+  createdBy   String
+  updatedAt   DateTime      @db.Date
+  updatedBy   String
+  deleteBy    String
+  ActDetailDB ActDetailDB[]
 }
 
 model BlogDB {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
+  creditlink  String
+  description String
   img         String
   video       String
-  description String
-  creditlink  String
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @db.Date
+  createdBy   String
+  updatedAt   DateTime @db.Date
   updatedBy   String
   deleteBy    String
 }
 
 model CheckOnlineDB {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  user_id         String
+  discord_id      String?
   checkIn         DateTime  @default(now())
   checkOut        DateTime?
   totalOnlineTime Int       @default(0)
@@ -52,7 +65,7 @@ model CheckOnlineDB {
   deleteBy        String
 }
 
-model Comment {
+model CommentDB {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   userID    String
@@ -60,53 +73,63 @@ model Comment {
   createdAt DateTime @default(now())
   createdBy String?
   updatedAt DateTime @updatedAt
-  updatedBy String
-  deleteBy  String
+  updatedBy String? // Make this optional
+  deleteBy  String? // Make this optional
 }
 
-model ConditionGameMatchDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  maxParty    Int
-  limitNumber Int      @default(0)
-  gameId      String?  @db.ObjectId
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
+model CustomerDB {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  discord_id String   @unique
+  username   String
+  email      String   @unique
+  password   String
+  server     String   @unique
+  createdAt  DateTime @db.Date
+  createdBy  String
+  updatedAt  DateTime @db.Date
+  updatedBy  String
+  deleteBy   String
 }
 
-model CreditPointDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId      String
-  points      BigInt   @default(0)
-  totalPoints BigInt
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
+model GameOnlineDB {
+  id                   String                 @id @default(auto()) @map("_id") @db.ObjectId
+  game_name            String
+  logo                 String?
+  numberMatch          String?
+  partyLimit           BigInt
+  ranking              Boolean
+  createdAt            DateTime               @db.Date
+  createdBy            String?
+  updatedAt            DateTime               @db.Date
+  updatedBy            String
+  deleteBy             String
+  // ความสัมพันธ์ many-to-many ผ่าน GameTypeGame
+  gameTypeGame         GameTypeGame[]         @relation("GameOnlineToGameTypeGame")
+  GameRankDB           GameRankDB[]
+  GameConditionMatchDB GameConditionMatchDB[]
+}
+
+model GameConditionMatchDB {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  maxParty     Int
+  limitNumber  Int           @default(0)
+  gameOnlineDB GameOnlineDB? @relation(fields: [gameId], references: [id])
+  gameId       String        @db.ObjectId
+  createdAt    DateTime      @default(now())
+  createdBy    String?
+  updatedAt    DateTime      @updatedAt
+  updatedBy    String
+  deleteBy     String
 }
 
 model GameCategoryDB {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  createdAt DateTime @default(now())
-  createdBy String?
-  updatedAt DateTime @updatedAt
+  title     String   @unique
+  createdAt DateTime @db.Date
+  createdBy String
+  updatedAt DateTime @db.Date
   updatedBy String
   deleteBy  String
-}
-
-model GameEventDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String // ชื่อรายการแข่ง
-  description String? // รายละเอียดของรายการแข่ง
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
 }
 
 model GameMatchDB {
@@ -127,99 +150,67 @@ model GameMatchDB {
   deleteBy     String
 }
 
-model GameMatchScheduleDB {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  teamAId      String   @db.ObjectId // เชื่อมกับ GameRegistrationDB
-  teamBId      String   @db.ObjectId // เชื่อมกับ GameRegistrationDB
-  eventId      String   @db.ObjectId // เชื่อมกับรายการแข่ง (GameEventDB)
-  matchTime    DateTime // เวลาแข่งขัน
-  status       String // สถานะของการแข่งขัน (เช่น pending, completed)
-  channel_id   String // ID ของช่องที่ใช้สำหรับการแข่งขัน (เช่น Discord Channel)
-  winnerTeamId String? // ทีมที่ชนะการแข่งขัน
-  createdAt    DateTime @default(now())
-  createdBy    String?
-  updatedAt    DateTime @updatedAt
-  updatedBy    String
-  deleteBy     String
-}
-
-model GameOnlineDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  logo        String?
-  game_name   String
-  partyLimit  Int
-  ranking     Boolean // มีระบบแรงค์ไม่มีระบบแรงค์
-  numberMatch Int?
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
-}
-
-model GameRankDB {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  nameRank  String
-  imgRank   String
-  number    Int
-  gameId    String   @db.ObjectId
-  createdAt DateTime @default(now())
-  createdBy String?
-  updatedAt DateTime @updatedAt
-  updatedBy String
-  deleteBy  String
-}
-
-model GameRegistrationEventDB {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  isIndividual Boolean // true ถ้าเป็นการสมัครแบบเดี่ยว, false ถ้าเป็นการสมัครแบบปาร์ตี้
-  GameEventId  String // เชื่อมกับตารางที่เก็บข้อมูลรายการแข่ง
-  teamId       String // กรณีลงทะเบียนด้วยทีม
-  createdAt    DateTime @default(now())
-  createdBy    String?
-  updatedAt    DateTime @updatedAt
-  updatedBy    String
-  deleteBy     String
-}
-
 model GameTypeDB {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   title      String
   categoryId String   @db.ObjectId
-  createdAt  DateTime @default(now())
-  createdBy  String?
-  updatedAt  DateTime @updatedAt
+  createdAt  DateTime @db.Date
+  createdBy  String
+  updatedAt  DateTime @db.Date
   updatedBy  String
   deleteBy   String
+
+  // ความสัมพันธ์ many-to-many ผ่าน GameTypeGame
+  gameTypeGame GameTypeGame[] @relation("GameTypeToGameTypeGame")
 }
 
 model GameTypeGame {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  gameId    String   @db.ObjectId
-  typeId    String   @db.ObjectId
-  createdAt DateTime @default(now())
-  createdBy String?
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @db.Date
+  createdBy String
+  updatedAt DateTime @db.Date
   updatedBy String
   deleteBy  String
+
+  // ความสัมพันธ์กับ GameOnlineDB
+  gameId       String?       @db.ObjectId
+  gameOnlineDB GameOnlineDB? @relation(fields: [gameId], references: [id], onDelete: Cascade, name: "GameOnlineToGameTypeGame")
+
+  // ความสัมพันธ์กับ GameTypeDB
+  typeId     String?     @db.ObjectId
+  gameTypeDB GameTypeDB? @relation(fields: [typeId], references: [id], onDelete: Cascade, name: "GameTypeToGameTypeGame")
 }
 
-model Guild {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  guild_name   String?
-  guild_level  Int      @default(1)
-  guild_copper BigInt   @default(0)
-  guild_size   Int      @default(5)
-  guild_roleId String?
-  guild_leader String
-  Logo         String   @default("")
-  backdrop     String   @default("")
-  discordlink  String   @default("")
-  createdAt    DateTime @default(now())
-  createdBy    String?
-  updatedAt    DateTime @updatedAt
+model GameRankDB {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  gameOnlineDB GameOnlineDB? @relation(fields: [gameId], references: [id])
+  gameId       String?       @db.ObjectId
+  imgRank      String
+  selcetShow   String?
+  nameRank     String
+  number       Int
+  createdAt    DateTime      @db.Date
+  createdBy    String
+  updatedAt    DateTime      @db.Date
   updatedBy    String
   deleteBy     String
+}
+
+model GuildDB {
+  id                       String         @id @default(auto()) @map("_id") @db.ObjectId
+  Logo                     String         @default("https://www.design365print.com/UploadFile/Blog/blog_941976621.jpg")
+  guild_copper             BigInt?
+  guild_leader             String?
+  guild_level              BigInt?
+  guild_name               String?
+  guild_roleId             String?
+  guild_size               BigInt?
+  guild_room_chat          String?
+  guild_room_mainHall      String?
+  guild_room_secondaryHall String?
+  guild_room_activity      String?
+  guild_room_visiting      String?
+  GuildMembers             GuildMembers[]
 }
 
 model GuildCreateReport {
@@ -232,212 +223,173 @@ model GuildCreateReport {
 }
 
 model GuildMembers {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  guildId   String   @db.ObjectId
-  userId    String
-  position  String?
-  status    String?
-  createdAt DateTime @default(now())
-  createdBy String?
-  updatedAt DateTime @updatedAt
-  updatedBy String
-  deleteBy  String
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  guildId  String?  @db.ObjectId
+  position String
+  userId   String
+  guildDB  GuildDB? @relation(fields: [guildId], references: [id])
+}
+
+model GuildProfileDB {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  avatar      String
+  backdrop    String
+  createdAt   DateTime @db.Date
+  createdBy   String
+  deleteBy    String
+  description String
+  discordlink String
+  guildId     String?
+  guildname   String
+  rule        String
+  updatedAt   DateTime @db.Date
+  updatedBy   String
 }
 
 model ImageList {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  modalName String
+  nameFile  String
   imageUrl  String   @unique
-  nameFile  String   @unique // Mark as unique
-  createdAt DateTime @default(now())
-  createdBy String?
-  updatedAt DateTime @updatedAt
+  modalName String
+  createdAt DateTime @db.Date
+  createdBy String
+  updatedAt DateTime @db.Date
   updatedBy String
   deleteBy  String
 }
 
-model InviteRequest {
+model GuildInviteDataDB {
   id      String @id @default(auto()) @map("_id") @db.ObjectId
-  userId  String
   guildId String
+  userId  String
 }
 
-model NewsCategoryDB {
-  id         String       @id @default(auto()) @map("_id") @db.ObjectId
-  title      String
-  createdAt  DateTime     @default(now())
-  createdBy  String?
-  updatedAt  DateTime     @updatedAt
-  updatedBy  String
-  deleteBy   String
-  NewsTypeDB NewsTypeDB[]
-}
-
-model NewsTypeDB {
-  id             String         @id @default(auto()) @map("_id") @db.ObjectId
-  title          String
-  createdAt      DateTime       @default(now())
-  createdBy      String?
-  updatedAt      DateTime       @updatedAt
-  updatedBy      String
-  deleteBy       String
-  categoryId     String         @db.ObjectId
-  newsCategoryDB NewsCategoryDB @relation(fields: [categoryId], references: [id])
-  NewsTypeNews   NewsTypeNews[]
-}
-
-model NewsTypeNews {
-  id           String       @id @default(auto()) @map("_id") @db.ObjectId
-  newsUpdateId String       @db.ObjectId
-  typeId       String       @db.ObjectId
-  createdAt    DateTime     @default(now())
-  createdBy    String?
-  updatedAt    DateTime     @updatedAt
-  updatedBy    String
-  deleteBy     String
-  newsTypeDB   NewsTypeDB   @relation(fields: [typeId], references: [id])
-  newsUpdateDB NewsUpdateDB @relation(fields: [newsUpdateId], references: [id])
+model GuildInviteRequest {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  guildId String
+  userId  String
 }
 
 model NewsUpdateDB {
   id           String         @id @default(auto()) @map("_id") @db.ObjectId
   title        String
   img          String
-  description  String
   creditlink   String
-  createdAt    DateTime       @default(now())
+  description  String
+  createdAt    DateTime       @db.Date
   createdBy    String?
-  updatedAt    DateTime?      @updatedAt
-  updatedBy    String
-  deleteBy     String
-  NewsTypeNews NewsTypeNews[]
+  updatedAt    DateTime?      @db.Date
+  updatedBy    String?
+  deleteBy     String?
+  newsTypeNews NewsTypeNews[]
 }
 
-model paymentHistory {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String
-  status       String   @default("pending")
-  reason       String?
-  title        String?
-  detail       String?
-  total        String?
-  receive      String?
-  pay          String?
-  net          String?
-  createdAt    DateTime @default(now())
-  createdBy    String?
-  updatedAt    DateTime @updatedAt
-  updatedBy    String
-  deleteBy     String
-  coin_copper  BigInt   @default(0)
-  coin_silver  BigInt   @default(0)
-  coin_gold    BigInt   @default(0)
-  coin_diamond BigInt   @default(0)
-  coin_crystal BigInt   @default(0)
-}
-
-model PointHistoryDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  discord_id  String
-  points      Int
-  description String
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
-}
-
-model RuleDB {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  topic     String
-  IssueBy   Int
-  GuildID   String
-  createdAt DateTime @default(now())
-  createdBy String?
-  updatedAt DateTime @updatedAt
-  updatedBy String
-  deleteBy  String
-}
-
-model Server {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  discordId String   @unique // Discord server ID
-  ownerId   String // Discord ID of the owner
-  createdAt DateTime @default(now()) // Timestamp of creation
-  updatedAt DateTime @updatedAt // Timestamp of last update
-}
-
-model topicDB {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  ruleId      Int
-  description String
-  createdAt   DateTime @default(now())
-  createdBy   String?
-  updatedAt   DateTime @updatedAt
-  updatedBy   String
-  deleteBy    String
-}
-
-model TeamDB {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  teamName   String // ชื่อทีม
-  represent  String // ชื่อทีม
-  members    String[] // รายชื่อสมาชิกในทีม (discord_id หรือ userId)
-  TeamLeader String // ตัวแทนของทีม
-  createdAt  DateTime @default(now())
-  createdBy  String?
-  updatedAt  DateTime @updatedAt
+model NewsCategoryDB {
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  createdAt  DateTime     @db.Date
+  createdBy  String
+  updatedAt  DateTime     @db.Date
   updatedBy  String
   deleteBy   String
+  newsTypeDB NewsTypeDB[]
+}
+
+model NewsTypeDB {
+  id               String          @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  categoryId       String?         @db.ObjectId
+  createdAt        DateTime        @db.Date
+  createdBy        String
+  updatedAt        DateTime        @db.Date
+  updatedBy        String
+  deleteBy         String
+  newsTypeNews     NewsTypeNews[]
+  newsCategoryDB   NewsCategoryDB? @relation(fields: [newsCategoryDBId], references: [id])
+  newsCategoryDBId String?         @db.ObjectId
+}
+
+model NewsTypeNews {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  typeId       String?       @db.ObjectId
+  createdAt    DateTime      @db.Date
+  createdBy    String
+  updatedAt    DateTime      @db.Date
+  updatedBy    String
+  deleteBy     String
+  newsUpdateDB NewsUpdateDB? @relation(fields: [newsUpdateId], references: [id])
+  newsUpdateId String?       @db.ObjectId
+  newsTypeDB   NewsTypeDB?   @relation(fields: [newsTypeId], references: [id])
+  newsTypeId   String?       @db.ObjectId
+}
+
+model ServerDB {
+  id                    String    @id @default(auto()) @map("_id") @db.ObjectId
+  ownerId               String
+  serverId              String    @unique
+  serverName            String
+  Master                Boolean   @default(false)
+  openBot               Boolean   @default(false) // เพิ่มค่าเริ่มต้นเป็น false
+  adminRoleId           String? // ฟิลด์สำหรับเก็บรหัสบทบาทแอดมิน (optional)
+  userRoleId            String? // ฟิลด์สำหรับเก็บรหัสบทบาทผู้ใช้ (optional)
+  adventurerRoleId      String?
+  visitorRoleId         String?
+  guildHeadRoleId       String? // บทบาทหัวหน้ากิล (optional)
+  guildCoRoleId         String? // บทบาทรองหัวหน้ากิล (optional)
+  openUntilAt           DateTime  @db.Date
+  meguildPositionCreate String?
+  welcomechannel        String?
+  newsChannel           String?
+  registerChannel       String?
+  complaintChannel      String?
+  suggestionChannel     String?
+  tradeChannel          String?
+  guildChannel          String?
+  gamePositionCreate    String?
+  gameChannel           String?
+  gamePostChannel       String?
+  buskingPositionCreate String?
+  buskingChannel        String?
+  createdAt             DateTime  @db.Date
+  updatedAt             DateTime  @db.Date
+  AdminDB               AdminDB[]
 }
 
 model UserDB {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  discord_id        String   @unique
+  id                String        @id @default(auto()) @map("_id") @db.ObjectId
   username          String?
-  email             String   @unique
-  nickname          String?
   password          String?
-  firstname         String
-  lastname          String
-  birthday          DateTime
-  gender            String
-  alternativeGender String
-  createdAt         DateTime @default(now())
-  createdBy         String?
-  updatedAt         DateTime @updatedAt
-  updatedBy         String
+  discord_id        String        @unique
+  img               String?
+  firstname         String?
+  lastname          String?
+  nickname          String?
+  email             String        @unique
+  tel               String?
+  birthday          DateTime?     @db.Date
+  gender            String? //เพศสภาพ
+  alternativeGender String? //เพศที่เป็น
+  createdAt         DateTime      @db.Date
+  createdBy         String
   deleteBy          String
+  updatedAt         DateTime      @db.Date
+  updatedBy         String
+  AdminDB           AdminDB[]
+  OrderItemDB       OrderItemDB[]
 }
 
 model UserGameRank {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   gameId     String   @db.ObjectId
-  userId     String
   gameRankId String   @db.ObjectId
   invitation Boolean
-  createdAt  DateTime @default(now())
-  createdBy  String?
-  updatedAt  DateTime @updatedAt
+  createdAt  DateTime @db.Date
+  createdBy  String
+  updatedAt  DateTime @db.Date
   updatedBy  String
   deleteBy   String
-}
-
-model Wallet {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String
-  coin_copper  BigInt   @default(0)
-  coin_silver  BigInt   @default(0)
-  coin_gold    BigInt   @default(0)
-  coin_diamond BigInt   @default(0)
-  coin_crystal BigInt   @default(0)
-  createdAt    DateTime @default(now())
-  createdBy    String?
-  updatedAt    DateTime @updatedAt
-  updatedBy    String
-  deleteBy     String
+  /// Multiple data types found: String: 85.7%, String (ObjectId): 14.3% out of 14 sampled entries
+  userId     Json
 }
 
 model WebDefaultDB {
@@ -457,4 +409,250 @@ model WebDefaultDB {
   updatedAt      DateTime @updatedAt
   updatedBy      String
   deleteBy       String
+}
+
+model RoleDiscord {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  img             String?
+  name            String // ชื่อบทบาท
+  roldID          String // ไอดีบทบาทในดิส
+  discordServerID String // ไอดีดิสครอส
+  type            String? // กิจกรรม, ขาย, แจก ไม่บังคับระบุ ค่าเริ่มต้นเป็น null
+  createdAt       DateTime @default(now())
+  createdBy       String?
+  updatedAt       DateTime @updatedAt
+  updatedBy       String
+  deleteBy        String
+}
+
+model ProductDiscordDB {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  img             String?
+  description     String
+  discordServerID String?
+  type            String
+  singlePurchase  Boolean       @default(false) // ✅ สินค้านี้ซื้อได้แค่ 1 ชิ้น
+  roleId          String?
+  price           Float
+  createdAt       DateTime      @default(now())
+  createdBy       String?
+  updatedAt       DateTime?     @updatedAt
+  updatedBy       String?
+  deleteBy        String?
+  OrderItemDB     OrderItemDB[]
+}
+
+model OrderDB {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  buyerDiscordID String // Discord ID ของผู้ซื้อ
+  name           String // Discord ID ของผู้ซื้อ
+  email          String // Discord ID ของผู้ซื้อ
+  tel            String? // Discord ID ของผู้ซื้อ
+  totalPrice     Float // ราคาทั้งหมดของออเดอร์
+  seller         AdminDB       @relation(fields: [sellerID], references: [id])
+  sellerID       String        @db.ObjectId // ID ผู้ขาย
+  sellerName     String // ชื่อผู้ขาย
+  status         OrderStatus   @default(DRAFT) // สถานะการชำระเงิน
+  note           String? //หมายเหตุถ้ามี
+  createdAt      DateTime      @default(now())
+  createdBy      String?
+  updatedAt      DateTime?     @updatedAt
+  updatedBy      String?
+  deleteBy       String?
+  items          OrderItemDB[] // สินค้าในออเดอร์
+  payment        PaymentDB?
+}
+
+model OrderItemDB {
+  id           String           @id @default(auto()) @map("_id") @db.ObjectId
+  orderId      String           @db.ObjectId
+  recipient    UserDB           @relation(fields: [recipientId], references: [id])
+  recipientId  String           @db.ObjectId
+  order        OrderDB          @relation(fields: [orderId], references: [id])
+  productId    String           @db.ObjectId
+  product      ProductDiscordDB @relation(fields: [productId], references: [id])
+  quantity     Int              @default(1) // จำนวนสินค้าที่สั่งซื้อ
+  pricePerItem Float // ราคาต่อชิ้น (เก็บตอนสั่งซื้อ)
+  totalPrice   Float // ราคาทั้งหมด (quantity * pricePerItem)
+}
+
+enum OrderStatus {
+  DRAFT //แบบร่าง yellow
+  PENDING // รอชำระเงิน orange
+  PAID // ชำระเงินแล้ว green
+  WAITING // รอชำระอีกรอบ teal
+  COMPLETED // สำเร็จ emerald
+  CANCELLED // ยกเลิก red
+}
+
+model PaymentDB {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  paymentSlip   String // URL สลิปการชำระเงิน
+  paymentMethod String // วิธีการชำระเงิน (เช่น "PayPal", "TrueMoney", "Crypto")
+  auditor       AdminDB?  @relation(fields: [auditorID], references: [id])
+  auditorID     String?   @db.ObjectId //ผู้ตรวจสอบ (ถ้ามี)
+  auditorName   String? //ผู้ตรวจสอบ (ถ้ามี)
+  createdAt     DateTime  @default(now())
+  createdBy     String?
+  updatedAt     DateTime? @updatedAt
+  updatedBy     String?
+  orderDB       OrderDB?  @relation(fields: [orderId], references: [id])
+  orderId       String?   @unique @db.ObjectId
+}
+
+model MeGuildCoinDB {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  coin_copper  BigInt
+  coin_crystal BigInt
+  coin_diamond BigInt
+  coin_gold    BigInt
+  coin_silver  BigInt
+  createdAt    DateTime @db.Date
+  updatedAt    DateTime @db.Date
+  userId       String
+}
+
+model RuleDB {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  topic     String
+  IssueBy   Int
+  GuildID   String
+  createdAt DateTime @default(now())
+  createdBy String?
+  updatedAt DateTime @updatedAt
+  updatedBy String
+  deleteBy  String
+}
+
+model topicDB {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  ruleId      Int
+  description String
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String
+  deleteBy    String
+}
+
+model TeamDB {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamName   String // ชื่อทีม
+  represent  String // ทีมจากตัวแทนของ
+  members    String[] // รายชื่อสมาชิกในทีม (discord_id หรือ userId)
+  TeamLeader String? // ตัวแทนของทีม (optional)
+  createdAt  DateTime @default(now())
+  createdBy  String?
+  updatedAt  DateTime @updatedAt
+  updatedBy  String
+  deleteBy   String
+}
+
+model AdminDB {
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  username        String           @unique
+  password        String
+  name            String
+  tel             String
+  email           String
+  serverDB        ServerDB?        @relation(fields: [discordServerID], references: [id])
+  discordServerID String?          @db.ObjectId
+  UserDB          UserDB?          @relation(fields: [userId], references: [id])
+  userId          String?          @db.ObjectId
+  createdAt       DateTime         @default(now())
+  createdBy       String
+  updatedAt       DateTime         @updatedAt
+  updatedBy       String           @default("")
+  deleteBy        String
+  AdminPositionDB AdminPositionDB? @relation(fields: [adminPositionId], references: [id])
+  adminPositionId String?          @db.ObjectId
+  OrderDB         OrderDB[]
+  PaymentDB       PaymentDB[]
+}
+
+model AdminDefaultPermissionDB {
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  AdminPositionDB   AdminPositionDB? @relation(fields: [adminPositionDBId], references: [id])
+  adminPositionDBId String?          @db.ObjectId
+  MenuPageWeb       MenuPageWebDB?   @relation(fields: [menuPageWebId], references: [id])
+  menuPageWebId     String?          @db.ObjectId
+  canAdvance        Boolean          @default(false)
+  canViews          Boolean          @default(false)
+  canCreate         Boolean          @default(false)
+  canUpdate         Boolean          @default(false)
+  canDelete         Boolean          @default(false)
+  createdAt         DateTime         @default(now())
+  createdBy         String
+  updatedAt         DateTime         @updatedAt
+  updatedBy         String           @default("")
+  deleteBy          String
+}
+
+model MenuPageWebDB {
+  id                       String                     @id @default(auto()) @map("_id") @db.ObjectId
+  name                     String // ระบุหน้าที่สามารถควบคุมได้ เช่น "dashboard", "users", "settings"
+  description              String?
+  itOn                     Boolean                    @default(false)
+  showOrder                Int?                       @default(0)
+  head                     Boolean                    @default(false)
+  link                     String // ระบุหน้าที่สามารถควบคุมได้ เช่น "dashboard", "users", "settings"
+  icon                     String? // อาจเก็บชื่อไอคอนหรือ URL ไอคอน
+  manager                  String[]                   @default([]) //กรณีหน้านั้นมีหน้าย่อยจำเพาะ เพิม่ แก้ไข แสดง
+  subMenu                  String[] //ใช้ในการสร้างเมนูลูก โดยเช็คจาก parentId ที่แปลว่า id แม่
+  parentId                 String?                    @db.ObjectId // เก็บเป็น ObjectId ของเมนูหลัก
+  canAdvance               Boolean?                   @default(false)
+  canViews                 Boolean?                   @default(false)
+  canCreate                Boolean?                   @default(false)
+  canUpdate                Boolean?                   @default(false)
+  canDelete                Boolean?                   @default(false)
+  createdAt                DateTime                   @default(now())
+  createdBy                String
+  updatedAt                DateTime                   @updatedAt
+  updatedBy                String                     @default("")
+  deleteBy                 String
+  AdminDefaultPermissionDB AdminDefaultPermissionDB[]
+}
+
+model AdminDepartmentDB {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  name            String            @unique
+  managerId       String?           @db.ObjectId
+  adminPositionDB AdminPositionDB[]
+  createdAt       DateTime          @default(now())
+  createdBy       String
+  updatedAt       DateTime          @updatedAt
+  updatedBy       String            @default("")
+  deleteBy        String
+}
+
+model AdminPositionDB {
+  id                       String                     @id @default(auto()) @map("_id") @db.ObjectId
+  name                     String
+  priority                 Int
+  adminDepartmentId        String?                    @db.ObjectId
+  adminDepartmentDB        AdminDepartmentDB?         @relation(fields: [adminDepartmentId], references: [id], onDelete: Cascade)
+  adminDB                  AdminDB[]
+  createdAt                DateTime                   @default(now())
+  createdBy                String
+  updatedAt                DateTime                   @updatedAt
+  updatedBy                String                     @default("")
+  deleteBy                 String
+  AdminDefaultPermissionDB AdminDefaultPermissionDB[]
+}
+
+model TradingofRanks {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  userID    String
+  roleID    String
+  paymentID String
+}
+
+model VoiceTime {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  channelId String   @default("")
+  duration  Int
+  timestamp DateTime @default(now())
 }
