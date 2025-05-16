@@ -37,21 +37,21 @@ const Navbar: React.FC = () => {
         {
             href: "/news", label: "News", dropdown: true, list: [
                 { href: "/blog", label: "Blog" },
+                { href: "/activity", label: "Activity" },
             ]
         },
         {
-            href: "/guild", label: "Guild", dropdown: true, list: [
-                { href: "/list", label: "Guild List" },
-                { href: "/register", label: "Guild Register" }
+            href: "/guild", label: "Guild", dropdown: false, list: [
+                // { href: "/list", label: "Guild List" },
+                // { href: "/register", label: "Guild Register" }
             ]
         },
-        {
-            href: "/adventurer", label: "Adventurer", dropdown: true, list: [
-                { href: "/list", label: "Adventurer List" },
-                { href: "/register", label: "Adventurer Register" }
-            ]
-        },
-        { href: "/activity", label: "Activity", dropdown: false },
+        // {
+        //     href: "/adventurer", label: "Adventurer", dropdown: true, list: [
+        //         { href: "/list", label: "Adventurer List" },
+        //         { href: "/register", label: "Adventurer Register" }
+        //     ]
+        // },
         { href: "/contact", label: "Contact", dropdown: false },
     ];
 
