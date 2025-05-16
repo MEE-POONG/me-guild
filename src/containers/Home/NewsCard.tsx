@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useState, useEffect } from 'react';
@@ -18,10 +19,9 @@ const NewsCardHome: FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=6');
-                const data = await response.json();
-                setNewsData(data.news);
-                setSelectedNews(data.news[0]); // Automatically select the first news item.
+                const response = await axios.get(`/api/news?page=1&pageSize=6`);
+                setNewsData(response.data.data);
+                setSelectedNews(response.data.data[0]); // Automatically select the first news item.
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching news:', error);

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import axios from "axios";
 
 const BlogCard: React.FC = () => {
     const [blogData, setBlogData] = useState<any[]>([]);
@@ -10,12 +11,8 @@ const BlogCard: React.FC = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch('/api/blog?page=1&pageSize=2');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch blog data');
-                }
-                const data = await response.json();
-                setBlogData(data.blogs); // เปลี่ยนจาก `news` เป็น `blogs`
+                const response = await axios.get(`/api/blog?page=1&pageSize=6`);
+                setBlogData(response.data.data); // เปลี่ยนจาก `news` เป็น `blogs`
                 setLoading(false);
             } catch (error: any) {
                 setError(error.message);
@@ -44,7 +41,7 @@ const BlogCard: React.FC = () => {
                 <Link href="/news/blog" className="text-base text-amber-400 hover:text-amber-500">ทั้งหมด {`>>`}</Link>
             </p>
             <div className="flex flex-wrap mt-3">
-                {blogData.length === 0 ? (
+                {/* {blogData.length === 0 ? (
                     <p className="text-center text-gray-400">No blogs available</p>
                 ) : (
                     blogData.map(blog => (
@@ -78,7 +75,7 @@ const BlogCard: React.FC = () => {
                             </div>
                         </div>
                     ))
-                )}
+                )} */}
             </div>
         </section>
     );

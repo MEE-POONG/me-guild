@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MatchToday from "./MatchToday";
+import axios from "axios";
 
 const ActivityUpdate: React.FC = () => {
     const [activityData, setActivityData] = useState<any[]>([]);
@@ -9,9 +10,8 @@ const ActivityUpdate: React.FC = () => {
     useEffect(() => {
         const fetchActivity = async () => {
             try {
-                const response = await fetch('/api/actDetail?page=1&pageSize=7');
-                const data = await response.json();
-                setActivityData(data.activities);
+                const response = await axios.get(`/api/actDetail?page=1&pageSize=6`);
+                setActivityData(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching activities:', error);
