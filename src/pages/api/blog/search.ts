@@ -1,5 +1,6 @@
 import { PrismaClient, Prisma } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
+
 const prisma = new PrismaClient();
 
 interface QueryParams {
@@ -31,7 +32,7 @@ async function handleGET(req: NextApiRequest, res: NextApiResponse) {
     const skip = (pageNum - 1) * pageSizeNum;
     const take = pageSizeNum;
 
-    const whereConditions: Prisma.NewsUpdateDBWhereInput[] = [];
+    const whereConditions: Prisma.BlogDBWhereInput[] = [];
 
     whereConditions.push({ deleteBy: '' });
 
@@ -41,26 +42,26 @@ async function handleGET(req: NextApiRequest, res: NextApiResponse) {
       });
     }
 
-    const whereClause: Prisma.NewsUpdateDBWhereInput = {
+    const whereClause: Prisma.BlogDBWhereInput = {
       AND: whereConditions,
     };
 
-    const [newsData, totalNewsDataCount] = await Promise.all([
-      prisma.newsUpdateDB.findMany({
+    const [blogs, totalBlogsCount] = await Promise.all([
+      prisma.blogDB.findMany({
         where: whereClause,
         skip,
         take,
       }),
-      prisma.newsUpdateDB.count({ where: whereClause }),
+      prisma.blogDB.count({ where: whereClause }),
     ]);
 
-    const totalPages = Math.ceil(totalNewsDataCount / pageSizeNum);
+    const totalPages = Math.ceil(totalBlogsCount / pageSizeNum);
 
     res.status(200).json({
       success: true,
-      data: newsData,
+      data: blogs,
       pagination: {
-        total: totalNewsDataCount,
+        total: totalBlogsCount,
         totalPages,
         page: pageNum,
         pageSize: pageSizeNum,
@@ -71,3 +72,4 @@ async function handleGET(req: NextApiRequest, res: NextApiResponse) {
     res.status(500).json({ message: "Error fetching game categories" });
   }
 }
+

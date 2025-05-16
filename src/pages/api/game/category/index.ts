@@ -24,19 +24,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             res.status(405).end(`Method ${method} Not Allowed`);
     }
 }
-
-// Fetch all blogs (GET)
 async function handleGet(req: NextApiRequest, res: NextApiResponse) {
-    const { page = 1, pageSize = 10, keyword = "", typeKeyword = "" } = req.query;
+    const { page = 1, pageSize = 10, title = "" } = req.query;
 
     try {
-        const blogs = await prisma.blogDB.findMany({
+        const exportDB = await prisma.gameCategoryDB.findMany({
             where: {
                 title: {
-                    contains: keyword as string,
+                    contains: title as string,
                     mode: 'insensitive',
-                }
-                // deleteBy: null, // Only fetch non-deleted entries
+                },
             },
             skip: (Number(page) - 1) * Number(pageSize),
             take: Number(pageSize),
@@ -45,91 +42,90 @@ async function handleGet(req: NextApiRequest, res: NextApiResponse) {
             },
         });
 
-        const totalBlogs = await prisma.blogDB.count({
+        const totalCategories = await prisma.gameCategoryDB.count({
             where: {
                 title: {
-                    contains: keyword as string,
+                    contains: title as string,
                     mode: 'insensitive',
                 },
-                // deleteBy: null,
             },
         });
 
         res.status(200).json({
             success: true,
-            data: blogs,
+            exportDB,
             pagination: {
-                totalPages: Math.ceil(totalBlogs / Number(pageSize)),
+                totalPages: Math.ceil(totalCategories / Number(pageSize)),
                 currentPage: Number(page),
-                totalItems: totalBlogs,
+                totalItems: totalCategories,
             },
         });
     } catch (error) {
-        res.status(500).json({ success: false, error: "Error fetching activities." });
+        res.status(500).json({ success: false, error: "Error fetching game categories." });
     }
 }
-
-// Create a new blog (POST)
 async function handlePost(req: NextApiRequest, res: NextApiResponse) {
-    const { title, img, video, description, creditlink, createdBy } = req.body;
+    const { title, createdBy } = req.body;
 
     try {
-        const newBlog = await prisma.blogDB.create({
+        // ✅ เช็คว่าชื่อซ้ำไหมก่อน
+        const existingCategory = await prisma.gameCategoryDB.findUnique({
+            where: { title },
+        });
+
+        if (existingCategory) {
+            return res.status(400).json({
+                success: false,
+                error: "มีหมวดหมู่ชื่อนี้อยู่แล้ว กรุณาใช้ชื่ออื่น",
+            });
+        }
+
+        // ✅ ถ้าไม่ซ้ำ → สร้างใหม่ได้
+        const newCategory = await prisma.gameCategoryDB.create({
             data: {
                 title,
-                img,
-                video,
-                description,
-                creditlink,
-                createdAt: new Date(),  // ✅ เพิ่มค่า createdAt
-                updatedAt: new Date(),  // ✅ เพิ่มค่า updatedAt
+                createdAt: new Date(),
+                updatedAt: new Date(),
                 createdBy,
                 updatedBy: createdBy || '',
                 deleteBy: '',
             },
         });
 
-        res.status(201).json({ success: true, data: newBlog });
+        res.status(201).json({ success: true, data: newCategory });
     } catch (error) {
-        res.status(500).json({ success: false, error: "Error creating new blog." });
+        console.error("error : ", error);
+        res.status(500).json({ success: false, error: "Error creating game category." });
     }
 }
 
-// Update an existing blog (PUT)
 async function handlePut(req: NextApiRequest, res: NextApiResponse) {
-    const { id, title, img, video, description, creditlink, updatedBy } = req.body;
+    const { id, title, updatedBy } = req.body;
 
     try {
-        const updatedBlogs = await prisma.blogDB.update({
+        const updatedCategory = await prisma.gameCategoryDB.update({
             where: { id },
             data: {
                 title,
-                img,
-                video,
-                description,
-                creditlink,
                 updatedBy,
             },
         });
 
-        res.status(200).json({ success: true, data: updatedBlogs });
+        res.status(200).json({ success: true, data: updatedCategory });
     } catch (error) {
-        res.status(500).json({ success: false, error: "Error updating blog." });
+        res.status(500).json({ success: false, error: "Error updating game category." });
     }
 }
-
-// Hard delete a blog (DELETE)
 async function handleDelete(req: NextApiRequest, res: NextApiResponse) {
     const { id } = req.body;
 
     try {
-        await prisma.blogDB.delete({
+        await prisma.gameCategoryDB.delete({
             where: { id },
         });
 
-        res.status(204).end(); // Use 204 No Content for successful deletion with no response body
+        res.status(204).end(); // No content after successful deletion
     } catch (error) {
-        console.error("Error deleting blog:", error);
-        res.status(500).json({ success: false, error: "Error deleting blog." });
+        res.status(500).json({ success: false, error: "Error deleting game category." });
     }
 }

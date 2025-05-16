@@ -1,6 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import bcrypt from "bcryptjs"; // เพิ่ม bcryptjs สำหรับเข้ารหัส
 
 const prisma = new PrismaClient();
 
@@ -8,85 +7,126 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { method } = req;
 
     switch (method) {
-        // GET: ดึงรายการ Users ทั้งหมด
         case 'GET':
-            try {
-                const page: number = Number(req.query.page) || 1;
-                const pageSize: number = Number(req.query.pageSize) || 10;
-
-                const users = await prisma.userDB.findMany({
-                    skip: (page - 1) * pageSize,
-                    take: pageSize,
-                    orderBy: {
-                        createdAt: 'desc', // เรียงลำดับข้อมูลตามวันที่สร้างล่าสุด
-                    },
-                });
-
-                const totalUsers = await prisma.userDB.count();
-                const totalPage: number = Math.ceil(totalUsers / pageSize);
-
-                res.status(200).json({ users, totalPage });
-            } catch (error) {
-                console.error("Error fetching users:", error);
-                res.status(500).json({ error: "An error occurred while fetching the users" });
-            }
+            await handleGet(req, res);
             break;
-
-        // POST: เพิ่มข้อมูล User ใหม่
-        // case 'POST':
-        //     try {
-        //         const {
-        //             discord_id,
-        //             username,
-        //             email,
-        //             password,
-        //             nickname,
-        //         } = req.body;
-
-        //         // ตรวจสอบข้อมูลที่จำเป็น
-        //         if (!discord_id || !email || !password) {
-        //             return res.status(400).json({ error: "ข้อมูลไม่ครบถ้วน กรุณากรอกข้อมูลให้ครบทุกช่องที่จำเป็น" });
-        //         }
-
-        //         // ตรวจสอบข้อมูลซ้ำ
-        //         const existingUser = await prisma.userDB.findFirst({
-        //             where: {
-        //                 OR: [
-        //                     { email: email }, // ตรวจสอบ email ซ้ำ
-        //                     { discord_id: discord_id } // ตรวจสอบ discord_id ซ้ำ
-        //                 ]
-        //             }
-        //         });
-
-        //         if (existingUser) {
-        //             return res.status(409).json({ error: "อีเมล หรือ Discord ID นี้ถูกใช้ไปแล้ว กรุณาใช้ข้อมูลอื่น" });
-        //         }
-
-        //         // เข้ารหัสรหัสผ่าน
-        //         const hashedPassword = await bcrypt.hash(password, 10);
-
-        //         // เพิ่มข้อมูลลงฐานข้อมูล
-        //         const newUser = await prisma.userDB.create({
-        //             data: {
-        //                 discord_id,
-        //                 username: username || null,
-        //                 email,
-        //                 password: hashedPassword,
-        //                 nickname: nickname || null,
-        //                 updatedBy: "admin",
-        //                 deleteBy: ""
-        //             },
-        //         });
-
-        //         res.status(201).json(newUser);
-
-        //     } catch (error) {
-        //         console.error("Error creating user : ", error);
-        //         res.status(500).json({ error: "เกิดข้อผิดพลาดที่ไม่คาดคิด กรุณาลองใหม่อีกครั้ง" });
-        //     }
-        //     break;
+        case 'POST':
+            await handlePost(req, res);
+            break;
+        case 'PUT':
+            await handlePut(req, res);
+            break;
+        case 'DELETE':
+            await handleDelete(req, res);
+            break;
         default:
-            res.setHeader('Allow', ['GET', 'POST']);
+            res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
             res.status(405).end(`Method ${method} Not Allowed`);
+    }
+}
+async function handleGet(req: NextApiRequest, res: NextApiResponse) {
+    const { page = 1, pageSize = 10, discord_id = "", email = "", username = "" } = req.query;
+
+    try {
+        const users = await prisma.userDB.findMany({
+            where: {
+                discord_id: discord_id ? discord_id as string : undefined,
+                email: email ? email as string : undefined,
+                username: username ? username as string : undefined,
+            },
+            skip: (Number(page) - 1) * Number(pageSize),
+            take: Number(pageSize),
+            orderBy: {
+                createdAt: 'desc',
+            },
+        });
+
+        const totalUsers = await prisma.userDB.count({
+            where: {
+                discord_id: discord_id ? discord_id as string : undefined,
+                email: email ? email as string : undefined,
+                username: username ? username as string : undefined,
+            },
+        });
+
+        res.status(200).json({
+            success: true,
+            users,
+            pagination: {
+                totalPages: Math.ceil(totalUsers / Number(pageSize)),
+                currentPage: Number(page),
+                totalItems: totalUsers,
+            },
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, error: "Error fetching users." });
+    }
+}
+async function handlePost(req: NextApiRequest, res: NextApiResponse) {
+    const { discord_id, username, email, nickname, password, firstname, lastname, birthday, gender, alternativeGender, createdBy } = req.body;
+
+    try {
+        const newUser = await prisma.userDB.create({
+            data: {
+                discord_id,
+                username,
+                email,
+                nickname,
+                password,
+                firstname,
+                lastname,
+                birthday: birthday ? new Date(birthday) : null, // ✅ แปลงเป็น Date หรือให้เป็น null
+                gender,
+                alternativeGender,
+                createdBy,
+                createdAt: new Date(), // ✅ เพิ่มค่า createdAt
+                updatedAt: new Date(), // ✅ เพิ่มค่า updatedAt
+                updatedBy: createdBy || '',
+                deleteBy: '',
+            },
+        });
+        
+
+        res.status(201).json({ success: true, data: newUser });
+    } catch (error) {
+        res.status(500).json({ success: false, error: "Error creating user record." });
+    }
+}
+async function handlePut(req: NextApiRequest, res: NextApiResponse) {
+    const { id, username, email, nickname, password, firstname, lastname, birthday, gender, alternativeGender, updatedBy } = req.body;
+
+    try {
+        const updatedUser = await prisma.userDB.update({
+            where: { id },
+            data: {
+                username,
+                email,
+                nickname,
+                password,
+                firstname,
+                lastname,
+                birthday,
+                gender,
+                alternativeGender,
+                updatedBy,
+            },
+        });
+
+        res.status(200).json({ success: true, data: updatedUser });
+    } catch (error) {
+        res.status(500).json({ success: false, error: "Error updating user record." });
+    }
+}
+async function handleDelete(req: NextApiRequest, res: NextApiResponse) {
+    const { id } = req.body;
+
+    try {
+        await prisma.userDB.delete({
+            where: { id },
+        });
+
+        res.status(204).end(); // No content after successful deletion
+    } catch (error) {
+        res.status(500).json({ success: false, error: "Error deleting user record." });
     }
 }

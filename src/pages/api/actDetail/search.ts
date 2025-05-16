@@ -1,5 +1,6 @@
 import { PrismaClient, Prisma } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
+
 const prisma = new PrismaClient();
 
 interface QueryParams {
@@ -31,7 +32,7 @@ async function handleGET(req: NextApiRequest, res: NextApiResponse) {
     const skip = (pageNum - 1) * pageSizeNum;
     const take = pageSizeNum;
 
-    const whereConditions: Prisma.NewsUpdateDBWhereInput[] = [];
+    const whereConditions: Prisma.ActDetailDBWhereInput[] = [];
 
     whereConditions.push({ deleteBy: '' });
 
@@ -41,26 +42,26 @@ async function handleGET(req: NextApiRequest, res: NextApiResponse) {
       });
     }
 
-    const whereClause: Prisma.NewsUpdateDBWhereInput = {
+    const whereClause: Prisma.ActDetailDBWhereInput = {
       AND: whereConditions,
     };
 
-    const [newsData, totalNewsDataCount] = await Promise.all([
-      prisma.newsUpdateDB.findMany({
+    const [activities, totalActivitiesCount] = await Promise.all([
+      prisma.actDetailDB.findMany({
         where: whereClause,
         skip,
         take,
       }),
-      prisma.newsUpdateDB.count({ where: whereClause }),
+      prisma.actDetailDB.count({ where: whereClause }),
     ]);
 
-    const totalPages = Math.ceil(totalNewsDataCount / pageSizeNum);
+    const totalPages = Math.ceil(totalActivitiesCount / pageSizeNum);
 
     res.status(200).json({
       success: true,
-      data: newsData,
+      data: activities,
       pagination: {
-        total: totalNewsDataCount,
+        total: totalActivitiesCount,
         totalPages,
         page: pageNum,
         pageSize: pageSizeNum,

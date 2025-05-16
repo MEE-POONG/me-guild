@@ -9,18 +9,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { method } = req;
     const { id } = req.query;
 
+    if (!id || typeof id !== "string") {
+        return res.status(400).json({ error: "Invalid or missing news ID" });
+    }
+
     switch (method) {
         case 'GET':
             try {
-                const newsUpdate = await prisma.newsUpdateDB.findUnique({
-                    where: { id: id as string },
+                const newsData = await prisma.newsUpdateDB.findUnique({
+                    where: { id },
                 });
 
-                if (!newsUpdate) {
+                if (!newsData) {
                     return res.status(404).json({ error: "News update not found" });
                 }
 
-                res.status(200).json(newsUpdate);
+                res.status(200).json({ success: true, data: newsData });
             } catch (error) {
                 console.error("Error fetching news update:", error);
                 res.status(500).json({ error: "An error occurred while fetching the news update" });
@@ -32,15 +36,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const { title, img, description, creditlink } = req.body;
 
                 if (!title || !img || !description || !creditlink) {
-                    return res.status(400).json({ error: "Title and content are required" });
+                    return res.status(400).json({ error: "Title, image, description, and credit link are required" });
                 }
 
                 const updatedNews = await prisma.newsUpdateDB.update({
-                    where: { id: id as string },
+                    where: { id },
                     data: { title, img, description, creditlink },
                 });
 
-                res.status(200).json(updatedNews);
+                res.status(200).json({ success: true, data: updatedNews });
             } catch (error) {
                 console.error("Error updating news update:", error);
                 res.status(500).json({ error: "An error occurred while updating the news update" });
@@ -49,11 +53,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'DELETE':
             try {
-                await prisma.newsUpdateDB.delete({
-                    where: { id: id as string },
+                const { deleteBy } = req.body;
+
+                // Soft delete by setting the deleteBy field
+                const deletedNews = await prisma.newsUpdateDB.update({
+                    where: { id },
+                    data: { deleteBy },
                 });
 
-                res.status(204).end();
+                res.status(200).json({ success: true, data: deletedNews });
             } catch (error) {
                 console.error("Error deleting news update:", error);
                 res.status(500).json({ error: "An error occurred while deleting the news update" });

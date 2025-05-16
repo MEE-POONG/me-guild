@@ -1,4 +1,4 @@
-// pages/api/news/[id].ts
+// pages/api/blog/[id].ts
 
 import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -9,21 +9,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { method } = req;
     const { id } = req.query;
 
+    if (!id || typeof id !== "string") {
+        return res.status(400).json({ error: "Invalid or missing blog ID" });
+    }
+
     switch (method) {
         case 'GET':
             try {
-                const blogs = await prisma.blogDB.findUnique({
-                    where: { id: id as string },
+                const blog = await prisma.blogDB.findUnique({
+                    where: { id },
                 });
 
-                if (!blogs) {
-                    return res.status(404).json({ error: "Blog update not found" });
+                if (!blog) {
+                    return res.status(404).json({ error: "Blog not found" });
                 }
 
-                res.status(200).json(blogs);
+                res.status(200).json({ success: true, data: blog });
             } catch (error) {
-                console.error("Error fetching blogs update:", error);
-                res.status(500).json({ error: "An error occurred while fetching the blogs update" });
+                console.error("Error fetching blog:", error);
+                res.status(500).json({ error: "An error occurred while fetching the blog" });
             }
             break;
 
@@ -31,32 +35,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
                 const { title, img, video, description, creditlink } = req.body;
 
-                if (!title || !img || !video || !description || !creditlink) {
-                    return res.status(400).json({ error: "Title and content are required" });
+                if (!title || !img || !description || !creditlink) {
+                    return res.status(400).json({ error: "Title, image, description, and credit link are required" });
                 }
 
-                const updatedBlogs = await prisma.blogDB.update({
-                    where: { id: id as string },
+                const updatedBlog = await prisma.blogDB.update({
+                    where: { id },
                     data: { title, img, video, description, creditlink },
                 });
 
-                res.status(200).json(updatedBlogs);
+                res.status(200).json({ success: true, data: updatedBlog });
             } catch (error) {
-                console.error("Error updating blog update:", error);
-                res.status(500).json({ error: "An error occurred while updating the blog update" });
+                console.error("Error updating blog:", error);
+                res.status(500).json({ error: "An error occurred while updating the blog" });
             }
             break;
 
         case 'DELETE':
             try {
                 await prisma.blogDB.delete({
-                    where: { id: id as string },
+                    where: { id },
                 });
 
-                res.status(204).end();
+                res.status(204).end(); // No content response for successful deletion
             } catch (error) {
-                console.error("Error deleting blog update:", error);
-                res.status(500).json({ error: "An error occurred while deleting the blog update" });
+                console.error("Error deleting blog:", error);
+                res.status(500).json({ error: "An error occurred while deleting the blog" });
             }
             break;
 
