@@ -38,7 +38,7 @@ const ContactPage: React.FC = (props) => {
                             <p className="text-sm md:text-base text-gray-50">Phone: <span>044 895 7725</span></p>
                             <p className="text-sm md:text-base text-gray-50">Email: <span>meguild@mail.com</span></p>
                             <button className="text-sm md:text-base text-gray-50 ">
-                                <Link href="https://discord.com/invite/4eS7Bt3PZF" className="hover:text-purple-400 flex items-center gap-1">
+                                <Link href="https://thpsd.com/hZKV" className="hover:text-purple-400 flex items-center gap-1">
                                     <PiDiscordLogoBold /> : ME GUILE
                                 </Link>
                             </button>

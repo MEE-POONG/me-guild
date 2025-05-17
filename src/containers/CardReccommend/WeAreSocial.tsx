@@ -16,7 +16,7 @@ const WeAreSocial: FC = () => {
             <div className="grid grid-cols-4">
                 {/* Discord */}
                 <Link
-                    href="https://discord.com/invite/4eS7Bt3PZF"
+                    href="https://thpsd.com/hZKV"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-600 p-5 flex items-center justify-center text-white hover:bg-violet-500 transition-colors"

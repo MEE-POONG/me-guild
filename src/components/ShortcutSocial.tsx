@@ -22,7 +22,7 @@ const ShortcutSocial: React.FC = () => {
             }
             >
                 <Link
-                    href="https://discord.com/invite/4eS7Bt3PZF"
+                    href="https://thpsd.com/hZKV"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center"
