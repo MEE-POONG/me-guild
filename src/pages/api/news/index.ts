@@ -64,6 +64,7 @@ async function handleGet(req: NextApiRequest, res: NextApiResponse) {
             },
         });
     } catch (error) {
+        console.log(error)
         res.status(500).json({ success: false, error: "Error fetching news." });
     }
 }
