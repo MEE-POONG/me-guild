@@ -1,6 +1,12 @@
 # Use the official Node.js image as a base
 FROM node:18-alpine
 
+ENV CFIMG="https://imagedelivery.net/"
+ENV CLOUDFLARE_KEY='QZ6TuL-3r02W7wQjQrv5DA'
+ENV CLOUDFLARE_ACCOUNT_ID='39aa4ea3c7a7d766adc4428933324787'
+ENV CLOUDFLARE_API_TOKEN='HQZYfq40lbkXw2hB8Z4u_wR14ZpPl2x_uscraOf0'
+ENV DATABASE_URL='mongodb+srv://me-guild-user:07Qy3X8416Vzc5RK@db-mongodb-sgp-bb56ac46.mongo.ondigitalocean.com/me-guild-db?authSource=admin&replicaSet=db-mongodb-sgp&tls=true' 
+
 # Set the working directory
 WORKDIR /app
 
