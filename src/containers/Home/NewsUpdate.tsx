@@ -1,3 +1,4 @@
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,9 +10,8 @@ const NewsUpdate: React.FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=9');
-                const data = await response.json();
-                setNewsData(data.news);
+                const response = await axios.get('/api/news?page=1&pageSize=3');
+                setNewsData(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching news:', error);

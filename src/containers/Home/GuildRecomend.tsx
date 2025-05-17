@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from 'next/image';
+import axios from "axios";
 
 const GuildRecomend: React.FC = () => {
     const [guilds, setGuilds] = useState<any[]>([]);
@@ -9,9 +10,8 @@ const GuildRecomend: React.FC = () => {
     useEffect(() => {
         const fetchGuilds = async () => {
             try {
-                const response = await fetch('/api/guildProfile?page=1&pageSize=3');
-                const data = await response.json();
-                setGuilds(data.guilds);
+                const response = await axios.get('/api/guildProfile?page=1&pageSize=3');
+                setGuilds(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching guilds:', error);

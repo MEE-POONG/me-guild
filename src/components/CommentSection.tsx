@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import axios from 'axios';
 
 interface Comment {
     id: string;
@@ -22,9 +23,8 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
         // Fetch comments for the news article when the component mounts
         const fetchComments = async () => {
             try {
-                const response = await fetch(`/api/comments?articleId=${articleId}`);
-                const data = await response.json();
-                setComments(data.comments);
+                const response = await axios.get(`/api/comments?articleId=${articleId}`);
+                setComments(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching comments:', error);

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
+import axios from 'axios';
 
 const NewsReccomend: FC = () => {
     const [newsData, setNewsData] = useState<any[]>([]);
@@ -9,9 +10,8 @@ const NewsReccomend: FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=3');
-                const data = await response.json();
-                setNewsData(data.news);
+                const response = await axios.get('/api/news?page=1&pageSize=3');
+                setNewsData(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching news:', error);

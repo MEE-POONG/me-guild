@@ -10,6 +10,7 @@ import SecondaryTopicOne from '@/components/Head/SecondaryTopicOne';
 import SearchBar from '@/containers/CardReccommend/SearchBarForm';
 import Breadcrumb from '@/components/Breadcrumb';
 import ReccommentBlog from '@/containers/CardReccommend/ReccommentBlog';
+import axios from 'axios';
 
 const NewsPage: React.FC = (props) => {
     const [newsData, setNewsData] = useState<any[]>([]);
@@ -18,9 +19,8 @@ const NewsPage: React.FC = (props) => {
     const backgroundImageUrl = '/images/grandhall2.png';
     const fetchNews = async () => {
         try {
-            const response = await fetch('/api/news');
-            const data = await response.json();
-            setNewsData(data.news);
+            const response = await axios.get('/api/news');
+            setNewsData(response.data.data);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching news:', error);

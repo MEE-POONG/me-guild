@@ -1,3 +1,4 @@
+import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -8,9 +9,8 @@ const NewActivityUpdate: React.FC = (props) => {
     useEffect(() => {
         const fetchActivity = async () => {
             try {
-                const response = await fetch('/api/actDetail?page=1&pageSize=10');
-                const data = await response.json();
-                setActivityData(data.activities);
+                const response = await axios.get('/api/actDetail?page=1&pageSize=10');
+                setActivityData(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching activities:', error);

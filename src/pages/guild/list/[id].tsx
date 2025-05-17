@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import GuildMember from "../guildMember";
 import Image from "next/image";
+import axios from "axios";
 
 const ProfileGuild: React.FC = (props) => {
     const router = useRouter();
@@ -23,9 +24,8 @@ const ProfileGuild: React.FC = (props) => {
         if (id) {
             const fetchGuild = async () => {
                 try {
-                    const response = await fetch(`/api/guildProfile/${id}`);
-                    const data = await response.json();
-                    setGuild(data);
+                    const response = await axios.get(`/api/guildProfile/${id}`);
+                    setGuild(response.data.data);
                     setLoading(false);
                 } catch (error) {
                     console.error('Error fetching guild:', error);

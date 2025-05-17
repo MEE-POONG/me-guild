@@ -6,6 +6,7 @@ import LatestActivity from "@/containers/CardReccommend/LatestActivity";
 import LatestNews from "@/containers/CardReccommend/LatestNews";
 import SearchBar from "@/containers/CardReccommend/SearchBarForm";
 import WeAreSocial from "@/containers/CardReccommend/WeAreSocial";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router';
@@ -25,9 +26,8 @@ const ReadBlog: React.FC = (props) => {
         if (id) {
             const fetchBlogs = async () => {
                 try {
-                    const response = await fetch(`/api/blog/${id}`);
-                    const data = await response.json();
-                    setBlogs(data);
+                    const response = await axios.get(`/api/blog/${id}`);
+                    setBlogs(response.data.data);
                     setLoading(false);
                 } catch (error) {
                     console.error('Error fetching blogs:', error);

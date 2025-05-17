@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useState, useEffect } from 'react';
@@ -20,9 +21,8 @@ const HotNewsTwoCard: FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('/api/news?page=1&pageSize=4');
-                const data = await response.json();
-                setNewsData(data.news);
+                const response = await axios.get('/api/news?page=1&pageSize=4');
+                setNewsData(response.data.data);
             } catch (error) {
                 console.error('Error fetching news:', error);
             } finally {

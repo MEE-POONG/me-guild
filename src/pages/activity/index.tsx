@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BiArrowFromRight } from "react-icons/bi";
 import NowPlaying from '../../containers/Activity/NowPlaying';
+import axios from "axios";
 
 const ActivityPage: React.FC = (props) => {
 
@@ -18,9 +19,8 @@ const ActivityPage: React.FC = (props) => {
     useEffect(() => {
         const fetchActivity = async () => {
             try {
-                const response = await fetch('/api/actDetail');
-                const data = await response.json();
-                setActivityData(data.activities);
+                const response = await axios.get('/api/actDetail');
+                setActivityData(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching activities:', error);

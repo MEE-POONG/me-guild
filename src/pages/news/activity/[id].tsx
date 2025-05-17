@@ -3,6 +3,7 @@ import LatestMath from '@/containers/Activity/LatsetMath';
 import LatestActivity from '@/containers/CardReccommend/LatestActivity';
 import SearchBar from '@/containers/CardReccommend/SearchBarForm';
 import WeAreSocial from '@/containers/CardReccommend/WeAreSocial';
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -24,9 +25,8 @@ const ActivityDetail: React.FC = (props) => {
         if (id) {
             const fetchNews = async () => {
                 try {
-                    const response = await fetch(`/api/actDetail/${id}`);
-                    const data = await response.json();
-                    setActivities(data);
+                    const response = await axios.get(`/api/actDetail/${id}`);
+                    setActivities(response.data.data);
                     setLoading(false);
                 } catch (error) {
                     console.error('Error fetching activity details:', error);

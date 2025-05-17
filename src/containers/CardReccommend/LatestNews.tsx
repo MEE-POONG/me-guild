@@ -25,7 +25,7 @@ const LatestNews: React.FC<LatestNewsProps> = ({ title, api }) => {
         const fetchNews = async () => {
             try {
                 const response = await axios.get('/api/news?page=1&pageSize=3');
-                setNewsData(response.data.news || []);
+                setNewsData(response.data.data);
             } catch (error) {
                 console.error('Error fetching news:', error);
                 setError("Failed to load news. Please try again later.");

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from 'next/image';
+import axios from "axios";
 
 const GuildList: React.FC = () => {
     const [guilds, setGuilds] = useState<any[]>([]);
@@ -10,10 +11,9 @@ const GuildList: React.FC = () => {
     useEffect(() => {
         const fetchGuilds = async () => {
             try {
-                const response = await fetch('/api/guildProfile');
-                const data = await response.json();
+                const response = await axios.get('/api/guildProfile');
                 
-                setGuilds(data.guilds); // Correctly set the guild data
+                setGuilds(response.data.data); // Correctly set the guild data
                 setLoading(false); // Stop loading after data is set
             } catch (error) {
                 console.error('Error fetching guilds:', error);
