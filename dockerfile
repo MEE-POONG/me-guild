@@ -14,6 +14,7 @@ RUN npm install
 COPY . .
 
 RUN npx prisma generate
+RUN apk add --no-cache openssl
 
 # Build the Next.js application
 RUN npm run build
